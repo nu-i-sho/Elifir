@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CRRSP08: A misspelled word has been found
+dotnet_diagnostic.CRRSP08.severity = none

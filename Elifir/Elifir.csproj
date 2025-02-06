@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>Elifir</AssemblyName>
-    <RootNamespace>Nuisho.Elifir</RootNamespace>
+    <RootNamespace>Nuisho</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
