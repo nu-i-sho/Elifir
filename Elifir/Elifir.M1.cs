@@ -7,8 +7,8 @@
         {
             public readonly struct M1 : IConvertor
             {
-                private readonly Func<T, Result<Tʹ>> _aExtMap;
-                private readonly Func<T, Tʹ> _aMap;
+                private readonly Func<T , Result<Tʹ>> _aExtMap;
+                private readonly Func<T , Tʹ> _aMap;
                 private readonly Func<Tʹ, bool> _bFilter;
                 private readonly Func<Tʹ, Tʹ> _bMap;
 
@@ -53,7 +53,7 @@
                 public M1 Map(Func<Tʹ, Tʹ> map) =>
                    new(_aExtMap, _aMap, _bFilter, map.Compose(_bMap)); 
 
-                public To<Tʺ>.Else.To<Tʹ>.M2 Map<Tʺ>(Func<Tʹ, Tʺ> map) =>
+                public Through<Tʹ>.To<Tʺ>.M2 Map<Tʺ>(Func<Tʹ, Tʺ> map) =>
                    new(_aExtMap, _aMap, _bFilter, map.Compose(_bMap)); 
             }
         }}

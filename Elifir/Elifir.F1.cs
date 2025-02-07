@@ -13,7 +13,7 @@
                 public M1 Map(Func<Tʹ, Tʹ> map) =>
                    new(aExtMap, aMap, bFilter, map);
 
-                public  To<Tʺ>.Else.To<Tʹ>.M2 Map<Tʺ>(Func<Tʹ, Tʺ> map) =>
+                public Through<Tʹ>.To<Tʺ>.M2 Map<Tʺ>(Func<Tʹ, Tʺ> map) =>
                    new(aExtMap, aMap, bFilter, map);
             }
         }}

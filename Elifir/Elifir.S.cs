@@ -2,7 +2,7 @@
 {
     public static partial class Elifir
     {
-        public static partial class Mono<T>
+        public static partial class FromAndTo<T>
         {
             public readonly record struct S() : From<T>.To<T>.IConvertor
             {

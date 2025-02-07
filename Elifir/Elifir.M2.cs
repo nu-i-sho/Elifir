@@ -3,35 +3,25 @@
     public static partial class Elifir
     {
         public static partial class From<T> {
-        public static partial class To<Tʹ> { 
-        public static partial class Else {
-        public static partial class To<Eʹ>
+        public static partial class Through<Tʹ> {
+        public static partial class To<Tʺ>
         {
-            public readonly struct M2
+            public readonly struct M2(
+                    Func<T, Result<Tʹ>> aExtMap,
+                    Func<T, Tʹ> aMap,
+                    Func<Tʹ, bool> bFilter,
+                    Func<Tʹ, Tʺ> bMap)
             {
-                private readonly Func<T, Result<Eʹ>> _aExtMap;
-                private readonly Func<T, Eʹ> _aMap;
-                private readonly Func<Eʹ, bool> _bFilter;
-                private readonly Func<Eʹ, Tʹ> _bMap;
 
-                public M2(
-                    Func<T,  Result<Eʹ>> aExtMap,
-                    Func<T,  Eʹ> aMap,
-                    Func<Eʹ, bool> bFilter,
-                    Func<Eʹ, Tʹ> bMap)
-                {
-                    _aExtMap = aExtMap;
-                    _aMap = aMap;
-                    _bFilter = bFilter;
-                    _bMap = bMap;
-                }
-                
-                public From<T>.To<Eʹ>.M1 Map(Func<Tʹ, Eʹ> map) =>
-                   new(_aExtMap, _aMap, _bFilter, map.Compose(_bMap));
+                public From<T>.To<Tʹ>.M1 Map(Func<Tʺ, Tʹ> map) =>
+                    new(aExtMap, aMap, bFilter, map.Compose(bMap));
 
-                public From<T>.To<Tʺ>.Else.To<Eʹ>.M2 Map<Tʺ>(Func<Tʹ, Tʺ> map) =>
-                   new(_aExtMap, _aMap, _bFilter, map.Compose(_bMap)); 
+                public To<Tʺʹ>.M2 Map<Tʺʹ>(Func<Tʺ, Tʺʹ> map) =>
+                    new(aExtMap, aMap, bFilter, map.Compose(bMap));
+
+                public ThenMorpheme<F2> If(Func<Tʺ, bool> filter) =>
+                    new(new(aExtMap, aMap, bFilter, bMap, filter));
             }
-        }}}}
+        }}}
     }
 }
