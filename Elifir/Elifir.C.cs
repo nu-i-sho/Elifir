@@ -2,11 +2,12 @@
 {
     public static partial class Elifir
     {
-        public readonly record struct C<T, Tʹ>(
+        public readonly record struct C<T, Tʹ, Tʺ>(
             Func<T, bool> Condition,
-            Func<T, Tʹ> ThenMap);
+            Func<T, Tʹ> ThenMap,
+            Func<T, Tʺ> ElseMap);
 
-        public static Func<T, Tʹ> Else<T, Tʹ>(this C<T, Tʹ> o, Func<T, Tʹ> map) =>
-            x => o.Condition(x) ? o.ThenMap(x) : map(x);
+        public static Func<T, Tʹ> End<T, Tʹ>(this C<T, Tʹ, Tʹ> o) =>
+            x => o.Condition(x) ? o.ThenMap(x) : o.ElseMap(x);
     }
 }
