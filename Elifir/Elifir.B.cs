@@ -6,7 +6,7 @@
             Func<T, bool> Condition,
             Func<T, Tʹ> ThenMap);
 
-        public static Func<T, T> End<T>(this B<T, T> o) =>
+        public static Func<T, T> End<T, Tʹ>(this B<T, Tʹ> o) where Tʹ : T =>
             x => o.Condition(x) ? o.ThenMap(x) : x;
 
         public static C<T, Tʹ, Tʺ> Else<T, Tʹ, Tʺ>(this B<T, Tʹ> o, Func<T, Tʺ> map) =>
