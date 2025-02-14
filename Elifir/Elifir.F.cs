@@ -3,6 +3,7 @@
     public static partial class Elifir
     {
         public readonly record struct F<T, ˣT, Tʹ>(
+            SubTypingCondition<T, ˣT> Condition,
             Func<ˣT, Tʹ> ThenMap,
             Func< T, Tʹ> ElseMap) 
                 where ˣT : T;
@@ -10,11 +11,12 @@
         public static Func<T, Tʹ> End<T, ˣT, Tʹ>(
             this F<T, ˣT, Tʹ> o)
                 where ˣT : T =>
-                    x => x is ˣT ˣx
+                    x => o.Condition(x, out ˣT ˣx)
                        ? o.ThenMap(ˣx) 
                        : o.ElseMap(x);
 
         public readonly record struct F<T, ˣT, Tʹ, Eʹ>(
+            SubTypingCondition<T, ˣT> Condition,
             Func<ˣT, Tʹ> ThenMap,
             Func< T, Eʹ> ElseMap)
                 where ˣT : T;
@@ -23,7 +25,7 @@
             this F<T, ˣT, Tʹ, Eʹ> o)
                 where ˣT  : T
                 where  Tʹ : Eʹ =>
-                    x => x is ˣT ˣx
+                    x => o.Condition(x, out ˣT ˣx)
                        ? o.ThenMap(ˣx) 
                        : o.ElseMap(x);
 
@@ -33,7 +35,7 @@
                 where ˣT  : T
                 where  Tʹ : notnull, Bʹ 
                 where  Eʹ : notnull, Bʹ =>
-                    x => x is ˣT ˣx 
+                    x => o.Condition(x, out ˣT ˣx)
                        ? o.ThenMap(ˣx) 
                        : o.ElseMap(x);
     }

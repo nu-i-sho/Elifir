@@ -130,7 +130,7 @@ namespace Nuisho
         public void IfTypeThen__WithoutTypeChanging__Test1()
         {
             var f =
-                If(Obj<A>.Is<B>)
+                If(Obj<A>.Is<B>())
                     .Then(BToA_Multiply(3))
                .End();
 
@@ -142,7 +142,7 @@ namespace Nuisho
         public void IfTypeThen__WithoutTypeChanging__Test2()
         {
             var f =
-                If(Obj<A>.Is<B>)
+                If(Obj<A>.Is<B>())
                     .Then(BToA_Multiply(3)
                     .Then(AToA_Multiply(2)
                     .Then(AToA_Multiply(4))))
@@ -156,7 +156,7 @@ namespace Nuisho
         public void IfTypeThenElse__WithoutTypeChanging__Test1()
         {
             var f =
-                If(Obj<A>.Is<B>)
+                If(Obj<A>.Is<B>())
                     .Then(BToA_Add(12)
                     .Then(AToA_Add(22)
                     .Then(AToA_Multiply(2))))
@@ -173,7 +173,7 @@ namespace Nuisho
         public void IfTypeThenElse__Test1()
         {
             var f =
-                If(Obj<A>.Is<B>)
+                If(Obj<A>.Is<B>())
                     .Then(BToA_Add(12)
                     .Then(AToC_Add(4)))
                .Else(AToA_Add(1)
@@ -189,11 +189,11 @@ namespace Nuisho
         public void IfTypeThenElse__Test2()
         {
             var f =
-                If(Obj<A>.Is<B>)
+                If(Obj<A>.Is<B>())
                     .Then(BToC_Add(12)
                     .Then(CToC_Add(47)
                     .Then(            
-                        If(Obj<C>.Is<D>)
+                        If(Obj<C>.Is<D>())
                             .Then(DToE_Multiply(2)
                             .Then(EToE_Multiply(3)
                             .Then(EToE_Add(11)
@@ -201,12 +201,12 @@ namespace Nuisho
                                 If(IsEven<E>())
                                      .Then(EToE_Add(3)
                                      .Then(
-                                         If(Obj<E>.Is<F>)
+                                         If(Obj<E>.Is<F>())
                                              .Then(FToF_Multiply(3)
                                              .Then(FToF_Add(4)))
                                         .End()))
                                  .Else(
-                                    If(Obj<D>.Is<E>)
+                                    If(Obj<D>.Is<E>())
                                         .Then(EToE_Multiply(2)
                                         .Then(EToE_Add(4)))
                                    .Else(DToE_Add(1)
