@@ -4,6 +4,7 @@
     {
         public readonly struct ReturnType<T>;
 
-        public static ReturnType<T> WithReturn<T>() => new();
+        public static ReturnType<T> WithReturn<T>() => 
+            new();
     }
 }
