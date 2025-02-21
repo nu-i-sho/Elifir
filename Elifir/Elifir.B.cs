@@ -1,7 +1,5 @@
 ﻿namespace Nuisho
 {
-    using static Elifir;
-
     public static partial class Elifir
     {
         public readonly record struct B<T, Tʹ>(
@@ -15,28 +13,9 @@
                        ? o.ThenMap(x) 
                        : x;
 
-        public static C<T, Tʹ> Else<T, Tʹ, Eʹ>(
-            this B<T, Tʹ> o, 
-            Func<T, Eʹ> map) 
-                where Eʹ : class, Tʹ =>
-                    new(o.Condition, o.ThenMap, map);
-    }
-
-    public static partial class ElifirPlus
-    {
-        public static C<T, Tʹ> Else<T, Tʹ, Eʹ>(
-            this B<T, Tʹ> o, 
-            Func<T, Eʹ> map) 
-                where Eʹ : struct, Tʹ =>
-                    new(o.Condition, o.ThenMap, x => map(x));
-    }
-
-    public static partial class ElifirPlusPlus
-    {
         public static C<T, Tʹ, Eʹ> Else<T, Tʹ, Eʹ>(
-            this B<T, Tʹ> o, 
-            Func<T, Eʹ> map, 
-            AdHocPolyMarker _ = default) =>
+            this B<T, Tʹ> o,
+            Func<T, Eʹ> map) =>
                 new(o.Condition, o.ThenMap, map);
     }
 }
