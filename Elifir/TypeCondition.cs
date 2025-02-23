@@ -1,15 +1,16 @@
-﻿
-namespace Nuisho
+﻿namespace Nuisho
 {
+    using static Elifir;
+
     public static partial class Elifir
     {
-        public delegate bool SubTypingCondition<T, ˣT>(T x, out ˣT ˣx) 
+        public delegate bool SubTypingCondition<T, ˣT>(T x, out ˣT ˣx)
             where ˣT : T;
 
         public static class Obj<T>
         {
-            public static SubTypingCondition<T, ˣT> Is<ˣT>() 
-                where ˣT : T => 
+            public static SubTypingCondition<T, ˣT> Is<ˣT>()
+                where ˣT : T =>
                     (T x, out ˣT ˣx) =>
                     {
                         if (x is ˣT sub)
@@ -22,7 +23,10 @@ namespace Nuisho
                         return false;
                     };
         }
+    }
 
+    internal static partial class Internal
+    {
         public static SubTypingCondition<T, ˣˣT> And<T, ˣT, ˣˣT>(
             this SubTypingCondition<T, ˣT> o,
             SubTypingCondition<T, ˣˣT> condition)

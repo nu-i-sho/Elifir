@@ -1,7 +1,7 @@
-﻿using static Nuisho.Elifir;
-
-namespace Nuisho
+﻿namespace Nuisho
 {
+    using static Elifir;
+
     public static partial class Elifir
     {
         public readonly record struct U<TChild, TParent>(
@@ -160,6 +160,7 @@ namespace Nuisho
 
         public static Func<A, bool> ATrue = _ => true;
         public static Func<B, bool> BTrue = _ => true;
+
         public static Func<A, A> AToA = _ => new();
         public static Func<A, B> AToB = _ => new();
         public static Func<B, A> BToA = _ => new();

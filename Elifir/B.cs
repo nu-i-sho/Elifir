@@ -1,16 +1,21 @@
 ﻿namespace Nuisho
 {
+    using static Elifir;
+
     public static partial class Elifir
     {
         public readonly record struct B<T, Tʹ>(
             Func<T, bool> Condition,
             Func<T, Tʹ> ThenMap);
+    }
 
+    internal static partial class Internal
+    {
         public static Func<T, T> End<T, Tʹ>(
-            this B<T, Tʹ> o) 
+            this B<T, Tʹ> o)
                 where Tʹ : T =>
-                    x => o.Condition(x) 
-                       ? o.ThenMap(x) 
+                    x => o.Condition(x)
+                       ? o.ThenMap(x)
                        : x;
 
         public static C<T, Tʹ, Eʹ> Else<T, Tʹ, Eʹ>(

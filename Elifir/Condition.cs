@@ -1,6 +1,8 @@
 ﻿namespace Nuisho
 {
-    public static partial class Elifir
+    using static Elifir;
+
+    internal static partial class Internal
     {
         public static Func<T, bool> And<T>(
             this Func<T, bool> o,
