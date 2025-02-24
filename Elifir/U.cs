@@ -2,17 +2,12 @@
 {
     using static Elifir;
 
+
     public static partial class Elifir
     {
         public readonly record struct U<TChild, TParent>(
             TChild Child,
             TParent Parent);
-
-        public static U<A<Tʹ>, Func<T, Tʹ>> ThenIf<T, Tʹ>(
-            this Func<T, Tʹ> o,
-            Func<Tʹ, bool> condition) =>
-                new(new(condition),
-                    o);
 
         public static U<A<T>, TParent> And<TParent, T>(
             this U<A<T>, TParent> o,

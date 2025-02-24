@@ -2,6 +2,13 @@
 {
     using static Elifir;
 
+    public static partial class Elifir
+    {
+        public static A<T> If<T>(
+            Func<T, bool> condition) =>
+                new(condition);
+    }
+
     internal static partial class Internal
     {
         public static Func<T, bool> And<T>(
@@ -21,9 +28,5 @@
                         ˣx = default;
                         return false;
                     };
-
-        public static A<T> If<T>(
-            Func<T, bool> condition) =>
-                new(condition);
     }
 }
