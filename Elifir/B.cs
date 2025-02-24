@@ -29,5 +29,22 @@
                     x => o.Condition(x)
                        ? o.ThenMap(x)
                        : x;
+
+        public static Func<T, Tʹ> End<T, Tʹ>(
+            this B<T, Tʹ> o,
+            AdHocPolyMarker _ = default)
+                where T : Tʹ =>
+                    x => o.Condition(x)
+                       ? o.ThenMap(x)
+                       : x;
+
+        public static Func<T, B> End<T, Tʹ, B>(
+            this B<T, Tʹ> o,
+            Func<ReturnType<B>> _)
+                where T  : B 
+                where Tʹ : B =>
+                    x => o.Condition(x)
+                       ? o.ThenMap(x)
+                       : x;
     }
 }

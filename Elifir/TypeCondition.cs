@@ -23,13 +23,18 @@
                         return false;
                     };
         }
+
+        public static D<T, ˣT> If<T, ˣT>(
+            SubTypingCondition<T, ˣT> condition) 
+                where ˣT : T => 
+                    new(condition);
     }
 
     internal static partial class Internal
     {
         public static SubTypingCondition<T, ˣˣT> And<T, ˣT, ˣˣT>(
             this SubTypingCondition<T, ˣT> o,
-            SubTypingCondition<T, ˣˣT> condition)
+            SubTypingCondition<ˣT, ˣˣT> condition)
                 where  ˣT :  T
                 where ˣˣT : ˣT =>
                     (T x, out ˣˣT ˣˣx) =>
@@ -46,10 +51,5 @@
             Func<ˣT, bool> condition)
                 where ˣT : T =>
                     (T x, out ˣT ˣx) => o(x, out ˣx) && condition(ˣx);
-
-        public static D<T, ˣT> If<T, ˣT>(
-            SubTypingCondition<T, ˣT> condition) 
-                where ˣT : T => 
-                    new(condition);
     }
 }

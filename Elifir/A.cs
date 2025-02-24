@@ -10,6 +10,12 @@
             Func<T, bool> condition) =>
                 new(o.Condition.And(condition));
 
+        public static D<T, ˣT> And<T, ˣT>(
+            this A<T> o,
+            SubTypingCondition<T, ˣT> condition)
+                where ˣT : T =>
+                    new(o.Condition.And(condition));
+
         public static B<T, Tʹ> Then<T, Tʹ>(
             this A<T> o,
             Func<T, Tʹ> map) =>
