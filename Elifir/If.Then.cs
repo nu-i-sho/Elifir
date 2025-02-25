@@ -41,5 +41,23 @@
             this ˣ.If<I>.Then<T> o,
             Func<I, E> elseMap) =>
                 new(o.ConditionalThenMap, elseMap);
+
+        public static Func<I, I> End<I, T>(
+            this ˣ.If<I>.Then<T> o)
+                where T : I =>
+                    i => o.ConditionalThenMap(i, out T t) ? t : i;
+
+        public static Func<I, T> End<I, T>(
+            this ˣ.If<I>.Then<T> o,
+            AdHocPolyMarker _ = default)
+                where I : T =>
+                    i => o.ConditionalThenMap(i, out T t) ? t : i;
+
+        public static Func<I, B> End<I, T, B>(
+            this ˣ.If<I>.Then<T> o,
+            ReturnType<B> _)
+                where T : B
+                where I : B =>
+                    i => o.ConditionalThenMap(i, out T t) ? t : i;
     }
 }
