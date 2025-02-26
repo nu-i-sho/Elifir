@@ -1,4 +1,4 @@
-﻿namespace Nuisho
+﻿namespace Nuisho.Elifir
 {
     public static class ˣ<TPrev>
     {

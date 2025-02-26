@@ -1,7 +1,4 @@
-﻿namespace Nuisho
+﻿namespace Nuisho.Elifir
 {
-    public static partial class Elifir
-    {
-        public struct AdHocPolyMarker;
-    }
+    public readonly struct AdHocPolyMarker;
 }

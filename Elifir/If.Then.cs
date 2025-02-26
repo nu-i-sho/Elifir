@@ -1,24 +1,27 @@
-﻿namespace Nuisho
+﻿namespace Nuisho.Elifir
 {
     public static partial class ˣ
     {
-        public readonly partial record struct If<I>
+        public readonly partial struct If<I>
         {
-            public readonly partial record struct Then<T>(
-                Elifir.ConditionalMap<I, T> ConditionalThenMap);
+            public readonly partial struct Then<T>(
+                ConditionalMap<I, T> conditionalMap)
+            {
+                internal ConditionalMap<I, T> ConditionalMap => conditionalMap;
+            }
         }
     }
 
-    public static partial class Elifir
+    public static partial class Syntax
     {
         public static ˣ.If<I>.Then<Tʹ> Then<I, T, Tʹ>(
             this ˣ.If<I>.Then<T> o,
-            Func<T, Tʹ> thenMap) =>
+            Func<T, Tʹ> map) =>
                 new((I i, out Tʹ tʹ) =>
                 {
-                    if (o.ConditionalThenMap(i, out T t))
+                    if (o.ConditionalMap(i, out T t))
                     {
-                        tʹ = thenMap(t);
+                        tʹ = map(t);
                         return true;
                     }
 
@@ -39,25 +42,25 @@
 
         public static ˣ.If<I>.Then<T>.Else<E> Else<I, T, E>(
             this ˣ.If<I>.Then<T> o,
-            Func<I, E> elseMap) =>
-                new(o.ConditionalThenMap, elseMap);
+            Func<I, E> map) =>
+                new(o.ConditionalMap, map);
 
         public static Func<I, I> End<I, T>(
             this ˣ.If<I>.Then<T> o)
                 where T : I =>
-                    i => o.ConditionalThenMap(i, out T t) ? t : i;
+                    i => o.ConditionalMap(i, out T t) ? t : i;
 
         public static Func<I, T> End<I, T>(
             this ˣ.If<I>.Then<T> o,
             AdHocPolyMarker _ = default)
                 where I : T =>
-                    i => o.ConditionalThenMap(i, out T t) ? t : i;
+                    i => o.ConditionalMap(i, out T t) ? t : i;
 
         public static Func<I, B> End<I, T, B>(
             this ˣ.If<I>.Then<T> o,
             ReturnType<B> _)
                 where T : B
                 where I : B =>
-                    i => o.ConditionalThenMap(i, out T t) ? t : i;
+                    i => o.ConditionalMap(i, out T t) ? t : i;
     }
 }

@@ -1,7 +1,8 @@
 namespace Nuisho
 {
     using NUnit.Framework;
-    using static Elifir;
+    using Nuisho.Elifir;
+    using static Nuisho.Elifir.Syntax;
 
     [TestFixture]
     public class ElifirTest

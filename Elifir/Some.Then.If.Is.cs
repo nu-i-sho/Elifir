@@ -1,6 +1,6 @@
-﻿namespace Nuisho
+﻿namespace Nuisho.Elifir
 {
-    public static partial class Elifir
+    public static partial class Syntax
     {
         public static ˣ<Some>.Then<ˣ.If<I>.Is<Iʹ>> And<Some, I, Iʹ>(
             this ˣ<Some>.Then<ˣ.If<I>.Is<Iʹ>> o,
