@@ -1,13 +1,20 @@
 ﻿namespace Nuisho.Elifir
 {
-    
-    public delegate bool ConditionalMap<in T, Tʹ>(T x, out Tʹ xʹ);
+    using System.Diagnostics.CodeAnalysis;
+
+
+    public delegate bool ConditionalMap<in I, Iʹ>(
+        I i, [NotNullWhen(true)]
+             [MaybeNullWhen(false)] 
+             out Iʹ iʹ);
 
     public static class Obj<T>
     {
         public static ConditionalMap<T, Tʹ> Is<Tʹ>()
             where Tʹ : T =>
-                (T x, out Tʹ xʹ) =>
+                (T x, [NotNullWhen(true)]
+                      [MaybeNullWhen(false)] 
+                      out Tʹ xʹ) =>
                 {
                     if (x is Tʹ sub)
                     {

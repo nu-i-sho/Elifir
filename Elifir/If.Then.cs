@@ -1,5 +1,7 @@
 ﻿namespace Nuisho.Elifir
 {
+    using System.Diagnostics.CodeAnalysis;
+
     public static partial class ˣ
     {
         public readonly partial struct If<I>
@@ -17,9 +19,11 @@
         public static ˣ.If<I>.Then<Tʹ> Then<I, T, Tʹ>(
             this ˣ.If<I>.Then<T> o,
             Func<T, Tʹ> map) =>
-                new((I i, out Tʹ tʹ) =>
+                new((I i, [NotNullWhen(true)]
+                          [MaybeNullWhen(false)] 
+                          out Tʹ tʹ) =>
                 {
-                    if (o.ConditionalMap(i, out T t))
+                    if (o.ConditionalMap(i, out T? t))
                     {
                         tʹ = map(t);
                         return true;
@@ -48,19 +52,19 @@
         public static Func<I, I> End<I, T>(
             this ˣ.If<I>.Then<T> o)
                 where T : I =>
-                    i => o.ConditionalMap(i, out T t) ? t : i;
+                    i => o.ConditionalMap(i, out T? t) ? t : i;
 
         public static Func<I, T> End<I, T>(
             this ˣ.If<I>.Then<T> o,
             AdHocPolyMarker _ = default)
                 where I : T =>
-                    i => o.ConditionalMap(i, out T t) ? t : i;
+                    i => o.ConditionalMap(i, out T? t) ? t : i;
 
         public static Func<I, B> End<I, T, B>(
             this ˣ.If<I>.Then<T> o,
             ReturnType<B> _)
                 where T : B
                 where I : B =>
-                    i => o.ConditionalMap(i, out T t) ? t : i;
+                    i => o.ConditionalMap(i, out T? t) ? (B)t : i;
     }
 }
