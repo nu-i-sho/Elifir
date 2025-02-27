@@ -14,10 +14,10 @@
                     new(o.Prev.Prev, o.Prev.Next.Then(o.Next.End()));
 
         public static ˣ<Some>.Then<ˣ.If<I>.Then<B>> End<Some, I, T, Tʹ, B>(
-            this ˣ<Some>.Then<ˣ<ˣ.If<I>.Then<T>>.Then<ˣ.If<T>.Then<Tʹ>>> o,
+            this ˣ<ˣ<Some>.Then<ˣ.If<I>.Then<T>>>.Then<ˣ.If<T>.Then<Tʹ>> o,
             ReturnType<B> withReturnB)
                 where T  : B
                 where Tʹ : B =>
-                    new(o.Prev, o.Next.End(withReturnB));
+                    new(o.Prev.Prev, o.Prev.Next.Then(o.Next.End(withReturnB)));
     }
 }
