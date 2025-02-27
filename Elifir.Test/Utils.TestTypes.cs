@@ -13,5 +13,9 @@
         public record D(int Value) : IWrappedInt;
         public record E(int Value) : IWrappedInt;
 
+        public record Aʹ(int Value) : A(Value);
+        public record Bʹ(int Value) : B(Value);
+        public record Cʹ(int Value) : C(Value);
+
     }
 }
