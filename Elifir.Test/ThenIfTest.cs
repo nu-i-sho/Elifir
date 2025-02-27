@@ -188,7 +188,7 @@
                  From_A_To_A_With(Plus(1))                  // 2 -> 3
                 .ThenIf(A_Is(Even))
                     .Then(From_A_To_A_With(Plus(2)))        // 1 -> 4
-                    .ThenIf(A_Is(MoreThen(1000)))
+                    .If(A_Is(MoreThen(1000)))
                         .Then(From_A_To_A_With(Plus(3)))    // 999 -> 1005
                     .End()
                 .End();
@@ -209,7 +209,7 @@
                 .ThenIf(A_Is(Odd))
                     .Then(From_A_To_A_With(Plus(2)))
                     .Then(From_A_To_A_With(Plus(20)))       // 2 -> 35
-                    .ThenIf(A_Is(MoreThen(100)))
+                    .If(A_Is(MoreThen(100)))
                         .Then(From_A_To_A_With(Plus(20)))
                         .Then(From_A_To_A_With(Plus(21)))   // 68 -> 142
                     .End()
@@ -233,7 +233,7 @@
                     .Then(From_A_To_A_With(Plus(2)))
                     .Then(From_A_To_A_With(Plus(20)))
                     .Then(From_A_To_A_With(Plus(200)))      // 1 -> 334
-                    .ThenIf(A_Is(MoreThen(1000)))
+                    .If(A_Is(MoreThen(1000)))
                         .Then(From_A_To_A_With(Plus(3)))
                         .Then(From_A_To_A_With(Plus(30)))
                         .Then(From_A_To_A_With(Plus(300)))  // 1001 -> 1667
@@ -254,7 +254,7 @@
                  From_A_To_B_With(Plus(1))                  // 2 -> 3 
                 .ThenIf(B_Is(Even))
                     .Then(From_B_To_Bʹ_With(Plus(2)))       // 1 -> 4
-                    .ThenIf(Bʹ_Is(MoreThen(1000)))
+                    .If(Bʹ_Is(MoreThen(1000)))
                         .Then(From_B_To_Bʹ_With(Plus(3)))   // 999 -> 1005
                     .End()
                 .End();
@@ -275,7 +275,7 @@
                 .ThenIf(C_Is(Odd))
                     .Then(From_C_To_D_With(Plus(2)))
                     .Then(From_D_To_C_With(Plus(20)))       // 2 -> 35
-                    .ThenIf(C_Is(MoreThen(100)))
+                    .If(C_Is(MoreThen(100)))
                         .Then(From_C_To_A_With(Plus(20)))
                         .Then(From_A_To_Cʹ_With(Plus(21)))  // 68 -> 142
                     .End()
@@ -299,7 +299,7 @@
                     .Then(From_C_To_D_With(Plus(2)))
                     .Then(From_D_To_B_With(Plus(20)))
                     .Then(From_B_To_Cʹ_With(Plus(200)))     // 1 -> 334
-                    .ThenIf(Cʹ_Is(MoreThen(1000)))
+                    .If(Cʹ_Is(MoreThen(1000)))
                         .Then(From_Cʹ_To_B_With(Plus(3)))
                         .Then(From_B_To_D_With(Plus(30)))
                         .Then(From_D_To_Cʹ_With(Plus(300))) // 1001 -> 1667
@@ -320,7 +320,7 @@
                  From_A_To_Aʹ_With(Plus(1))                 // 1 -> 2
                 .ThenIf(Aʹ_Is(Odd))
                     .Then(From_Aʹ_To_A_With(Plus(2)))       // 2 -> 5
-                    .ThenIf(A_Is(MoreThen(10)))
+                    .If(A_Is(MoreThen(10)))
                         .Then(From_A_To_A_With(Plus(3)))    // 10 -> 16
                     .End()
                 .End();
@@ -340,7 +340,7 @@
                  From_A_To_Aʹ_With(Plus(1))                 // 1 -> 2
                 .ThenIf(Aʹ_Is(Odd))
                     .Then(From_Aʹ_To_A_With(Plus(2)))       // 2 -> 5
-                    .ThenIf(A_Is(MoreThen(10)))
+                    .If(A_Is(MoreThen(10)))
                         .Then(From_A_To_Aʹ_With(Plus(3)))   // 10 -> 16
                    .End()
                 .End();
@@ -359,7 +359,7 @@
                  From_A_To_Bʹ_With(Plus(1))                 // 2 -> 3
                 .ThenIf(B_Is(Even))
                     .Then(From_B_To_B_With(Plus(2)))        // 1 -> 4
-                    .ThenIf(B_Is(MoreThen(1000)))
+                    .If(B_Is(MoreThen(1000)))
                         .Then(From_B_To_B_With(Plus(3)))    // 999 -> 1005
                     .End()
                 .End();
@@ -378,7 +378,7 @@
                  From_A_To_B_With(Plus(1))                  // 2 -> 3
                 .ThenIf(B_Is(Even))
                     .Then(From_B_To_Bʹ_With(Plus(2)))       // 1 -> 4
-                    .ThenIf(B_Is(MoreThen(1000)))
+                    .If(B_Is(MoreThen(1000)))
                         .Then(From_Bʹ_To_B_With(Plus(3)))   // 999 -> 1005
                     .End()
                 .End();
@@ -401,7 +401,7 @@
                     .Then(From_B_To_E_With(Plus(2)))
                     .Then(From_E_To_B_With(Plus(20)))
                     .Then(From_B_To_B_With(Plus(200)))      // 1 -> 334
-                    .ThenIf(B_Is(MoreThen(1000)))
+                    .If(B_Is(MoreThen(1000)))
                         .Then(From_B_To_E_With(Plus(3)))
                         .Then(From_E_To_B_With(Plus(30)))
                         .Then(From_B_To_B_With(Plus(300)))  // 1001 -> 1667
@@ -426,7 +426,7 @@
                     .Then(From_Bʹ_To_E_With(Plus(2)))
                     .Then(From_E_To_B_With(Plus(20)))
                     .Then(From_B_To_B_With(Plus(200)))      // 1 -> 334
-                    .ThenIf(B_Is(MoreThen(1000)))
+                    .If(B_Is(MoreThen(1000)))
                         .Then(From_B_To_E_With(Plus(3)))
                         .Then(From_E_To_B_With(Plus(30)))
                         .Then(From_B_To_Bʹ_With(Plus(300))) // 1001 -> 1667
@@ -451,31 +451,27 @@
         [TestCase(11, ExpectedResult = 22, TestName = "Test27( 11 -> 22 )")]
         public int Test27(int x)
         {
-            // .Else()
-            //      .Then(
-
-
             var f =
                  From_A_To_A_With(Plus(1))  // 1 -> 2     
                 .ThenIf(A_Is(MoreThen(2)))
                     .Then(From_A_To_A_With(Plus(1)))  // 2 -> 3
-                    .ThenIf(A_Is(MoreThen(4)))
+                    .If(A_Is(MoreThen(4)))
                         .Then(From_A_To_A_With(Plus(1))) // 3 -> 6
-                        .ThenIf(A_Is(MoreThen(6)))
+                        .If(A_Is(MoreThen(6)))
                             .Then(From_A_To_A_With(Plus(1))) // 4 -> 8
-                            .ThenIf(A_Is(MoreThen(8)))
+                            .If(A_Is(MoreThen(8)))
                                 .Then(From_A_To_A_With(Plus(1))) // 5 -> 10  
-                                .ThenIf(A_Is(MoreThen(10)))
+                                .If(A_Is(MoreThen(10)))
                                     .Then(From_A_To_A_With(Plus(1))) // 6 -> 12
-                                    .ThenIf(A_Is(MoreThen(12)))
+                                    .If(A_Is(MoreThen(12)))
                                         .Then(From_A_To_A_With(Plus(1))) // 7 -> 14
-                                        .ThenIf(A_Is(MoreThen(14)))
+                                        .If(A_Is(MoreThen(14)))
                                             .Then(From_A_To_A_With(Plus(1))) // 8 -> 16
-                                            .ThenIf(A_Is(MoreThen(16)))
+                                            .If(A_Is(MoreThen(16)))
                                                 .Then(From_A_To_A_With(Plus(1))) // 9 -> 18
-                                                .ThenIf(A_Is(MoreThen(18)))
+                                                .If(A_Is(MoreThen(18)))
                                                     .Then(From_A_To_A_With(Plus(1))) // 10 -> 20
-                                                    .ThenIf(A_Is(MoreThen(20)))
+                                                    .If(A_Is(MoreThen(20)))
                                                         .Then(From_A_To_A_With(Plus(1))) // 11 -> 22
                                                     .End()
                                                 .End()

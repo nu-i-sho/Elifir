@@ -1,8 +1,9 @@
 ﻿namespace Nuisho.Elifir
 {
-    public static class ˣ<TPrev>
+    public readonly struct ˣ<TPrev, TNext>(
+        TPrev prev, TNext next)
     {
-        public readonly record struct Then<TNext>(
-            TPrev Prev, TNext Next);
+        internal TPrev Prev => prev;
+        internal TNext Next => next;
     }
 }
