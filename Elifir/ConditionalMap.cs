@@ -1,52 +1,37 @@
-﻿namespace Nuisho
+﻿namespace Nuisho.Elifir
 {
-    public static partial class Elifir
+    using System.Diagnostics.CodeAnalysis;
+
+
+    public delegate bool ConditionalMap<in I, Iʹ>(
+        I i, [NotNullWhen(true)]
+             [MaybeNullWhen(false)] 
+             out Iʹ iʹ);
+
+    public static class Obj<T>
     {
-        public delegate bool ConditionalMap<in T, Tʹ>(T x, out Tʹ xʹ);
-
-        public static class Obj<T>
-        {
-            public static ConditionalMap<T, ˣT> Is<ˣT>()
-                where ˣT : T =>
-                    (T x, out ˣT ˣx) =>
+        public static ConditionalMap<T, Tʹ> Is<Tʹ>()
+            where Tʹ : T =>
+                (T x, [NotNullWhen(true)]
+                      [MaybeNullWhen(false)] 
+                      out Tʹ xʹ) =>
+                {
+                    if (x is Tʹ sub)
                     {
-                        if (x is ˣT sub)
-                        {
-                            ˣx = sub;
-                            return true;
-                        }
+                        xʹ = sub;
+                        return true;
+                    }
 
-                        ˣx = default;
-                        return false;
-                    };
-        }
+                    xʹ = default;
+                    return false;
+                };
+    }
 
-        internal static ConditionalMap<T, Tʹ> And<T, Tʹ>(
-            this ConditionalMap<T, Tʹ> o,
-            Func<Tʹ, bool> condition)
-                where Tʹ : T =>
-                    new((T x, out Tʹ xʹ) =>
-                    {
-                        if (o(x, out xʹ) && condition(xʹ))
-                            return true;
-
-                        xʹ = default;
-                        return false;
-                    });
-
-        internal static ConditionalMap<T, Tʺ> And<T, Tʹ, Tʺ>(
-            this ConditionalMap<T, Tʹ> o,
-            ConditionalMap<Tʹ, Tʺ> condition)
-                where Tʹ : T 
-                where Tʺ : Tʹ =>
-                    new((T x, out Tʺ xʺ) =>
-                    {
-                        if (o(x, out Tʹ xʹ) && condition(xʹ, out xʺ))
-                            return true;
-
-                        xʺ = default;
-                        return false;
-                    });
+    public static partial class Syntax
+    {
+        public static ˣ.If<I> If<I>(
+            Func<I, bool> condition) =>
+                new(condition);
 
         public static ˣ.If<I>.Is<Iʹ> If<I, Iʹ>(
             ConditionalMap<I, Iʹ> condition)
