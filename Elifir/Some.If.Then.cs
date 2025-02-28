@@ -19,11 +19,6 @@
                 where Tʹ : T =>
                     new(o, If(condition));
 
-        //public static ˣ<Some>.Then<ˣ.If<I>.Then<T>.Else<E>> Else<Some, I, T, E>(
-        //    this ˣ<Some>.Then<ˣ.If<I>.Then<T>> o,
-        //    Func<I, E> map) =>
-        //        new(o.Prev, o.Next.Else(map));
-
         public static ˣ<Some, ˣ.If<I>.Then<T>.Else> Else<Some, I, T>(
             this ˣ<Some, ˣ.If<I>.Then<T>> o) =>
                 new(o.Prev, 

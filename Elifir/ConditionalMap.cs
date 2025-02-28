@@ -2,7 +2,6 @@
 {
     using System.Diagnostics.CodeAnalysis;
 
-
     public delegate bool ConditionalMap<in I, Iʹ>(
         I i, [NotNullWhen(true)]
              [MaybeNullWhen(false)] 

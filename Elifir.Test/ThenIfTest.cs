@@ -11,7 +11,7 @@
         {
             var f =
                  From_A_To_A_With(Plus(1))              // 2 -> 3
-                .ThenIf(A_Is(Even))
+                .If(A_Is(Even))
                     .Then(From_A_To_A_With(Plus(2)))    // 1 -> 4
                 .End();
 
@@ -27,7 +27,7 @@
             var f =
                  From_A_To_A_With(Plus(1))
                 .Then(From_A_To_A_With(Plus(10)))       // 2 -> 13
-                .ThenIf(A_Is(Even))
+                .If(A_Is(Even))
                     .Then(From_A_To_A_With(Plus(2)))
                     .Then(From_A_To_A_With(Plus(20)))   // 1 -> 34
                 .End();
@@ -46,7 +46,7 @@
                  From_A_To_A_With(Plus(1))
                 .Then(From_A_To_A_With(Plus(10)))
                 .Then(From_A_To_A_With(Plus(100)))      // 1 -> 112
-                .ThenIf(A_Is(Odd))
+                .If(A_Is(Odd))
                     .Then(From_A_To_A_With(Plus(2)))
                     .Then(From_A_To_A_With(Plus(20)))
                     .Then(From_A_To_A_With(Plus(200)))  // 2 -> 335
@@ -65,7 +65,7 @@
                  From_A_To_B_With(Plus(1))
                 .Then(From_B_To_C_With(Plus(10)))
                 .Then(From_C_To_D_With(Plus(100)))      // 2 -> 113
-                .ThenIf(D_Is(Even))
+                .If(D_Is(Even))
                     .Then(From_D_To_E_With(Plus(2)))
                     .Then(From_E_To_B_With(Plus(20)))
                     .Then(From_B_To_D_With(Plus(200)))  // 1 -> 334
@@ -82,7 +82,7 @@
         {
             var f =
                  From_A_To_A_With(Plus(1))              // 1 -> 2
-                .ThenIf(A_Is(Odd))
+                .If(A_Is(Odd))
                     .Then(From_A_To_Aʹ_With(Plus(2)))   // 2 -> 5
                 .End();
 
@@ -98,7 +98,7 @@
             var f =
                  From_A_To_A_With(Plus(1))
                 .Then(From_A_To_A_With(Plus(10)))       // 10 -> 21
-                .ThenIf(A_Is(MoreThen(100)))
+                .If(A_Is(MoreThen(100)))
                     .Then(From_A_To_A_With(Plus(2)))
                     .Then(From_A_To_Aʹ_With(Plus(20)))  // 90 -> 123
                 .End();
@@ -116,7 +116,7 @@
                  From_A_To_E_With(Plus(1))
                 .Then(From_E_To_D_With(Plus(10)))
                 .Then(From_D_To_B_With(Plus(100)))      // 1 -> 112
-                .ThenIf(B_Is(Odd))
+                .If(B_Is(Odd))
                     .Then(From_B_To_E_With(Plus(2)))
                     .Then(From_E_To_B_With(Plus(20)))
                     .Then(From_B_To_Bʹ_With(Plus(200))) // 2 -> 335
@@ -134,7 +134,7 @@
         {
             var f =
                  From_A_To_Aʹ_With(Plus(1))             // 2 -> 3
-                .ThenIf(Aʹ_Is(Even))
+                .If(Aʹ_Is(Even))
                     .Then(From_A_To_A_With(Plus(2)))    // 1 -> 4
                 .End();
 
@@ -150,7 +150,7 @@
             var f =
                  From_A_To_A_With(Plus(1))
                 .Then(From_A_To_Aʹ_With(Plus(10)))      // 1 -> 12
-                .ThenIf(Aʹ_Is(Odd))
+                .If(Aʹ_Is(Odd))
                     .Then(From_A_To_A_With(Plus(2)))
                     .Then(From_A_To_A_With(Plus(20)))   // 2 -> 35
                 .End();
@@ -168,7 +168,7 @@
                  From_A_To_E_With(Plus(1))
                 .Then(From_E_To_D_With(Plus(10)))
                 .Then(From_D_To_Bʹ_With(Plus(100)))     // 1 -> 112
-                .ThenIf(Bʹ_Is(Odd))
+                .If(Bʹ_Is(Odd))
                     .Then(From_B_To_E_With(Plus(2)))
                     .Then(From_E_To_B_With(Plus(20)))
                     .Then(From_B_To_B_With(Plus(200)))  // 2 -> 335
@@ -186,7 +186,7 @@
         {
             var f =
                  From_A_To_A_With(Plus(1))                  // 2 -> 3
-                .ThenIf(A_Is(Even))
+                .If(A_Is(Even))
                     .Then(From_A_To_A_With(Plus(2)))        // 1 -> 4
                     .If(A_Is(MoreThen(1000)))
                         .Then(From_A_To_A_With(Plus(3)))    // 999 -> 1005
@@ -206,7 +206,7 @@
             var f =
                  From_A_To_A_With(Plus(1))
                 .Then(From_A_To_A_With(Plus(10)))           // 1 -> 12
-                .ThenIf(A_Is(Odd))
+                .If(A_Is(Odd))
                     .Then(From_A_To_A_With(Plus(2)))
                     .Then(From_A_To_A_With(Plus(20)))       // 2 -> 35
                     .If(A_Is(MoreThen(100)))
@@ -229,7 +229,7 @@
                  From_A_To_A_With(Plus(1))
                 .Then(From_A_To_A_With(Plus(10)))
                 .Then(From_A_To_A_With(Plus(100)))          // 2 -> 113
-                .ThenIf(A_Is(Even))
+                .If(A_Is(Even))
                     .Then(From_A_To_A_With(Plus(2)))
                     .Then(From_A_To_A_With(Plus(20)))
                     .Then(From_A_To_A_With(Plus(200)))      // 1 -> 334
@@ -252,7 +252,7 @@
         {
             var f =
                  From_A_To_B_With(Plus(1))                  // 2 -> 3 
-                .ThenIf(B_Is(Even))
+                .If(B_Is(Even))
                     .Then(From_B_To_Bʹ_With(Plus(2)))       // 1 -> 4
                     .If(Bʹ_Is(MoreThen(1000)))
                         .Then(From_B_To_Bʹ_With(Plus(3)))   // 999 -> 1005
@@ -272,7 +272,7 @@
             var f =
                  From_A_To_D_With(Plus(1))
                 .Then(From_D_To_C_With(Plus(10)))           // 1 -> 12
-                .ThenIf(C_Is(Odd))
+                .If(C_Is(Odd))
                     .Then(From_C_To_D_With(Plus(2)))
                     .Then(From_D_To_C_With(Plus(20)))       // 2 -> 35
                     .If(C_Is(MoreThen(100)))
@@ -295,7 +295,7 @@
                  From_A_To_E_With(Plus(1))
                 .Then(From_E_To_D_With(Plus(10)))
                 .Then(From_D_To_C_With(Plus(100)))          // 2 -> 113
-                .ThenIf(C_Is(Even))
+                .If(C_Is(Even))
                     .Then(From_C_To_D_With(Plus(2)))
                     .Then(From_D_To_B_With(Plus(20)))
                     .Then(From_B_To_Cʹ_With(Plus(200)))     // 1 -> 334
@@ -318,7 +318,7 @@
         {
             var f =
                  From_A_To_Aʹ_With(Plus(1))                 // 1 -> 2
-                .ThenIf(Aʹ_Is(Odd))
+                .If(Aʹ_Is(Odd))
                     .Then(From_Aʹ_To_A_With(Plus(2)))       // 2 -> 5
                     .If(A_Is(MoreThen(10)))
                         .Then(From_A_To_A_With(Plus(3)))    // 10 -> 16
@@ -338,7 +338,7 @@
         {
             var f =
                  From_A_To_Aʹ_With(Plus(1))                 // 1 -> 2
-                .ThenIf(Aʹ_Is(Odd))
+                .If(Aʹ_Is(Odd))
                     .Then(From_Aʹ_To_A_With(Plus(2)))       // 2 -> 5
                     .If(A_Is(MoreThen(10)))
                         .Then(From_A_To_Aʹ_With(Plus(3)))   // 10 -> 16
@@ -357,7 +357,7 @@
         {
             var f =
                  From_A_To_Bʹ_With(Plus(1))                 // 2 -> 3
-                .ThenIf(B_Is(Even))
+                .If(B_Is(Even))
                     .Then(From_B_To_B_With(Plus(2)))        // 1 -> 4
                     .If(B_Is(MoreThen(1000)))
                         .Then(From_B_To_B_With(Plus(3)))    // 999 -> 1005
@@ -376,7 +376,7 @@
         {
             var f =
                  From_A_To_B_With(Plus(1))                  // 2 -> 3
-                .ThenIf(B_Is(Even))
+                .If(B_Is(Even))
                     .Then(From_B_To_Bʹ_With(Plus(2)))       // 1 -> 4
                     .If(B_Is(MoreThen(1000)))
                         .Then(From_Bʹ_To_B_With(Plus(3)))   // 999 -> 1005
@@ -397,7 +397,7 @@
                   From_A_To_E_With(Plus(1))
                  .Then(From_E_To_D_With(Plus(10)))
                  .Then(From_D_To_Bʹ_With(Plus(100)))        // 2 -> 113
-                 .ThenIf(Bʹ_Is(Even))
+                 .If(Bʹ_Is(Even))
                     .Then(From_B_To_E_With(Plus(2)))
                     .Then(From_E_To_B_With(Plus(20)))
                     .Then(From_B_To_B_With(Plus(200)))      // 1 -> 334
@@ -422,7 +422,7 @@
                  From_A_To_E_With(Plus(1))
                 .Then(From_E_To_D_With(Plus(10)))
                 .Then(From_D_To_Bʹ_With(Plus(100)))         // 2 -> 113
-                .ThenIf(Bʹ_Is(Even))
+                .If(Bʹ_Is(Even))
                     .Then(From_Bʹ_To_E_With(Plus(2)))
                     .Then(From_E_To_B_With(Plus(20)))
                     .Then(From_B_To_B_With(Plus(200)))      // 1 -> 334
@@ -453,7 +453,7 @@
         {
             var f =
                  From_A_To_A_With(Plus(1))  // 1 -> 2     
-                .ThenIf(A_Is(MoreThen(2)))
+                .If(A_Is(MoreThen(2)))
                     .Then(From_A_To_A_With(Plus(1)))  // 2 -> 3
                     .If(A_Is(MoreThen(4)))
                         .Then(From_A_To_A_With(Plus(1))) // 3 -> 6

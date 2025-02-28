@@ -4,14 +4,12 @@
 
     public static partial class ˣ
     {
-        public readonly partial struct If<I>
+        public readonly partial struct If<I> {
+        public readonly partial struct Then<T>(
+            ConditionalMap<I, T> conditionalMap)
         {
-            public readonly partial struct Then<T>(
-                ConditionalMap<I, T> conditionalMap)
-            {
-                internal ConditionalMap<I, T> ConditionalMap => conditionalMap;
-            }
-        }
+            internal ConditionalMap<I, T> ConditionalMap => conditionalMap;
+        }}
     }
 
     public static partial class Syntax
