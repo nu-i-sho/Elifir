@@ -3,7 +3,7 @@
     using static Utils;
 
     [TestFixture]
-    public class ThenIfTest
+    public class FuncIfThenTest
     {
         [TestCase(2, ExpectedResult = 3, TestName = "Test5( 2 -> 3 )")]
         [TestCase(1, ExpectedResult = 4, TestName = "Test5( 1 -> 4 )")]
@@ -31,7 +31,6 @@
                     .Then(From_A_To_A_With(Plus(2)))
                     .Then(From_A_To_A_With(Plus(20)))   // 1 -> 34
                 .End();
-
 
             A result = f(new A(x));
 
@@ -434,57 +433,6 @@
                 .End();
 
             B result = f(new A(x));
-
-            return result.Value;
-        }
-
-        [TestCase(1,  ExpectedResult = 2,  TestName = "Test27( 1 -> 2 )")]
-        [TestCase(2,  ExpectedResult = 4,  TestName = "Test27( 2 -> 4 )")]
-        [TestCase(3,  ExpectedResult = 6,  TestName = "Test27( 3 -> 6 )")]
-        [TestCase(4,  ExpectedResult = 8,  TestName = "Test27( 4 -> 8 )")]
-        [TestCase(5,  ExpectedResult = 10, TestName = "Test27( 5 -> 10 )")]
-        [TestCase(6,  ExpectedResult = 12, TestName = "Test27( 6 -> 12 )")]
-        [TestCase(7,  ExpectedResult = 14, TestName = "Test27( 7 -> 14 )")]
-        [TestCase(8,  ExpectedResult = 16, TestName = "Test27( 8 -> 16 )")]
-        [TestCase(9,  ExpectedResult = 18, TestName = "Test27( 9 -> 18 )")]
-        [TestCase(10, ExpectedResult = 20, TestName = "Test27( 10 -> 20 )")]
-        [TestCase(11, ExpectedResult = 22, TestName = "Test27( 11 -> 22 )")]
-        public int Test27(int x)
-        {
-            var f =
-                 From_A_To_A_With(Plus(1))  // 1 -> 2     
-                .If(A_Is(MoreThen(2)))
-                    .Then(From_A_To_A_With(Plus(1)))  // 2 -> 3
-                    .If(A_Is(MoreThen(4)))
-                        .Then(From_A_To_A_With(Plus(1))) // 3 -> 6
-                        .If(A_Is(MoreThen(6)))
-                            .Then(From_A_To_A_With(Plus(1))) // 4 -> 8
-                            .If(A_Is(MoreThen(8)))
-                                .Then(From_A_To_A_With(Plus(1))) // 5 -> 10  
-                                .If(A_Is(MoreThen(10)))
-                                    .Then(From_A_To_A_With(Plus(1))) // 6 -> 12
-                                    .If(A_Is(MoreThen(12)))
-                                        .Then(From_A_To_A_With(Plus(1))) // 7 -> 14
-                                        .If(A_Is(MoreThen(14)))
-                                            .Then(From_A_To_A_With(Plus(1))) // 8 -> 16
-                                            .If(A_Is(MoreThen(16)))
-                                                .Then(From_A_To_A_With(Plus(1))) // 9 -> 18
-                                                .If(A_Is(MoreThen(18)))
-                                                    .Then(From_A_To_A_With(Plus(1))) // 10 -> 20
-                                                    .If(A_Is(MoreThen(20)))
-                                                        .Then(From_A_To_A_With(Plus(1))) // 11 -> 22
-                                                    .End()
-                                                .End()
-                                            .End()
-                                        .End()
-                                    .End()
-                                .End()
-                            .End()
-                        .End()
-                    .End()
-                .End();
-
-            A result = f(new A(x));
 
             return result.Value;
         }
