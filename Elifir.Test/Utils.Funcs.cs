@@ -158,6 +158,7 @@ namespace Nuisho.Elifir.Test
         public static Func<Func<int, int>, Func<D, Λ>> From_D_To_Λ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<D, Δ>> From_D_To_Δ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Δ, C>> From_Δ_To_C_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<Δ, D>> From_Δ_To_D_With = f => x => new(f(x.Value));
 
         public static Func<Func<int, int>, Func<ΔΔ, A>> From_ΔΔ_To_A_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<A, ΔΔ>> From_A_To_ΔΔ_With = f => x => new(f(x.Value));
