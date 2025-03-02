@@ -4,7 +4,7 @@
     using static Utils;
 
     [TestFixture]
-    public class IfThenManualEndTest
+    public class FuncIfThenManualEndTest
     {
         [TestCase(2, ExpectedResult = 3, TestName = "Test40( 2 -> 3 )")]
         [TestCase(1, ExpectedResult = 4, TestName = "Test40( 1 -> 4 )")]
@@ -263,11 +263,11 @@
             var f =
                  From_A_To_E_With(Plus(1))
                 .Then(From_E_To_D_With(Plus(10)))
-                .Then(From_D_To_Δ_With(Plus(100)))             // 2 -> 113
+                .Then(From_D_To_Δ_With(Plus(100)))              // 2 -> 113
                 .If(Δ_Is(Even))
                     .Then(From_Δ_To_E_With(Plus(2)))
                     .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_ΔΔ_With(Plus(200)))          // 1 -> 334
+                    .Then(From_B_To_ΔΔ_With(Plus(200)))         // 1 -> 334
                     .If(ΔΔ_Is(MoreThen(1000)))
                         .Then(From_ΔΔ_To_E_With(Plus(3)))
                         .Then(From_E_To_B_With(Plus(30)))

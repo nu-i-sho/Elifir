@@ -3,7 +3,7 @@
     using static Utils;
 
     [TestFixture]
-    public class DeepIfThenTest
+    public class DeepFuncIfThenTest
     {
         
         [TestCase(1,  ExpectedResult = 2,  TestName = "Test27( 1 -> 2 )")]
