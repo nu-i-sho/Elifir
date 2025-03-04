@@ -1,6 +1,5 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using System.Drawing;
     using static Utils;
 
     [TestFixture]
@@ -71,14 +70,13 @@
         [TestCase(false, 2, ExpectedResult = 113, TestName = "Test133( false, 1 -> 113 )")]
         public int Test133(bool isCʹ, int x)
         {
-            var from_D_To_C_Or_To_Cʹ_With =
-                isCʹ ? From_D_To_Cʹ_With
-                     : From_D_To_C_With;
+            var from_D_To_C_OrTo_Cʹ_With =
+                From_D_To_C_OrTo_Cʹ(isCʹ);
 
             var f =
                  From_A_To_B_With(Plus(1))
                 .Then(From_B_To_D_With(Plus(10)))
-                .Then(from_D_To_C_Or_To_Cʹ_With(Plus(100)))
+                .Then(from_D_To_C_OrTo_Cʹ_With(Plus(100)))
                 .If(C_Is(Even))                             // (false, 2) -> 113, (true, 2) -> 113
                 .AndIf(Object<C>.Is<Cʹ>)                    // (false, 1) -> 334
                     .Then(From_Cʹ_To_E_With(Plus(2)))
@@ -95,7 +93,7 @@
         //[TestCase(2, ExpectedResult = 5, TestName = "Test9( 2 -> 5 )")]
         public int Test134(bool isAʹ, int x)
         {
-            var from_A_To_A_Or_To_Aʹ_With =
+            var from_A_To_A_OrTo_Aʹ_With =
                 isAʹ ? From_A_To_Aʹ_With
                      : From_A_To_Aʹ_With;
 

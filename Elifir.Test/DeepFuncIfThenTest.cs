@@ -68,7 +68,7 @@
         [TestCase(9,  ExpectedResult = 18, TestName = "Test_0701( 9 -> 18 )")]
         [TestCase(10, ExpectedResult = 20, TestName = "Test_0701( 10 -> 20 )")]
         [TestCase(11, ExpectedResult = 22, TestName = "Test_0701( 11 -> 22 )")]
-        public int Test28(int x)
+        public int Test_0701(int x)
         {
             var f =
                  From_A_To_A_With(Plus(1))  // 1 -> 2     
@@ -119,7 +119,7 @@
         [TestCase(9,  ExpectedResult = 18, TestName = "Test_0702( 9 -> 18 )")]
         [TestCase(10, ExpectedResult = 20, TestName = "Test_0702( 10 -> 20 )")]
         [TestCase(11, ExpectedResult = 22, TestName = "Test_0702( 11 -> 22 )")]
-        public int Test29(int x)
+        public int Test_0702(int x)
         {
             var f =
                  From_Aʺʺʺʺʺ_To_Aʺʺʺʺʹ_With(Plus(1))  // 1 -> 2     

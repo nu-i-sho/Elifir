@@ -627,7 +627,7 @@
         public int Test_0136(int x, bool secondIsCʹ)
         {
             var from_D_To_C_Or_To_Cʹ_With =
-                From_D_To_C_Or_To_Cʹ(secondIsCʹ);
+                From_D_To_C_OrTo_Cʹ(secondIsCʹ);
 
             var f =                                             // (2, false) -> 2
                  If(C_Is(Odd))                                  // (2, true) -> 2
