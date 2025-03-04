@@ -14,7 +14,7 @@
 
     public static partial class Syntax
     {
-        public static ˣ.If<I>.Is<Iʹ> And<I, Iʹ>(
+        public static ˣ.If<I>.Is<Iʹ> AndIf<I, Iʹ>(
             this ˣ.If<I>.Is<Iʹ> o,
             Func<Iʹ, bool> condition)
                 where Iʹ : I =>
@@ -30,7 +30,7 @@
                         return false;
                     });
 
-        public static ˣ.If<I>.Is<Iʺ> And<I, Iʹ, Iʺ>(
+        public static ˣ.If<I>.Is<Iʺ> AndIf<I, Iʹ, Iʺ>(
             this ˣ.If<I>.Is<Iʹ> o,
             ConditionalMap<Iʹ, Iʺ> condition)
                 where Iʹ : I 

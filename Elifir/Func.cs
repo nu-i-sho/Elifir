@@ -14,7 +14,7 @@
 
         public static ˣ<Func<T, Tʹ>, ˣ.If<Tʹ>.Is<Tʺ>> If<T, Tʹ, Tʺ>(
             this Func<T, Tʹ> o,
-            ConditionalMap<Tʹ, Tʺ> condition)
+            Func<ConditionalMap<Tʹ, Tʺ>> condition)
                 where Tʺ : Tʹ =>
                     new(o, If(condition));
     }

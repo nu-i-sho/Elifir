@@ -6,9 +6,9 @@
     [TestFixture]
     public class IfThenManualEndTest
     {
-        [TestCase(1, ExpectedResult = 1, TestName = "Test100( 1 -> 1 )")]
-        [TestCase(2, ExpectedResult = 4, TestName = "Test100( 2 -> 4 )")]
-        public int Test100(int x)
+        [TestCase(1, ExpectedResult = 1, TestName = "Test_0200( 1 -> 1 )")]
+        [TestCase(2, ExpectedResult = 4, TestName = "Test_0200( 2 -> 4 )")]
+        public int Test_0200(int x)
         {
             var f =
                  If(Λ_Is(Even))                         // 1 -> 1
@@ -20,9 +20,9 @@
             return result.Value;
         }
 
-        [TestCase(5, ExpectedResult = 5,  TestName = "Test101( 5 -> 5 )")]
-        [TestCase(2, ExpectedResult = 24, TestName = "Test101( 2 -> 24 )")]
-        public int Test101(int x)
+        [TestCase(5, ExpectedResult = 5,  TestName = "Test_0201( 5 -> 5 )")]
+        [TestCase(2, ExpectedResult = 24, TestName = "Test_0201( 2 -> 24 )")]
+        public int Test_0201(int x)
         {
             var f =
                  If(Λ_Is(Even))                         // 5 -> 5
@@ -36,9 +36,9 @@
             return result.Value;
         }
 
-        [TestCase(8, ExpectedResult = 8,   TestName = "Test102( 8 -> 8 )")]
-        [TestCase(7, ExpectedResult = 229, TestName = "Test102( 7 -> 229 )")]
-        public int Test102(int x)
+        [TestCase(8, ExpectedResult = 8,   TestName = "Test_0202( 8 -> 8 )")]
+        [TestCase(7, ExpectedResult = 229, TestName = "Test_0202( 7 -> 229 )")]
+        public int Test_0202(int x)
         {
             var f =
                  If(Λ_Is(Odd))                          // 8 -> 8
@@ -52,10 +52,10 @@
             return result.Value;
         }
 
-        [TestCase(5,    ExpectedResult = 5,    TestName = "Test103( 5 -> 5 )")]
-        [TestCase(8,    ExpectedResult = 10,   TestName = "Test103( 8 -> 10 )")]
-        [TestCase(1000, ExpectedResult = 1005, TestName = "Test103( 1000 -> 1005 )")]
-        public int Test103(int x)
+        [TestCase(5,    ExpectedResult = 5,    TestName = "Test_0203( 5 -> 5 )")]
+        [TestCase(8,    ExpectedResult = 10,   TestName = "Test_0203( 8 -> 10 )")]
+        [TestCase(1000, ExpectedResult = 1005, TestName = "Test_0203( 1000 -> 1005 )")]
+        public int Test_0203(int x)
         {
             var f =
                  If(Λ_Is(Even))                             // 5 -> 5
@@ -70,10 +70,10 @@
             return result.Value;
         }
 
-        [TestCase(2,  ExpectedResult = 2,   TestName = "Test104( 2 -> 2 )")]
-        [TestCase(3,  ExpectedResult = 25,  TestName = "Test104( 3 -> 25 )")]
-        [TestCase(79, ExpectedResult = 142, TestName = "Test104( 79 -> 142 )")]
-        public int Test104(int x)
+        [TestCase(2,  ExpectedResult = 2,   TestName = "Test_0204( 2 -> 2 )")]
+        [TestCase(3,  ExpectedResult = 25,  TestName = "Test_0204( 3 -> 25 )")]
+        [TestCase(79, ExpectedResult = 142, TestName = "Test_0204( 79 -> 142 )")]
+        public int Test_0204(int x)
         {
             var f =
                  If(Λ_Is(Odd))                                  // 2 -> 2
@@ -90,10 +90,10 @@
             return result.Value;
         }
 
-        [TestCase(3,   ExpectedResult = 3,    TestName = "Test105( 1 -> 3 )")]
-        [TestCase(4,   ExpectedResult = 226,  TestName = "Test105( 4 -> 226 )")]
-        [TestCase(800, ExpectedResult = 1355, TestName = "Test105( 800 -> 1355 )")]
-        public int Test105(int x)
+        [TestCase(3,   ExpectedResult = 3,    TestName = "Test_0205( 1 -> 3 )")]
+        [TestCase(4,   ExpectedResult = 226,  TestName = "Test_0205( 4 -> 226 )")]
+        [TestCase(800, ExpectedResult = 1355, TestName = "Test_0205( 800 -> 1355 )")]
+        public int Test_0205(int x)
         {
             var f =
                  If(Δ_Is(Even))                                 // 3 -> 3
@@ -113,10 +113,10 @@
         }
 
 
-        [TestCase(8,  ExpectedResult = 8,   TestName = "Test106( 8 -> 8 )")]
-        [TestCase(1,  ExpectedResult = 23,  TestName = "Test106( 1 -> 23 )")]
-        [TestCase(97, ExpectedResult = 160, TestName = "Test106( 97 -> 160 )")]
-        public int Test106(int x)
+        [TestCase(8,  ExpectedResult = 8,   TestName = "Test_0206( 8 -> 8 )")]
+        [TestCase(1,  ExpectedResult = 23,  TestName = "Test_0206( 1 -> 23 )")]
+        [TestCase(97, ExpectedResult = 160, TestName = "Test_0206( 97 -> 160 )")]
+        public int Test_0206(int x)
         {
             var f =
                  If(ΔΛ_Is(Odd))                             // 8 -> 8
@@ -133,10 +133,10 @@
             return result.Value;
         }
 
-        [TestCase(1,   ExpectedResult = 1,    TestName = "Test107( 1 -> 1 )")]
-        [TestCase(4,   ExpectedResult = 226,  TestName = "Test107( 4 -> 226 )")]
-        [TestCase(804, ExpectedResult = 1359, TestName = "Test107( 804 -> 1359 )")]
-        public int Test107(int x)
+        [TestCase(1,   ExpectedResult = 1,    TestName = "Test_0207( 1 -> 1 )")]
+        [TestCase(4,   ExpectedResult = 226,  TestName = "Test_0207( 4 -> 226 )")]
+        [TestCase(804, ExpectedResult = 1359, TestName = "Test_0207( 804 -> 1359 )")]
+        public int Test_0207(int x)
         {
             var f =
                  If(A_Is(Even))                                 // 1 -> 1
@@ -155,10 +155,10 @@
             return result.Value;
         }
 
-        [TestCase(1000, ExpectedResult = 1000, TestName = "Test108( 1000 -> 1000 )")]
-        [TestCase(3,    ExpectedResult = 5,    TestName = "Test108( 3 -> 5 )")]
-        [TestCase(11,   ExpectedResult = 16,   TestName = "Test108( 11 -> 16 )")]
-        public int Test108(int x)
+        [TestCase(1000, ExpectedResult = 1000, TestName = "Test_0208( 1000 -> 1000 )")]
+        [TestCase(3,    ExpectedResult = 5,    TestName = "Test_0208( 3 -> 5 )")]
+        [TestCase(11,   ExpectedResult = 16,   TestName = "Test_0208( 11 -> 16 )")]
+        public int Test_0208(int x)
         {
             var f =
                  If(Λ_Is(Odd))                              // 1000 -> 1000
@@ -173,10 +173,10 @@
             return result.Value;
         }
 
-        [TestCase(2, ExpectedResult = 2,  TestName = "Test109( 2 -> 2 )")]
-        [TestCase(5, ExpectedResult = 7,  TestName = "Test109( 5 -> 7 )")]
-        [TestCase(9, ExpectedResult = 14, TestName = "Test109( 9 -> 14 )")]
-        public int Test109(int x)
+        [TestCase(2, ExpectedResult = 2,  TestName = "Test_0209( 2 -> 2 )")]
+        [TestCase(5, ExpectedResult = 7,  TestName = "Test_0209( 5 -> 7 )")]
+        [TestCase(9, ExpectedResult = 14, TestName = "Test_0209( 9 -> 14 )")]
+        public int Test_0209(int x)
         {
             var f =
                  If(Λ_Is(Odd))                              // 2 -> 2
@@ -191,10 +191,10 @@
             return result.Value;
         }
 
-        [TestCase(999,  ExpectedResult = 999,  TestName = "Test110( 999 -> 999 )")]
-        [TestCase(2,    ExpectedResult = 4,    TestName = "Test110( 2 -> 4 )")]
-        [TestCase(1600, ExpectedResult = 1605, TestName = "Test110( 1600 -> 1605 )")]
-        public int Test110(int x)
+        [TestCase(999,  ExpectedResult = 999,  TestName = "Test_0210( 999 -> 999 )")]
+        [TestCase(2,    ExpectedResult = 4,    TestName = "Test_0210( 2 -> 4 )")]
+        [TestCase(1600, ExpectedResult = 1605, TestName = "Test_0210( 1600 -> 1605 )")]
+        public int Test_0210(int x)
         {
             var f =
                  If(Δ_Is(Even))                                 // 999 -> 999
@@ -209,10 +209,10 @@
             return result.Value;
         }
 
-        [TestCase(3,    ExpectedResult = 3,    TestName = "Test111( 3 -> 3 )")]
-        [TestCase(8,    ExpectedResult = 230,  TestName = "Test111( 8 -> 230 )")]
-        [TestCase(1008, ExpectedResult = 1563, TestName = "Test111( 1008 -> 1563 )")]
-        public int Test111(int x)
+        [TestCase(3,    ExpectedResult = 3,    TestName = "Test_0211( 3 -> 3 )")]
+        [TestCase(8,    ExpectedResult = 230,  TestName = "Test_0211( 8 -> 230 )")]
+        [TestCase(1008, ExpectedResult = 1563, TestName = "Test_0211( 1008 -> 1563 )")]
+        public int Test_0211(int x)
         {
             var f =
                  If(Δ_Is(Even))                                 // 3 -> 3
@@ -231,10 +231,10 @@
             return result.Value;
         }
 
-        [TestCase(1,    ExpectedResult = 1,    TestName = "Test112( 1 -> 1 )")]
-        [TestCase(20,   ExpectedResult = 242,  TestName = "Test112( 20 -> 242 )")]
-        [TestCase(2000, ExpectedResult = 2555, TestName = "Test112( 2000 -> 2555 )")]
-        public int Test112(int x)
+        [TestCase(1,    ExpectedResult = 1,    TestName = "Test_0212( 1 -> 1 )")]
+        [TestCase(20,   ExpectedResult = 242,  TestName = "Test_0212( 20 -> 242 )")]
+        [TestCase(2000, ExpectedResult = 2555, TestName = "Test_0212( 2000 -> 2555 )")]
+        public int Test_0212(int x)
         {
             var f =
                  If(Δ_Is(Even))                                 // 1 -> 1

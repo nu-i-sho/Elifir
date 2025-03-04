@@ -11,6 +11,7 @@
         public record Aʹ(int Value) : A(Value);
         public record Bʹ(int Value) : B(Value);
         public record Cʹ(int Value) : C(Value);
+        public record Dʹ(int Value) : D(Value);
 
         public record Aʺ(int Value) : Aʹ(Value);
         public record Aʺʹ(int Value) : Aʺ(Value);

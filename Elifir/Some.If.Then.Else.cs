@@ -15,7 +15,7 @@
 
         public static ˣ<ˣ<Some, ˣ.If<I>.Then<T>.Else.Then<I>>, ˣ.If<I>.Is<E>> If<Some, I, T, E>(
             this ˣ<Some, ˣ.If<I>.Then<T>.Else> o,
-            ConditionalMap<I, E> condition)
+            Func<ConditionalMap<I, E>> condition)
                 where E : I =>
                     new(o.Then(Identity), If(condition));
     }
