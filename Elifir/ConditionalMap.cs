@@ -7,7 +7,7 @@
              [MaybeNullWhen(false)] 
              out Iʹ iʹ);
 
-    public static class Obj<T>
+    public static class Object<T>
     {
         public static ConditionalMap<T, Tʹ> Is<Tʹ>()
             where Tʹ : T =>
@@ -33,8 +33,8 @@
                 new(condition);
 
         public static ˣ.If<I>.Is<Iʹ> If<I, Iʹ>(
-            ConditionalMap<I, Iʹ> condition)
+            Func<ConditionalMap<I, Iʹ>> condition)
                 where Iʹ : I =>
-                    new(condition);
+                    new(condition());
     }
 }

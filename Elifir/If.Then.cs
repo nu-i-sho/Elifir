@@ -38,14 +38,9 @@
 
         public static ˣ<ˣ.If<I>.Then<T>, ˣ.If<T>.Is<Tʹ>> If<I, T, Tʹ>(
             this ˣ.If<I>.Then<T> o,
-            ConditionalMap<T, Tʹ> condition)
+            Func<ConditionalMap<T, Tʹ>> condition)
                 where Tʹ : T =>
                     new(o, If(condition));
-
-        //public static ˣ.If<I>.Then<T>.Else<E> Else<I, T, E>(
-        //    this ˣ.If<I>.Then<T> o,
-        //    Func<I, E> map) =>
-        //        new(o.ConditionalMap, map);
 
         public static ˣ.If<I>.Then<T>.Else Else<I, T>(
             this ˣ.If<I>.Then<T> o) =>

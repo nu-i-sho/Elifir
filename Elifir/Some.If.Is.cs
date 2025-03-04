@@ -7,7 +7,7 @@
             Func<Iʹ, bool> condition) 
                 where Iʹ : I =>
                     new(o.Prev, 
-                        o.Next.And(condition));
+                        o.Next.AndIf(condition));
 
         public static ˣ<Some, ˣ.If<I>.Is<Iʺ>> And<Some, I, Iʹ, Iʺ>(
             this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,
@@ -15,7 +15,7 @@
                 where Iʹ : I 
                 where Iʺ : Iʹ =>
                     new(o.Prev, 
-                        o.Next.And(condition));
+                        o.Next.AndIf(condition));
 
         public static ˣ<Some, ˣ.If<I>.Then<Tʹ>> Then<Some, I, Iʹ, Tʹ>(
             this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,

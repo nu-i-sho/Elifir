@@ -1,6 +1,4 @@
-﻿using static Nuisho.Elifir.Test.Utils;
-
-namespace Nuisho.Elifir.Test
+﻿namespace Nuisho.Elifir.Test
 {
     public static partial class Utils
     {
@@ -11,6 +9,7 @@ namespace Nuisho.Elifir.Test
         public static Func<int, bool> Odd => x => x % 2 != 0;
 
         public static Func<int, Func<int, bool>> MoreThen => x => y => y > x;
+        public static Func<int, Func<int, bool>> LessThen => x => y => y < x;
 
         public static Func<Func<int, bool>, Func<A, bool>> A_Is = f => x => f(x.Value);
         public static Func<Func<int, bool>, Func<B, bool>> B_Is = f => x => f(x.Value);
@@ -158,6 +157,7 @@ namespace Nuisho.Elifir.Test
         public static Func<Func<int, int>, Func<D, Λ>> From_D_To_Λ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<D, Δ>> From_D_To_Δ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Δ, C>> From_Δ_To_C_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<Δ, D>> From_Δ_To_D_With = f => x => new(f(x.Value));
 
         public static Func<Func<int, int>, Func<ΔΔ, A>> From_ΔΔ_To_A_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<A, ΔΔ>> From_A_To_ΔΔ_With = f => x => new(f(x.Value));
@@ -172,5 +172,25 @@ namespace Nuisho.Elifir.Test
         public static Func<Func<int, int>, Func<B, ΔΛ>> From_B_To_ΔΛ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<B, ΔΔ>> From_B_To_ΔΔ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<ΔΔ, B>> From_ΔΔ_To_B_With = f => x => new(f(x.Value));
+
+        public static Func<bool, Func<Func<int, int>, Func<A, A>>> From_A_To_A_Or_To_Aʹ = 
+            toAʹ => toAʹ ? From_A_To_Aʹ_With
+                         : From_A_To_A_With;
+
+        public static Func<bool, Func<Func<int, int>, Func<Aʹ, A>>> From_Aʹ_To_A_Or_To_Aʹ =
+            toAʹ => toAʹ ? From_Aʹ_To_Aʹ_With
+                         : From_Aʹ_To_A_With;
+
+        public static Func<bool, Func<Func<int, int>, Func<D, C>>> From_D_To_C_Or_To_Cʹ =
+            toCʹ => toCʹ ? From_D_To_Cʹ_With
+                         : From_D_To_C_With;
+
+        public static Func<bool, Func<Func<int, int>, Func<B, C>>> From_B_To_C_Or_To_Cʹ =
+            toCʹ => toCʹ ? From_B_To_Cʹ_With
+                         : From_B_To_C_With;
+
+        public static Func<bool, Func<Func<int, int>, Func<B, B>>> From_B_To_B_Or_To_Bʹ =
+            toBʹ => toBʹ ? From_B_To_Bʹ_With
+                         : From_B_To_B_With;
     }
 }

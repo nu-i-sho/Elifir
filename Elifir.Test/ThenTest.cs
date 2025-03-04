@@ -7,7 +7,7 @@
     {
 
         [Test]
-        public void Test1()
+        public void Test_0001()
         {
             var f =
                 From_A_To_A_With(Plus(1)).Then(
@@ -19,7 +19,7 @@
         }
 
         [Test]
-        public void Test2()
+        public void Test_0002()
         {
             var f =
                 From_A_To_A_With(Plus(1)).Then(
@@ -37,7 +37,7 @@
 
 
         [Test]
-        public void Test3()
+        public void Test_0003()
         {
             var f =
                 From_A_To_B_With(Plus(1)).Then(
@@ -49,7 +49,7 @@
         }
 
         [Test]
-        public void Test4()
+        public void Test_0004()
         {
             var f =
                 From_A_To_B_With(Plus(1)).Then(
