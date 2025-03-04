@@ -89,25 +89,6 @@
             return result.Value;
         }
 
-        //[TestCase(1, ExpectedResult = 2, TestName = "Test9( 1 -> 2 )")]
-        //[TestCase(2, ExpectedResult = 5, TestName = "Test9( 2 -> 5 )")]
-        public int Test134(bool isAʹ, int x)
-        {
-            var from_A_To_A_OrTo_Aʹ_With =
-                isAʹ ? From_A_To_Aʹ_With
-                     : From_A_To_Aʹ_With;
-
-            var f =
-                 From_A_To_A_With(Add(1))              // 1 -> 2
-                .If(A_Is(Odd))
-                    .Then(From_A_To_Aʹ_With(Add(2)))   // 2 -> 5
-                .End();
-
-            A result = f(new A(x));
-
-            return result.Value;
-        }
-
         [TestCase(10, ExpectedResult = 21,  TestName = "Test10( 10 -> 21 )")]
         [TestCase(90, ExpectedResult = 123, TestName = "Test10( 90 -> 123 )")]
         public int Test10(int x)
