@@ -4,7 +4,7 @@ namespace Nuisho.Elifir.Test
 {
     public static partial class Utils
     {
-        public static Func<int, Func<int, int>> Plus => x => y => x + y;
+        public static Func<int, Func<int, int>> Add => x => y => x + y;
 
         public static Func<int, bool> Even => x => x % 2 == 0;
 

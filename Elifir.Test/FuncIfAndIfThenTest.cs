@@ -12,9 +12,9 @@
         public int Test130(int x)
         {
             var f =
-                 From_A_To_A_With(Plus(1))                  // 2 -> 3, 8 -> 9, 100 -> 101
+                 From_A_To_A_With(Add(1))                  // 2 -> 3, 8 -> 9, 100 -> 101
                 .If(A_Is(Even)).AndIf(A_Is(MoreThen(10)))
-                    .Then(From_A_To_A_With(Plus(2)))        // 11 -> 14
+                    .Then(From_A_To_A_With(Add(2)))        // 11 -> 14
                 .End();
 
             A result = f(new A(x));
@@ -29,11 +29,11 @@
         public int Test131(int x)
         {
             var f =
-                 From_A_To_A_With(Plus(1))
-                .Then(From_A_To_A_With(Plus(10)))           // 0 -> 11, 1 -> 12, 110 -> 121
+                 From_A_To_A_With(Add(1))
+                .Then(From_A_To_A_With(Add(10)))           // 0 -> 11, 1 -> 12, 110 -> 121
                 .If(A_Is(Even)).AndIf(A_Is(MoreThen(50)))
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))       // 111 -> 144
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))       // 111 -> 144
                 .End();
 
             A result = f(new A(x));
@@ -48,15 +48,15 @@
         public int Test132(int x)
         {
             var f =
-                 From_A_To_A_With(Plus(1))
-                .Then(From_A_To_A_With(Plus(1)))
-                .Then(From_A_To_A_With(Plus(1)))      
+                 From_A_To_A_With(Add(1))
+                .Then(From_A_To_A_With(Add(1)))
+                .Then(From_A_To_A_With(Add(1)))      
                 .If(A_Is(Odd))                          // 53 -> 56
                 .AndIf(A_Is(MoreThen(50)))              // 1 -> 4
                 .AndIf(A_Is(LessThen(100)))             // 110 -> 113
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))
-                    .Then(From_A_To_A_With(Plus(200)))  // 70 -> 295
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))
+                    .Then(From_A_To_A_With(Add(200)))   // 70 -> 295
                 .End();
 
             A result = f(new A(x));
@@ -74,14 +74,14 @@
                 From_D_To_C_OrTo_Cʹ(isCʹ);
 
             var f =
-                 From_A_To_B_With(Plus(1))
-                .Then(From_B_To_D_With(Plus(10)))
-                .Then(from_D_To_C_OrTo_Cʹ_With(Plus(100)))
+                 From_A_To_B_With(Add(1))
+                .Then(From_B_To_D_With(Add(10)))
+                .Then(from_D_To_C_OrTo_Cʹ_With(Add(100)))
                 .If(C_Is(Even))                             // (false, 2) -> 113, (true, 2) -> 113
                 .AndIf(Object<C>.Is<Cʹ>)                    // (false, 1) -> 334
-                    .Then(From_Cʹ_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_C_With(Plus(200)))      // (true, 1) -> 334
+                    .Then(From_Cʹ_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_C_With(Add(200)))       // (true, 1) -> 334
                 .End();
 
             C result = f(new A(x));
@@ -98,9 +98,9 @@
                      : From_A_To_Aʹ_With;
 
             var f =
-                 From_A_To_A_With(Plus(1))              // 1 -> 2
+                 From_A_To_A_With(Add(1))              // 1 -> 2
                 .If(A_Is(Odd))
-                    .Then(From_A_To_Aʹ_With(Plus(2)))   // 2 -> 5
+                    .Then(From_A_To_Aʹ_With(Add(2)))   // 2 -> 5
                 .End();
 
             A result = f(new A(x));
@@ -113,11 +113,11 @@
         public int Test10(int x)
         {
             var f =
-                 From_A_To_A_With(Plus(1))
-                .Then(From_A_To_A_With(Plus(10)))       // 10 -> 21
+                 From_A_To_A_With(Add(1))
+                .Then(From_A_To_A_With(Add(10)))       // 10 -> 21
                 .If(A_Is(MoreThen(100)))
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_Aʹ_With(Plus(20)))  // 90 -> 123
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_Aʹ_With(Add(20)))  // 90 -> 123
                 .End();
 
             A result = f(new A(x));
@@ -130,13 +130,13 @@
         public int Test11(int x)
         {
             var f =
-                 From_A_To_E_With(Plus(1))
-                .Then(From_E_To_D_With(Plus(10)))
-                .Then(From_D_To_B_With(Plus(100)))      // 1 -> 112
+                 From_A_To_E_With(Add(1))
+                .Then(From_E_To_D_With(Add(10)))
+                .Then(From_D_To_B_With(Add(100)))      // 1 -> 112
                 .If(B_Is(Odd))
-                    .Then(From_B_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_Bʹ_With(Plus(200))) // 2 -> 335
+                    .Then(From_B_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_Bʹ_With(Add(200))) // 2 -> 335
                 .End();
 
             B result = f(new A(x));
@@ -150,9 +150,9 @@
         public int Test12(int x)
         {
             var f =
-                 From_A_To_Aʹ_With(Plus(1))             // 2 -> 3
+                 From_A_To_Aʹ_With(Add(1))             // 2 -> 3
                 .If(Aʹ_Is(Even))
-                    .Then(From_A_To_A_With(Plus(2)))    // 1 -> 4
+                    .Then(From_A_To_A_With(Add(2)))    // 1 -> 4
                 .End();
 
             A result = f(new A(x));
@@ -165,11 +165,11 @@
         public int Test13(int x)
         {
             var f =
-                 From_A_To_A_With(Plus(1))
-                .Then(From_A_To_Aʹ_With(Plus(10)))      // 1 -> 12
+                 From_A_To_A_With(Add(1))
+                .Then(From_A_To_Aʹ_With(Add(10)))      // 1 -> 12
                 .If(Aʹ_Is(Odd))
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))   // 2 -> 35
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))   // 2 -> 35
                 .End();
 
             A result = f(new A(x));
@@ -182,13 +182,13 @@
         public int Test14(int x)
         {
             var f =
-                 From_A_To_E_With(Plus(1))
-                .Then(From_E_To_D_With(Plus(10)))
-                .Then(From_D_To_Bʹ_With(Plus(100)))     // 1 -> 112
+                 From_A_To_E_With(Add(1))
+                .Then(From_E_To_D_With(Add(10)))
+                .Then(From_D_To_Bʹ_With(Add(100)))     // 1 -> 112
                 .If(Bʹ_Is(Odd))
-                    .Then(From_B_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_B_With(Plus(200)))  // 2 -> 335
+                    .Then(From_B_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_B_With(Add(200)))  // 2 -> 335
                 .End();
             
             B result = f(new A(x));
@@ -202,11 +202,11 @@
         public int Test15(int x)
         {
             var f =
-                 From_A_To_A_With(Plus(1))                  // 2 -> 3
+                 From_A_To_A_With(Add(1))                  // 2 -> 3
                 .If(A_Is(Even))
-                    .Then(From_A_To_A_With(Plus(2)))        // 1 -> 4
+                    .Then(From_A_To_A_With(Add(2)))        // 1 -> 4
                     .If(A_Is(MoreThen(1000)))
-                        .Then(From_A_To_A_With(Plus(3)))    // 999 -> 1005
+                        .Then(From_A_To_A_With(Add(3)))    // 999 -> 1005
                     .End()
                 .End();
 
@@ -221,14 +221,14 @@
         public int Test16(int x)
         {
             var f =
-                 From_A_To_A_With(Plus(1))
-                .Then(From_A_To_A_With(Plus(10)))           // 1 -> 12
+                 From_A_To_A_With(Add(1))
+                .Then(From_A_To_A_With(Add(10)))           // 1 -> 12
                 .If(A_Is(Odd))
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))       // 2 -> 35
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))       // 2 -> 35
                     .If(A_Is(MoreThen(100)))
-                        .Then(From_A_To_A_With(Plus(20)))
-                        .Then(From_A_To_A_With(Plus(21)))   // 68 -> 142
+                        .Then(From_A_To_A_With(Add(20)))
+                        .Then(From_A_To_A_With(Add(21)))   // 68 -> 142
                     .End()
                 .End();
 
@@ -243,17 +243,17 @@
         public int Test17(int x)
         {
             var f =
-                 From_A_To_A_With(Plus(1))
-                .Then(From_A_To_A_With(Plus(10)))
-                .Then(From_A_To_A_With(Plus(100)))          // 2 -> 113
+                 From_A_To_A_With(Add(1))
+                .Then(From_A_To_A_With(Add(10)))
+                .Then(From_A_To_A_With(Add(100)))          // 2 -> 113
                 .If(A_Is(Even))
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))
-                    .Then(From_A_To_A_With(Plus(200)))      // 1 -> 334
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))
+                    .Then(From_A_To_A_With(Add(200)))      // 1 -> 334
                     .If(A_Is(MoreThen(1000)))
-                        .Then(From_A_To_A_With(Plus(3)))
-                        .Then(From_A_To_A_With(Plus(30)))
-                        .Then(From_A_To_A_With(Plus(300)))  // 1001 -> 1667
+                        .Then(From_A_To_A_With(Add(3)))
+                        .Then(From_A_To_A_With(Add(30)))
+                        .Then(From_A_To_A_With(Add(300)))  // 1001 -> 1667
                     .End()
                 .End();
 
@@ -268,11 +268,11 @@
         public int Test18(int x)
         {
             var f =
-                 From_A_To_B_With(Plus(1))                  // 2 -> 3 
+                 From_A_To_B_With(Add(1))                  // 2 -> 3 
                 .If(B_Is(Even))
-                    .Then(From_B_To_Bʹ_With(Plus(2)))       // 1 -> 4
+                    .Then(From_B_To_Bʹ_With(Add(2)))       // 1 -> 4
                     .If(Bʹ_Is(MoreThen(1000)))
-                        .Then(From_B_To_Bʹ_With(Plus(3)))   // 999 -> 1005
+                        .Then(From_B_To_Bʹ_With(Add(3)))   // 999 -> 1005
                     .End()
                 .End();
 
@@ -287,14 +287,14 @@
         public int Test19(int x)
         {
             var f =
-                 From_A_To_D_With(Plus(1))
-                .Then(From_D_To_C_With(Plus(10)))           // 1 -> 12
+                 From_A_To_D_With(Add(1))
+                .Then(From_D_To_C_With(Add(10)))           // 1 -> 12
                 .If(C_Is(Odd))
-                    .Then(From_C_To_D_With(Plus(2)))
-                    .Then(From_D_To_C_With(Plus(20)))       // 2 -> 35
+                    .Then(From_C_To_D_With(Add(2)))
+                    .Then(From_D_To_C_With(Add(20)))       // 2 -> 35
                     .If(C_Is(MoreThen(100)))
-                        .Then(From_C_To_A_With(Plus(20)))
-                        .Then(From_A_To_Cʹ_With(Plus(21)))  // 68 -> 142
+                        .Then(From_C_To_A_With(Add(20)))
+                        .Then(From_A_To_Cʹ_With(Add(21)))  // 68 -> 142
                     .End()
                 .End();
 
@@ -309,17 +309,17 @@
         public int Test20(int x)
         {
             var f =
-                 From_A_To_E_With(Plus(1))
-                .Then(From_E_To_D_With(Plus(10)))
-                .Then(From_D_To_C_With(Plus(100)))          // 2 -> 113
+                 From_A_To_E_With(Add(1))
+                .Then(From_E_To_D_With(Add(10)))
+                .Then(From_D_To_C_With(Add(100)))          // 2 -> 113
                 .If(C_Is(Even))
-                    .Then(From_C_To_D_With(Plus(2)))
-                    .Then(From_D_To_B_With(Plus(20)))
-                    .Then(From_B_To_Cʹ_With(Plus(200)))     // 1 -> 334
+                    .Then(From_C_To_D_With(Add(2)))
+                    .Then(From_D_To_B_With(Add(20)))
+                    .Then(From_B_To_Cʹ_With(Add(200)))     // 1 -> 334
                     .If(Cʹ_Is(MoreThen(1000)))
-                        .Then(From_Cʹ_To_B_With(Plus(3)))
-                        .Then(From_B_To_D_With(Plus(30)))
-                        .Then(From_D_To_Cʹ_With(Plus(300))) // 1001 -> 1667
+                        .Then(From_Cʹ_To_B_With(Add(3)))
+                        .Then(From_B_To_D_With(Add(30)))
+                        .Then(From_D_To_Cʹ_With(Add(300))) // 1001 -> 1667
                     .End()
                 .End();
 
@@ -334,11 +334,11 @@
         public int Test21(int x)
         {
             var f =
-                 From_A_To_Aʹ_With(Plus(1))                 // 1 -> 2
+                 From_A_To_Aʹ_With(Add(1))                 // 1 -> 2
                 .If(Aʹ_Is(Odd))
-                    .Then(From_Aʹ_To_A_With(Plus(2)))       // 2 -> 5
+                    .Then(From_Aʹ_To_A_With(Add(2)))       // 2 -> 5
                     .If(A_Is(MoreThen(10)))
-                        .Then(From_A_To_A_With(Plus(3)))    // 10 -> 16
+                        .Then(From_A_To_A_With(Add(3)))    // 10 -> 16
                     .End()
                 .End();
 
@@ -354,11 +354,11 @@
         public int Test22(int x)
         {
             var f =
-                 From_A_To_Aʹ_With(Plus(1))                 // 1 -> 2
+                 From_A_To_Aʹ_With(Add(1))                 // 1 -> 2
                 .If(Aʹ_Is(Odd))
-                    .Then(From_Aʹ_To_A_With(Plus(2)))       // 2 -> 5
+                    .Then(From_Aʹ_To_A_With(Add(2)))       // 2 -> 5
                     .If(A_Is(MoreThen(10)))
-                        .Then(From_A_To_Aʹ_With(Plus(3)))   // 10 -> 16
+                        .Then(From_A_To_Aʹ_With(Add(3)))   // 10 -> 16
                    .End()
                 .End();
 
@@ -373,11 +373,11 @@
         public int Test23(int x)
         {
             var f =
-                 From_A_To_Bʹ_With(Plus(1))                 // 2 -> 3
+                 From_A_To_Bʹ_With(Add(1))                 // 2 -> 3
                 .If(B_Is(Even))
-                    .Then(From_B_To_B_With(Plus(2)))        // 1 -> 4
+                    .Then(From_B_To_B_With(Add(2)))        // 1 -> 4
                     .If(B_Is(MoreThen(1000)))
-                        .Then(From_B_To_B_With(Plus(3)))    // 999 -> 1005
+                        .Then(From_B_To_B_With(Add(3)))    // 999 -> 1005
                     .End()
                 .End();
 
@@ -392,11 +392,11 @@
         public int Test24(int x)
         {
             var f =
-                 From_A_To_B_With(Plus(1))                  // 2 -> 3
+                 From_A_To_B_With(Add(1))                  // 2 -> 3
                 .If(B_Is(Even))
-                    .Then(From_B_To_Bʹ_With(Plus(2)))       // 1 -> 4
+                    .Then(From_B_To_Bʹ_With(Add(2)))       // 1 -> 4
                     .If(B_Is(MoreThen(1000)))
-                        .Then(From_Bʹ_To_B_With(Plus(3)))   // 999 -> 1005
+                        .Then(From_Bʹ_To_B_With(Add(3)))   // 999 -> 1005
                     .End()
                 .End();
 
@@ -411,17 +411,17 @@
         public int Test25(int x)
         {
             var f =
-                  From_A_To_E_With(Plus(1))
-                 .Then(From_E_To_D_With(Plus(10)))
-                 .Then(From_D_To_Bʹ_With(Plus(100)))        // 2 -> 113
+                  From_A_To_E_With(Add(1))
+                 .Then(From_E_To_D_With(Add(10)))
+                 .Then(From_D_To_Bʹ_With(Add(100)))        // 2 -> 113
                  .If(Bʹ_Is(Even))
-                    .Then(From_B_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_B_With(Plus(200)))      // 1 -> 334
+                    .Then(From_B_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_B_With(Add(200)))      // 1 -> 334
                     .If(B_Is(MoreThen(1000)))
-                        .Then(From_B_To_E_With(Plus(3)))
-                        .Then(From_E_To_B_With(Plus(30)))
-                        .Then(From_B_To_B_With(Plus(300)))  // 1001 -> 1667
+                        .Then(From_B_To_E_With(Add(3)))
+                        .Then(From_E_To_B_With(Add(30)))
+                        .Then(From_B_To_B_With(Add(300)))  // 1001 -> 1667
                     .End()
                 .End();
 
@@ -436,17 +436,17 @@
         public int Test26(int x)
         {
             var f =
-                 From_A_To_E_With(Plus(1))
-                .Then(From_E_To_D_With(Plus(10)))
-                .Then(From_D_To_Bʹ_With(Plus(100)))         // 2 -> 113
+                 From_A_To_E_With(Add(1))
+                .Then(From_E_To_D_With(Add(10)))
+                .Then(From_D_To_Bʹ_With(Add(100)))         // 2 -> 113
                 .If(Bʹ_Is(Even))
-                    .Then(From_Bʹ_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_B_With(Plus(200)))      // 1 -> 334
+                    .Then(From_Bʹ_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_B_With(Add(200)))      // 1 -> 334
                     .If(B_Is(MoreThen(1000)))
-                        .Then(From_B_To_E_With(Plus(3)))
-                        .Then(From_E_To_B_With(Plus(30)))
-                        .Then(From_B_To_Bʹ_With(Plus(300))) // 1001 -> 1667
+                        .Then(From_B_To_E_With(Add(3)))
+                        .Then(From_E_To_B_With(Add(30)))
+                        .Then(From_B_To_Bʹ_With(Add(300))) // 1001 -> 1667
                     .End()
                 .End();
 

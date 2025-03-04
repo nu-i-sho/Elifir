@@ -12,7 +12,7 @@
         {
             var f =
                  If(Λ_Is(Even))                         // 1 -> 1
-                    .Then(From_Λ_To_Δ_With(Plus(2)))    // 2 -> 4
+                    .Then(From_Λ_To_Δ_With(Add(2)))     // 2 -> 4
                 .End(WithReturn<A>);
 
             A result = f(new Λ(x));
@@ -26,8 +26,8 @@
         {
             var f =
                  If(Λ_Is(Even))                         // 5 -> 5
-                    .Then(From_Λ_To_B_With(Plus(2)))
-                    .Then(From_B_To_Δ_With(Plus(20)))   // 1 -> 24
+                    .Then(From_Λ_To_B_With(Add(2)))
+                    .Then(From_B_To_Δ_With(Add(20)))    // 1 -> 24
                 .End(WithReturn<A>);
 
 
@@ -42,9 +42,9 @@
         {
             var f =
                  If(Λ_Is(Odd))                          // 8 -> 8
-                    .Then(From_Λ_To_B_With(Plus(2)))
-                    .Then(From_B_To_E_With(Plus(20)))
-                    .Then(From_E_To_Δ_With(Plus(200)))  // 7 -> 229
+                    .Then(From_Λ_To_B_With(Add(2)))
+                    .Then(From_B_To_E_With(Add(20)))
+                    .Then(From_E_To_Δ_With(Add(200)))   // 7 -> 229
                 .End(WithReturn<A>);
 
             A result = f(new Λ(x));
@@ -59,9 +59,9 @@
         {
             var f =
                  If(Λ_Is(Even))                             // 5 -> 5
-                    .Then(From_Λ_To_ΛΛ_With(Plus(2)))       // 8 -> 10
+                    .Then(From_Λ_To_ΛΛ_With(Add(2)))        // 8 -> 10
                     .If(ΛΛ_Is(MoreThen(1000)))
-                        .Then(From_ΛΛ_To_ΛΔ_With(Plus(3)))  // 1000 -> 1005
+                        .Then(From_ΛΛ_To_ΛΔ_With(Add(3)))   // 1000 -> 1005
                     .End(WithReturn<Λ>)
                 .End(WithReturn<A>);
 
@@ -76,12 +76,12 @@
         public int Test_0204(int x)
         {
             var f =
-                 If(Λ_Is(Odd))                                  // 2 -> 2
-                    .Then(From_Λ_To_B_With(Plus(2)))
-                    .Then(From_B_To_ΛΛ_With(Plus(20)))          // 3 -> 25
+                 If(Λ_Is(Odd))                              // 2 -> 2
+                    .Then(From_Λ_To_B_With(Add(2)))
+                    .Then(From_B_To_ΛΛ_With(Add(20)))       // 3 -> 25
                     .If(ΛΛ_Is(MoreThen(100)))
-                        .Then(From_ΛΛ_To_D_With(Plus(20)))
-                        .Then(From_D_To_ΛΔ_With(Plus(21)))      // 79 -> 142
+                        .Then(From_ΛΛ_To_D_With(Add(20)))
+                        .Then(From_D_To_ΛΔ_With(Add(21)))   // 79 -> 142
                     .End(WithReturn<Λ>)
                 .End(WithReturn<A>);
 
@@ -96,14 +96,14 @@
         public int Test_0205(int x)
         {
             var f =
-                 If(Δ_Is(Even))                                 // 3 -> 3
-                    .Then(From_Δ_To_C_With(Plus(2)))
-                    .Then(From_C_To_E_With(Plus(20)))
-                    .Then(From_E_To_ΔΔ_With(Plus(200)))         // 4 -> 226
+                 If(Δ_Is(Even))                             // 3 -> 3
+                    .Then(From_Δ_To_C_With(Add(2)))
+                    .Then(From_C_To_E_With(Add(20)))
+                    .Then(From_E_To_ΔΔ_With(Add(200)))      // 4 -> 226
                     .If(ΔΔ_Is(MoreThen(1000)))
-                        .Then(From_ΔΔ_To_E_With(Plus(3)))
-                        .Then(From_E_To_B_With(Plus(30)))
-                        .Then(From_B_To_ΔΛ_With(Plus(300)))     // 800 -> 1355
+                        .Then(From_ΔΔ_To_E_With(Add(3)))
+                        .Then(From_E_To_B_With(Add(30)))
+                        .Then(From_B_To_ΔΛ_With(Add(300)))  // 800 -> 1355
                     .End(WithReturn<Δ>)
                 .End(WithReturn<A>);
 
@@ -120,11 +120,11 @@
         {
             var f =
                  If(ΔΛ_Is(Odd))                             // 8 -> 8
-                    .Then(From_ΔΛ_To_D_With(Plus(2)))
-                    .Then(From_D_To_ΔΔ_With(Plus(20)))      // 2 -> 35
+                    .Then(From_ΔΛ_To_D_With(Add(2)))
+                    .Then(From_D_To_ΔΔ_With(Add(20)))       // 2 -> 35
                     .If(ΔΔ_Is(MoreThen(100)))
-                        .Then(From_ΔΔ_To_A_With(Plus(20)))
-                        .Then(From_A_To_ΔΔ_With(Plus(21)))  // 97 -> 160
+                        .Then(From_ΔΔ_To_A_With(Add(20)))
+                        .Then(From_A_To_ΔΔ_With(Add(21)))   // 97 -> 160
                     .End()
                 .End(WithReturn<Δ>);
 
@@ -139,14 +139,14 @@
         public int Test_0207(int x)
         {
             var f =
-                 If(A_Is(Even))                                 // 1 -> 1
-                    .Then(From_A_To_D_With(Plus(2)))
-                    .Then(From_D_To_B_With(Plus(20)))
-                    .Then(From_B_To_ΔΔ_With(Plus(200)))         // 4 -> 226
+                 If(A_Is(Even))                             // 1 -> 1
+                    .Then(From_A_To_D_With(Add(2)))
+                    .Then(From_D_To_B_With(Add(20)))
+                    .Then(From_B_To_ΔΔ_With(Add(200)))      // 4 -> 226
                     .If(ΔΔ_Is(MoreThen(1000)))
-                        .Then(From_ΔΔ_To_B_With(Plus(3)))
-                        .Then(From_B_To_D_With(Plus(30)))
-                        .Then(From_D_To_ΔΛ_With(Plus(300)))     // 804 -> 1359
+                        .Then(From_ΔΔ_To_B_With(Add(3)))
+                        .Then(From_B_To_D_With(Add(30)))
+                        .Then(From_D_To_ΔΛ_With(Add(300)))  // 804 -> 1359
                     .End(WithReturn<Δ>)
                 .End();
 
@@ -162,9 +162,9 @@
         {
             var f =
                  If(Λ_Is(Odd))                              // 1000 -> 1000
-                    .Then(From_Λ_To_ΔΔ_With(Plus(2)))       // 3 -> 5
+                    .Then(From_Λ_To_ΔΔ_With(Add(2)))        // 3 -> 5
                     .If(ΔΔ_Is(MoreThen(10)))
-                        .Then(From_ΔΔ_To_Δ_With(Plus(3)))   // 11 -> 16
+                        .Then(From_ΔΔ_To_Δ_With(Add(3)))    // 11 -> 16
                     .End()
                 .End(WithReturn<A>);
 
@@ -180,9 +180,9 @@
         {
             var f =
                  If(Λ_Is(Odd))                              // 2 -> 2
-                    .Then(From_Λ_To_Δ_With(Plus(2)))        // 5 -> 7
+                    .Then(From_Λ_To_Δ_With(Add(2)))         // 5 -> 7
                     .If(Δ_Is(MoreThen(10)))
-                        .Then(From_Δ_To_ΔΔ_With(Plus(3)))   // 9 -> 14
+                        .Then(From_Δ_To_ΔΔ_With(Add(3)))    // 9 -> 14
                     .End()
                 .End(WithReturn<A>);
 
@@ -197,10 +197,10 @@
         public int Test_0210(int x)
         {
             var f =
-                 If(Δ_Is(Even))                                 // 999 -> 999
-                    .Then(From_Δ_To_ΔΔ_With(Plus(2)))           // 2 -> 4
+                 If(Δ_Is(Even))                             // 999 -> 999
+                    .Then(From_Δ_To_ΔΔ_With(Add(2)))        // 2 -> 4
                     .If(ΔΔ_Is(MoreThen(1000)))
-                        .Then(From_ΔΔ_To_ΔΛ_With(Plus(3)))      // 1600 -> 1605
+                        .Then(From_ΔΔ_To_ΔΛ_With(Add(3)))   // 1600 -> 1605
                     .End(WithReturn<A>)
                 .End();
 
@@ -215,14 +215,14 @@
         public int Test_0211(int x)
         {
             var f =
-                 If(Δ_Is(Even))                                 // 3 -> 3
-                    .Then(From_A_To_D_With(Plus(2)))
-                    .Then(From_D_To_B_With(Plus(20)))
-                    .Then(From_B_To_ΔΔ_With(Plus(200)))         // 8 -> 230
+                 If(Δ_Is(Even))                             // 3 -> 3
+                    .Then(From_A_To_D_With(Add(2)))
+                    .Then(From_D_To_B_With(Add(20)))
+                    .Then(From_B_To_ΔΔ_With(Add(200)))      // 8 -> 230
                     .If(ΔΔ_Is(MoreThen(1000)))
-                        .Then(From_ΔΔ_To_B_With(Plus(3)))
-                        .Then(From_B_To_D_With(Plus(30)))
-                        .Then(From_D_To_ΔΛ_With(Plus(300)))     // 1008 -> 1563
+                        .Then(From_ΔΔ_To_B_With(Add(3)))
+                        .Then(From_B_To_D_With(Add(30)))
+                        .Then(From_D_To_ΔΛ_With(Add(300)))  // 1008 -> 1563
                     .End(WithReturn<A>)
                 .End();
 
@@ -237,14 +237,14 @@
         public int Test_0212(int x)
         {
             var f =
-                 If(Δ_Is(Even))                                 // 1 -> 1
-                    .Then(From_Δ_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_ΔΔ_With(Plus(200)))         // 20 -> 242
+                 If(Δ_Is(Even))                             // 1 -> 1
+                    .Then(From_Δ_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_ΔΔ_With(Add(200)))      // 20 -> 242
                     .If(ΔΔ_Is(MoreThen(1000)))
-                        .Then(From_ΔΔ_To_E_With(Plus(3)))
-                        .Then(From_E_To_B_With(Plus(30)))
-                        .Then(From_B_To_ΔΛ_With(Plus(300)))     // 2000 -> 2555
+                        .Then(From_ΔΔ_To_E_With(Add(3)))
+                        .Then(From_E_To_B_With(Add(30)))
+                        .Then(From_B_To_ΔΛ_With(Add(300)))  // 2000 -> 2555
                     .End(WithReturn<Δ>)
                 .End();
 
@@ -259,7 +259,7 @@
         {
             var f =
                  If(Object<Λ>.Is<ΛΛ>)                   // (false, 3) -> 3
-                    .Then(From_ΛΛ_To_Δ_With(Plus(2)))   // (true, 3) -> 5
+                    .Then(From_ΛΛ_To_Δ_With(Add(2)))    // (true, 3) -> 5
                 .End(WithReturn<A>);
 
             Λ arg = isΛΛ
@@ -277,8 +277,8 @@
         {
             var f =
                  If(Object<Λ>.Is<ΛΛ>)                   // (false, 5) -> 5
-                    .Then(From_ΛΛ_To_B_With(Plus(2)))
-                    .Then(From_B_To_Δ_With(Plus(20)))   // (true, 5) -> 27
+                    .Then(From_ΛΛ_To_B_With(Add(2)))
+                    .Then(From_B_To_Δ_With(Add(20)))    // (true, 5) -> 27
                 .End(WithReturn<A>);
 
             Λ arg = isΛΛ
@@ -296,9 +296,9 @@
         {
             var f =
                  If(Object<Λ>.Is<ΛΛ>)                   // (false, 5) -> 5
-                    .Then(From_Λ_To_B_With(Plus(2)))
-                    .Then(From_B_To_E_With(Plus(20)))
-                    .Then(From_E_To_Δ_With(Plus(200)))  // (true, 5) -> 227
+                    .Then(From_Λ_To_B_With(Add(2)))
+                    .Then(From_B_To_E_With(Add(20)))
+                    .Then(From_E_To_Δ_With(Add(200)))   // (true, 5) -> 227
                 .End(WithReturn<A>);
 
             Λ arg = isΛΛ
@@ -318,9 +318,9 @@
         {
             var f =                                         // (false, 3) -> 3
                  If(Object<Δ>.Is<ΔΔ>)                       // (true, 3) -> 3
-                    .Then(From_ΔΔ_To_ΛΔ_With(Plus(2)))      // (false, 3000) -> 3000
+                    .Then(From_ΔΔ_To_ΛΔ_With(Add(2)))       // (false, 3000) -> 3000
                     .If(ΛΔ_Is(MoreThen(1000)))
-                        .Then(From_ΛΔ_To_ΛΛ_With(Plus(3)))  // (true, 3000) -> 3005
+                        .Then(From_ΛΔ_To_ΛΛ_With(Add(3)))   // (true, 3000) -> 3005
                     .End(WithReturn<Λ>)
                 .End(WithReturn<A>);
 
@@ -342,13 +342,13 @@
             var from_B_To_ΛΛ_OrTo_ΛΛΛ_With =
                 From_B_To_ΛΛ_OrTo_ΛΛΛ(secondIsΛΛΛ);
 
-            var f =                                                 // (2, false) -> 2 
-                 If(Δ_Is(Odd))                                      // (2, true) -> 2
-                    .Then(From_Δ_To_B_With(Plus(2)))
-                    .Then(from_B_To_ΛΛ_OrTo_ΛΛΛ_With(Plus(20)))     // (3, false) -> 25
+            var f =                                             // (2, false) -> 2 
+                 If(Δ_Is(Odd))                                  // (2, true) -> 2
+                    .Then(From_Δ_To_B_With(Add(2)))
+                    .Then(from_B_To_ΛΛ_OrTo_ΛΛΛ_With(Add(20)))  // (3, false) -> 25
                     .If(Object<ΛΛ>.Is<ΛΛΛ>)
-                        .Then(From_ΛΛΛ_To_D_With(Plus(20)))
-                        .Then(From_D_To_ΛΔ_With(Plus(21)))          // (3, false) -> 66
+                        .Then(From_ΛΛΛ_To_D_With(Add(20)))
+                        .Then(From_D_To_ΛΔ_With(Add(21)))       // (3, false) -> 66
                     .End(WithReturn<Λ>) 
                 .End(WithReturn<A>);
 
@@ -368,13 +368,13 @@
 
             var f =                                                 // (false, false, 25) -> 25
                  If(Object<Δ>.Is<ΔΔ>)                               // (false, true, 25) -> 25
-                    .Then(From_ΔΔ_To_C_With(Plus(2)))
-                    .Then(From_C_To_E_With(Plus(20)))
-                    .Then(from_E_To_ΛΛ_OrTo_ΛΛΛ_With(Plus(200)))    // (true, false, 25) -> 247
+                    .Then(From_ΔΔ_To_C_With(Add(2)))
+                    .Then(From_C_To_E_With(Add(20)))
+                    .Then(from_E_To_ΛΛ_OrTo_ΛΛΛ_With(Add(200)))     // (true, false, 25) -> 247
                     .If(Object<ΛΛ>.Is<ΛΛΛ>)
-                        .Then(From_ΛΛΛ_To_E_With(Plus(3)))
-                        .Then(From_E_To_B_With(Plus(30)))
-                        .Then(From_B_To_ΛΔ_With(Plus(300)))         // (true, false, 25) -> 580
+                        .Then(From_ΛΛΛ_To_E_With(Add(3)))
+                        .Then(From_E_To_B_With(Add(30)))
+                        .Then(From_B_To_ΛΔ_With(Add(300)))          // (true, false, 25) -> 580
                     .End(WithReturn<Λ>)
                 .End(WithReturn<A>);
 
@@ -398,11 +398,11 @@
 
             var f =                                             // (false, false, 3) -> 3
                  If(Object<Δ>.Is<ΔΔ>)                           // (false, true, 3) -> 3
-                    .Then(From_ΔΔ_To_D_With(Plus(2)))
-                    .Then(from_D_To_ΛΛ_OrTo_ΛΛΛ_With(Plus(20))) // (true, false, 3) -> 25
+                    .Then(From_ΔΔ_To_D_With(Add(2)))
+                    .Then(from_D_To_ΛΛ_OrTo_ΛΛΛ_With(Add(20)))  // (true, false, 3) -> 25
                     .If(Object<ΛΛ>.Is<ΛΛΛ>)
-                        .Then(From_ΛΛΛ_To_A_With(Plus(20)))
-                        .Then(From_A_To_ΛΛΔ_With(Plus(21)))     // (true, true, 3) -> 66
+                        .Then(From_ΛΛΛ_To_A_With(Add(20)))
+                        .Then(From_A_To_ΛΛΔ_With(Add(21)))      // (true, true, 3) -> 66
                     .End()
                 .End(WithReturn<A>);
 
@@ -421,14 +421,14 @@
         public int Test_0227(bool isAʹ, int x)
         {
             var f =
-                 If(Object<A>.Is<Aʹ>)                           // (false, 2) -> 2
-                    .Then(From_Aʹ_To_D_With(Plus(2)))
-                    .Then(From_D_To_B_With(Plus(20)))
-                    .Then(From_B_To_ΔΔ_With(Plus(200)))         // (true, 300) -> 522
+                 If(Object<A>.Is<Aʹ>)                       // (false, 2) -> 2
+                    .Then(From_Aʹ_To_D_With(Add(2)))
+                    .Then(From_D_To_B_With(Add(20)))
+                    .Then(From_B_To_ΔΔ_With(Add(200)))      // (true, 300) -> 522
                     .If(ΔΔ_Is(MoreThen(1000)))
-                        .Then(From_ΔΔ_To_B_With(Plus(3)))
-                        .Then(From_B_To_D_With(Plus(30)))
-                        .Then(From_D_To_ΔΛ_With(Plus(300)))     // (true, 800) -> 1355
+                        .Then(From_ΔΔ_To_B_With(Add(3)))
+                        .Then(From_B_To_D_With(Add(30)))
+                        .Then(From_D_To_ΔΛ_With(Add(300)))  // (true, 800) -> 1355
                     .End(WithReturn<Δ>)
                 .End();
 
@@ -448,9 +448,9 @@
         {
             var f =
                  If(Object<Λ>.Is<ΛΛ>)                       // (false, 2) -> 2
-                    .Then(From_ΛΛ_To_ΔΔ_With(Plus(2)))      // (true, 3) -> 5
+                    .Then(From_ΛΛ_To_ΔΔ_With(Add(2)))       // (true, 3) -> 5
                     .If(ΔΔ_Is(MoreThen(10)))
-                        .Then(From_ΔΔ_To_Δ_With(Plus(3)))   // (true, 9) -> 14
+                        .Then(From_ΔΔ_To_Δ_With(Add(3)))    // (true, 9) -> 14
                     .End()
                 .End(WithReturn<A>);
 
@@ -474,9 +474,9 @@
 
             var f =                                             // (2, false) -> 2
                  If(Λ_Is(Odd))                                  // (2, true) -> 2
-                    .Then(from_Λ_To_Δ_OrTo_ΔΔ_With(Plus(2)))    // (3, false) -> 5
+                    .Then(from_Λ_To_Δ_OrTo_ΔΔ_With(Add(2)))     // (3, false) -> 5
                     .If(Object<Δ>.Is<ΔΔ>)
-                        .Then(From_ΔΔ_To_ΔΔΔ_With(Plus(3)))     // (3, true) -> 8
+                        .Then(From_ΔΔ_To_ΔΔΔ_With(Add(3)))      // (3, true) -> 8
                     .End()
                 .End(WithReturn<A>);
 
@@ -494,15 +494,15 @@
             var from_Λ_To_ΔΔ_OrTo_ΔΔ_With =
                 From_Λ_To_ΔΔ_OrTo_ΔΔΔ(isΔΔ);
 
-            var f =                                                 // (3, false) -> 3
-                 If(Δ_Is(Even))                                     // (3, true) -> 3
-                    .Then(From_A_To_D_With(Plus(2)))
-                    .Then(From_D_To_Λ_With(Plus(20)))
-                    .Then(from_Λ_To_ΔΔ_OrTo_ΔΔ_With(Plus(200)))     // (2, false) -> 224
+            var f =                                             // (3, false) -> 3
+                 If(Δ_Is(Even))                                 // (3, true) -> 3
+                    .Then(From_A_To_D_With(Add(2)))
+                    .Then(From_D_To_Λ_With(Add(20)))
+                    .Then(from_Λ_To_ΔΔ_OrTo_ΔΔ_With(Add(200)))  // (2, false) -> 224
                     .If(Object<ΔΔ>.Is<ΔΔΔ>)
-                        .Then(From_ΔΔΔ_To_B_With(Plus(3)))
-                        .Then(From_B_To_D_With(Plus(30)))
-                        .Then(From_D_To_ΔΛ_With(Plus(300)))         // (2, true) -> 557
+                        .Then(From_ΔΔΔ_To_B_With(Add(3)))
+                        .Then(From_B_To_D_With(Add(30)))
+                        .Then(From_D_To_ΔΛ_With(Add(300)))      // (2, true) -> 557
                     .End(WithReturn<A>)
                 .End();
 
