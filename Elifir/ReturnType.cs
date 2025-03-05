@@ -2,9 +2,7 @@
 {
     public static partial class Syntax
     {
-        public readonly struct ReturnType<T>;
-
-        public static ReturnType<T> WithReturn<T>() => 
-            new();
+        public static T WithReturn<T>() => 
+            throw new NotSupportedException("It is not for call !!!");
     }
 }
