@@ -59,9 +59,9 @@
 
         public static Func<I, B> End<I, T, B>(
             this ˣ.If<I>.Then<T> o,
-            Func<ReturnType<B>> _)
+            Func<B> _ /* return type holder */)
                 where T : B
                 where I : B =>
-                    i => o.ConditionalMap(i, out T? t) ? (B)t : i;
+                    i => o.ConditionalMap(i, out T? t) ? t : i;
     }
 }

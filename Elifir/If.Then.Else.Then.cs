@@ -52,7 +52,7 @@
 
         public static Func<I, B> End<I, T, E, B>(
             this ˣ.If<I>.Then<T>.Else.Then<E> o,
-            ReturnType<B> _)
+            Func<B> _)
                 where T : B
                 where E : B =>
                     i => o.ConditionalMap(i, out T? t) ? (B)t : o.ElseMap(i);

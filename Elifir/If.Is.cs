@@ -64,5 +64,18 @@
                         t = default;
                         return false;
                     });
+
+        public static ˣ<ˣ.If<I>.Then<Iʹ>, ˣ.If<Iʹ>> If<I, Iʹ>(
+            this ˣ.If<I>.Is<Iʹ> o,
+            Func<Iʹ, bool> condition) 
+                where Iʹ : I =>
+                    new(o.Then(Identity), If(condition));
+
+        public static ˣ<ˣ.If<I>.Then<Iʹ>, ˣ.If<Iʹ>.Is<Iʺ>> If<I, Iʹ, Iʺ>(
+            this ˣ.If<I>.Is<Iʹ> o,
+            Func<ConditionalMap<Iʹ, Iʺ>> condition) 
+                where Iʹ : I 
+                where Iʺ : Iʹ =>
+                    new(o.Then(Identity), If(condition));
     }
 }
