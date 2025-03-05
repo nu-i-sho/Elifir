@@ -42,7 +42,10 @@
         public static Func<Func<int, bool>, Func<ΔΛ, bool>> ΔΛ_Is = f => x => f(x.Value);
         public static Func<Func<int, bool>, Func<ΔΔ, bool>> ΔΔ_Is = f => x => f(x.Value);
 
-        public static Func<Func<int, bool>, Func<ΔΔ, bool>> ΔΔΔ_Is = f => x => f(x.Value);
+        public static Func<Func<int, bool>, Func<ΔΔΔ, bool>> ΔΔΔ_Is = f => x => f(x.Value);
+        public static Func<Func<int, bool>, Func<ΛΛΛ, bool>> ΛΛΛ_Is = f => x => f(x.Value);
+        public static Func<Func<int, bool>, Func<ΛΔΔ, bool>> ΛΔΔ_Is = f => x => f(x.Value);
+        public static Func<Func<int, bool>, Func<ΛΔΛ, bool>> ΛΔΛ_Is = f => x => f(x.Value);
 
         public static Func<Func<int, int>, Func<A, A>> From_A_To_A_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<A, B>> From_A_To_B_With = f => x => new(f(x.Value));
@@ -176,6 +179,7 @@
         public static Func<Func<int, int>, Func<ΔΔ, Δ>> From_ΔΔ_To_Δ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Δ, ΔΔ>> From_Δ_To_ΔΔ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<ΛΛ, Δ>> From_ΛΛ_To_Δ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<Δ, ΛΔ>> From_Δ_To_ΛΔ_With = f => x => new(f(x.Value));
 
         public static Func<Func<int, int>, Func<ΔΔ, ΔΛ>> From_ΔΔ_To_ΔΛ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<ΛΛ, ΛΛ>> From_ΛΛ_To_ΛΛ_With = f => x => new(f(x.Value));
@@ -184,10 +188,16 @@
         public static Func<Func<int, int>, Func<ΛΔ, ΛΛ>> From_ΛΔ_To_ΛΛ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<ΔΔ, ΛΔ>> From_ΔΔ_To_ΛΔ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<ΛΛ, ΔΔ>> From_ΛΛ_To_ΔΔ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<ΛΔ, ΛΔ>> From_ΛΔ_To_ΛΔ_With = f => x => new(f(x.Value));
 
         public static Func<Func<int, int>, Func<ΔΔΔ, B>> From_ΔΔΔ_To_B_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Λ, ΔΔΔ>> From_Λ_To_ΔΔΔ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<ΔΔ, ΔΔΔ>> From_ΔΔ_To_ΔΔΔ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<ΛΛΛ, ΛΛΔ>> From_ΛΛΛ_To_ΛΛΔ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<ΛΛ, ΛΛΔ>> From_ΛΛ_To_ΛΛΔ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<ΛΛ, ΛΛΛ>> From_ΛΛ_To_ΛΛΛ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<ΛΔΔ, ΔΛΔ>> From_ΛΔΔ_To_ΔΛΔ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<ΛΔΔ, Δ>> From_ΛΔΔ_To_Δ_With = f => x => new(f(x.Value));
 
         public static Func<Func<int, int>, Func<A, Δ>> From_A_To_Δ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<B, Λ>> From_B_To_Λ_With = f => x => new(f(x.Value));
@@ -201,6 +211,8 @@
         public static Func<Func<int, int>, Func<D, Δ>> From_D_To_Δ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Δ, C>> From_Δ_To_C_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Δ, D>> From_Δ_To_D_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<C, Λ>> From_C_To_Λ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<Δ, Δ>> From_Δ_To_Δ_With = f => x => new(f(x.Value));
 
         public static Func<Func<int, int>, Func<A, ΛΔ>> From_A_To_ΛΔ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<ΔΔ, A>> From_ΔΔ_To_A_With = f => x => new(f(x.Value));
@@ -222,6 +234,8 @@
         public static Func<Func<int, int>, Func<ΛΛ, B>> From_ΛΛ_To_B_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<ΔΔ, C>> From_ΔΔ_To_C_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<B, ΛΔ>> From_B_To_ΛΔ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<A, ΛΛ>> From_A_To_ΛΛ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<Δ, ΛΛ>> From_Δ_To_ΛΛ_With = f => x => new(f(x.Value));
 
         public static Func<Func<int, int>, Func<A, ΛΛΔ>> From_A_To_ΛΛΔ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<ΛΛΛ, A>> From_ΛΛΛ_To_A_With = f => x => new(f(x.Value));
@@ -239,6 +253,11 @@
         public static Func<Func<int, int>, Func<ΛΛΛ, B>> From_ΛΛΛ_To_B_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<ΔΔΔ, E>> From_ΔΔΔ_To_E_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<E, ΔΔΔ>> From_E_To_ΔΔΔ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<A, ΛΛΛ>> From_A_To_ΛΛΛ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<A, ΛΔΔ>> From_A_To_ΛΔΔ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<A, ΛΔΛ>> From_A_To_ΛΔΛ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<A, ΔΛΛ>> From_A_To_ΔΛΛ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<A, ΔΛΔ>> From_A_To_ΔΛΔ_With = f => x => new(f(x.Value));
 
         public static Func<bool, Func<Func<int, int>, Func<A, A>>> From_A_To_A_OrTo_Aʹ = 
             toAʹ => toAʹ ? From_A_To_Aʹ_With
