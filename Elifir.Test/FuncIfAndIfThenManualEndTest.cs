@@ -76,8 +76,8 @@
         [TestCase(3,   ExpectedResult = 4,   TestName = "Test_1003( 3 -> 4 )")]
         [TestCase(20,  ExpectedResult = 21,  TestName = "Test_1003( 20 -> 21 )")]
         [TestCase(21,  ExpectedResult = 24,  TestName = "Test_1003( 20 -> 24 )")]
-        [TestCase(221, ExpectedResult = 222, TestName = "Test_1003( 221 -> 222 )")]
-        [TestCase(121, ExpectedResult = 125, TestName = "Test_1003( 121 -> 125 )")]
+        [TestCase(221, ExpectedResult = 224, TestName = "Test_1003( 221 -> 224 )")]
+        [TestCase(121, ExpectedResult = 127, TestName = "Test_1003( 121 -> 127 )")]
         public int Test_1003(int x)
         {
             var f =
@@ -85,9 +85,9 @@
                 .If(Λ_Is(Even))                             // 20 -> 21
                 .AndIf(Λ_Is(MoreThen(10)))
                     .Then(From_Λ_To_ΛΛ_With(Add(2)))        // 21 -> 24
-                    .If(ΛΛ_Is(MoreThen(100)))               // 221 -> 222 
+                    .If(ΛΛ_Is(MoreThen(100)))               // 221 -> 224 
                     .AndIf(ΛΛ_Is(LessThen(200)))
-                        .Then(From_ΛΛ_To_ΛΔ_With(Add(3)))   // 121 -> 125
+                        .Then(From_ΛΛ_To_ΛΔ_With(Add(3)))   // 121 -> 127
                     .End(WithReturn<Λ>)
                 .End(WithReturn<A>);
 
@@ -100,8 +100,8 @@
         [TestCase(2,    true,  false, ExpectedResult = 113,  TestName = "Test_1005( 2, true, false -> 113 )")]
         [TestCase(1,    false, false, ExpectedResult = 112,  TestName = "Test_1005( 1, false, false -> 112 )")]
         [TestCase(1,    true,  false, ExpectedResult = 334,  TestName = "Test_1005( 1, true, false -> 334 )")]
-        [TestCase(1001, false, false, ExpectedResult = 1334, TestName = "Test_1005( 1001, false, false -> 1334 )")]
-        [TestCase(1001, true,  false, ExpectedResult = 1667, TestName = "Test_1005( 1001, true, false -> 1667 )")]
+        [TestCase(1001, true,  false, ExpectedResult = 1334, TestName = "Test_1005( 1001, true, false -> 1334 )")]
+        [TestCase(1001, true,  true,  ExpectedResult = 1667, TestName = "Test_1005( 1001, true, true -> 1667 )")]
         public int Test_1005(int x, bool firstIsΔΔ, bool secondIsΔΔΔ)
         {
             var from_D_To_Δ_OrTo_ΔΔ_With =
@@ -123,7 +123,7 @@
                     .AndIf(Object<ΔΔ>.Is<ΔΔΔ>)
                         .Then(From_ΔΔΔ_To_E_With(Add(3)))
                         .Then(From_E_To_B_With(Add(30)))
-                        .Then(From_B_To_ΔΛ_With(Add(300)))          // (1001, true, false) -> 1667
+                        .Then(From_B_To_ΔΛ_With(Add(300)))          // (1001, true, true) -> 1667
                     .End(WithReturn<Δ>)
                 .End(WithReturn<A>);
 
