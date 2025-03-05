@@ -35,7 +35,6 @@
             Assert.That(result.Value, Is.EqualTo(42));
         }
 
-
         [Test]
         public void Test_0003()
         {
