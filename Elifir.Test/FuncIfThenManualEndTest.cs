@@ -453,7 +453,7 @@
         public int Test_0427(bool isAʹ, int x)
         {
             var from_A_To_A_Or_To_Aʹ_With =
-                From_A_To_A_Or_To_Aʹ(isAʹ);
+                From_A_To_A_OrTo_Aʹ(isAʹ);
 
             var f =
                  From_C_To_E_With(Add(1))

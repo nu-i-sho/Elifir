@@ -520,7 +520,7 @@
         public int Test_0132(bool firstIsAʹ, bool secondIsAʹ)
         {
             var from_Aʹ_To_A_Or_To_Aʹ_With =
-                From_Aʹ_To_A_Or_To_Aʹ(secondIsAʹ);
+                From_Aʹ_To_A_OrTo_Aʹ(secondIsAʹ);
 
             var f =                                             // (false, true, 1) -> 1
                  If(Object<A>.Is<Aʹ>)                           // (false, true, 1) -> 1
@@ -546,7 +546,7 @@
         public int Test_0133(bool firstIsAʹ, bool secondIsAʹ)
         {
             var from_A_To_A_Or_To_Aʹ_With =
-                From_A_To_A_Or_To_Aʹ(secondIsAʹ);
+                From_A_To_A_OrTo_Aʹ(secondIsAʹ);
 
             var f =                                             // (false, false, 7) -> 7
                  If(Object<A>.Is<Aʹ>)                           // (false, true,  7) -> 7
@@ -574,7 +574,7 @@
         public int Test_0134(bool firstIsAʹ, bool secondIsAʹ)
         {
             var from_A_To_A_Or_To_Aʹ_With =
-                From_A_To_A_Or_To_Aʹ(secondIsAʹ);
+                From_A_To_A_OrTo_Aʹ(secondIsAʹ);
 
             var f =                                             // (false, false, 7) -> 7
                  If(Object<A>.Is<Aʹ>)                           // (false, true,  7) -> 7
@@ -651,7 +651,7 @@
         public int Test_0137(int x, bool secondIsCʹ)
         {
             var from_B_To_C_Or_To_Cʹ_With =
-                From_B_To_C_Or_To_Cʹ(secondIsCʹ);
+                From_B_To_C_OrTo_Cʹ(secondIsCʹ);
 
             var f =                                                 // (3, false) -> 3
                  If(C_Is(Even))                                     // (3, true) -> 3
@@ -677,7 +677,7 @@
         public int Test_0138(int x, bool secondIsAʹ)
         {
             var from_Aʹ_To_A_Or_To_Aʹ_With =
-                From_Aʹ_To_A_Or_To_Aʹ(secondIsAʹ);
+                From_Aʹ_To_A_OrTo_Aʹ(secondIsAʹ);
 
             var f =                                             // (8, false) -> 8
                  If(Aʹ_Is(Odd))                                 // (8, true) -> 8
@@ -699,7 +699,7 @@
         public int Test_0141(bool firstIsBʹ, bool secondIsBʹ)
         {
             var from_B_To_A_Or_To_Aʹ_With =
-                From_B_To_B_Or_To_Bʹ(secondIsBʹ);
+                From_B_To_B_OrTo_Bʹ(secondIsBʹ);
 
             var f =                                             // (54, false, false) -> 54
                   If(Object<B>.Is<Bʹ>)                          // (54, false, true) -> 54

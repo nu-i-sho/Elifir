@@ -7,11 +7,12 @@ namespace Nuisho.Elifir.Test
         public static Func<int, Func<int, int>> Add => x => y => x + y;
 
         public static Func<int, bool> Even => x => x % 2 == 0;
-
-        public static Func<int, bool> Odd => x => x % 2 != 0;
+        public static Func<int, bool> Odd  => x => x % 2 != 0;
 
         public static Func<int, Func<int, bool>> MoreThen => x => y => y > x;
         public static Func<int, Func<int, bool>> LessThen => x => y => y < x;
+
+        public static Func<string, Func<int, bool>> EndingWith => x => y => y.ToString().EndsWith(x);
 
         public static Func<Func<int, bool>, Func<A, bool>> A_Is = f => x => f(x.Value);
         public static Func<Func<int, bool>, Func<B, bool>> B_Is = f => x => f(x.Value);
@@ -77,6 +78,16 @@ namespace Nuisho.Elifir.Test
         public static Func<Func<int, int>, Func<D, E>> From_D_To_E_With = f => x => new(f(x.Value));
 
         public static Func<Func<int, int>, Func<D, Aʹ>> From_D_To_Aʹ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<D, Aʺ>> From_D_To_Aʺ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<D, Aʺʹ>> From_D_To_Aʺʹ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<D, Aʺʺ>> From_D_To_Aʺʺ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<D, Aʺʺʹ>> From_D_To_Aʺʺʹ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<D, Aʺʺʺ>> From_D_To_Aʺʺʺ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<D, Aʺʺʺʹ>> From_D_To_Aʺʺʺʹ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<D, Aʺʺʺʺ>> From_D_To_Aʺʺʺʺ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<D, Aʺʺʺʺʹ>> From_D_To_Aʺʺʺʺʹ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<D, Aʺʺʺʺʺ>> From_D_To_Aʺʺʺʺʺ_With = f => x => new(f(x.Value));
+
         public static Func<Func<int, int>, Func<D, Bʹ>> From_D_To_Bʹ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<D, Cʹ>> From_D_To_Cʹ_With = f => x => new(f(x.Value));
 
@@ -138,6 +149,12 @@ namespace Nuisho.Elifir.Test
         public static Func<Func<int, int>, Func<Aʺʺ, Aʺʹ>> From_Aʺʺ_To_Aʺʹ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Aʺʹ, Aʺ>> From_Aʺʹ_To_Aʺ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Aʺ, Aʹ>> From_Aʺ_To_Aʹ_With = f => x => new(f(x.Value));
+
+        public static Func<Func<int, int>, Func<Aʺ, A>> From_Aʺ_To_A_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<Aʺʹ, A>> From_Aʺʹ_To_A_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<Aʺ, E>> From_Aʺ_To_E_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<Aʺʺʺʹ, E>> From_Aʺʺʺʹ_To_E_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<A, Aʺ>> From_A_To_Aʺ_With = f => x => new(f(x.Value));
 
         public static Func<Func<int, int>, Func<A, Λ>> From_A_To_Λ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Λ, Λ>> From_Λ_To_Λ_With = f => x => new(f(x.Value));
@@ -203,23 +220,27 @@ namespace Nuisho.Elifir.Test
         public static Func<Func<int, int>, Func<ΛΛΛ, E>> From_ΛΛΛ_To_E_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<E, ΛΛΛ>> From_E_To_ΛΛΛ_With = f => x => new(f(x.Value));
 
-        public static Func<bool, Func<Func<int, int>, Func<A, A>>> From_A_To_A_Or_To_Aʹ = 
+        public static Func<bool, Func<Func<int, int>, Func<A, A>>> From_A_To_A_OrTo_Aʹ = 
             toAʹ => toAʹ ? From_A_To_Aʹ_With
                          : From_A_To_A_With;
 
-        public static Func<bool, Func<Func<int, int>, Func<Aʹ, A>>> From_Aʹ_To_A_Or_To_Aʹ =
+        public static Func<bool, Func<Func<int, int>, Func<Aʹ, A>>> From_Aʹ_To_A_OrTo_Aʹ =
             toAʹ => toAʹ ? From_Aʹ_To_Aʹ_With
                          : From_Aʹ_To_A_With;
+
+        public static Func<bool, Func<Func<int, int>, Func<A, Aʹ>>> From_A_To_Aʹ_OrTo_Aʺ =
+            toAʺ => toAʺ ? From_A_To_Aʺ_With
+                         : From_A_To_Aʹ_With;
 
         public static Func<bool, Func<Func<int, int>, Func<D, C>>> From_D_To_C_OrTo_Cʹ =
             toCʹ => toCʹ ? From_D_To_Cʹ_With
                          : From_D_To_C_With;
 
-        public static Func<bool, Func<Func<int, int>, Func<B, C>>> From_B_To_C_Or_To_Cʹ =
+        public static Func<bool, Func<Func<int, int>, Func<B, C>>> From_B_To_C_OrTo_Cʹ =
             toCʹ => toCʹ ? From_B_To_Cʹ_With
                          : From_B_To_C_With;
 
-        public static Func<bool, Func<Func<int, int>, Func<B, B>>> From_B_To_B_Or_To_Bʹ =
+        public static Func<bool, Func<Func<int, int>, Func<B, B>>> From_B_To_B_OrTo_Bʹ =
             toBʹ => toBʹ ? From_B_To_Bʹ_With
                          : From_B_To_B_With;
 
@@ -250,5 +271,60 @@ namespace Nuisho.Elifir.Test
         public static Func<bool, Func<Func<int, int>, Func<D, Δ>>> From_D_To_Δ_OrTo_ΔΔ =
             toΔΔ => toΔΔ ? From_D_To_ΔΔ_With
                          : From_D_To_Δ_With;
+
+        public enum To
+        {
+            A,
+            Aʹ,
+            Aʺ,
+            Aʺʹ,
+            Aʺʺ,
+            Aʺʺʹ,
+            Aʺʺʺ,
+            Aʺʺʺʹ,
+            Aʺʺʺʺ,
+            Aʺʺʺʺʹ,
+            Aʺʺʺʺʺ
+        }
+
+        public static Func<To, Func<Func<int, int>, Func<D, A>>> From_D_To_SomeA =
+            to => to switch
+            {
+                To.A => From_D_To_A_With,
+                To.Aʹ => From_D_To_Aʹ_With,
+                To.Aʺ => From_D_To_Aʺ_With,
+                To.Aʺʹ => From_D_To_Aʺʹ_With,
+                To.Aʺʺ => From_D_To_Aʺʺ_With,
+                To.Aʺʺʹ => From_D_To_Aʺʺʹ_With,
+                To.Aʺʺʺ => From_D_To_Aʺʺʺ_With,
+                To.Aʺʺʺʹ => From_D_To_Aʺʺʺʹ_With,
+                To.Aʺʺʺʺ => From_D_To_Aʺʺʺʺ_With,
+                To.Aʺʺʺʺʹ => From_D_To_Aʺʺʺʺʹ_With,
+                To.Aʺʺʺʺʺ => From_D_To_Aʺʺʺʺʺ_With,
+                _ => throw new InvalidOperationException()
+            };
+
+        public static Func<To, Func<Func<int, int>, Func<D, Aʹ>>> From_D_To_SomeAʹ =
+            to => f => x => (Aʹ)From_D_To_SomeA(to)(f)(x);
+
+        public static Func<To, Func<int, A>> From_Int_To_SomeA =
+            to => x => to switch
+            {
+                To.A => new A(x),
+                To.Aʹ => new Aʹ(x),
+                To.Aʺ => new Aʺ(x),
+                To.Aʺʹ => new Aʺʹ(x),
+                To.Aʺʺ => new Aʺʺ(x),
+                To.Aʺʺʹ => new Aʺʺʹ(x),
+                To.Aʺʺʺ => new Aʺʺʺ(x),
+                To.Aʺʺʺʹ => new Aʺʺʺʹ(x),
+                To.Aʺʺʺʺ => new Aʺʺʺʺ(x),
+                To.Aʺʺʺʺʹ => new Aʺʺʺʺʹ(x),
+                To.Aʺʺʺʺʺ => new Aʺʺʺʺʺ(x),
+                _ => throw new InvalidOperationException()
+            };
+
+        public static Func<To, Func<int, Aʹ>> From_Int_To_SomeAʹ =
+            to => x => (Aʹ)From_Int_To_SomeA(to)(x);
     }
 }
