@@ -12,7 +12,7 @@
         {
             var f =
                  If(A_Is(Even))                         // 1 -> 1
-                    .Then(From_A_To_A_With(Plus(2)))    // 2 -> 4
+                    .Then(From_A_To_A_With(Add(2)))     // 2 -> 4
                 .End();
 
             A result = f(new A(x));
@@ -26,8 +26,8 @@
         {
             var f =
                  If(A_Is(Even))                         // 1 -> 1
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))   // 8 -> 30
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))    // 8 -> 30
                 .End();
 
             A result = f(new A(x));
@@ -41,9 +41,9 @@
         {
             var f =
                  If(A_Is(Even))                         // 11 -> 11
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))
-                    .Then(From_A_To_A_With(Plus(200)))  // 22 -> 244
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))
+                    .Then(From_A_To_A_With(Add(200)))   // 22 -> 244
                 .End();
 
             A result = f(new A(x));
@@ -57,9 +57,9 @@
         {
             var f =
                  If(D_Is(Even))                         // 11 -> 11
-                    .Then(From_D_To_C_With(Plus(2)))
-                    .Then(From_C_To_E_With(Plus(20)))
-                    .Then(From_E_To_D_With(Plus(200)))  // 22 -> 244
+                    .Then(From_D_To_C_With(Add(2)))
+                    .Then(From_C_To_E_With(Add(20)))
+                    .Then(From_E_To_D_With(Add(200)))   // 22 -> 244
                 .End();
 
             D result = f(new D(x));
@@ -73,7 +73,7 @@
         {
             var f =
                  If(A_Is(Odd))                          // 9 -> 11
-                    .Then(From_A_To_Aʹ_With(Plus(2)))   // 8 -> 10
+                    .Then(From_A_To_Aʹ_With(Add(2)))    // 8 -> 10
                 .End();
 
             A result = f(new A(x));
@@ -87,8 +87,8 @@
         {
             var f =
                  If(A_Is(MoreThen(100)))                // 99 -> 99
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_Aʹ_With(Plus(20)))  // 101 -> 123
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_Aʹ_With(Add(20)))   // 101 -> 123
                 .End();
 
             A result = f(new A(x));
@@ -102,9 +102,9 @@
         {
             var f =
                  If(B_Is(Odd))                          // 11 -> 233
-                    .Then(From_B_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_Bʹ_With(Plus(200))) // 2 -> 335
+                    .Then(From_B_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_Bʹ_With(Add(200)))  // 2 -> 335
                 .End();
 
             B result = f(new B(x));
@@ -118,8 +118,8 @@
         public int Test_0108(int x)
         {
             var f =
-                 If(Aʹ_Is(Even))                         // 1 -> 1
-                    .Then(From_Aʹ_To_A_With(Plus(2)))    // 2 -> 4
+                 If(Aʹ_Is(Even))                        // 1 -> 1
+                    .Then(From_Aʹ_To_A_With(Add(2)))    // 2 -> 4
                 .End();
 
             A result = f(new Aʹ(x));
@@ -133,8 +133,8 @@
         {
             var f =
                  If(Aʹ_Is(Odd))                         // 2 -> 2
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))   // 9 -> 31
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))    // 9 -> 31
                 .End();
 
             A result = f(new Aʹ(x));
@@ -148,9 +148,9 @@
         {
             var f =
                  If(Bʹ_Is(Odd))                         // 8 -> 8
-                    .Then(From_B_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_B_With(Plus(200)))  // 3 -> 225
+                    .Then(From_B_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_B_With(Add(200)))   // 3 -> 225
                 .End();
             
             B result = f(new Bʹ(x));
@@ -165,9 +165,9 @@
         {
             var f =
                  If(A_Is(Even))                             // 1 -> 1
-                    .Then(From_A_To_A_With(Plus(2)))        // 2 -> 4
+                    .Then(From_A_To_A_With(Add(2)))         // 2 -> 4
                     .If(A_Is(MoreThen(1000)))
-                        .Then(From_A_To_A_With(Plus(3)))    // 1000 -> 1005
+                        .Then(From_A_To_A_With(Add(3)))     // 1000 -> 1005
                     .End()
                 .End();
 
@@ -183,11 +183,11 @@
         {
             var f =
                  If(A_Is(Odd))                              // 6 -> 6
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))       // 7 -> 29
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))        // 7 -> 29
                     .If(A_Is(MoreThen(100)))
-                        .Then(From_A_To_A_With(Plus(20)))
-                        .Then(From_A_To_A_With(Plus(21)))   // 81 -> 144
+                        .Then(From_A_To_A_With(Add(20)))
+                        .Then(From_A_To_A_With(Add(21)))    // 81 -> 144
                     .End()
                 .End();
 
@@ -203,13 +203,13 @@
         {
             var f =
                  If(A_Is(Even))                             // 33 -> 33
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))
-                    .Then(From_A_To_A_With(Plus(200)))      // 34 -> 256 
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))
+                    .Then(From_A_To_A_With(Add(200)))       // 34 -> 256 
                     .If(A_Is(MoreThen(1000)))
-                        .Then(From_A_To_A_With(Plus(3)))
-                        .Then(From_A_To_A_With(Plus(30)))
-                        .Then(From_A_To_A_With(Plus(300)))  // 800 -> 1355
+                        .Then(From_A_To_A_With(Add(3)))
+                        .Then(From_A_To_A_With(Add(30)))
+                        .Then(From_A_To_A_With(Add(300)))   // 800 -> 1355
                     .End()
                 .End();
 
@@ -225,9 +225,9 @@
         {
             var f =
                  If(B_Is(Even))                             // 7 -> 7
-                    .Then(From_B_To_Bʹ_With(Plus(2)))       // 8 -> 10
+                    .Then(From_B_To_Bʹ_With(Add(2)))        // 8 -> 10
                     .If(Bʹ_Is(MoreThen(1000)))
-                        .Then(From_B_To_Bʹ_With(Plus(3)))   // 1200 -> 1205
+                        .Then(From_B_To_Bʹ_With(Add(3)))    // 1200 -> 1205
                     .End()
                 .End();
 
@@ -243,11 +243,11 @@
         {
             var f =
                  If(C_Is(Odd))                              // 6 -> 6
-                    .Then(From_C_To_D_With(Plus(2)))
-                    .Then(From_D_To_C_With(Plus(20)))       // 5 -> 27
+                    .Then(From_C_To_D_With(Add(2)))
+                    .Then(From_D_To_C_With(Add(20)))        // 5 -> 27
                     .If(C_Is(MoreThen(100)))
-                        .Then(From_C_To_A_With(Plus(20)))
-                        .Then(From_A_To_Cʹ_With(Plus(21)))  // 89 -> 152
+                        .Then(From_C_To_A_With(Add(20)))
+                        .Then(From_A_To_Cʹ_With(Add(21)))   // 89 -> 152
                     .End()
                 .End();
 
@@ -263,13 +263,13 @@
         {
             var f =
                  If(C_Is(Even))                             // 999 -> 999
-                    .Then(From_C_To_D_With(Plus(2)))
-                    .Then(From_D_To_B_With(Plus(20)))
-                    .Then(From_B_To_Cʹ_With(Plus(200)))     // 666 -> 888
+                    .Then(From_C_To_D_With(Add(2)))
+                    .Then(From_D_To_B_With(Add(20)))
+                    .Then(From_B_To_Cʹ_With(Add(200)))      // 666 -> 888
                     .If(Cʹ_Is(MoreThen(1000)))
-                        .Then(From_Cʹ_To_B_With(Plus(3)))
-                        .Then(From_B_To_D_With(Plus(30)))
-                        .Then(From_D_To_Cʹ_With(Plus(300))) // 888 -> 1443
+                        .Then(From_Cʹ_To_B_With(Add(3)))
+                        .Then(From_B_To_D_With(Add(30)))
+                        .Then(From_D_To_Cʹ_With(Add(300)))  // 888 -> 1443
                     .End()
                 .End();
 
@@ -285,9 +285,9 @@
         {
             var f =
                  If(Aʹ_Is(Odd))                             // 2 -> 2
-                    .Then(From_Aʹ_To_A_With(Plus(2)))       // 3 -> 5
+                    .Then(From_Aʹ_To_A_With(Add(2)))        // 3 -> 5
                     .If(A_Is(MoreThen(10)))
-                        .Then(From_A_To_A_With(Plus(3)))    // 10 -> 14
+                        .Then(From_A_To_A_With(Add(3)))     // 10 -> 14
                     .End()
                 .End();
 
@@ -304,9 +304,9 @@
         {
             var f =
                  If(Aʹ_Is(Odd))                             // 2 -> 2
-                    .Then(From_Aʹ_To_A_With(Plus(2)))       // 3 -> 5
+                    .Then(From_Aʹ_To_A_With(Add(2)))        // 3 -> 5
                     .If(A_Is(MoreThen(10)))
-                        .Then(From_A_To_Aʹ_With(Plus(3)))   // 10 -> 14
+                        .Then(From_A_To_Aʹ_With(Add(3)))    // 10 -> 14
                    .End()
                 .End();
 
@@ -322,9 +322,9 @@
         {
             var f =
                  If(B_Is(Even))                             // 1 -> 1
-                    .Then(From_B_To_B_With(Plus(2)))        // 2 -> 4
+                    .Then(From_B_To_B_With(Add(2)))         // 2 -> 4
                     .If(B_Is(MoreThen(1000)))
-                        .Then(From_B_To_B_With(Plus(3)))    // 1400 -> 1405
+                        .Then(From_B_To_B_With(Add(3)))     // 1400 -> 1405
                     .End()
                 .End();
 
@@ -340,13 +340,13 @@
         {
             var f =
                   If(Bʹ_Is(Even))                           // 113 -> 113
-                    .Then(From_B_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_B_With(Plus(200)))      // 20 -> 242
+                    .Then(From_B_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_B_With(Add(200)))       // 20 -> 242
                     .If(B_Is(MoreThen(1000)))
-                        .Then(From_B_To_E_With(Plus(3)))
-                        .Then(From_E_To_B_With(Plus(30)))
-                        .Then(From_B_To_B_With(Plus(300)))  // 1002 -> 1557
+                        .Then(From_B_To_E_With(Add(3)))
+                        .Then(From_E_To_B_With(Add(30)))
+                        .Then(From_B_To_B_With(Add(300)))   // 1002 -> 1557
                     .End()
                 .End();
 
@@ -362,13 +362,13 @@
         {
             var f =
                  If(Bʹ_Is(Even))                            // 113 -> 113
-                    .Then(From_Bʹ_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_B_With(Plus(200)))      // 20 -> 242
+                    .Then(From_Bʹ_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_B_With(Add(200)))       // 20 -> 242
                     .If(B_Is(MoreThen(1000)))
-                        .Then(From_B_To_E_With(Plus(3)))
-                        .Then(From_E_To_B_With(Plus(30)))
-                        .Then(From_B_To_Bʹ_With(Plus(300))) // 1002 -> 1557
+                        .Then(From_B_To_E_With(Add(3)))
+                        .Then(From_E_To_B_With(Add(30)))
+                        .Then(From_B_To_Bʹ_With(Add(300)))  // 1002 -> 1557
                     .End()
                 .End();
 
@@ -382,8 +382,8 @@
         public int Test_0122(bool isAʹ)
         {
             var f =
-                 If(Object<A>.Is<Aʹ>)                  // (false, 7) -> 7
-                    .Then(From_A_To_A_With(Plus(2)))   // (true, 7) -> 9
+                 If(Object<A>.Is<Aʹ>)                   // (false, 7) -> 7
+                    .Then(From_A_To_A_With(Add(2)))     // (true, 7) -> 9
                 .End();
 
             A arg = isAʹ 
@@ -401,8 +401,8 @@
         {
             var f =
                  If(Object<A>.Is<Aʹ>)                   // (false, 3) -> 3
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))   // (true, 3) -> 25
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))    // (true, 3) -> 25
                 .End();
 
             A arg = isAʹ
@@ -420,9 +420,9 @@
         {
             var f =
                  If(Object<A>.Is<Aʹ>)                   // (false, 50) -> 50
-                    .Then(From_Aʹ_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))
-                    .Then(From_A_To_Aʹ_With(Plus(200))) // (true, 50) -> 272
+                    .Then(From_Aʹ_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))
+                    .Then(From_A_To_Aʹ_With(Add(200)))  // (true, 50) -> 272
                 .End();
 
             A arg = isAʹ
@@ -440,9 +440,9 @@
         {
             var f =
                  If(Object<A>.Is<Aʹ>)                   // (false, 11) -> 11
-                    .Then(From_Aʹ_To_C_With(Plus(2)))
-                    .Then(From_C_To_E_With(Plus(20)))
-                    .Then(From_E_To_A_With(Plus(200)))  // (true, 11) -> 233
+                    .Then(From_Aʹ_To_C_With(Add(2)))
+                    .Then(From_C_To_E_With(Add(20)))
+                    .Then(From_E_To_A_With(Add(200)))   // (true, 11) -> 233
                 .End();
 
             A arg = isAʹ
@@ -460,8 +460,8 @@
         public int Test_0126(bool isAʹ)
         {
             var f =
-                 If(Object<A>.Is<Aʹ>)                    // (false, 2) -> 2
-                    .Then(From_Aʹ_To_Aʹ_With(Plus(2)))   // (true, 2) -> 4
+                 If(Object<A>.Is<Aʹ>)                   // (false, 2) -> 2
+                    .Then(From_Aʹ_To_Aʹ_With(Add(2)))   // (true, 2) -> 4
                 .End();
 
             A arg = isAʹ
@@ -479,8 +479,8 @@
         {
             var f =
                  If(Object<A>.Is<Aʹ>)                   // (false, 99) -> 99
-                    .Then(From_Aʹ_To_A_With(Plus(2)))
-                    .Then(From_A_To_Aʹ_With(Plus(20)))  // (true, 99) -> 121
+                    .Then(From_Aʹ_To_A_With(Add(2)))
+                    .Then(From_A_To_Aʹ_With(Add(20)))   // (true, 99) -> 121
                 .End();
 
             A arg = isAʹ
@@ -498,9 +498,9 @@
         {
             var f =
                  If(Object<B>.Is<Bʹ>)                   // (false, 10) -> 10
-                    .Then(From_Bʹ_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(From_B_To_Bʹ_With(Plus(200))) // (true, 10) -> 232
+                    .Then(From_Bʹ_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(From_B_To_Bʹ_With(Add(200)))  // (true, 10) -> 232
                 .End();
 
             B arg = isBʹ
@@ -520,13 +520,13 @@
         public int Test_0132(bool firstIsAʹ, bool secondIsAʹ)
         {
             var from_Aʹ_To_A_Or_To_Aʹ_With =
-                From_Aʹ_To_A_Or_To_Aʹ(secondIsAʹ);
+                From_Aʹ_To_A_OrTo_Aʹ(secondIsAʹ);
 
-            var f =                                                 // (false, true, 1) -> 1
-                 If(Object<A>.Is<Aʹ>)                               // (false, true, 1) -> 1
-                    .Then(from_Aʹ_To_A_Or_To_Aʹ_With(Plus(2)))      // (true, false, 1) -> 3
+            var f =                                             // (false, true, 1) -> 1
+                 If(Object<A>.Is<Aʹ>)                           // (false, true, 1) -> 1
+                    .Then(from_Aʹ_To_A_Or_To_Aʹ_With(Add(2)))   // (true, false, 1) -> 3
                     .If(Object<A>.Is<Aʹ>)
-                        .Then(From_A_To_A_With(Plus(3)))            // (true, false, 1) -> 6
+                        .Then(From_A_To_A_With(Add(3)))         // (true, false, 1) -> 6
                     .End()
                 .End();
 
@@ -546,15 +546,15 @@
         public int Test_0133(bool firstIsAʹ, bool secondIsAʹ)
         {
             var from_A_To_A_Or_To_Aʹ_With =
-                From_A_To_A_Or_To_Aʹ(secondIsAʹ);
+                From_A_To_A_OrTo_Aʹ(secondIsAʹ);
 
-            var f =                                                 // (false, false, 7) -> 7
-                 If(Object<A>.Is<Aʹ>)                               // (false, true,  7) -> 7
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(from_A_To_A_Or_To_Aʹ_With(Plus(20)))      // (true, false, 7) -> 29
+            var f =                                             // (false, false, 7) -> 7
+                 If(Object<A>.Is<Aʹ>)                           // (false, true,  7) -> 7
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(from_A_To_A_Or_To_Aʹ_With(Add(20)))   // (true, false, 7) -> 29
                     .If(Object<A>.Is<Aʹ>)
-                        .Then(From_A_To_A_With(Plus(20)))
-                        .Then(From_A_To_A_With(Plus(21)))           // (true, true, 7) -> 71
+                        .Then(From_A_To_A_With(Add(20)))
+                        .Then(From_A_To_A_With(Add(21)))        // (true, true, 7) -> 71
                     .End()
                 .End();
 
@@ -574,17 +574,17 @@
         public int Test_0134(bool firstIsAʹ, bool secondIsAʹ)
         {
             var from_A_To_A_Or_To_Aʹ_With =
-                From_A_To_A_Or_To_Aʹ(secondIsAʹ);
+                From_A_To_A_OrTo_Aʹ(secondIsAʹ);
 
-            var f =                                                 // (false, false, 7) -> 7
-                 If(Object<A>.Is<Aʹ>)                               // (false, true,  7) -> 7
-                    .Then(From_A_To_A_With(Plus(2)))
-                    .Then(From_A_To_A_With(Plus(20)))
-                    .Then(from_A_To_A_Or_To_Aʹ_With(Plus(200)))     // (true, false, 7) -> 229
+            var f =                                             // (false, false, 7) -> 7
+                 If(Object<A>.Is<Aʹ>)                           // (false, true,  7) -> 7
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))
+                    .Then(from_A_To_A_Or_To_Aʹ_With(Add(200)))  // (true, false, 7) -> 229
                     .If(Object<A>.Is<Aʹ>)
-                        .Then(From_A_To_A_With(Plus(3)))
-                        .Then(From_A_To_A_With(Plus(30)))
-                        .Then(From_A_To_A_With(Plus(300)))          // (true, true, 7) -> 562
+                        .Then(From_A_To_A_With(Add(3)))
+                        .Then(From_A_To_A_With(Add(30)))
+                        .Then(From_A_To_A_With(Add(300)))       // (true, true, 7) -> 562
                     .End()
                 .End();
 
@@ -605,9 +605,9 @@
         {
             var f =                                         // (false, 2) -> 2
                  If(Object<B>.Is<Bʹ>)                       // (false, 2000) -> 2000
-                    .Then(From_B_To_Bʹ_With(Plus(2)))       // (true, 2) -> 4
+                    .Then(From_B_To_Bʹ_With(Add(2)))        // (true, 2) -> 4
                     .If(Bʹ_Is(MoreThen(1000)))
-                        .Then(From_B_To_Bʹ_With(Plus(3)))   // (true, 2000) -> 2005
+                        .Then(From_B_To_Bʹ_With(Add(3)))    // (true, 2000) -> 2005
                     .End()
                 .End();
 
@@ -627,15 +627,15 @@
         public int Test_0136(int x, bool secondIsCʹ)
         {
             var from_D_To_C_Or_To_Cʹ_With =
-                From_D_To_C_Or_To_Cʹ(secondIsCʹ);
+                From_D_To_C_OrTo_Cʹ(secondIsCʹ);
 
             var f =                                             // (2, false) -> 2
                  If(C_Is(Odd))                                  // (2, true) -> 2
-                    .Then(From_C_To_D_With(Plus(2)))
-                    .Then(from_D_To_C_Or_To_Cʹ_With(Plus(20)))  // (3, false) -> 25
+                    .Then(From_C_To_D_With(Add(2)))
+                    .Then(from_D_To_C_Or_To_Cʹ_With(Add(20)))   // (3, false) -> 25
                     .If(Object<C>.Is<Cʹ>)
-                        .Then(From_Cʹ_To_A_With(Plus(20)))
-                        .Then(From_A_To_Cʹ_With(Plus(21)))      // (3, true) -> 66
+                        .Then(From_Cʹ_To_A_With(Add(20)))
+                        .Then(From_A_To_Cʹ_With(Add(21)))       // (3, true) -> 66
                     .End()
                 .End();
 
@@ -651,17 +651,17 @@
         public int Test_0137(int x, bool secondIsCʹ)
         {
             var from_B_To_C_Or_To_Cʹ_With =
-                From_B_To_C_Or_To_Cʹ(secondIsCʹ);
+                From_B_To_C_OrTo_Cʹ(secondIsCʹ);
 
             var f =                                                 // (3, false) -> 3
                  If(C_Is(Even))                                     // (3, true) -> 3
-                    .Then(From_C_To_D_With(Plus(2)))
-                    .Then(From_D_To_B_With(Plus(20)))
-                    .Then(from_B_To_C_Or_To_Cʹ_With(Plus(200)))     // (2, false) -> 224
+                    .Then(From_C_To_D_With(Add(2)))
+                    .Then(From_D_To_B_With(Add(20)))
+                    .Then(from_B_To_C_Or_To_Cʹ_With(Add(200)))      // (2, false) -> 224
                     .If(Object<C>.Is<Cʹ>)
-                        .Then(From_Cʹ_To_B_With(Plus(3)))
-                        .Then(From_B_To_D_With(Plus(30)))
-                        .Then(From_D_To_Cʹ_With(Plus(300)))         // (2, true) -> 557
+                        .Then(From_Cʹ_To_B_With(Add(3)))
+                        .Then(From_B_To_D_With(Add(30)))
+                        .Then(From_D_To_Cʹ_With(Add(300)))          // (2, true) -> 557
                     .End()
                 .End();
 
@@ -677,13 +677,13 @@
         public int Test_0138(int x, bool secondIsAʹ)
         {
             var from_Aʹ_To_A_Or_To_Aʹ_With =
-                From_Aʹ_To_A_Or_To_Aʹ(secondIsAʹ);
+                From_Aʹ_To_A_OrTo_Aʹ(secondIsAʹ);
 
             var f =                                             // (8, false) -> 8
                  If(Aʹ_Is(Odd))                                 // (8, true) -> 8
-                    .Then(from_Aʹ_To_A_Or_To_Aʹ_With(Plus(2)))  // (5, false) -> 7
+                    .Then(from_Aʹ_To_A_Or_To_Aʹ_With(Add(2)))   // (5, false) -> 7
                     .If(Object<A>.Is<Aʹ>)
-                        .Then(From_A_To_A_With(Plus(3)))        // (5, true) -> 10
+                        .Then(From_A_To_A_With(Add(3)))         // (5, true) -> 10
                     .End()
                 .End();
 
@@ -699,17 +699,17 @@
         public int Test_0141(bool firstIsBʹ, bool secondIsBʹ)
         {
             var from_B_To_A_Or_To_Aʹ_With =
-                From_B_To_B_Or_To_Bʹ(secondIsBʹ);
+                From_B_To_B_OrTo_Bʹ(secondIsBʹ);
 
             var f =                                             // (54, false, false) -> 54
                   If(Object<B>.Is<Bʹ>)                          // (54, false, true) -> 54
-                    .Then(From_Bʹ_To_E_With(Plus(2)))
-                    .Then(From_E_To_B_With(Plus(20)))
-                    .Then(from_B_To_A_Or_To_Aʹ_With(Plus(200))) // (54, true, false) -> 276
+                    .Then(From_Bʹ_To_E_With(Add(2)))
+                    .Then(From_E_To_B_With(Add(20)))
+                    .Then(from_B_To_A_Or_To_Aʹ_With(Add(200)))  // (54, true, false) -> 276
                     .If(Object<B>.Is<Bʹ>)
-                        .Then(From_B_To_E_With(Plus(3)))
-                        .Then(From_E_To_B_With(Plus(30)))
-                        .Then(From_B_To_B_With(Plus(300)))      // (54, true, true) -> 609
+                        .Then(From_B_To_E_With(Add(3)))
+                        .Then(From_E_To_B_With(Add(30)))
+                        .Then(From_B_To_B_With(Add(300)))       // (54, true, true) -> 609
                     .End()
                 .End();
 

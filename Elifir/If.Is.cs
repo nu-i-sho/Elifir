@@ -32,16 +32,16 @@
 
         public static ˣ.If<I>.Is<Iʺ> AndIf<I, Iʹ, Iʺ>(
             this ˣ.If<I>.Is<Iʹ> o,
-            ConditionalMap<Iʹ, Iʺ> condition)
+            Func<ConditionalMap<Iʹ, Iʺ>> condition)
                 where Iʹ : I 
                 where Iʺ : Iʹ =>
                     new((I i, [NotNullWhen(true)]
                               [MaybeNullWhen(false)] 
                               out Iʺ iʺ) =>
                     {
-                        if (o.Condition(i,  out Iʹ? iʹ)
-                           && condition(iʹ, out iʺ))
-                            return true;
+                        if (o.Condition(i,  out Iʹ? iʹ) && 
+                            condition()(iʹ, out iʺ))
+                                return true;
 
                         iʺ = default;
                         return false;

@@ -21,25 +21,25 @@
         {
             var f =
                  If(A_Is(MoreThen(2)))  // 1 -> 1
-                    .Then(From_A_To_A_With(Plus(1)))  // 3 -> 4
+                    .Then(From_A_To_A_With(Add(1)))  // 3 -> 4
                     .If(A_Is(MoreThen(4)))
-                        .Then(From_A_To_A_With(Plus(1))) // 4 -> 6
+                        .Then(From_A_To_A_With(Add(1))) // 4 -> 6
                         .If(A_Is(MoreThen(6)))
-                            .Then(From_A_To_A_With(Plus(1))) // 5 -> 8
+                            .Then(From_A_To_A_With(Add(1))) // 5 -> 8
                             .If(A_Is(MoreThen(8)))
-                                .Then(From_A_To_A_With(Plus(1))) // 6 -> 10  
+                                .Then(From_A_To_A_With(Add(1))) // 6 -> 10  
                                 .If(A_Is(MoreThen(10)))
-                                    .Then(From_A_To_A_With(Plus(1))) // 7 -> 12
+                                    .Then(From_A_To_A_With(Add(1))) // 7 -> 12
                                     .If(A_Is(MoreThen(12)))
-                                        .Then(From_A_To_A_With(Plus(1))) // 8 -> 14
+                                        .Then(From_A_To_A_With(Add(1))) // 8 -> 14
                                         .If(A_Is(MoreThen(14)))
-                                            .Then(From_A_To_A_With(Plus(1))) // 9 -> 16
+                                            .Then(From_A_To_A_With(Add(1))) // 9 -> 16
                                             .If(A_Is(MoreThen(16)))
-                                                .Then(From_A_To_A_With(Plus(1))) // 10 -> 18
+                                                .Then(From_A_To_A_With(Add(1))) // 10 -> 18
                                                 .If(A_Is(MoreThen(18)))
-                                                    .Then(From_A_To_A_With(Plus(1))) // 11 -> 20
+                                                    .Then(From_A_To_A_With(Add(1))) // 11 -> 20
                                                     .If(A_Is(MoreThen(20)))
-                                                        .Then(From_A_To_A_With(Plus(1))) // 12 -> 22
+                                                        .Then(From_A_To_A_With(Add(1))) // 12 -> 22
                                                     .End()
                                                 .End()
                                             .End()
@@ -71,25 +71,25 @@
         {
             var f =
                  If(A_Is(MoreThen(2))) // 1 -> 1
-                    .Then(From_A_To_Aʹ_With(Plus(1)))  // 3 -> 4 
+                    .Then(From_A_To_Aʹ_With(Add(1)))  // 3 -> 4 
                     .If(Aʹ_Is(MoreThen(4)))
-                        .Then(From_Aʹ_To_Aʺ_With(Plus(1))) // 4 -> 6 
+                        .Then(From_Aʹ_To_Aʺ_With(Add(1))) // 4 -> 6 
                         .If(Aʺ_Is(MoreThen(6)))
-                            .Then(From_Aʺ_To_Aʺʹ_With(Plus(1))) // 5 -> 8
+                            .Then(From_Aʺ_To_Aʺʹ_With(Add(1))) // 5 -> 8
                             .If(Aʺʹ_Is(MoreThen(8)))
-                                .Then(From_Aʺʹ_To_Aʺʺ_With(Plus(1))) // 6 -> 10  
+                                .Then(From_Aʺʹ_To_Aʺʺ_With(Add(1))) // 6 -> 10  
                                 .If(Aʺʺ_Is(MoreThen(10)))
-                                    .Then(From_Aʺʺ_To_Aʺʺʹ_With(Plus(1))) // 7 -> 12
+                                    .Then(From_Aʺʺ_To_Aʺʺʹ_With(Add(1))) // 7 -> 12
                                     .If(Aʺʺʹ_Is(MoreThen(12)))
-                                        .Then(From_Aʺʺʹ_To_Aʺʺʺ_With(Plus(1))) // 8 -> 14
+                                        .Then(From_Aʺʺʹ_To_Aʺʺʺ_With(Add(1))) // 8 -> 14
                                         .If(Aʺʺʺ_Is(MoreThen(14)))
-                                            .Then(From_Aʺʺʺ_To_Aʺʺʺʹ_With(Plus(1))) // 9 -> 16
+                                            .Then(From_Aʺʺʺ_To_Aʺʺʺʹ_With(Add(1))) // 9 -> 16
                                             .If(Aʺʺʺʹ_Is(MoreThen(16)))
-                                                .Then(From_Aʺʺʺʹ_To_Aʺʺʺʺ_With(Plus(1))) // 10 -> 18
+                                                .Then(From_Aʺʺʺʹ_To_Aʺʺʺʺ_With(Add(1))) // 10 -> 18
                                                 .If(Aʺʺʺʺ_Is(MoreThen(18)))
-                                                    .Then(From_Aʺʺʺʺ_To_Aʺʺʺʺʹ_With(Plus(1))) // 11 -> 20
+                                                    .Then(From_Aʺʺʺʺ_To_Aʺʺʺʺʹ_With(Add(1))) // 11 -> 20
                                                     .If(Aʺʺʺʺʹ_Is(MoreThen(20)))
-                                                        .Then(From_Aʺʺʺʺʹ_To_Aʺʺʺʺʺ_With(Plus(1))) // 12 -> 22
+                                                        .Then(From_Aʺʺʺʺʹ_To_Aʺʺʺʺʺ_With(Add(1))) // 12 -> 22
                                                     .End()
                                                 .End()
                                             .End()
@@ -121,25 +121,25 @@
         {
             var f =
                  If(Aʺʺʺʺʹ_Is(MoreThen(2))) // 1 -> 1
-                    .Then(From_Aʺʺʺʺʹ_To_Aʺʺʺʺ_With(Plus(1)))  // 2 -> 3
+                    .Then(From_Aʺʺʺʺʹ_To_Aʺʺʺʺ_With(Add(1)))  // 2 -> 3
                     .If(Aʺʺʺʺ_Is(MoreThen(4)))
-                        .Then(From_Aʺʺʺʺ_To_Aʺʺʺʹ_With(Plus(1))) // 3 -> 4
+                        .Then(From_Aʺʺʺʺ_To_Aʺʺʺʹ_With(Add(1))) // 3 -> 4
                         .If(Aʺʺʺʹ_Is(MoreThen(6)))
-                            .Then(From_Aʺʺʺʹ_To_Aʺʺʺ_With(Plus(1))) // 4 -> 6
+                            .Then(From_Aʺʺʺʹ_To_Aʺʺʺ_With(Add(1))) // 4 -> 6
                             .If(Aʺʺʺ_Is(MoreThen(8)))
-                                .Then(From_Aʺʺʺ_To_Aʺʺʹ_With(Plus(1))) // 5 -> 8  
+                                .Then(From_Aʺʺʺ_To_Aʺʺʹ_With(Add(1))) // 5 -> 8  
                                 .If(Aʺʺʹ_Is(MoreThen(10)))
-                                    .Then(From_Aʺʺʹ_To_Aʺʺ_With(Plus(1))) // 6 -> 10
+                                    .Then(From_Aʺʺʹ_To_Aʺʺ_With(Add(1))) // 6 -> 10
                                     .If(Aʺʺ_Is(MoreThen(12)))
-                                        .Then(From_Aʺʺ_To_Aʺʹ_With(Plus(1))) // 7 -> 12
+                                        .Then(From_Aʺʺ_To_Aʺʹ_With(Add(1))) // 7 -> 12
                                         .If(Aʺʹ_Is(MoreThen(14)))
-                                            .Then(From_Aʺʹ_To_Aʺ_With(Plus(1))) // 8 -> 14
+                                            .Then(From_Aʺʹ_To_Aʺ_With(Add(1))) // 8 -> 14
                                             .If(Aʺ_Is(MoreThen(16)))
-                                                .Then(From_Aʺ_To_Aʹ_With(Plus(1))) // 9 -> 16
+                                                .Then(From_Aʺ_To_Aʹ_With(Add(1))) // 9 -> 16
                                                 .If(Aʹ_Is(MoreThen(18)))
-                                                    .Then(From_Aʹ_To_A_With(Plus(1))) // 11 -> 20
+                                                    .Then(From_Aʹ_To_A_With(Add(1))) // 11 -> 20
                                                     .If(A_Is(MoreThen(20)))
-                                                        .Then(From_A_To_A_With(Plus(1))) // 12 -> 22
+                                                        .Then(From_A_To_A_With(Add(1))) // 12 -> 22
                                                     .End()
                                                 .End()
                                             .End()
