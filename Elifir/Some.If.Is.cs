@@ -23,5 +23,18 @@
                 where Iʹ : I =>
                     new(o.Prev, 
                         o.Next.Then(map));
+
+        public static ˣ<ˣ<Some, ˣ.If<I>.Then<Iʹ>>, ˣ.If<Iʹ>> If<Some, I, Iʹ>(
+            this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,
+            Func<Iʹ, bool> condition)
+                where Iʹ : I =>
+                    new(o.Then(Identity), If(condition));
+
+        public static ˣ<ˣ<Some, ˣ.If<I>.Then<Iʹ>>, ˣ.If<Iʹ>.Is<Iʺ>> If<Some, I, Iʹ, Iʺ>(
+            this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,
+            Func<ConditionalMap<Iʹ, Iʺ>> condition)
+                where Iʹ : I
+                where Iʺ : Iʹ =>
+                    new(o.Then(Identity), If(condition));
     }
 }
