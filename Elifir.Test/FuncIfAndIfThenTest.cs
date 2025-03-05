@@ -113,71 +113,71 @@
             return result.Value;
         }
 
-        [TestCase(To.A,      ExpectedResult = 111, TestName = "Test_0505( 0, To.A -> 111 )")]
-        [TestCase(To.Aʹ,     ExpectedResult = 111, TestName = "Test_0505( 0, To.Aʹ -> 111 )")]
-        [TestCase(To.Aʺ,     ExpectedResult = 333, TestName = "Test_0505( 0, To.Aʺ -> 333 )")]
-        [TestCase(To.Aʺʹ,    ExpectedResult = 333, TestName = "Test_0505( 0, To.Aʺʹ -> 333 )")]
-        [TestCase(To.Aʺʺ,    ExpectedResult = 333, TestName = "Test_0505( 0, To.Aʺʺ -> 333 )")]
-        [TestCase(To.Aʺʺʹ,   ExpectedResult = 333, TestName = "Test_0505( 0, To.Aʺʺʹ -> 333 )")]
-        [TestCase(To.Aʺʺʺ,   ExpectedResult = 333, TestName = "Test_0505( 0, To.Aʺʺʺ -> 333 )")]
-        [TestCase(To.Aʺʺʺʹ,  ExpectedResult = 333, TestName = "Test_0505( 0, To.Aʺʺʺʹ -> 333 )")]
-        [TestCase(To.Aʺʺʺʺ,  ExpectedResult = 333, TestName = "Test_0505( 0, To.Aʺʺʺʺ -> 333 )")]
-        [TestCase(To.Aʺʺʺʺʹ, ExpectedResult = 333, TestName = "Test_0505( 0, To.Aʺʺʺʺʹ -> 333 )")]
-        [TestCase(To.Aʺʺʺʺʺ, ExpectedResult = 333, TestName = "Test_0505( 0, To.Aʺʺʺʺʺ -> 333 )")]
-        public int Test_0505(To to)
+        [TestCase("A",      ExpectedResult = 111, TestName = "Test_0505( 0, A -> 111 )")]
+        [TestCase("Aʹ",     ExpectedResult = 111, TestName = "Test_0505( 0, Aʹ -> 111 )")]
+        [TestCase("Aʺ",     ExpectedResult = 333, TestName = "Test_0505( 0, Aʺ -> 333 )")]
+        [TestCase("Aʺʹ",    ExpectedResult = 333, TestName = "Test_0505( 0, Aʺʹ -> 333 )")]
+        [TestCase("Aʺʺ",    ExpectedResult = 333, TestName = "Test_0505( 0, Aʺʺ -> 333 )")]
+        [TestCase("Aʺʺʹ",   ExpectedResult = 333, TestName = "Test_0505( 0, Aʺʺʹ -> 333 )")]
+        [TestCase("Aʺʺʺ",   ExpectedResult = 333, TestName = "Test_0505( 0, Aʺʺʺ -> 333 )")]
+        [TestCase("Aʺʺʺʹ",  ExpectedResult = 333, TestName = "Test_0505( 0, Aʺʺʺʹ -> 333 )")]
+        [TestCase("Aʺʺʺʺ",  ExpectedResult = 333, TestName = "Test_0505( 0, Aʺʺʺʺ -> 333 )")]
+        [TestCase("Aʺʺʺʺʹ", ExpectedResult = 333, TestName = "Test_0505( 0, Aʺʺʺʺʹ -> 333 )")]
+        [TestCase("Aʺʺʺʺʺ", ExpectedResult = 333, TestName = "Test_0505( 0, Aʺʺʺʺʺ -> 333 )")]
+        public int Test_0505(string ofTypeX)
         {
             var from_D_To_SomeA_With =
-                From_D_To_SomeA(to);
+                From_D_To_SomeA(ofTypeX);
 
             var f =
                  From_A_To_E_With(Add(1))
                 .Then(From_E_To_D_With(Add(10)))
                 .Then(from_D_To_SomeA_With(Add(100))) 
-                .If(Object<A>.Is<Aʹ>)                   // (0, To.A) -> 111
-                .AndIf(Object<Aʹ>.Is<Aʺ>)               // (0, To.Aʹ) -> 111
+                .If(Object<A>.Is<Aʹ>)                   // (0, A) -> 111
+                .AndIf(Object<Aʹ>.Is<Aʺ>)               // (0, Aʹ) -> 111
                     .Then(From_Aʺ_To_E_With(Add(2)))
                     .Then(From_E_To_B_With(Add(20)))
-                    .Then(From_B_To_Aʹ_With(Add(200)))  // (0, To.Aʺ) -> 333, (0, To.Aʺʹ) -> 333
-                .End();                                 // (0, To.Aʺʺ) -> 333, (0, To.Aʺʺʹ) -> 333
-                                                        // (0, To.Aʺʺʺ) -> 333, (0, To.Aʺʺʺʹ) -> 333
-                                                        // (0, To.Aʺʺʺʺ) -> 333, (0, To.Aʺʺʺʺʹ) -> 333
-                                                        // (0, To.Aʺʺʺʺʺ) -> 333
+                    .Then(From_B_To_Aʹ_With(Add(200)))  // (0, Aʺ) -> 333, (0, Aʺʹ) -> 333
+                .End();                                 // (0, Aʺʺ) -> 333, (0, Aʺʺʹ) -> 333
+                                                        // (0, Aʺʺʺ) -> 333, (0, Aʺʺʺʹ) -> 333
+                                                        // (0, Aʺʺʺʺ) -> 333, (0, Aʺʺʺʺʹ) -> 333
+                                                        // (0, Aʺʺʺʺʺ) -> 333
             A result = f(new A(0));
 
             return result.Value;
         }
 
-        [TestCase(To.A,      ExpectedResult = 111, TestName = "Test_0506( 0, To.A -> 111 )")]
-        [TestCase(To.Aʹ,     ExpectedResult = 111, TestName = "Test_0506( 0, To.Aʹ -> 111 )")]
-        [TestCase(To.Aʺ,     ExpectedResult = 111, TestName = "Test_0506( 0, To.Aʺ -> 111 )")]
-        [TestCase(To.Aʺʹ,    ExpectedResult = 111, TestName = "Test_0506( 0, To.Aʺʹ -> 111 )")]
-        [TestCase(To.Aʺʺ,    ExpectedResult = 111, TestName = "Test_0506( 0, To.Aʺʺ -> 111 )")]
-        [TestCase(To.Aʺʺʹ,   ExpectedResult = 111, TestName = "Test_0506( 0, To.Aʺʺʹ -> 111 )")]
-        [TestCase(To.Aʺʺʺ,   ExpectedResult = 111, TestName = "Test_0506( 0, To.Aʺʺʺ -> 111 )")]
-        [TestCase(To.Aʺʺʺʹ,  ExpectedResult = 333, TestName = "Test_0506( 0, To.Aʺʺʺʹ -> 333 )")]
-        [TestCase(To.Aʺʺʺʺ,  ExpectedResult = 333, TestName = "Test_0506( 0, To.Aʺʺʺʺ -> 333 )")]
-        [TestCase(To.Aʺʺʺʺʹ, ExpectedResult = 333, TestName = "Test_0506( 0, To.Aʺʺʺʺʹ -> 333 )")]
-        [TestCase(To.Aʺʺʺʺʺ, ExpectedResult = 333, TestName = "Test_0506( 0, To.Aʺʺʺʺʺ -> 333 )")]
-        public int Test_0506(To to)
+        [TestCase("A",      ExpectedResult = 111, TestName = "Test_0506( 0, A -> 111 )")]
+        [TestCase("Aʹ",     ExpectedResult = 111, TestName = "Test_0506( 0, Aʹ -> 111 )")]
+        [TestCase("Aʺ",     ExpectedResult = 111, TestName = "Test_0506( 0, Aʺ -> 111 )")]
+        [TestCase("Aʺʹ",    ExpectedResult = 111, TestName = "Test_0506( 0, Aʺʹ -> 111 )")]
+        [TestCase("Aʺʺ",    ExpectedResult = 111, TestName = "Test_0506( 0, Aʺʺ -> 111 )")]
+        [TestCase("Aʺʺʹ",   ExpectedResult = 111, TestName = "Test_0506( 0, Aʺʺʹ -> 111 )")]
+        [TestCase("Aʺʺʺ",   ExpectedResult = 111, TestName = "Test_0506( 0, Aʺʺʺ -> 111 )")]
+        [TestCase("Aʺʺʺʹ",  ExpectedResult = 333, TestName = "Test_0506( 0, Aʺʺʺʹ -> 333 )")]
+        [TestCase("Aʺʺʺʺ",  ExpectedResult = 333, TestName = "Test_0506( 0, Aʺʺʺʺ -> 333 )")]
+        [TestCase("Aʺʺʺʺʹ", ExpectedResult = 333, TestName = "Test_0506( 0, Aʺʺʺʺʹ -> 333 )")]
+        [TestCase("Aʺʺʺʺʺ", ExpectedResult = 333, TestName = "Test_0506( 0, Aʺʺʺʺʺ -> 333 )")]
+        public int Test_0506(string ofTypeX)
         {
             var from_D_To_SomeA_With =
-                From_D_To_SomeA(to);
+                From_D_To_SomeA(ofTypeX);
 
             var f =
                  From_A_To_E_With(Add(1))
                 .Then(From_E_To_D_With(Add(10)))
                 .Then(from_D_To_SomeA_With(Add(100))) 
-                .If(Object<A>.Is<Aʹ>)                   // (0, To.A) -> 111
-                .AndIf(Object<Aʹ>.Is<Aʺ>)               // (0, To.Aʹ) -> 111
-                .AndIf(Object<Aʺ>.Is<Aʺʹ>)              // (0, To.Aʺ) -> 111
-                .AndIf(Object<Aʺʹ>.Is<Aʺʺ>)             // (0, To.Aʺʹ) -> 111
-                .AndIf(Object<Aʺʺ>.Is<Aʺʺʹ>)            // (0, To.Aʺʺ) -> 111
-                .AndIf(Object<Aʺʺʹ>.Is<Aʺʺʺ>)           // (0, To.Aʺʺʹ) -> 111
-                .AndIf(Object<Aʺʺʺ>.Is<Aʺʺʺʹ>)          // (0, To.Aʺʺʺ) -> 111
+                .If(Object<A>.Is<Aʹ>)                   // (0, A) -> 111
+                .AndIf(Object<Aʹ>.Is<Aʺ>)               // (0, Aʹ) -> 111
+                .AndIf(Object<Aʺ>.Is<Aʺʹ>)              // (0, Aʺ) -> 111
+                .AndIf(Object<Aʺʹ>.Is<Aʺʺ>)             // (0, Aʺʹ) -> 111
+                .AndIf(Object<Aʺʺ>.Is<Aʺʺʹ>)            // (0, Aʺʺ) -> 111
+                .AndIf(Object<Aʺʺʹ>.Is<Aʺʺʺ>)           // (0, Aʺʺʹ) -> 111
+                .AndIf(Object<Aʺʺʺ>.Is<Aʺʺʺʹ>)          // (0, Aʺʺʺ) -> 111
                     .Then(From_Aʺʺʺʹ_To_E_With(Add(2)))
                     .Then(From_E_To_B_With(Add(20)))
-                    .Then(From_B_To_Aʹ_With(Add(200)))  // (0, To.Aʺʺʺʹ) -> 333, (0, To.Aʺʺʺʺ) -> 333
-                .End();                                 // (0, To.Aʺʺʺʺʹ) -> 333, (0, To.Aʺʺʺʺʺ) -> 333
+                    .Then(From_B_To_Aʹ_With(Add(200)))  // (0, Aʺʺʺʹ) -> 333, (0, Aʺʺʺʺ) -> 333
+                .End();                                 // (0, Aʺʺʺʺʹ) -> 333, (0, Aʺʺʺʺʺ) -> 333
 
             A result = f(new A(0));
 
@@ -209,27 +209,27 @@
             return result.Value;
         }
 
-        [TestCase(1,   To.Aʹ,   ExpectedResult = 12,  TestName = "Test_0508( 1, To.Aʹ -> 12 )")]
-        [TestCase(2,   To.Aʹ,   ExpectedResult = 13,  TestName = "Test_0508( 2, To.Aʹ -> 13 )")]
-        [TestCase(101, To.Aʺ,   ExpectedResult = 112, TestName = "Test_0508( 101, To.Aʺ -> 112 )")]
-        [TestCase(1,   To.Aʺʹ,  ExpectedResult = 12,  TestName = "Test_0508( 1, To.Aʺʹ -> 12 )")]
-        [TestCase(2,   To.Aʺʹ,  ExpectedResult = 35,  TestName = "Test_0508( 2, To.Aʺʹ -> 35 )")]
-        [TestCase(2,   To.Aʺʺ,  ExpectedResult = 35,  TestName = "Test_0508( 2, To.Aʺʺ -> 35 )")]
-        [TestCase(2,   To.Aʺʺʺ, ExpectedResult = 35,  TestName = "Test_0508( 2, To.Aʺʺʺ -> 35 )")]
-        public int Test_0508(int x, To to)
+        [TestCase(1,   "Aʹ",   ExpectedResult = 12,  TestName = "Test_0508( 1, Aʹ -> 12 )")]
+        [TestCase(2,   "Aʹ",   ExpectedResult = 13,  TestName = "Test_0508( 2, Aʹ -> 13 )")]
+        [TestCase(101, "Aʺ",   ExpectedResult = 112, TestName = "Test_0508( 101, Aʺ -> 112 )")]
+        [TestCase(1,   "Aʺʹ",  ExpectedResult = 12,  TestName = "Test_0508( 1, Aʺʹ -> 12 )")]
+        [TestCase(2,   "Aʺʹ",  ExpectedResult = 35,  TestName = "Test_0508( 2, Aʺʹ -> 35 )")]
+        [TestCase(2,   "Aʺʺ",  ExpectedResult = 35,  TestName = "Test_0508( 2, Aʺʺ -> 35 )")]
+        [TestCase(2,   "Aʺʺʺ", ExpectedResult = 35,  TestName = "Test_0508( 2, Aʺʺʺ -> 35 )")]
+        public int Test_0508(int x, string ofTypeX)
         {
             var from_D_To_SomeAʹ_With =
-                From_D_To_SomeAʹ(to);
+                From_D_To_SomeAʹ(ofTypeX);
 
             var f =
                  From_A_To_D_With(Add(1))
                 .Then(from_D_To_SomeAʹ_With(Add(10)))      
-                .If(Object<Aʹ>.Is<Aʺ>)                  // (1, To.Aʹ) -> 12, (2, To.Aʹ) -> 13
-                .AndIf(Aʺ_Is(Odd))                      // (101, To.Aʺ) -> 112, (1, To.Aʺʹ) -> 12
+                .If(Object<Aʹ>.Is<Aʺ>)                  // (1, Aʹ) -> 12, (2, Aʹ) -> 13
+                .AndIf(Aʺ_Is(Odd))                      // (101, Aʺ) -> 112, (1, Aʺʹ) -> 12
                 .AndIf(Object<Aʺ>.Is<Aʺʹ>)
                     .Then(From_Aʺʹ_To_A_With(Add(2)))
-                    .Then(From_A_To_A_With(Add(20)))    // (2, To.Aʺʹ) -> 35, (2, To.Aʺʺ) -> 35
-                .End();                                 // (2, To.Aʺʺʺ) -> 35
+                    .Then(From_A_To_A_With(Add(20)))    // (2, Aʺʹ) -> 35, (2, Aʺʺ) -> 35
+                .End();                                 // (2, Aʺʺʺ) -> 35
 
             A result = f(new A(x));
 
