@@ -3,18 +3,18 @@
     using static Utils;
 
     [TestFixture]
-    public class DeepFuncIfThenTest
+    public class IfThenTest_07
     {
-
-        [TestCase(1, ExpectedResult = 2, TestName = "Test_0700( 1 -> 2 )")]
-        [TestCase(2, ExpectedResult = 4, TestName = "Test_0700( 2 -> 4 )")]
-        [TestCase(3, ExpectedResult = 6, TestName = "Test_0700( 3 -> 6 )")]
-        [TestCase(4, ExpectedResult = 8, TestName = "Test_0700( 4 -> 8 )")]
-        [TestCase(5, ExpectedResult = 10, TestName = "Test_0700( 5 -> 10 )")]
-        [TestCase(6, ExpectedResult = 12, TestName = "Test_0700( 6 -> 12 )")]
-        [TestCase(7, ExpectedResult = 14, TestName = "Test_0700( 7 -> 14 )")]
-        [TestCase(8, ExpectedResult = 16, TestName = "Test_0700( 8 -> 16 )")]
-        [TestCase(9, ExpectedResult = 18, TestName = "Test_0700( 9 -> 18 )")]
+        
+        [TestCase(1,  ExpectedResult = 2,  TestName = "Test_0700( 1 -> 2 )")]
+        [TestCase(2,  ExpectedResult = 4,  TestName = "Test_0700( 2 -> 4 )")]
+        [TestCase(3,  ExpectedResult = 6,  TestName = "Test_0700( 3 -> 6 )")]
+        [TestCase(4,  ExpectedResult = 8,  TestName = "Test_0700( 4 -> 8 )")]
+        [TestCase(5,  ExpectedResult = 10, TestName = "Test_0700( 5 -> 10 )")]
+        [TestCase(6,  ExpectedResult = 12, TestName = "Test_0700( 6 -> 12 )")]
+        [TestCase(7,  ExpectedResult = 14, TestName = "Test_0700( 7 -> 14 )")]
+        [TestCase(8,  ExpectedResult = 16, TestName = "Test_0700( 8 -> 16 )")]
+        [TestCase(9,  ExpectedResult = 18, TestName = "Test_0700( 9 -> 18 )")]
         [TestCase(10, ExpectedResult = 20, TestName = "Test_0700( 10 -> 20 )")]
         [TestCase(11, ExpectedResult = 22, TestName = "Test_0700( 11 -> 22 )")]
         public int Test_0700(int x)
@@ -57,15 +57,15 @@
             return result.Value;
         }
 
-        [TestCase(1, ExpectedResult = 2, TestName = "Test_0701( 1 -> 2 )")]
-        [TestCase(2, ExpectedResult = 4, TestName = "Test_0701( 2 -> 4 )")]
-        [TestCase(3, ExpectedResult = 6, TestName = "Test_0701( 3 -> 6 )")]
-        [TestCase(4, ExpectedResult = 8, TestName = "Test_0701( 4 -> 8 )")]
-        [TestCase(5, ExpectedResult = 10, TestName = "Test_0701( 5 -> 10 )")]
-        [TestCase(6, ExpectedResult = 12, TestName = "Test_0701( 6 -> 12 )")]
-        [TestCase(7, ExpectedResult = 14, TestName = "Test_0701( 7 -> 14 )")]
-        [TestCase(8, ExpectedResult = 16, TestName = "Test_0701( 8 -> 16 )")]
-        [TestCase(9, ExpectedResult = 18, TestName = "Test_0701( 9 -> 18 )")]
+        [TestCase(1,  ExpectedResult = 2,  TestName = "Test_0701( 1 -> 2 )")]
+        [TestCase(2,  ExpectedResult = 4,  TestName = "Test_0701( 2 -> 4 )")]
+        [TestCase(3,  ExpectedResult = 6,  TestName = "Test_0701( 3 -> 6 )")]
+        [TestCase(4,  ExpectedResult = 8,  TestName = "Test_0701( 4 -> 8 )")]
+        [TestCase(5,  ExpectedResult = 10, TestName = "Test_0701( 5 -> 10 )")]
+        [TestCase(6,  ExpectedResult = 12, TestName = "Test_0701( 6 -> 12 )")]
+        [TestCase(7,  ExpectedResult = 14, TestName = "Test_0701( 7 -> 14 )")]
+        [TestCase(8,  ExpectedResult = 16, TestName = "Test_0701( 8 -> 16 )")]
+        [TestCase(9,  ExpectedResult = 18, TestName = "Test_0701( 9 -> 18 )")]
         [TestCase(10, ExpectedResult = 20, TestName = "Test_0701( 10 -> 20 )")]
         [TestCase(11, ExpectedResult = 22, TestName = "Test_0701( 11 -> 22 )")]
         public int Test_0701(int x)
@@ -108,15 +108,15 @@
             return result.Value;
         }
 
-        [TestCase(1, ExpectedResult = 2, TestName = "Test_0702( 1 -> 2 )")]
-        [TestCase(2, ExpectedResult = 4, TestName = "Test_0702( 2 -> 4 )")]
-        [TestCase(3, ExpectedResult = 6, TestName = "Test_0702( 3 -> 6 )")]
-        [TestCase(4, ExpectedResult = 8, TestName = "Test_0702( 4 -> 8 )")]
-        [TestCase(5, ExpectedResult = 10, TestName = "Test_0702( 5 -> 10 )")]
-        [TestCase(6, ExpectedResult = 12, TestName = "Test_0702( 6 -> 12 )")]
-        [TestCase(7, ExpectedResult = 14, TestName = "Test_0702( 7 -> 14 )")]
-        [TestCase(8, ExpectedResult = 16, TestName = "Test_0702( 8 -> 16 )")]
-        [TestCase(9, ExpectedResult = 18, TestName = "Test_0702( 9 -> 18 )")]
+        [TestCase(1,  ExpectedResult = 2,  TestName = "Test_0702( 1 -> 2 )")]
+        [TestCase(2,  ExpectedResult = 4,  TestName = "Test_0702( 2 -> 4 )")]
+        [TestCase(3,  ExpectedResult = 6,  TestName = "Test_0702( 3 -> 6 )")]
+        [TestCase(4,  ExpectedResult = 8,  TestName = "Test_0702( 4 -> 8 )")]
+        [TestCase(5,  ExpectedResult = 10, TestName = "Test_0702( 5 -> 10 )")]
+        [TestCase(6,  ExpectedResult = 12, TestName = "Test_0702( 6 -> 12 )")]
+        [TestCase(7,  ExpectedResult = 14, TestName = "Test_0702( 7 -> 14 )")]
+        [TestCase(8,  ExpectedResult = 16, TestName = "Test_0702( 8 -> 16 )")]
+        [TestCase(9,  ExpectedResult = 18, TestName = "Test_0702( 9 -> 18 )")]
         [TestCase(10, ExpectedResult = 20, TestName = "Test_0702( 10 -> 20 )")]
         [TestCase(11, ExpectedResult = 22, TestName = "Test_0702( 11 -> 22 )")]
         public int Test_0702(int x)

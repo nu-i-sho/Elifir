@@ -4,7 +4,7 @@
     using static Syntax;
 
     [TestFixture]
-    public class IfThenElseManualEndTest
+    public class IfThenTest_12
     {
         [TestCase(3, ExpectedResult = 13, TestName = "Test_1200( 3 -> 13 )")]
         [TestCase(1, ExpectedResult = 21, TestName = "Test_1200( 1 -> 21 )")]

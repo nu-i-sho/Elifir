@@ -4,7 +4,7 @@
     using static Syntax;
 
     [TestFixture]
-    public class IfThenElseTest
+    public class IfThenElseTest_11
     {
         [TestCase(3, ExpectedResult = 13, TestName = "Test_1100( 3 -> 13 )")]
         [TestCase(1, ExpectedResult = 21, TestName = "Test_1100( 1 -> 21 )")]
@@ -238,15 +238,15 @@
             return result.Value;
         }
 
+        [TestCase(true, ExpectedResult = 11, TestName = "Test_1113( true, 1 -> 11 )")]
         [TestCase(false, ExpectedResult = 21, TestName = "Test_1113( false, 1 -> 21 )")]
-        [TestCase(true,  ExpectedResult = 11, TestName = "Test_1113( true, 1 -> 11 )")]
         public int Test_1113(bool isAʹ)
         {
             var f =
                 If(Object<A>.Is<Aʹ>)
-                    .Then(From_Aʹ_To_A_With(Add(10)))   // (false, 1) -> 21
+                    .Then(From_Aʹ_To_A_With(Add(10)))   // (true, 1) -> 11
                .Else()
-                    .Then(From_A_To_A_With(Add(20)))    // (true, 1) -> 11
+                    .Then(From_A_To_A_With(Add(20)))    // (false, 1) -> 21
                .End();
 
             var arg = isAʹ
@@ -258,17 +258,17 @@
             return result.Value;
         }
 
+        [TestCase(true, ExpectedResult = 111, TestName = "Test_1114( true, 1 -> 111 )")]
         [TestCase(false, ExpectedResult = 221, TestName = "Test_1114( false, 1 -> 221 )")]
-        [TestCase(true,  ExpectedResult = 111, TestName = "Test_1114( true, 1 -> 111 )")]
         public int Test_1114(bool isAʹ)
         {
             var f =
                 If(Object<A>.Is<Aʹ>)
                     .Then(From_Aʹ_To_A_With(Add(10)))
-                    .Then(From_A_To_A_With(Add(100)))   // (false, 1) -> 221
+                    .Then(From_A_To_A_With(Add(100)))   // (true, 1) -> 111
                .Else()
                     .Then(From_A_To_A_With(Add(20)))
-                    .Then(From_A_To_Aʹ_With(Add(200)))  // (true, 1) -> 111
+                    .Then(From_A_To_Aʹ_With(Add(200)))  // (false, 1) -> 221
                .End();
 
             var arg = isAʹ
@@ -280,19 +280,19 @@
             return result.Value;
         }
 
+        [TestCase(true, ExpectedResult = 1111, TestName = "Test_1115( true, 1 -> 1111 )")]
         [TestCase(false, ExpectedResult = 2221, TestName = "Test_1115( false, 1 -> 2221 )")]
-        [TestCase(true,  ExpectedResult = 1111, TestName = "Test_1115( true, 1 -> 1111 )")]
         public int Test_1115(bool isAʹ)
         {
             var f =
                 If(Object<A>.Is<Aʹ>)
                     .Then(From_Aʹ_To_A_With(Add(10)))
                     .Then(From_A_To_A_With(Add(100)))
-                    .Then(From_A_To_Aʹ_With(Add(1000))) // (false, 1) -> 2221
+                    .Then(From_A_To_Aʹ_With(Add(1000))) // (true, 1) -> 1111
                .Else()
                     .Then(From_A_To_A_With(Add(20)))
                     .Then(From_A_To_A_With(Add(200)))
-                    .Then(From_A_To_A_With(Add(2000)))  // (true, 1) -> 1111
+                    .Then(From_A_To_A_With(Add(2000)))  // (false, 1) -> 2221
                .End();
 
             var arg = isAʹ
@@ -486,6 +486,124 @@
                 .End();
 
             A result = f(new A(x));
+
+            return result.Value;
+        }
+
+        [TestCase(3,  ExpectedResult = 14, TestName = "Test_1131( 3 -> 14 )")]
+        [TestCase(14, ExpectedResult = 47, TestName = "Test_1131( 14 -> 47 )")]
+        [TestCase(1,  ExpectedResult = 34, TestName = "Test_1131( 1 -> 34 )")]
+        public int Test_1131(int x)
+        {
+            var f =
+                If(A_Is(MoreThen(2)))
+                    .Then(From_A_To_B_With(Add(1)))
+                    .Then(From_B_To_Aʹ_With(Add(10)))       // 3 -> 14
+                    .If(A_Is(MoreThen(20)))
+                        .Then(From_A_To_C_With(Add(2)))
+                        .Then(From_C_To_A_With(Add(20)))    // 14 -> 47
+                    .End()
+               .Else()
+                    .Then(From_A_To_A_With(Add(3)))
+                    .Then(From_A_To_A_With(Add(30)))        // 1 -> 34
+               .End();
+
+            A result = f(new A(x));
+
+            return result.Value;
+        }
+
+        [TestCase(11, ExpectedResult = 22, TestName = "Test_1132( 11 -> 22 )")]
+        [TestCase(3,  ExpectedResult = 25, TestName = "Test_1132( 3 -> 25 )")]
+        [TestCase(7,  ExpectedResult = 62, TestName = "Test_1132( 7 -> 62 )")]
+        public int Test_1132(int x)
+        {
+            var f =
+                If(A_Is(MoreThen(10)))
+                    .Then(From_A_To_A_With(Add(1)))
+                    .Then(From_A_To_A_With(Add(10)))        // 11 -> 22
+               .Else()
+                    .Then(From_A_To_A_With(Add(2)))
+                    .Then(From_A_To_A_With(Add(20)))        // 3 -> 25
+                    .If(A_Is(MoreThen(25)))
+                        .Then(From_A_To_A_With(Add(3)))
+                        .Then(From_A_To_Aʹ_With(Add(30)))   // 7 -> 62
+                    .End()
+               .End();
+
+            A result = f(new A(x));
+
+            return result.Value;
+        }
+
+        [TestCase(3,  ExpectedResult = 14, TestName = "Test_1133( 3 -> 14 )")]
+        [TestCase(13, ExpectedResult = 46, TestName = "Test_1133( 13 -> 46 )")]
+        [TestCase(2,  ExpectedResult = 35, TestName = "Test_1133( 2 -> 35 )")]
+        [TestCase(12, ExpectedResult = 89, TestName = "Test_1133( 12 -> 89 )")]
+        public int Test_1133(int x)
+        {
+            var f =
+                If(B_Is(Odd))
+                    .Then(From_B_To_C_With(Add(1)))
+                    .Then(From_C_To_Aʹ_With(Add(10)))       // 3 -> 14
+                    .If(Aʹ_Is(MoreThen(20)))
+                        .Then(From_Aʹ_To_E_With(Add(2)))
+                        .Then(From_E_To_A_With(Add(20)))    // 13 -> 46
+                    .End()
+               .Else()
+                    .Then(From_B_To_D_With(Add(3)))
+                    .Then(From_D_To_A_With(Add(30)))        // 2 -> 35
+                    .If(A_Is(MoreThen(40)))
+                        .Then(From_A_To_E_With(Add(4)))
+                        .Then(From_E_To_Aʹ_With(Add(40)))   // 12 -> 89
+                    .End()
+               .End();
+
+            A result = f(new B(x));
+
+            return result.Value;
+        }
+
+        [TestCase(1,   ExpectedResult = 1,   TestName = "Test_1134( 1 -> 1 )")]
+        [TestCase(250, ExpectedResult = 283, TestName = "Test_1134( 250 -> 283 )")]
+        [TestCase(150, ExpectedResult = 194, TestName = "Test_1134( 150 -> 194 )")]
+        [TestCase(60,  ExpectedResult = 154, TestName = "Test_1134( 60 -> 154 )")]
+        [TestCase(40,  ExpectedResult = 176, TestName = "Test_1134( 40 -> 176 )")]
+        [TestCase(20,  ExpectedResult = 198, TestName = "Test_1134( 20 -> 198 )")]
+        public int Test_1134(int x)
+        {
+            var f =
+                If(B_Is(MoreThen(100)))                             // 1 -> 1
+                    .Then(From_B_To_E_With(Add(1)))
+                    .Then(From_E_To_C_With(Add(10)))                
+                    .If(C_Is(MoreThen(200)))
+                        .Then(From_C_To_D_With(Add(2)))
+                        .Then(From_D_To_B_With(Add(20)))            // 250 -> 283
+                    .Else()
+                        .Then(From_C_To_E_With(Add(3)))
+                        .Then(From_E_To_Bʹ_With(Add(30)))           // 150 -> 194
+                    .End()
+               .Else()
+                    .If(B_Is(MoreThen(50)))
+                        .Then(From_B_To_E_With(Add(4)))
+                        .Then(From_E_To_D_With(Add(40)))
+                        .Then(From_D_To_Bʹ_With(Add(50)))           // 60 -> 154
+                    .Else()
+                        .If(B_Is(MoreThen(30)))
+                            .Then(From_B_To_E_With(Add(6)))
+                            .Then(From_E_To_D_With(Add(60)))
+                            .Then(From_D_To_B_With(Add(70)))        // 40 -> 176
+                        .Else()
+                            .If(B_Is(MoreThen(10)))
+                                .Then(From_B_To_E_With(Add(8)))
+                                .Then(From_E_To_C_With(Add(80)))
+                                .Then(From_C_To_Bʹ_With(Add(90)))   // 20 -> 198
+                            .End()
+                        .End()
+                    .End()
+                .End();
+
+            B result = f(new B(x));
 
             return result.Value;
         }
