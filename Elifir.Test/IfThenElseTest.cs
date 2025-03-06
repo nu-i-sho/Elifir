@@ -420,9 +420,7 @@
         {
             var f =
                 If(Object<A>.Is<Aʺʺʺʹ>)
-                    .Then(Identity)
                     .If(Object<Aʺʺʺʹ>.Is<Aʺʺʺʺ>)
-                        .Then(Identity)
                         .If(Object<Aʺʺʺʺ>.Is<Aʺʺʺʺʹ>)
                             .Then(From_A_To_A_With(Add(1)))                 // (0, Aʺʺʺʺʹ) -> 101 // +100
                         .Else()
@@ -432,7 +430,6 @@
                     .Then(From_A_To_A_With(Add(100)))                       // (0, Aʺʺʺʹ) -> 100
                 .Else()
                     .If(Object<A>.Is<Aʺʺ>)
-                        .Then(Identity)
                         .If(Object<Aʺʺ>.Is<Aʺʺʺ>)
                             .Then(From_A_To_A_With(Add(1000)))              // (0, Aʺʺʺ) -> 101000 // +100000 
                         .Else()
@@ -458,6 +455,37 @@
 
             A arg = From_Int_To_SomeA(ofTypeX)(0);
             A result = f(arg);
+
+            return result.Value;
+        }
+
+        [TestCase(49, ExpectedResult = 149, TestName = "Test_1130( 49 -> 149 )")]
+        [TestCase(39, ExpectedResult = 239, TestName = "Test_1130( 39 -> 239 )")]
+        [TestCase(29, ExpectedResult = 329, TestName = "Test_1130( 29 -> 329 )")]
+        [TestCase(19, ExpectedResult = 419, TestName = "Test_1130( 19 -> 419 )")]
+        [TestCase(9,  ExpectedResult = 509, TestName = "Test_1130( 9 -> 509 )")]
+        public int Test_1130(int x)
+        {
+            var f =
+                 If(A_Is(MoreThen(10)))
+                    .If(A_Is(MoreThen(20)))
+                        .If(A_Is(MoreThen(30)))
+                            .If(A_Is(MoreThen(40)))
+                                .Then(From_A_To_A_With(Add(100)))   // 49 -> 149
+                            .Else()
+                                .Then(From_A_To_A_With(Add(200)))   // 39 -> 239
+                            .End()
+                        .Else()
+                            .Then(From_A_To_A_With(Add(300)))       // 29 -> 329
+                        .End()
+                    .Else()
+                        .Then(From_A_To_A_With(Add(400)))           // 19 -> 419
+                    .End()
+                .Else()
+                    .Then(From_A_To_A_With(Add(500)))               // 9 -> 509
+                .End();
+
+            A result = f(new A(x));
 
             return result.Value;
         }

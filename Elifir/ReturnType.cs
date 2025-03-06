@@ -2,7 +2,14 @@
 {
     public static partial class Syntax
     {
-        public static T WithReturn<T>() => 
+        public sealed class ReturnType<T>
+        {
+            private ReturnType() 
+            { 
+            }
+        }
+
+        public static ReturnType<T> WithReturn<T>() => 
             throw new NotSupportedException("It is not for call !!!");
     }
 }
