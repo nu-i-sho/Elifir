@@ -242,9 +242,11 @@
             return result.Value;
         }
 
-        [TestCase(1, ExpectedResult = 4,  TestName = "Test_1522( 1 -> 4 )")]
-        [TestCase(4, ExpectedResult = 8,  TestName = "Test_1522( 4 -> 8 )")]
-        [TestCase(2, ExpectedResult = 11, TestName = "Test_1522( 2 -> 11 )")]
+
+        [TestCase(1,  ExpectedResult = 4,  TestName = "Test_1522( 1 -> 4 )")]
+        [TestCase(10, ExpectedResult = 18, TestName = "Test_1522( 10 -> 18 )")]
+        [TestCase(2,  ExpectedResult = 11, TestName = "Test_1522( 2 -> 11 )")]
+        [TestCase(4,  ExpectedResult = 13, TestName = "Test_1522( 4 -> 13 )")]
         public int Test_1522(int x)
         {
             var f =
@@ -253,10 +255,10 @@
                     .Then(From_A_To_Δ_With(Add(2)))         // 1 -> 4
                .Else()
                     .Then(From_A_To_Δ_With(Add(3)))         
-                    .If(A_Is(EndingWith("4")))              // 4 -> 8
+                    .If(A_Is(EndingWith("4")))              // 10 -> 18
                         .Then(From_Δ_To_Λ_With(Add(4)))
                     .Else()
-                        .Then(From_Δ_To_Λ_With(Add(5)))     // 2 -> 11
+                        .Then(From_Δ_To_Λ_With(Add(5)))     // 4 -> 13, 2 -> 11
                     .End()
                .End(WithReturn<A>);
 
@@ -265,21 +267,22 @@
             return result.Value;
         }
 
-        [TestCase(1, ExpectedResult = 4,  TestName = "Test_1523( 1 -> 4 )")]
-        [TestCase(4, ExpectedResult = 8,  TestName = "Test_1523( 4 -> 8 )")]
-        [TestCase(2, ExpectedResult = 11, TestName = "Test_1523( 2 -> 11 )")]
+        [TestCase(1,  ExpectedResult = 4,  TestName = "Test_1523( 1 -> 4 )")]
+        [TestCase(10, ExpectedResult = 18, TestName = "Test_1523( 10 -> 18 )")]
+        [TestCase(2,  ExpectedResult = 11, TestName = "Test_1523( 2 -> 11 )")]
+        [TestCase(4,  ExpectedResult = 13, TestName = "Test_1523( 4 -> 13 )")]
         public int Test_1523(int x)
         {
             var f =
                 From_A_To_A_With(Add(1))
                .If(A_Is(Even))
-                    .Then(From_A_To_A_With(Add(2)))         
+                    .Then(From_A_To_A_With(Add(2)))         // 1 -> 4
                .Else()
                     .Then(From_A_To_A_With(Add(3)))
                     .If(A_Is(EndingWith("4")))
-                        .Then(From_A_To_Δ_With(Add(4)))
+                        .Then(From_A_To_Δ_With(Add(4)))     // 10 -> 18
                     .Else()
-                        .Then(From_A_To_Λ_With(Add(5)))
+                        .Then(From_A_To_Λ_With(Add(5)))     // 4 -> 13, 2 -> 11
                     .End(WithReturn<A>)
                .End();
 

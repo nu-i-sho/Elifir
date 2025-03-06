@@ -610,17 +610,17 @@
 
         
         [TestCase(1, ExpectedResult = 4,  TestName = "Test_1135( 1 -> 4 )")]
-        [TestCase(2, ExpectedResult = 6,  TestName = "Test_1135( 2 -> 6 )")]
-        [TestCase(8, ExpectedResult = 16, TestName = "Test_1135( 8 -> 16 )")]
+        [TestCase(2, ExpectedResult = 4,  TestName = "Test_1135( 2 -> 4 )")]
+        [TestCase(9, ExpectedResult = 16, TestName = "Test_1135( 9 -> 16 )")]
         public int Test_1135(int x)
         {
             var f =
                 If(A_Is(Even))
-                    .Then(From_A_To_Aʹ_With(Add(2)))        // 1 -> 4
+                    .Then(From_A_To_Aʹ_With(Add(2)))        // 2 -> 4
                .Else()
-                    .Then(From_A_To_Aʹ_With(Add(3)))        // 2 -> 6
+                    .Then(From_A_To_Aʹ_With(Add(3)))        // 1 -> 4
                     .If(Aʹ_Is(MoreThen(10)))
-                        .Then(From_Aʹ_To_A_With(Add(4)))    // 8 -> 16
+                        .Then(From_Aʹ_To_A_With(Add(4)))    // 9 -> 16
                     .End()
                .End();
 
@@ -629,18 +629,18 @@
             return result.Value;
         }
 
-        [TestCase(1, ExpectedResult = 4,  TestName = "Test_1136( 1 -> 4 )")]
-        [TestCase(2, ExpectedResult = 6,  TestName = "Test_1136( 2 -> 6 )")]
-        [TestCase(8, ExpectedResult = 16, TestName = "Test_1136( 8 -> 16 )")]
+        [TestCase(2, ExpectedResult = 4,  TestName = "Test_1136( 2 -> 4 )")]
+        [TestCase(3, ExpectedResult = 6,  TestName = "Test_1136( 3 -> 6 )")]
+        [TestCase(9, ExpectedResult = 16, TestName = "Test_1136( 9 -> 16 )")]
         public int Test_1136(int x)
         {
             var f =
                 If(A_Is(Even))
-                    .Then(From_A_To_A_With(Add(2)))         // 1 -> 4
+                    .Then(From_A_To_A_With(Add(2)))         // 2 -> 4
                .Else()
-                    .Then(From_A_To_A_With(Add(3)))         // 2 -> 6
+                    .Then(From_A_To_A_With(Add(3)))         // 3 -> 6
                     .If(A_Is(MoreThen(10)))
-                        .Then(From_A_To_Aʹ_With(Add(4)))    // 8 -> 16
+                        .Then(From_A_To_Aʹ_With(Add(4)))    // 9 -> 16
                     .End()
                .End();
 
@@ -726,6 +726,154 @@
                             .Then(From_A_To_A_With(Add(3)))    // 8 -> 14
                         .Else()
                             .Then(From_A_To_Aʹ_With(Add(4)))     // 6 -> 13
+                        .End()
+                    .End()
+               .End();
+
+            A result = f(new A(x));
+
+            return result.Value;
+        }
+
+        [TestCase(1,  false, ExpectedResult = 1,  TestName = "Test_1150( 1, false -> 1 )")]
+        [TestCase(1,  true,  ExpectedResult = 1,  TestName = "Test_1150( 1, true -> 1 )")]
+        [TestCase(12, true,  ExpectedResult = 15, TestName = "Test_1150( 12, true -> 15 )")]
+        [TestCase(12, false, ExpectedResult = 13, TestName = "Test_1150( 12, false -> 13 )")]
+        [TestCase(2,  false, ExpectedResult = 6,  TestName = "Test_1150( 2, false -> 6 )")]
+        [TestCase(2,  true,  ExpectedResult = 6,  TestName = "Test_1150( 2, true -> 6 )")]
+        public int Test_1150(int x, bool isAʹ)
+        {
+            var from_A_To_A_OrTo_Aʹ_With =
+                From_A_To_A_OrTo_Aʹ(isAʹ);
+
+            var f =
+                If(A_Is(Even))                                  // (false, 1) -> 1, (1, true) -> 1
+                    .Then(from_A_To_A_OrTo_Aʹ_With(Add(1)))     
+                    .If(A_Is(MoreThen(10)))                     
+                        .If(Object<A>.Is<Aʹ>)
+                            .Then(From_Aʹ_To_A_With(Add(2)))    // (12, true) -> 15
+                        .End()                                  // (12, false) -> 13
+                    .Else()
+                        .Then(From_A_To_A_With(Add(3)))         // (2, false) -> 3, (2, true) -> 3
+                    .End()
+                .End();
+            
+            A result = f(new A(x));
+
+            return result.Value;
+        }
+
+        [TestCase(1,  false, ExpectedResult = 1,  TestName = "Test_1151( 1, false -> 1 )")]
+        [TestCase(1,  true,  ExpectedResult = 1,  TestName = "Test_1151( 1, true -> 1 )")]
+        [TestCase(12, true,  ExpectedResult = 15, TestName = "Test_1151( 12, true -> 15 )")]
+        [TestCase(2,  true,  ExpectedResult = 3,  TestName = "Test_1151( 2, true -> 3 )")]
+        [TestCase(12, false, ExpectedResult = 16, TestName = "Test_1151( 12, false -> 16 )")]
+        public int Test_1151(int x, bool isAʹ)
+        {
+            var from_A_To_A_OrTo_Aʹ_With =
+                From_A_To_A_OrTo_Aʹ(isAʹ);
+
+            var f =
+                If(A_Is(Even))                                  // (false, 1) -> 1, (1, true) -> 1
+                    .Then(from_A_To_A_OrTo_Aʹ_With(Add(1)))     
+                    .If(Object<A>.Is<Aʹ>)                     
+                        .If(A_Is(MoreThen(10)))
+                            .Then(From_Aʹ_To_A_With(Add(2)))    // (12, true) -> 15
+                        .End()                                  // (2, true) -> 3
+                    .Else()
+                        .Then(From_A_To_A_With(Add(3)))         // (12, false) -> 16
+                    .End()
+                .End();
+            
+            A result = f(new A(x));
+
+            return result.Value;
+        }
+
+        [TestCase(1,   false, ExpectedResult = 1,   TestName = "Test_1152( 1, false -> 1 )")]
+        [TestCase(12,  false, ExpectedResult = 13,  TestName = "Test_1152( 12, false -> 13 )")]
+        [TestCase(111, true,  ExpectedResult = 117, TestName = "Test_1152( 111, true -> 117 )")]
+        [TestCase(11,  true,  ExpectedResult = 14,  TestName = "Test_1152( 11, true -> 14 )")]
+        [TestCase(11,  false, ExpectedResult = 18,  TestName = "Test_1152( 11, false -> 18 )")]
+        public int Test_1152(int x, bool isAʹ)
+        {
+            var from_A_To_A_OrTo_Aʹ_With =
+                From_A_To_A_OrTo_Aʹ(isAʹ);
+
+            var f =
+                If(A_Is(MoreThen(10)))                              // (1, false) -> 1
+                    .Then(From_A_To_A_With(Add(1)))                 // (12, false) -> 13
+                    .If(A_Is(Even))                                
+                        .Then(from_A_To_A_OrTo_Aʹ_With(Add(2)))     
+                        .If(Object<A>.Is<Aʹ>)                     
+                            .If(A_Is(MoreThen(100)))
+                                .Then(From_Aʹ_To_A_With(Add(3)))    // (111, true) -> 117
+                            .End()                                  // (11, true) -> 14
+                        .Else()
+                            .Then(From_A_To_A_With(Add(4)))         // (11, false) -> 18
+                        .End()
+                    .End()
+                .End();
+            
+            A result = f(new A(x));
+
+            return result.Value;
+        }
+
+        [TestCase(1,   false, ExpectedResult = 1,   TestName = "Test_1153( 1, false -> 1 )")]
+        [TestCase(12,  false, ExpectedResult = 13,  TestName = "Test_1153( 12, false -> 13 )")]
+        [TestCase(313, false, ExpectedResult = 316, TestName = "Test_1153( 313, false -> 316 )")]
+        [TestCase(113, false, ExpectedResult = 119, TestName = "Test_1153( 113, false -> 119 )")]
+        [TestCase(11,  false, ExpectedResult = 14,  TestName = "Test_1153( 11, false -> 14 )")]
+        [TestCase(13,  true,  ExpectedResult = 16,  TestName = "Test_1153( 13, true -> 16 )")]
+        [TestCase(11,  true,  ExpectedResult = 18,  TestName = "Test_1153( 11, true -> 18 )")]
+        public int Test_1153(int x, bool isAʹ)
+        {
+            var from_A_To_A_OrTo_Aʹ_With =
+                From_A_To_A_OrTo_Aʹ(isAʹ);
+
+            var f =
+                 If(A_Is(MoreThen(10)))                                 // (1, false) -> 1
+                    .Then(From_A_To_A_With(Add(1)))                     // (12, false) -> 13              
+                    .If(A_Is(Even))                                
+                        .Then(from_A_To_A_OrTo_Aʹ_With(Add(2)))         
+                        .If(A_Is(MoreThen(50)))                     
+                            .If(A_Is(LessThen(200)))                    // (313, false) -> 316
+                                .Then(From_A_To_A_With(Add(3)))         // (113, false) -> 119
+                            .End()                                  
+                        .Else()
+                            .If(Object<A>.Is<Aʹ>)                       // (11, false) -> 14
+                                .If(A_Is(EndingWith("4")))              // (13, true) -> 16
+                                    .Then(From_Aʹ_To_A_With(Add(4)))    // (11, true) -> 18
+                                .End()
+                            .End()
+                        .End()
+                    .End()
+                .End();
+
+            A result = f(new A(x));
+
+            return result.Value;
+        }
+         
+        [TestCase(1,  false, ExpectedResult = 1,  TestName = "Test_1154( 1, false -> 1 )")]
+        [TestCase(10, false, ExpectedResult = 13, TestName = "Test_1154( 10, false -> 13 )")]
+        [TestCase(2,  false, ExpectedResult = 6,  TestName = "Test_1154( 2, false -> 6 )")]
+        [TestCase(2,  true,  ExpectedResult = 10, TestName = "Test_1154( 2, true -> 10 )")]
+        public int Test_1554(int x, bool isAʹ)
+        {
+            var from_A_To_A_OrTo_Aʹ_With =
+                From_A_To_A_OrTo_Aʹ(isAʹ);
+
+            var f =
+                If(A_Is(Even))                                      // (1, false) -> 1
+                    .Then(From_A_To_A_With(Add(1)))                 
+                    .If(A_Is(MoreThen(10)))
+                        .Then(From_A_To_A_With(Add(2)))             // (10, false) -> 13
+                    .Else()
+                        .Then(from_A_To_A_OrTo_Aʹ_With(Add(3)))     // (2, false) -> 6
+                        .If(Object<A>.Is<Aʹ>)
+                            .Then(From_Aʹ_To_A_With(Add(4)))        // (2, true) -> 10
                         .End()
                     .End()
                .End();

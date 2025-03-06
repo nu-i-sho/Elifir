@@ -637,8 +637,8 @@
         }
         
         [TestCase(14, ExpectedResult = 15, TestName = "Test_1438( 14 -> 15 )")]
-        [TestCase(11, ExpectedResult = 17, TestName = "Test_1438( 11 -> 17 )")]
-        [TestCase(1,  ExpectedResult = 8,  TestName = "Test_1438( 1 -> 8 )")]
+        [TestCase(11, ExpectedResult = 15, TestName = "Test_1438( 11 -> 15 )")]
+        [TestCase(1,  ExpectedResult = 6,  TestName = "Test_1438( 1 -> 6 )")]
         public int Test_1438(int x)
         {
             var f =
@@ -646,9 +646,9 @@
                .If(A_Is(Even))
                     .Then(From_A_To_A_With(Add(1))) 
                     .If(A_Is(MoreThen(10)))
-                        .Then(From_A_To_A_With(Add(2)))     // 11 -> 17
+                        .Then(From_A_To_A_With(Add(2)))     // 11 -> 15
                     .Else()
-                        .Then(From_A_To_Aʹ_With(Add(3)))    // 1 -> 8
+                        .Then(From_A_To_Aʹ_With(Add(3)))    // 1 -> 6
                     .End()
                .End();
 
