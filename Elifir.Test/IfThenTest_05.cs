@@ -3,7 +3,7 @@
     using static Utils;
 
     [TestFixture]
-    public class FuncIfAndIfThenTest
+    public class IfThenTest_05
     {
         [TestCase(2,   ExpectedResult = 3,   TestName = "Test_0500( 2 -> 3 )")]
         [TestCase(8,   ExpectedResult = 9,   TestName = "Test_0500( 8 -> 9 )")]

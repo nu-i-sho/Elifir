@@ -3,7 +3,7 @@
     using static Utils;
 
     [TestFixture]
-    public class ThenTest
+    public class ThenTest_00
     {
 
         [Test]

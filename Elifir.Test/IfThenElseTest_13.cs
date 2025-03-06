@@ -4,19 +4,19 @@
     using static Syntax;
 
     [TestFixture]
-    public class IfAndIfThenElseTest
+    public class IfThenElseTest_13
     {
-        [TestCase(2,  ExpectedResult = 12,  TestName = "Test_1222( 2 -> 12 )")]
-        [TestCase(3,  ExpectedResult = 23,  TestName = "Test_1222( 3 -> 23 )")]
-        [TestCase(4,  ExpectedResult = 34,  TestName = "Test_1222( 4 -> 34 )")]
-        [TestCase(5,  ExpectedResult = 45,  TestName = "Test_1222( 5 -> 45 )")]
-        [TestCase(6,  ExpectedResult = 56,  TestName = "Test_1222( 6 -> 56 )")]
-        [TestCase(7,  ExpectedResult = 67,  TestName = "Test_1222( 7 -> 67 )")]
-        [TestCase(8,  ExpectedResult = 78,  TestName = "Test_1222( 8 -> 78 )")]
-        [TestCase(9,  ExpectedResult = 89,  TestName = "Test_1222( 9 -> 89 )")]
-        [TestCase(10, ExpectedResult = 100, TestName = "Test_1222( 10 -> 100 )")]
-        [TestCase(1,  ExpectedResult = 2,   TestName = "Test_1222( 1 -> 2 )")]
-        public int Test_1222(int x)
+        [TestCase(2,  ExpectedResult = 12,  TestName = "Test_1322( 2 -> 12 )")]
+        [TestCase(3,  ExpectedResult = 23,  TestName = "Test_1322( 3 -> 23 )")]
+        [TestCase(4,  ExpectedResult = 34,  TestName = "Test_1322( 4 -> 34 )")]
+        [TestCase(5,  ExpectedResult = 45,  TestName = "Test_1322( 5 -> 45 )")]
+        [TestCase(6,  ExpectedResult = 56,  TestName = "Test_1322( 6 -> 56 )")]
+        [TestCase(7,  ExpectedResult = 67,  TestName = "Test_1322( 7 -> 67 )")]
+        [TestCase(8,  ExpectedResult = 78,  TestName = "Test_1322( 8 -> 78 )")]
+        [TestCase(9,  ExpectedResult = 89,  TestName = "Test_1322( 9 -> 89 )")]
+        [TestCase(10, ExpectedResult = 100, TestName = "Test_1322( 10 -> 100 )")]
+        [TestCase(1,  ExpectedResult = 2,   TestName = "Test_1322( 1 -> 2 )")]
+        public int Test_1322(int x)
         {
             var f =
                 If(B_Is(MoreThen(1))).AndIf(B_Is(LessThen(3)))

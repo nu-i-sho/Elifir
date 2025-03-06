@@ -173,6 +173,7 @@
         public static Func<Func<int, int>, Func<A, Λ>> From_A_To_Λ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Λ, Λ>> From_Λ_To_Λ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Λ, Δ>> From_Λ_To_Δ_With = f => x => new(f(x.Value));
+        public static Func<Func<int, int>, Func<Δ, Λ>> From_Δ_To_Λ_With = f => x => new(f(x.Value));
 
         public static Func<Func<int, int>, Func<Λ, ΛΛ>> From_Λ_To_ΛΛ_With = f => x => new(f(x.Value));
         public static Func<Func<int, int>, Func<Λ, ΔΔ>> From_Λ_To_ΔΔ_With = f => x => new(f(x.Value));

@@ -28,7 +28,5 @@
             Func<ConditionalMap<I, Iʹ>> condition)
                 where Iʹ : I =>
                     o.Then(Identity).If(condition);
-
-        static T Identity<T>(T x) => x;
     }
 }

@@ -4,7 +4,7 @@
     using static Syntax;
 
     [TestFixture]
-    public class IfAndIfThenTest
+    public class IfThenTest_08
     {
         [TestCase(1,   ExpectedResult = 1,   TestName = "Test_0800( 1 -> 1 )")]
         [TestCase(8,   ExpectedResult = 8,   TestName = "Test_0800( 8 -> 8 )")]
@@ -125,6 +125,7 @@
                                                         // (111, Aʺʺʺ) -> 333, (111, Aʺʺʺʹ) -> 333
                                                         // (111, Aʺʺʺʺ) -> 333, (111, Aʺʺʺʺʹ) -> 333
                                                         // (111, Aʺʺʺʺʺ) -> 333
+            
             A result = f(From_Int_To_SomeA(ofTypeX)(111));
 
             return result.Value;
@@ -321,6 +322,76 @@
                 .End();
 
             B result = f(new B(x));
+
+            return result.Value;
+        }
+
+        [TestCase(false, 2,  ExpectedResult = 2,  TestName = "Test_0813( false, 2 -> 2 )")]
+        [TestCase(false, 12, ExpectedResult = 12, TestName = "Test_0813( false, 12 -> 12 )")]
+        [TestCase(true,  2,  ExpectedResult = 2,  TestName = "Test_0813( true, 2 -> 2 )")]
+        [TestCase(true,  2,  ExpectedResult = 2,  TestName = "Test_0813( true, 1 -> 1 )")]
+        [TestCase(true,  12, ExpectedResult = 14, TestName = "Test_0813( true, 12 -> 14 )")]
+        public int Test_0813(bool isAʹ, int x)
+        {
+            var f =
+                 If(Object<A>.Is<Aʹ>)                            // (false, 2) -> 2, (false, 12) -> 12
+                    .If(Aʹ_Is(Even)).AndIf(Aʹ_Is(MoreThen(10)))  // (true, 2) -> 2, (true, 1) -> 1 
+                        .Then(From_Aʹ_To_A_With(Add(2)))         // (true, 12) -> 14
+                    .End()
+                .End();
+
+            A arg = isAʹ
+                ? new Aʹ(x)
+                : new A(x);
+
+            A result = f(arg);
+
+            return result.Value;
+        }
+
+        [TestCase(true,  2,  ExpectedResult = 2,  TestName = "Test_0814( true, 2 -> 2 )")]
+        [TestCase(true,  2,  ExpectedResult = 2,  TestName = "Test_0814( true, 1 -> 1 )")]
+        [TestCase(false, 2,  ExpectedResult = 2,  TestName = "Test_0814( false, 2 -> 2 )")]
+        [TestCase(false, 12, ExpectedResult = 12, TestName = "Test_0814( false, 12 -> 12 )")]
+        [TestCase(true,  12, ExpectedResult = 14, TestName = "Test_0814( true, 12 -> 14 )")]
+        public int Test_0814(bool isAʹ, int x)
+        {
+            var f =
+                 If(A_Is(Even)).AndIf(A_Is(MoreThen(10)))   // (true, 2) -> 2, (true, 1) -> 1
+                    .If(Object<A>.Is<Aʹ>)                   // (false, 2) -> 2, (false, 12) -> 12
+                        .Then(From_Aʹ_To_A_With(Add(2)))    // (true, 12) -> 14
+                    .End()
+                .End();
+
+            A arg = isAʹ
+                ? new Aʹ(x)
+                : new A(x);
+
+            A result = f(arg);
+
+            return result.Value;
+        }
+
+        [TestCase(true,  2,  ExpectedResult = 2,  TestName = "Test_0815( true, 2 -> 2 )")]
+        [TestCase(true,  2,  ExpectedResult = 2,  TestName = "Test_0815( true, 1 -> 1 )")]
+        [TestCase(false, 2,  ExpectedResult = 2,  TestName = "Test_0815( false, 2 -> 2 )")]
+        [TestCase(false, 12, ExpectedResult = 14, TestName = "Test_0815( false, 12 -> 14 )")]
+        [TestCase(true,  12, ExpectedResult = 16, TestName = "Test_0815( true, 12 -> 14 )")]
+        public int Test_0815(bool isAʹ, int x)
+        {
+            var f =
+                 If(A_Is(Even)).AndIf(A_Is(MoreThen(10)))   // (true, 2) -> 2, (true, 1) -> 1, (false, 2) -> 2
+                    .If(Object<A>.Is<Aʹ>)                   // (false, 12) -> 14 // +2
+                        .Then(From_Aʹ_To_A_With(Add(2)))    // (true, 12) -> 16  // +2
+                    .End()
+                    .Then(From_A_To_A_With(Add(2)))
+                .End();
+
+            A arg = isAʹ
+                ? new Aʹ(x)
+                : new A(x);
+
+            A result = f(arg);
 
             return result.Value;
         }
