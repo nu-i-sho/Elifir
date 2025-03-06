@@ -227,5 +227,28 @@
 
             return result.Value;
         }
+
+        [TestCase(2, ExpectedResult = 5,  TestName = "Test_1223( 2 -> 5 )")]
+        [TestCase(1, ExpectedResult = 10, TestName = "Test_1223( 1 -> 10 )")]
+        [TestCase(3, ExpectedResult = 13, TestName = "Test_1223( 3 -> 13 )")]
+        public int Test_1223(int x)
+        {
+            var f =
+                If(A_Is(Even))
+                    .Then(From_A_To_A_With(Add(3)))         // 2 -> 5
+               .Else()
+                    .Then(From_A_To_A_With(Add(4)))
+                    .If(A_Is(EndingWith("5")))
+                        .Then(From_A_To_Δ_With(Add(5)))     // 1 -> 10
+                    .Else()
+                        .Then(From_A_To_Λ_With(Add(6)))     // 3 -> 13
+                    .End(WithReturn<A>)
+               .End();
+
+            A result = f(new A(x));
+
+            return result.Value;
+
+        }
     }
 }

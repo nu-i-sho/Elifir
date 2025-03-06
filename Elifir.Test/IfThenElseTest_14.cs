@@ -572,5 +572,89 @@
 
             return result.Value;
         }
+
+        [TestCase(1, ExpectedResult = 4,  TestName = "Test_1435( 1 -> 4 )")]
+        [TestCase(2, ExpectedResult = 6,  TestName = "Test_1435( 2 -> 6 )")]
+        [TestCase(8, ExpectedResult = 16, TestName = "Test_1435( 8 -> 16 )")]
+        public int Test_1435(int x)
+        {
+            var f =
+                From_A_To_A_With(Add(1))
+               .If(A_Is(Even))
+                    .Then(From_A_To_Aʹ_With(Add(2)))        // 1 -> 4
+               .Else()
+                    .Then(From_A_To_Aʹ_With(Add(3)))        // 2 -> 6
+                    .If(Aʹ_Is(MoreThen(10)))
+                        .Then(From_Aʹ_To_A_With(Add(4)))    // 8 -> 16
+                    .End()
+               .End();
+
+            A result = f(new A(x));
+
+            return result.Value;
+        }
+
+        [TestCase(1, ExpectedResult = 4,  TestName = "Test_1436( 1 -> 4 )")]
+        [TestCase(2, ExpectedResult = 6,  TestName = "Test_1436( 2 -> 6 )")]
+        [TestCase(8, ExpectedResult = 16, TestName = "Test_1436( 8 -> 16 )")]
+        public int Test_1436(int x)
+        {
+            var f =
+                From_A_To_A_With(Add(1))
+               .If(A_Is(Even))
+                    .Then(From_A_To_A_With(Add(2)))         // 1 -> 4
+               .Else()
+                    .Then(From_A_To_A_With(Add(3)))         // 2 -> 6
+                    .If(A_Is(MoreThen(10)))
+                        .Then(From_A_To_Aʹ_With(Add(4)))    // 8 -> 16
+                    .End()
+               .End();
+
+            A result = f(new A(x));
+
+            return result.Value;
+        }
+
+        [TestCase(14, ExpectedResult = 15, TestName = "Test_1437( 14 -> 15 )")]
+        [TestCase(11, ExpectedResult = 17, TestName = "Test_1437( 11 -> 17 )")]
+        [TestCase(1,  ExpectedResult = 8,  TestName = "Test_1437( 1 -> 8 )")]
+        public int Test_1437(int x)
+        {
+            var f =
+                From_A_To_A_With(Add(1))                    // 15 -> 15
+               .If(A_Is(Even))
+                    .Then(From_A_To_A_With(Add(2)))
+                    .If(A_Is(MoreThen(10)))
+                        .Then(From_A_To_Aʹ_With(Add(3)))    // 11 -> 17
+                    .Else()
+                        .Then(From_A_To_A_With(Add(4)))     // 1 -> 8
+                    .End()
+               .End();
+
+            A result = f(new A(x));
+
+            return result.Value;
+        }
+        
+        [TestCase(14, ExpectedResult = 15, TestName = "Test_1438( 14 -> 15 )")]
+        [TestCase(11, ExpectedResult = 17, TestName = "Test_1438( 11 -> 17 )")]
+        [TestCase(1,  ExpectedResult = 8,  TestName = "Test_1438( 1 -> 8 )")]
+        public int Test_1438(int x)
+        {
+            var f =
+                From_A_To_A_With(Add(1))                    // 14 -> 15
+               .If(A_Is(Even))
+                    .Then(From_A_To_A_With(Add(1))) 
+                    .If(A_Is(MoreThen(10)))
+                        .Then(From_A_To_A_With(Add(2)))     // 11 -> 17
+                    .Else()
+                        .Then(From_A_To_Aʹ_With(Add(3)))    // 1 -> 8
+                    .End()
+               .End();
+
+            A result = f(new A(x));
+
+            return result.Value;
+        }
     }
 }
