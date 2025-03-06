@@ -14,6 +14,9 @@
             //      readonly struct:
             //          elifir: 00:00:20.9410000
             //          native: 00:00:09.4360000
+            //      class:
+            //          elifir: 00:00:12.7150000
+            //          native: 00:00:08.3320000
 
             var native = Stopwatch.StartNew();
             

@@ -2,22 +2,16 @@
 {
     public static partial class ˣ
     {
-        public readonly partial struct If<I>
+        public partial class If<I> {
+        public partial class Then<T> {
+        public partial class Else {
+        public partial class Then<E>(
+            ConditionalMap<I, T> conditionalMap,
+            Func<I, E> elseMap)
         {
-            public readonly partial struct Then<T>
-            {
-                public readonly partial struct Else
-                {
-                    public readonly partial struct Then<E>(
-                        ConditionalMap<I, T> conditionalMap,
-                        Func<I, E> elseMap)
-                    {
-                        internal ConditionalMap<I, T> ConditionalMap => conditionalMap;
-                        internal Func<I, E> ElseMap => elseMap;
-                    }
-                }
-            }
-        }
+                internal ConditionalMap<I, T> ConditionalMap => conditionalMap;
+                internal Func<I, E> ElseMap => elseMap;
+        }}}}
     }
 
     public static partial class Syntax

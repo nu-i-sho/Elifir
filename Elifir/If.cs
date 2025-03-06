@@ -4,7 +4,7 @@
 
     public static partial class ˣ
     {
-        public readonly partial struct If<I>(
+        public partial class If<I>(
             Func<I, bool> condition)
         {
             internal Func<I, bool> Condition => condition;
