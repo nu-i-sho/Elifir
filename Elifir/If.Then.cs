@@ -4,8 +4,8 @@
 
     public static partial class ˣ
     {
-        public readonly partial struct If<I> {
-        public readonly partial struct Then<T>(
+        public partial class If<I> {
+        public partial class Then<T>(
             ConditionalMap<I, T> conditionalMap)
         {
             internal ConditionalMap<I, T> ConditionalMap => conditionalMap;
