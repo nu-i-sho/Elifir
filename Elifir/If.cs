@@ -4,10 +4,12 @@
 
     public static partial class ˣ
     {
-        public partial class If<I>(
-            Func<I, bool> condition)
+        public partial class If<I>
         {
-            internal Func<I, bool> Condition => condition;
+            internal If(Func<I, bool> condition) =>
+                Condition = condition;
+
+            internal Func<I, bool> Condition { get; }
         }
     }
 

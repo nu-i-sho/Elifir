@@ -5,10 +5,12 @@
     public static partial class ˣ
     {
         public partial class If<I> {
-        public class Is<Iʹ>(
-            ConditionalMap<I, Iʹ> condition) where Iʹ : I
+        public class Is<Iʹ> where Iʹ : I
         {
-            internal ConditionalMap<I, Iʹ> Condition => condition;
+            internal Is(ConditionalMap<I, Iʹ> condition) =>
+                Condition = condition;
+
+            internal ConditionalMap<I, Iʹ> Condition { get; }
         }}
     }
 
