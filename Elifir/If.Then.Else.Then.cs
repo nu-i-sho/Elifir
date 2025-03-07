@@ -5,12 +5,18 @@
         public partial class If<I> {
         public partial class Then<T> {
         public partial class Else {
-        public partial class Then<E>(
-            ConditionalMap<I, T> conditionalMap,
-            Func<I, E> elseMap)
+        public partial class Then<E>
         {
-                internal ConditionalMap<I, T> ConditionalMap => conditionalMap;
-                internal Func<I, E> ElseMap => elseMap;
+            internal Then(
+                ConditionalMap<I, T> conditionalMap,
+                Func<I, E> elseMap)
+            {
+                ConditionalMap = conditionalMap;
+                ElseMap = elseMap;
+            }
+
+            internal ConditionalMap<I, T> ConditionalMap { get; }
+            internal Func<I, E> ElseMap { get; }
         }}}}
     }
 

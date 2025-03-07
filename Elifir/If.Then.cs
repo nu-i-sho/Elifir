@@ -5,10 +5,12 @@
     public static partial class ˣ
     {
         public partial class If<I> {
-        public partial class Then<T>(
-            ConditionalMap<I, T> conditionalMap)
+        public partial class Then<T>
         {
-            internal ConditionalMap<I, T> ConditionalMap => conditionalMap;
+            internal Then(ConditionalMap<I, T> conditionalMap) =>
+                ConditionalMap = conditionalMap;
+
+            internal ConditionalMap<I, T> ConditionalMap { get; }
         }}
     }
 
