@@ -61,7 +61,7 @@
                 .Then(from_E_To_Λ_OrTo_ΛΛ_OrTo_ΛΛΛ_With(Add(100)))      
                 .If(Object<Λ>.Is<ΛΛ>)                               // (2, Λ) -> 113, (1, Λ) -> 112
                 .AndIf(Λ_Is(Odd))                                   // (2, ΛΛ) -> 113, (1, ΛΛ) -> 112
-                .AndIf(Object<Λ>.Is<ΛΛΛ>)                           // (1, ΛΛΛ) -> 112
+                .AndIf(Object<ΛΛ>.Is<ΛΛΛ>)                          // (1, ΛΛΛ) -> 112
                     .Then(From_ΛΛΛ_To_B_With(Add(2)))
                     .Then(From_B_To_E_With(Add(20)))
                     .Then(From_E_To_Δ_With(Add(200)))               // (2, ΛΛΛ) -> 335

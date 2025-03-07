@@ -19,9 +19,7 @@
         public static ˣ.If<I>.Then<Tʹ> Then<I, T, Tʹ>(
             this ˣ.If<I>.Then<T> o,
             Func<T, Tʹ> map) =>
-                new((I i, [NotNullWhen(true)]
-                          [MaybeNullWhen(false)] 
-                          out Tʹ tʹ) =>
+                new((I i, [MaybeNullWhen(false)] out Tʹ tʹ) =>
                 {
                     if (o.ConditionalMap(i, out T? t))
                     {
@@ -40,7 +38,7 @@
 
         public static ˣ<ˣ.If<I>.Then<T>, ˣ.If<T>.Is<Tʹ>> If<I, T, Tʹ>(
             this ˣ.If<I>.Then<T> o,
-            Func<ConditionalMap<T, Tʹ>> condition)
+            Func<TypeCondition<T, Tʹ>> condition)
                 where Tʹ : T =>
                     new(o, If(condition));
 

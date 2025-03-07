@@ -22,24 +22,23 @@
 
         public static ˣ.If<I>.Is<Iʹ> AndIf<I, Iʹ>(
             this ˣ.If<I> o,
-            Func<ConditionalMap<I, Iʹ>> condition)
-                where Iʹ : I =>
-                    new((I i, [NotNullWhen(true)]
-                              [MaybeNullWhen(false)] 
-                              out Iʹ iʹ) =>
-                    {
-                        if (o.Condition(i) && condition()(i, out iʹ))
-                            return true;
+            Func<TypeCondition<I, Iʹ>> _)
+                where Iʹ : I
+        {
+            var condition = CreateTypeConditionalMap<I, Iʹ>();
+            return new((I i, [MaybeNullWhen(false)] out Iʹ iʹ) =>
+            {
+                if (o.Condition(i) && condition(i, out iʹ))
+                    return true;
 
-                        iʹ = default;
-                        return false;
-                    });
-
+                iʹ = default;
+                return false;
+            });
+        }
         public static ˣ.If<I>.Then<T> Then<I, T>(
             this ˣ.If<I> o,
             Func<I, T> map) =>
-                new((I i, [NotNullWhen(true)]
-                          [MaybeNullWhen(false)] out T t) =>
+                new((I i, [MaybeNullWhen(false)] out T t) =>
                 {
                     if (o.Condition(i))
                     {
@@ -58,7 +57,7 @@
 
         public static ˣ<ˣ.If<I>.Then<I>, ˣ.If<I>.Is<Iʹ>> If<I, Iʹ>(
             this ˣ.If<I> o,
-            Func<ConditionalMap<I, Iʹ>> condition)
+            Func<TypeCondition<I, Iʹ>> condition)
                 where Iʹ : I =>
                     new(o.Then(Identity), If(condition));
     }

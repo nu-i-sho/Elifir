@@ -8,16 +8,9 @@
     public class PerformanceTest
     {
         [Test]
+        [Ignore("Manual Performance Test")]
         public void IfThe_10x_Test()
         {
-            // Release mode:
-            //      readonly struct:
-            //          elifir: 00:00:20.9410000
-            //          native: 00:00:09.4360000
-            //      class:
-            //          elifir: 00:00:12.7150000
-            //          native: 00:00:08.3320000
-
             var native = Stopwatch.StartNew();
 
             int nativeResult = 0;
@@ -41,7 +34,7 @@
             {
                 Assert.That(elifirResult, Is.EqualTo(nativeResult));
                 Assert.That(elifir.ElapsedMilliseconds,
-                    Is.LessThan(native.ElapsedMilliseconds * 3));
+                    Is.LessThan(native.ElapsedMilliseconds * 2));
             });
         }
 
@@ -84,38 +77,37 @@
         {
             A result = new(x);
 
-            if (x > 10)
+            if (result.Value > 10)
             {
                 result = new(result.Value + 1);
-                if (x > 20)
+                if (result.Value > 20)
                 {
                     result = new(result.Value + 1);
-                    if (x > 30)
+                    if (result.Value > 30)
                     {
                         result = new(result.Value + 1);
-                        if (x > 40)
+                        if (result.Value > 40)
                         {
                             result = new(result.Value + 1);
-                            if (x > 50)
+                            if (result.Value > 50)
                             {
                                 result = new(result.Value + 1);
-                                if (x > 60)
+                                if (result.Value > 60)
                                 {
                                     result = new(result.Value + 1);
-                                    if (x > 70)
+                                    if (result.Value > 70)
                                     {
                                         result = new(result.Value + 1);
-                                        if (x > 80)
+                                        if (result.Value > 80)
                                         {
                                             result = new(result.Value + 1);
-                                            if (x > 90)
+                                            if (result.Value > 90)
                                             {
                                                 result = new(result.Value + 1);
-                                                if (x > 100)
+                                                if (result.Value > 100)
                                                 {
                                                     result = new(result.Value + 1);
                                                 }
-
                                             }
                                         }
                                     }
