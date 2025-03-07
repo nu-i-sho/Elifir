@@ -5,6 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
+    <AssemblyName>Elifir.Test</AssemblyName>
+    <RootNamespace>Nuisho.Elifir.Test</RootNamespace>
+
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>

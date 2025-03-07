@@ -4,7 +4,7 @@
     using static Syntax;
 
     [TestFixture]
-    public class IfThenTest_15
+    public class IfThenElseTest_15
     {
         [TestCase(2, ExpectedResult = 13, TestName = "Test_1500( 2 -> 13 )")]
         [TestCase(0, ExpectedResult = 21, TestName = "Test_1500( 0 -> 21 )")]
@@ -291,27 +291,5 @@
             return result.Value;
 
         }
-
-        //[TestCase(2, ExpectedResult = 3, TestName = "Test_1522( 2 -> 3 )")]
-        //[TestCase(1, ExpectedResult = 3, TestName = "Test_1522( 2 -> 3 )")]
-        //public int Test_1522(int x)
-        //{
-        //    var f =
-        //        From_A_To_A_With(Add(1))                    // 2 -> 3
-        //       .If(A_Is(Even))
-        //            .Then(From_A_To_Δ_With(Add(2)))
-        //       .Else()
-        //            .Then(From_A_To_Δ_With(Add(3)))
-        //            .If(A_Is(EndingWith("5")))
-        //                .Then(From_Δ_To_Λ_With(Add(4)))
-        //            .Else()
-        //                .Then(From_Δ_To_Λ_With(Add(5)))
-        //            .End()
-        //       .End(WithReturn<A>);
-
-        //    A result = f(new A(x));
-
-        //    return result.Value;
-        //}
     }
 }

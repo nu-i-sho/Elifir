@@ -8,38 +8,37 @@
     public class PerformanceTest
     {
         [Test]
+        [Ignore("Manual Performance Test")]
         public void IfThe_10x_Test()
         {
-            // Release mode:
-            //      readonly struct:
-            //          elifir: 00:00:20.9410000
-            //          native: 00:00:09.4360000
-            //      class:
-            //          elifir: 00:00:12.7150000
-            //          native: 00:00:08.3320000
-
             var native = Stopwatch.StartNew();
-            
+
+            int nativeResult = 0;
             for (int i = 0; i < 100000000; i++)
-                Native_IfThen_10x(i);
+                unchecked { nativeResult += Native_IfThen_10x(i); }
 
             native.Stop();
 
             var elifir = Stopwatch.StartNew();
 
+            int elifirResult = 0;
             for (int i = 0; i < 100000000; i++)
-                Elifir_IfThen_10x(i);
+                unchecked { elifirResult += Elifir_IfThen_10x(i); }
 
             elifir.Stop();
 
             Console.WriteLine($"native: {TimeSpan.FromMilliseconds(native.ElapsedMilliseconds)}");
             Console.WriteLine($"elifir: {TimeSpan.FromMilliseconds(elifir.ElapsedMilliseconds)}");
 
-            Assert.That(elifir.ElapsedMilliseconds,
-                Is.LessThan(native.ElapsedMilliseconds * 3));
+            Assert.Multiple(() =>
+            {
+                Assert.That(elifirResult, Is.EqualTo(nativeResult));
+                Assert.That(elifir.ElapsedMilliseconds,
+                    Is.LessThan(native.ElapsedMilliseconds * 2));
+            });
         }
 
-        public static readonly Func<A, A> _elifir_IfThen_10x = 
+        private static readonly Func<A, A> _elifir_IfThen_10x = 
             If((A x) => x.Value > 10)
                 .Then(x => new A(x.Value + 1))
                 .If((A x) => x.Value > 20)
@@ -71,47 +70,43 @@
                 .End()
             .End();
 
-        public static int Elifir_IfThen_10x(int x) => 
+        private static int Elifir_IfThen_10x(int x) => 
             _elifir_IfThen_10x(new (x)).Value;
 
-        public static int Native_IfThen_10x(int x)
+        private static int Native_IfThen_10x(int x)
         {
             A result = new(x);
 
-            if (x > 10)
+            if (result.Value > 10)
             {
                 result = new(result.Value + 1);
-                if (x > 20)
+                if (result.Value > 20)
                 {
                     result = new(result.Value + 1);
-                    if (x > 30)
+                    if (result.Value > 30)
                     {
                         result = new(result.Value + 1);
-                        if (x > 40)
+                        if (result.Value > 40)
                         {
                             result = new(result.Value + 1);
-                            if (x > 50)
+                            if (result.Value > 50)
                             {
                                 result = new(result.Value + 1);
-                                if (x > 60)
+                                if (result.Value > 60)
                                 {
                                     result = new(result.Value + 1);
-                                    if (x > 60)
+                                    if (result.Value > 70)
                                     {
                                         result = new(result.Value + 1);
-                                        if (x > 70)
+                                        if (result.Value > 80)
                                         {
                                             result = new(result.Value + 1);
-                                            if (x > 80)
+                                            if (result.Value > 90)
                                             {
                                                 result = new(result.Value + 1);
-                                                if (x > 90)
+                                                if (result.Value > 100)
                                                 {
                                                     result = new(result.Value + 1);
-                                                    if (x > 100)
-                                                    {
-                                                        result = new(result.Value + 1);
-                                                    }
                                                 }
                                             }
                                         }

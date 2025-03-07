@@ -10,7 +10,7 @@
 
         public static ˣ<Some, ˣ.If<I>.Is<Iʹ>> AndIf<Some, I, Iʹ>(
             this ˣ<Some, ˣ.If<I>> o,
-            Func<ConditionalMap<I, Iʹ>> condition)
+            Func<TypeCondition<I, Iʹ>> condition)
                 where Iʹ : I =>
                     new(o.Prev, 
                         o.Next.AndIf(condition));
@@ -28,7 +28,7 @@
 
         public static ˣ<ˣ<Some, ˣ.If<I>.Then<I>>, ˣ.If<I>.Is<Iʹ>> If<Some, I, Iʹ>(
             this ˣ<Some, ˣ.If<I>> o,
-            Func<ConditionalMap<I, Iʹ>> condition)
+            Func<TypeCondition<I, Iʹ>> condition)
                 where Iʹ : I =>
                     new(o.Then(Identity), If(condition));
     }
