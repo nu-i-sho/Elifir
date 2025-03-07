@@ -19,27 +19,33 @@
             //          native: 00:00:08.3320000
 
             var native = Stopwatch.StartNew();
-            
+
+            int nativeResult = 0;
             for (int i = 0; i < 100000000; i++)
-                Native_IfThen_10x(i);
+                unchecked { nativeResult += Native_IfThen_10x(i); }
 
             native.Stop();
 
             var elifir = Stopwatch.StartNew();
 
+            int elifirResult = 0;
             for (int i = 0; i < 100000000; i++)
-                Elifir_IfThen_10x(i);
+                unchecked { elifirResult += Elifir_IfThen_10x(i); }
 
             elifir.Stop();
 
             Console.WriteLine($"native: {TimeSpan.FromMilliseconds(native.ElapsedMilliseconds)}");
             Console.WriteLine($"elifir: {TimeSpan.FromMilliseconds(elifir.ElapsedMilliseconds)}");
 
-            Assert.That(elifir.ElapsedMilliseconds,
-                Is.LessThan(native.ElapsedMilliseconds * 3));
+            Assert.Multiple(() =>
+            {
+                Assert.That(elifirResult, Is.EqualTo(nativeResult));
+                Assert.That(elifir.ElapsedMilliseconds,
+                    Is.LessThan(native.ElapsedMilliseconds * 3));
+            });
         }
 
-        public static readonly Func<A, A> _elifir_IfThen_10x = 
+        private static readonly Func<A, A> _elifir_IfThen_10x = 
             If((A x) => x.Value > 10)
                 .Then(x => new A(x.Value + 1))
                 .If((A x) => x.Value > 20)
@@ -71,10 +77,10 @@
                 .End()
             .End();
 
-        public static int Elifir_IfThen_10x(int x) => 
+        private static int Elifir_IfThen_10x(int x) => 
             _elifir_IfThen_10x(new (x)).Value;
 
-        public static int Native_IfThen_10x(int x)
+        private static int Native_IfThen_10x(int x)
         {
             A result = new(x);
 
@@ -96,23 +102,20 @@
                                 if (x > 60)
                                 {
                                     result = new(result.Value + 1);
-                                    if (x > 60)
+                                    if (x > 70)
                                     {
                                         result = new(result.Value + 1);
-                                        if (x > 70)
+                                        if (x > 80)
                                         {
                                             result = new(result.Value + 1);
-                                            if (x > 80)
+                                            if (x > 90)
                                             {
                                                 result = new(result.Value + 1);
-                                                if (x > 90)
+                                                if (x > 100)
                                                 {
                                                     result = new(result.Value + 1);
-                                                    if (x > 100)
-                                                    {
-                                                        result = new(result.Value + 1);
-                                                    }
                                                 }
+
                                             }
                                         }
                                     }

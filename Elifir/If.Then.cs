@@ -64,6 +64,6 @@
             Func<ReturnType<B>> _)
                 where T : B
                 where I : B =>
-                    i => o.ConditionalMap(i, out T? t) ? t : i;
+                    i => o.ConditionalMap(i, out T? t) ? (B)t : i;
     }
 }
