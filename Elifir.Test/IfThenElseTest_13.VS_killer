@@ -9048,6 +9048,12 @@
                     .Then(From_B_To_A_With(Add(int.MaxValue)))
                     .Else()
 
+               // Stack Overflow during compilation
+               //
+               // .If(B_Is(True)).AndIf(B_Is(False))
+               //     .Then(From_B_To_A_With(Add(int.MaxValue)))
+               //     .Else()
+
                .Then(From_B_To_A_With(Add(1)));                     // 1 -> 2
 
             var expression_29 = expression_28
