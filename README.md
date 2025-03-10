@@ -48,5 +48,5 @@ Func<int, int> h = ...
 
 Func<int, int> p = If(IsEvent).Then(f).Then(g).Then(h).End();
 ```
-The function `p` from the code snippet above returns the original value for odd arguments and the result of `Then`'s functions applying (`h(g(f(x)))`) to even arguments.
+The function `p` from the code snippet above returns the original value for odd arguments and the result of `Then`'s functions applying to even arguments (`h(g(f(x)))`).
 
