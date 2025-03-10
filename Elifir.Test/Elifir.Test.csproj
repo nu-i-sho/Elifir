@@ -2,23 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>Nuisho.Elifir.Test</AssemblyName>
+    <RootNamespace>Nuisho.Elifir.Test</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
-    <AssemblyName>Elifir.Test</AssemblyName>
-    <RootNamespace>Nuisho.Elifir.Test</RootNamespace>
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="IfThenElseTest_13.VS_kller" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="IfThenElseTest_13.VS_kller" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />

@@ -123,3 +123,10 @@ using System.Diagnostics.CodeAnalysis;
     Justification = "It is necessary for type holding", 
     Scope = "type", 
     Target = "~T:Nuisho.Elifir.TypeCondition`2")]
+
+[assembly: SuppressMessage(
+    "Major Bug", 
+    "S3453:Classes should not have only \"private\" constructors", 
+    Justification = "It is declared only for type not for objects", 
+    Scope = "type", 
+    Target = "~T:Nuisho.Elifir.AdHocPolyMarker")]

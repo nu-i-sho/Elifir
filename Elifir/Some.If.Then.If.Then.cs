@@ -11,7 +11,7 @@
 
         public static ˣ<Some, ˣ.If<I>.Then<T>> End<Some, I, T, Tʹ>(
             this ˣ<ˣ<Some, ˣ.If<I>.Then<T>>, ˣ.If<T>.Then<Tʹ>> o,
-            AdHocPolyMarker _ = default)
+            AdHocPolyMarker? _ = null)
                 where Tʹ : T =>
                     new(o.Prev.Prev, 
                         o.Prev.Next.Then(

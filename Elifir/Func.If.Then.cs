@@ -9,7 +9,7 @@
 
         public static Func<T, Tʺ> End<T, Tʹ, Tʺ>(
             this ˣ<Func<T, Tʹ>, ˣ.If<Tʹ>.Then<Tʺ>> o,
-            AdHocPolyMarker _ = default)
+            AdHocPolyMarker? _ = null)
                 where Tʹ : Tʺ =>
                     o.Prev.Then(o.Next.End());
 
