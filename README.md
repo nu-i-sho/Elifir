@@ -50,3 +50,24 @@ Func<int, int> p = If(IsEvent).Then(f).Then(g).Then(h).End();
 ```
 The function `p` from the code snippet above returns the original value for odd arguments and the result of `Then`'s functions applying to even arguments (`h(g(f(x)))`).
 
+There are two ways to close an expression by `End` with the auto inference of return type and one with the manual.
+The following image shows them.
+
+![if-then end options](https://raw.githubusercontent.com/nu-i-sho/Elifir/refs/heads/main/readme_img/002.svg)
+
+We can achieve this using one of the overloads of the `End` method without any additional parameters*, as shown in (a), under the following conditions:
+  1) `Tʹ` is a subtype of `T`, or `Tʹ` and `T` are the same type. In this case, the resulting function has the type `T -> T`.
+  2) `T` is a subtype of `Tʹ`. In this scenario, the resulting function has the type `T -> Tʹ`.
+
+This concept is straightforward. Expression should return an original value of the original type `T` when the `If` condition is false. 
+Otherwise, it should return the transformed value with a resulting type `Tʹ`, which is the return type of the last function in the `Then` chain.
+To unify these two values, which have different types, into a single type, one of them must be a subtype of the other (or, naturally, they can be the same).
+
+Additionally, there is another case where two types can be unified:
+  3) When there exists a type B that serves as the base type for both T and Tʹ. In this case, the resulting function type is T -> B.
+However, it is not possible to infer type B automatically, as it is not guaranteed to be unique, accordingly C# can't provide mechanisms to handle this scenario. 
+Therefore, the type B must be explicitly specified using the WithReturn<B> argument, as illustrated in example (b).
+
+ 
+     
+   
