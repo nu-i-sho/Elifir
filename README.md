@@ -64,9 +64,9 @@ Otherwise, it should return the transformed value with a resulting type `Tʹ`, w
 To unify these two values, which have different types, into a single type, one of them must be a subtype of the other (or, naturally, they can be the same).
 
 Additionally, there is another case where two types can be unified:
-  3) When there exists a type B that serves as the base type for both T and Tʹ. In this case, the resulting function type is T -> B.
-However, it is not possible to infer type B automatically, as it is not guaranteed to be unique, accordingly C# can't provide mechanisms to handle this scenario. 
-Therefore, the type B must be explicitly specified using the WithReturn<B> argument, as illustrated in example (b).
+  3) When there exists a type `B` that serves as the base type for both `T` and `Tʹ`. In this case, the resulting function type is `T -> B`.
+However, it is not possible to infer type `B` automatically, as it is not guaranteed to be unique, accordingly C# can't provide mechanisms to handle this scenario. 
+Therefore, the type `B` must be explicitly specified using the `WithReturn<B>` argument, as illustrated in example (b).
 
  
      
