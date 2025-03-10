@@ -111,22 +111,22 @@ using System.Diagnostics.CodeAnalysis;
     Target = "~M:Nuisho.Elifir.Syntax.End``4(Nuisho.Elifir.ˣ{Nuisho.Elifir.ˣ.If{``0}.Then{``1},Nuisho.Elifir.ˣ.If{``1}.Then{``2}.Else.Then{``3}},Nuisho.Elifir.AdHocPolyMarker)~Nuisho.Elifir.ˣ.If{``0}.Then{``3}")]
 
 [assembly: SuppressMessage(
-    "Major Bug", 
-    "S3453:Classes should not have only \"private\" constructors", 
+    "Major Bug",
+    "S3453:Classes should not have only \"private\" constructors",
     Justification = "This class is a type holder to improve type inference and readability.",
-    Scope = "type", 
+    Scope = "type",
     Target = "~T:Nuisho.Elifir.TypeCondition`2")]
 
 [assembly: SuppressMessage(
-    "Major Code Smell", 
-    "S2326:Unused type parameters should be removed", 
-    Justification = "It is necessary for type holding", 
-    Scope = "type", 
+    "Major Code Smell",
+    "S2326:Unused type parameters should be removed",
+    Justification = "It is necessary for type holding",
+    Scope = "type",
     Target = "~T:Nuisho.Elifir.TypeCondition`2")]
 
 [assembly: SuppressMessage(
-    "Major Bug", 
-    "S3453:Classes should not have only \"private\" constructors", 
-    Justification = "It is declared only for type not for objects", 
-    Scope = "type", 
+    "Major Bug",
+    "S3453:Classes should not have only \"private\" constructors",
+    Justification = "It is declared only for type not for objects",
+    Scope = "type",
     Target = "~T:Nuisho.Elifir.AdHocPolyMarker")]
