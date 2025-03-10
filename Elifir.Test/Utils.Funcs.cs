@@ -2,6 +2,9 @@
 {
     public static partial class Utils
     {
+        internal static bool False<T>(T _) => false;
+        internal static bool True<T>(T _) => true;
+
         internal static T Identity<T>(T x) => x;
 
         internal static Func<int, Func<int, int>> Add => x => y => x + y;

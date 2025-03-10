@@ -1,12 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>Nuisho.Elifir.Test</AssemblyName>
+    <RootNamespace>Nuisho.Elifir.Test</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
-    <AssemblyName>Elifir.Test</AssemblyName>
-    <RootNamespace>Nuisho.Elifir.Test</RootNamespace>
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>

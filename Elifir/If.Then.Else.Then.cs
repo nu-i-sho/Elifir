@@ -46,7 +46,7 @@
 
         public static Func<I, E> End<I, T, E>(
             this ˣ.If<I>.Then<T>.Else.Then<E> o,
-            AdHocPolyMarker _ = default)
+            AdHocPolyMarker? _ = null)
                 where T : E =>
                     i => o.ConditionalMap(i, out T? t) ? t : o.ElseMap(i);
 

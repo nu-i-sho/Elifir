@@ -289,7 +289,6 @@
             A result = f(new A(x));
 
             return result.Value;
-
         }
     }
 }

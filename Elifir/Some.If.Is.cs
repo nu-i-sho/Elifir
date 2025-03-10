@@ -11,8 +11,7 @@
 
         public static ˣ<Some, ˣ.If<I>.Is<Iʺ>> AndIf<Some, I, Iʹ, Iʺ>(
             this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,
-            Func<TypeCondition<Iʹ, Iʺ>> condition,
-            AdHocPolyMarker _ = default)
+            Func<TypeCondition<Iʹ, Iʺ>> condition)
                 where Iʹ : I 
                 where Iʺ : Iʹ =>
                     new(o.Prev, 

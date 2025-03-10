@@ -53,7 +53,7 @@
 
         public static Func<I, T> End<I, T>(
             this ˣ.If<I>.Then<T> o,
-            AdHocPolyMarker _ = default)
+            AdHocPolyMarker? _ = null)
                 where I : T =>
                     i => o.ConditionalMap(i, out T? t) ? t : i;
 
