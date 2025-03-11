@@ -99,6 +99,17 @@ The following image illustrates this concept clearly and does not require furthe
 
 ![if-then-else end options](https://raw.githubusercontent.com/nu-i-sho/Elifir/refs/heads/main/readme_img/003.svg)
 
+## Induction
+
+Within any part of the expression, an `If` can be added to create a sub-expression. 
+Each sub-expression must be closed with `End`, adhering to the same rules outlined earlier for the top-level expression. 
+Every `If` must have a corresponding `End`, and all types within the expression must be harmonized to build the resulting function.
+
+The following image illustrates the process of expression folding.
+
+![expression folding](https://raw.githubusercontent.com/nu-i-sho/Elifir/refs/heads/main/readme_img/004.svg)
+
+
 
  
  
