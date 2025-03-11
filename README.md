@@ -161,7 +161,7 @@ Providing this behavior was the main challenge in designing the library, and it 
 You can use Elifir to construct functions, but it is not recommended to use any types provided by the library directly. 
 For this reason, the names of Elifir types include the symbol "ˣ," which is absent on the keyboard.
 
-We can see Elifir types specific in the following code snippet.
+We can see Elifir types in action in the following code snippet.
 
 ```CSharp
                                  Func<A, B> _0 = 
