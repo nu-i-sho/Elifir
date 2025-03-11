@@ -89,6 +89,17 @@ public static Func<I, T> End<I, T>(
             { ... }
 ```
 
+## If Then Else Then End
+
+A similar situation arises with the additional `Else` branch. 
+However, in this case, there are three key types involved: `T` (the input parameter type), `Tʹ` (the result type of the `If` branch), and `E` (the result type of the `Else` branch). 
+Thus, unification is required between `Tʹ` and `E` rather than between `T` and `Tʹ`.
+
+The following image illustrates this concept clearly and does not require further explanation.
+
+![if-then-else end options](https://raw.githubusercontent.com/nu-i-sho/Elifir/refs/heads/main/readme_img/003.svg)
+
+
  
  
      
