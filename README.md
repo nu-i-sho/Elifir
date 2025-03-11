@@ -109,8 +109,96 @@ The following image illustrates the process of expression folding.
 
 ![expression folding](https://raw.githubusercontent.com/nu-i-sho/Elifir/refs/heads/main/readme_img/004.svg)
 
+## Type Condition
 
+In addition to conventional conditions, Elifir provides sub-typing conditions.
+That means we can check the type of object in the `If` and delegate it to a sub-expression cast to this type (while keeping the original type for the `Else` branch).
+For example:
 
+```CSharp
+class A { ... }
+class B : A { ... }
+class C { ... }
+
+Func<A, C> convert_A_To_C = ...
+Func<B, C> convert_B_To_C = ...
+
+var f =
+    If(Object<A>.Is<B>)
+      .Then(convert_B_To_C)
+   .Else()
+      .Then(convert_A_To_C)
+   .End();
+```
+
+## AndIf
+
+Also, it is possible to combine conditions with the `AndIf` method.
+It works for both conventional and type conditions.
+
+```CSharp
+
+var f =
+    If(Object<A>.Is<B>).AndIf(B_Is_Something)
+      .Then(convert_B_To_C)
+      .If(C_Is_Something).AndIf(Object<C>.Is<D>)
+                         .AndIf(D_Is_Somthing)
+                         .AndIf(Object<D>.Is<E>)
+         .Then(convert_E_To_C)
+      .End()
+   .Else()
+      .Then(convert_A_To_C)
+   .End();
+
+```
+
+## P.S.: Limitations
+
+### Static Polymorphism
+Elifir is implemented using static polymorphism rather than dynamic polymorphism. 
+As a result, every modification to a non-finalized expression generates a new type incompatible with the previous one. 
+Providing this behavior was the main challenge in designing the library, and it is pretty cool, but it produces some conses. 
+You can use Elifir to construct functions, but it is not recommended to use any types provided by the library directly. 
+For this reason, the names of Elifir types include the symbol "ˣ," which is absent from the keyboard.
+
+The following code snipped shows Elifirr types in action.
+
+```CSharp
+                                 Func<A, B> _0 = 
+convert_A_To_B;                  ˣ<Func<A, B>, ˣ.If<B>> _1 = _0
+.If(B_Is_Something);             ˣ<Func<A, B>, ˣ.If<B>.Then<C>> _2 = _1
+    .Then(convert_B_To_C);       ˣ<Func<A, B>, ˣ.If<B>.Then<D>> _3 = _2
+    .Then(convert_C_To_D);       ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Is<E>> _4 = _3
+    .If(Object<D>.Is<E>);        ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>> _5 = _4
+       .Then(convert_E_To_B);    ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else> _6 = _5
+    .Else();                     ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>> _7 = _6
+       .Then(convert_D_To_B);    ˣ<ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>>, ˣ.If<B>> _8 = _7
+       .If(B_Is_Something);      ˣ<ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>>, ˣ.If<B>.Then<B>> _9 = _8
+          .Then(convert_B_To_B); ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>> _10 = _9
+       .End();                   ˣ<Func<A, B>, ˣ.If<B>.Then<B>> _11 = _10
+    .End();                      Func<A, B> _12 = _11
+.End();
+
+```
+
+### Generics
+I know the maximum nesting of generic types in C# is limited (each `If` increases this nesting). 
+I found information on forums that it is about 1000 but no exact information.   
+So, I tried to clarify it by tests.
+The first barrier was that IntelliSense crashed Visual Studio.
+I continued to write nesting `If`s in Notepad and only compiled it in VS without opening the file.
+The next problem was "CS8078	An expression is too long or complex to compile".
+I split my expression into portions bonded to variables. 
+It helped me to make the testing expression ten times longer.
+I expected some error that the code was out of maximum generic nesting length.
+Nothing like that happens, but StackOverflowException during compilation instead.
+Also, I found out that when the expression has a compilation error (for example, extra `End`) it is enough to have a smaller expression to have SO Exception.
+It looks like it was caused during error message building.
+This investigation summarizes the limitation of nesting in the generic type is about 1000.
+But it is impossible to have comfortable work when it is 100 because of long compilation and VS as IDE slows down.  
+
+### Performance 
+The function built by Elifir with 10 nested If-s performed twice slowed speed (like nothing) then the function implemented with native `if`-s. 
  
  
      
