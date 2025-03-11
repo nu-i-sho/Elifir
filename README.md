@@ -55,7 +55,7 @@ The following image shows them.
 
 ![if-then end options](https://raw.githubusercontent.com/nu-i-sho/Elifir/refs/heads/main/readme_img/002.svg)
 
-We can achieve this using one of the overloads of the `End` method without any additional parameters*, as shown in *(a)*, under the following conditions:
+We can achieve this using one of the overloads of the `End` method without any additional parameters**ˣ**, as shown in *(a)*, under the following conditions:
   * *(1)* `Tʹ` is a subtype of `T`, or `Tʹ` and `T` are the same type. In this case, the resulting function has the type `T -> T`.
   * *(2)* `T` is a subtype of `Tʹ`. In this scenario, the resulting function has the type `T -> Tʹ`.
 
@@ -69,6 +69,27 @@ Additionally, there is another case where two types can be unified:
 However, it is not possible to infer type `B` automatically, as it is not guaranteed to be unique, accordingly C# can't provide mechanisms to handle this scenario. 
 Therefore, the type `B` must be explicitly specified using the `WithReturn<B>` argument, as illustrated in example *(b)*.
 
+</br>
+
+**ˣ** *"`End` method without any additional parameters" means that there is no need to pass any explicit parameters for execution.
+Technically, these methods can have at least one 'this parameter' since they can be implemented as extensions. 
+Additionally, default parameters are possible. The following code snippet demonstrates the signatures of two methods with the same name, 
+where the second method includes an additional 'default parameter' to work around C#'s method overloading limitations (and it functions correctly).*
+
+```CSharp
+public static Func<I, I> End<I, T>(
+    this ˣ.If<I>.Then<T> o)
+        where T : I
+            { ... }
+
+public static Func<I, T> End<I, T>(
+    this ˣ.If<I>.Then<T> o,
+    AdHocPolyMarker? _ = null)
+        where I : T
+            { ... }
+```
+
+ 
  
      
    
