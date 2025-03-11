@@ -156,12 +156,12 @@ var f =
 
 ### Static Polymorphism
 Elifir is implemented using static polymorphism rather than dynamic polymorphism. 
-As a result, every modification to a non-finalized expression generates a new type incompatible with the previous one. 
+As a result, every modification of a non-finalized expression generates a new type that is incompatible with the previous one. 
 Providing this behavior was the main challenge in designing the library, and it is pretty cool, but it produces some conses. 
 You can use Elifir to construct functions, but it is not recommended to use any types provided by the library directly. 
-For this reason, the names of Elifir types include the symbol "ˣ," which is absent from the keyboard.
+For this reason, the names of Elifir types include the symbol "ˣ," which is absent on the keyboard.
 
-The following code snipped shows Elifirr types in action.
+We can see Elifir types specific in the following code snippet.
 
 ```CSharp
                                  Func<A, B> _0 = 
@@ -182,23 +182,27 @@ convert_A_To_B;                  ˣ<Func<A, B>, ˣ.If<B>> _1 = _0
 ```
 
 ### Generics
-I know the maximum nesting of generic types in C# is limited (each `If` increases this nesting). 
-I found information on forums that it is about 1000 but no exact information.   
-So, I tried to clarify it by tests.
-The first barrier was that IntelliSense crashed Visual Studio.
-I continued to write nesting `If`s in Notepad and only compiled it in VS without opening the file.
-The next problem was "CS8078	An expression is too long or complex to compile".
-I split my expression into portions bonded to variables. 
-It helped me to make the testing expression ten times longer.
-I expected some error that the code was out of maximum generic nesting length.
+Each Elifir `If` in expression increases the generic type level of nesting. 
+I am aware that the maximum nesting depth for generic types in C# is limited. 
+Based on forum discussions, this limit is estimated to be around 1000, but no precise documentation with the exact number exists. 
+To investigate further, I conducted some tests.
+
+The first issue I encountered was that IntelliSense crashed Visual Studio. 
+To work around this, I continued writing nested `If` statements in Notepad and only compiled the code in Visual Studio without opening the file. 
+The next barrier was the error: *"CS8078: An expression is too long or complex to compile."*.
+I resolved this by splitting the expression into portions concated through variables, allowing me to extend the testing expression to ten times its original length.
+
+I expected some error that the type was out of the maximum nesting depth of the generic type.
+
 Nothing like that happens, but StackOverflowException during compilation instead.
-Also, I found out that when the expression has a compilation error (for example, extra `End`) it is enough to have a smaller expression to have SO Exception.
+Also, I found out that when the expression has a compilation error (for example, extra `End`), it is enough to have a much smaller expression to have SO Exception.
 It looks like it was caused during error message building.
-This investigation summarizes the limitation of nesting in the generic type is about 1000.
-But it is impossible to have comfortable work when it is 100 because of long compilation and VS as IDE slows down.  
+This investigation summarizes the limitation of nesting in the generic type is about 1000, and still, there is no exact number.
+But it is impossible to have comfortable work when it is 100 because of the long compilation time and VS slowing down as IDE. 
 
 ### Performance 
-The function built by Elifir with 10 nested If-s performed twice slowed speed (like nothing) then the function implemented with native `if`-s. 
+The function built by Elifir with 10 nested `If`-s is two times slower than the function implemented with native `if`-s. 
+It is like nothing. 
  
  
      
