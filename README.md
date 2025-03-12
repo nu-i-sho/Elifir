@@ -1,14 +1,14 @@
 # Elifir
 
-Elifir is a small library for constructing `T -> Tʹ` functions using If-Then-Else expressions provided by its methods. 
-It was implemented to have hands-on experience in using edge cases abilities of the C# type system.
+Elifir is a small library for constructing `T → Tʹ` functions using If-Then-Else expressions provided by its methods. 
+It was implemented to have hands-on experience using edge cases abilities of the C# type system.
 
-API of Elifir based on method-by-method calling (left image) with no need to use nesting (right).
+API of Elifir based on method-by-method calling (left image) with no need to pass sub-expressions as arguments (right).
 
 ![nesting and in line comparison](https://raw.githubusercontent.com/nu-i-sho/Elifir/refs/heads/main/readme_img/001.svg)
 
-This aspect was the main challenge of Elifir's realization because it required implementing a "family of types" that controlled the type state at each point of expression. 
-(For example, if you called 5 `If`s, you should close 5 `End`s, no more, and in relevant places. And the compiler controls this.) 
+This aspect was the main feature and challenge of Elifir's realization because it required implementing a "family of types" that controlled the type state at each point of expression. 
+For example, if you called 5 `If`s, you should close 5 `End`s, no less, no more, in relevant places. And all this is under compiler control without any surprises in runtime.
 Also, the library provides some custom "covariance" that helps to avoid a list of type conflicts. 
 
 ## Usings
@@ -35,8 +35,8 @@ Func<char, int> fromCharToInt =
 ## If Then End
 The simplest form of a conditional expression is `If`-`Then`-`End`.
 It begins with `If`, which takes a predicate as its argument.
-And it completes with `End`, which can be invoked only on an expression state where the types are appropriately matched.
-Any number (≥ 0) of `Then` calls can be included between these `If` and `End`. 
+It completes with `End`, which can be invoked only on an expression state where the types are appropriately matched.
+Any number > 0 of Then calls can be included between these If and End. 
 
 ```CSharp
 
@@ -50,30 +50,31 @@ Func<int, int> p = If(IsEvent).Then(f).Then(g).Then(h).End();
 ```
 The function `p` from the code snippet above returns the original value for odd arguments and the result of `Then`'s functions applying to even arguments (`h(g(f(x)))`).
 
-There are two ways to close an expression by `End` with the auto inference of return type and one with the manual.
+There are two ways to close an expression by `End` with the auto inference of return type and one with the manual explicit type specification.
 The following image shows them.
 
 ![if-then end options](https://raw.githubusercontent.com/nu-i-sho/Elifir/refs/heads/main/readme_img/002.svg)
 
-We can achieve this using one of the overloads of the `End` method without any additional parameters**ˣ**, as shown in *(a)*, under the following conditions:
-  * *(1)* `Tʹ` is a subtype of `T`, or `Tʹ` and `T` are the same type. In this case, the resulting function has the type `T -> T`.
-  * *(2)* `T` is a subtype of `Tʹ`. In this scenario, the resulting function has the type `T -> Tʹ`.
+We can close the expression using one of the overloads of the `End` method without any additional parameters**ˣ**, as shown in *(a)*, under the following conditions:
+  * *(1)* `Tʹ` is a subtype of `T`, or `Tʹ` and `T` are the same type. In this case, the resulting function has the type `T → T`.
+  * *(2)* `T` is a subtype of `Tʹ`. In this scenario, the resulting function has the type `T → Tʹ`.
 
 This concept is straightforward. Expression should return an original value of the original type `T` when the `If` condition is false. 
-Otherwise, it should return the transformed value with a resulting type `Tʹ`, which is the return type of the last function in the `Then` chain.
-To unify these two values, which have different types, into a single type, one of them must be a subtype of the other (or, naturally, they can be the same).
+Otherwise, it should return the transformed value with the resulting type `Tʹ`, which is the return type of the last function in the `Then` chain.
+To unify these two types into a single, one of them must be a subtype of the other (or, naturally, they can be the same).
 
 Additionally, there is another case where two types can be unified:
-  * *(3)* When there exists a type `B` that serves as the base type for both `T` and `Tʹ`. In this case, the resulting function type is `T -> B`.
+  * *(3)* When there exists a type `B` that serves as the base type for both `T` and `Tʹ`. In this case, the resulting function type is `T → B`.
 
-However, it is not possible to infer type `B` automatically, as it is not guaranteed to be unique, accordingly C# can't provide mechanisms to handle this scenario. 
+However, it is not possible to automatically infer type `B` because it is not guaranteed to be unique (`T` and `Tʹ` can have more than one base type). 
+Accordingly, C# can't provide mechanisms to handle this scenario. 
 Therefore, the type `B` must be explicitly specified using the `WithReturn<B>` argument, as illustrated in example *(b)*.
 
 </br>
 
-**ˣ** *"`End` method without any additional parameters" means that there is no need to pass any explicit parameters for execution.
+**ˣ** *"`End` method without any additional parameters" means there is no need to pass explicit parameters for execution.
 Technically, these methods can have at least one 'this parameter' since they can be implemented as extensions. 
-Additionally, default parameters are possible. The following code snippet demonstrates the signatures of two methods with the same name, 
+'Default parameters' are also possible. The following code snippet demonstrates the signatures of two methods with the same name, 
 where the second method includes an additional 'default parameter' to work around C#'s method overloading limitations (and it functions correctly).*
 
 ```CSharp
@@ -81,7 +82,7 @@ public static Func<I, I> End<I, T>(
     this ˣ.If<I>.Then<T> o)
         where T : I
             { ... }
-
+→→
 public static Func<I, T> End<I, T>(
     this ˣ.If<I>.Then<T> o,
     AdHocPolyMarker? _ = null)
@@ -93,17 +94,16 @@ public static Func<I, T> End<I, T>(
 
 A similar situation arises with the additional `Else` branch. 
 However, in this case, there are three key types involved: `T` (the input parameter type), `Tʹ` (the result type of the `If` branch), and `E` (the result type of the `Else` branch). 
-Thus, unification is required between `Tʹ` and `E` rather than between `T` and `Tʹ`.
-
-The following image illustrates this concept clearly and does not require further explanation.
+Thus, unification is required between `Tʹ` and `E` instead of `T` and `Tʹ`.
 
 ![if-then-else end options](https://raw.githubusercontent.com/nu-i-sho/Elifir/refs/heads/main/readme_img/003.svg)
 
 ## Induction
 
-Within any part of the expression, an `If` can be added to create a sub-expression. 
+An `If` can be added to any part of the expression to extend it with a sub-expression. 
 Each sub-expression must be closed with `End`, adhering to the same rules outlined earlier for the top-level expression. 
 Every `If` must have a corresponding `End`, and all types within the expression must be harmonized to build the resulting function.
+
 
 The following image illustrates the process of expression folding.
 
@@ -112,7 +112,7 @@ The following image illustrates the process of expression folding.
 ## Type Condition
 
 In addition to conventional conditions, Elifir provides sub-typing conditions.
-That means we can check the type of object in the `If` and delegate it to a sub-expression cast to this type (while keeping the original type for the `Else` branch).
+That means we can check the type of object in the `If` and delegate it to the sub-expression cast to this type (while keeping the original type for the `Else` branch).
 For example:
 
 ```CSharp
@@ -155,10 +155,10 @@ var f =
 ## P.S.: Limitations
 
 ### Static Polymorphism
-Elifir is implemented using static polymorphism rather than dynamic polymorphism. 
-As a result, every modification of a non-finalized expression generates a new type that is incompatible with the previous one. 
-Providing this behavior was the main challenge in designing the library, and it is pretty cool, but it produces some conses. 
-You can use Elifir to construct functions, but it is not recommended to use any types provided by the library directly. 
+Elifir is implemented using static polymorphism rather than dynamic. 
+As a result, almost every modification of a non-finalized expression generates a new type incompatible with the previous one. 
+This is the main and a pretty cool library feature. But it has a dark side. 
+You can use Elifir to construct functions. However, the direct use of any type from the library is not recommended. 
 For this reason, the names of Elifir types include the symbol "ˣ," which is absent on the keyboard.
 
 We can see Elifir types in action in the following code snippet.
@@ -190,12 +190,12 @@ To investigate further, I conducted some tests.
 The first issue I encountered was that IntelliSense crashed Visual Studio. 
 To work around this, I continued writing nested `If` statements in Notepad and only compiled the code in Visual Studio without opening the file. 
 The next barrier was the error: *"CS8078: An expression is too long or complex to compile."*.
-I resolved this by splitting the expression into portions concated through variables, allowing me to extend the testing expression to ten times its original length.
+I resolved this by splitting the expression into portions connected through variables, allowing me to extend the testing expression to ten times its original length.
 
 I expected some error that the type was out of the maximum nesting depth of the generic type.
 
-Nothing like that happens, but StackOverflowException during compilation instead.
-Also, I found out that when the expression has a compilation error (for example, extra `End`), it is enough to have a much smaller expression to have SO Exception.
+Nothing like that happens, but `StackOverflowException` during compilation instead.
+Also, I found out that when the expression has a compilation error (for example, extra `End`), it is enough to have a much smaller expression to have `StackOverflowException`.
 It looks like it was caused during error message building.
 This investigation summarizes the limitation of nesting in the generic type is about 1000, and still, there is no exact number.
 But it is impossible to have comfortable work when it is 100 because of the long compilation time and VS slowing down as IDE. 
