@@ -1,23 +1,30 @@
 ﻿namespace Nuisho.Elifir
 {
     using System.Diagnostics.CodeAnalysis;
+    using static Syntax;
 
-    public static partial class ˣ
+    public partial class ˣIf<I> {
+    public class Is<Iʹ> : IIfAble<Then<Iʹ>, Iʹ> 
+        where Iʹ : I
     {
-        public partial class If<I> {
-        public class Is<Iʹ> where Iʹ : I
-        {
-            internal Is(ConditionalMap<I, Iʹ> condition) =>
-                Condition = condition;
+        internal Is(ConditionalMap<I, Iʹ> condition) =>
+            Condition = condition;
 
-            internal ConditionalMap<I, Iʹ> Condition { get; }
-        }}
-    }
+        internal ConditionalMap<I, Iʹ> Condition { get; }
+
+        public ˣ<Then<Iʹ>, ˣIf<Iʹ>> If(Func<Iʹ, bool> condition) =>
+            new(this.Then(Identity), Syntax.If(condition));
+
+        public ˣ<Then<Iʹ>, ˣIf<Iʹ>.Is<Iʺ>> If<Iʺ>(Func<TypeCondition<Iʹ, Iʺ>> condition)
+            where Iʺ : Iʹ =>
+                new(this.Then(Identity), Syntax.If(condition));
+
+    }}
 
     public static partial class Syntax
     {
-        public static ˣ.If<I>.Is<Iʹ> AndIf<I, Iʹ>(
-            this ˣ.If<I>.Is<Iʹ> o,
+        public static ˣIf<I>.Is<Iʹ> AndIf<I, Iʹ>(
+            this ˣIf<I>.Is<Iʹ> o,
             Func<Iʹ, bool> condition)
                 where Iʹ : I =>
                     new((I i, [MaybeNullWhen(false)] out Iʹ iʹ) =>
@@ -29,8 +36,8 @@
                         return false;
                     });
 
-        public static ˣ.If<I>.Is<Iʺ> AndIf<I, Iʹ, Iʺ>(
-            this ˣ.If<I>.Is<Iʹ> o,
+        public static ˣIf<I>.Is<Iʺ> AndIf<I, Iʹ, Iʺ>(
+            this ˣIf<I>.Is<Iʹ> o,
             Func<TypeCondition<Iʹ, Iʺ>> _)
                 where Iʹ : I
                 where Iʺ : Iʹ
@@ -46,8 +53,8 @@
                 return false;
             });
         }
-        public static ˣ.If<I>.Then<T> Then<I, Iʹ, T>(
-            this ˣ.If<I>.Is<Iʹ> o,
+        public static ˣIf<I>.Then<T> Then<I, Iʹ, T>(
+            this ˣIf<I>.Is<Iʹ> o,
             Func<Iʹ, T> map) 
                 where Iʹ : I =>
                     new((I i, [MaybeNullWhen(false)] out T t) =>
@@ -61,18 +68,5 @@
                         t = default;
                         return false;
                     });
-
-        public static ˣ<ˣ.If<I>.Then<Iʹ>, ˣ.If<Iʹ>> If<I, Iʹ>(
-            this ˣ.If<I>.Is<Iʹ> o,
-            Func<Iʹ, bool> condition) 
-                where Iʹ : I =>
-                    new(o.Then(Identity), If(condition));
-
-        public static ˣ<ˣ.If<I>.Then<Iʹ>, ˣ.If<Iʹ>.Is<Iʺ>> If<I, Iʹ, Iʺ>(
-            this ˣ.If<I>.Is<Iʹ> o,
-            Func<TypeCondition<Iʹ, Iʺ>> condition) 
-                where Iʹ : I 
-                where Iʺ : Iʹ =>
-                    new(o.Then(Identity), If(condition));
     }
 }
