@@ -333,12 +333,12 @@
             return result.Value;
         }
 
-        [TestCase(1,    ExpectedResult = 2,    TestName = "Test_0512( 1 -> 2 )")]
-        [TestCase(2,    ExpectedResult = 3,    TestName = "Test_0512( 2 -> 3 )")]
-        [TestCase(13,   ExpectedResult = 16,   TestName = "Test_0512( 13 -> 16 )")]
-        [TestCase(3,    ExpectedResult = 6,    TestName = "Test_0512( 3 -> 6 )")]
-        [TestCase(1003, ExpectedResult = 1009, TestName = "Test_0512( 1003 -> 1009 )")]
-        public int Test_0512(int x)
+        [TestCase(1,    ExpectedResult = 2,    TestName = "Test_0513( 1 -> 2 )")]
+        [TestCase(2,    ExpectedResult = 3,    TestName = "Test_0513( 2 -> 3 )")]
+        [TestCase(13,   ExpectedResult = 16,   TestName = "Test_0513( 13 -> 16 )")]
+        [TestCase(3,    ExpectedResult = 6,    TestName = "Test_0513( 3 -> 6 )")]
+        [TestCase(1003, ExpectedResult = 1009, TestName = "Test_0513( 1003 -> 1009 )")]
+        public int Test_0513(int x)
         {
             var f =
                  From_A_To_B_With(Add(1))                   
