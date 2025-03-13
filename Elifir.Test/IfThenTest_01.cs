@@ -742,5 +742,27 @@
 
             return result.Value;
         }
+
+        [TestCase(59, ExpectedResult = 159, TestName = "Test_0151( 59 -> 159 )")]
+        [TestCase(9,  ExpectedResult = 9,   TestName = "Test_0151( 9 -> 9 )")]
+        public int Test_0151(int x)
+        {
+            var f =
+                 If(A_Is(MoreThen(10)))
+                    .If(A_Is(MoreThen(20)))
+                        .If(A_Is(MoreThen(30)))
+                            .If(A_Is(MoreThen(40)))
+                                .If(A_Is(MoreThen(50)))
+                                    .Then(From_A_To_A_With(Add(100)))   // 59 -> 159
+                                .End()
+                            .End()
+                        .End()
+                    .End()
+                .End();                                                 // 9 -> 9
+
+            A result = f(new A(x));
+
+            return result.Value;
+        }
     }
 }
