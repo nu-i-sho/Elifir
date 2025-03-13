@@ -1,29 +1,34 @@
 ﻿namespace Nuisho.Elifir
 {
-    using static Syntax;
-
-    public partial class ˣIf<I> {
-    public partial class Then<T> {
-    public partial class Else : IIfAble<Else.Then<I>, I>
+    public static partial class ˣ
     {
-        internal Else(ConditionalMap<I, T> conditionalMap) =>
-            ConditionalMap = conditionalMap;
+        public partial class If<I> {
+        public partial class Then<T> {
+        public partial class Else
+        {
+            internal Else(ConditionalMap<I, T> conditionalMap) =>
+                ConditionalMap = conditionalMap;
 
-        internal ConditionalMap<I, T> ConditionalMap { get; }
-
-        public ˣ<Else.Then<I>, ˣIf<I>> If(Func<I, bool> condition) =>
-            this.Then(Identity).If(condition);
-
-        public ˣ<Else.Then<I>, Is<Iʹ>> If<Iʹ>(Func<TypeCondition<I, Iʹ>> condition)
-            where Iʹ : I =>
-                this.Then(Identity).If(condition);
-    }}}
+            internal ConditionalMap<I, T> ConditionalMap { get; }
+        }}}
+    }
 
     public static partial class Syntax
     {
-        public static ˣIf<I>.Then<T>.Else.Then<E> Then<I, T, E>(
-            this ˣIf<I>.Then<T>.Else o,
+        public static ˣ.If<I>.Then<T>.Else.Then<E> Then<I, T, E>(
+            this ˣ.If<I>.Then<T>.Else o,
             Func<I, E> elseMap) =>
                 new(o.ConditionalMap, elseMap);
+
+        public static ˣ<ˣ.If<I>.Then<T>.Else.Then<I>, ˣ.If<I>> If<I, T>(
+            this ˣ.If<I>.Then<T>.Else o,
+            Func<I, bool> condition) =>
+                o.Then(Identity).If(condition);
+
+        public static ˣ<ˣ.If<I>.Then<T>.Else.Then<I>, ˣ.If<I>.Is<Iʹ>> If<I, T, Iʹ>(
+            this ˣ.If<I>.Then<T>.Else o,
+            Func<TypeCondition<I, Iʹ>> condition)
+                where Iʹ : I =>
+                    o.Then(Identity).If(condition);
     }
 }

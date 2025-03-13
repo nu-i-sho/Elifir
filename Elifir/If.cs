@@ -1,32 +1,27 @@
 ﻿namespace Nuisho.Elifir
 {
     using System.Diagnostics.CodeAnalysis;
-    using static Syntax;
 
-    public partial class ˣIf<I> : IIfAble<ˣIf<I>.Then<I>, I>
+    public static partial class ˣ
     {
-        internal ˣIf(Func<I, bool> condition) =>
-            Condition = condition;
+        public partial class If<I>
+        {
+            internal If(Func<I, bool> condition) =>
+                Condition = condition;
 
-        internal Func<I, bool> Condition { get; }
-
-        public ˣ<Then<I>, ˣIf<I>> If(Func<I, bool> condition) =>
-            new(this.Then(Identity), Syntax.If(condition));
-
-        public ˣ<Then<I>, Is<Iʹ>> If<Iʹ>(Func<TypeCondition<I, Iʹ>> condition)
-            where Iʹ : I =>
-                new(this.Then(Identity), Syntax.If(condition));
+            internal Func<I, bool> Condition { get; }
+        }
     }
 
     public static partial class Syntax
     {
-        public static ˣIf<I> AndIf<I>(
-            this ˣIf<I> o,
+        public static ˣ.If<I> AndIf<I>(
+            this ˣ.If<I> o,
             Func<I, bool> condition) =>
                 new(i => o.Condition(i) && condition(i));
 
-        public static ˣIf<I>.Is<Iʹ> AndIf<I, Iʹ>(
-            this ˣIf<I> o,
+        public static ˣ.If<I>.Is<Iʹ> AndIf<I, Iʹ>(
+            this ˣ.If<I> o,
             Func<TypeCondition<I, Iʹ>> _)
                 where Iʹ : I
         {
@@ -40,8 +35,8 @@
                 return false;
             });
         }
-        public static ˣIf<I>.Then<T> Then<I, T>(
-            this ˣIf<I> o,
+        public static ˣ.If<I>.Then<T> Then<I, T>(
+            this ˣ.If<I> o,
             Func<I, T> map) =>
                 new((I i, [MaybeNullWhen(false)] out T t) =>
                 {
@@ -54,5 +49,16 @@
                     t = default;
                     return false;
                 });
+
+        public static ˣ<ˣ.If<I>.Then<I>, ˣ.If<I>> If<I>(
+            this ˣ.If<I> o,
+            Func<I, bool> condition) =>
+                new(o.Then(Identity), If(condition));
+
+        public static ˣ<ˣ.If<I>.Then<I>, ˣ.If<I>.Is<Iʹ>> If<I, Iʹ>(
+            this ˣ.If<I> o,
+            Func<TypeCondition<I, Iʹ>> condition)
+                where Iʹ : I =>
+                    new(o.Then(Identity), If(condition));
     }
 }
