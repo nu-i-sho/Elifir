@@ -7,8 +7,8 @@ API of Elifir based on method-by-method calling (left image) with no need to pas
 
 ![nesting and in line comparison](https://raw.githubusercontent.com/nu-i-sho/Elifir/refs/heads/main/readme_img/001.svg)
 
-This aspect was the main feature and challenge of Elifir's realization because it required implementing a "family of types" that controlled the type state at each point of expression. 
-For example, if you called 5 `If`s, you should close 5 `End`s, no less, no more, in relevant places. And all this is under compiler control without any surprises in runtime.
+This aspect was the main feature and challenge of Elifir's realization because it required implementing a "family of types" that controls the type state at each point of expression. 
+For example, if you call 5 `If`s, you should close 5 `End`s, no less, no more, in relevant places. And all this is under compiler control without any surprises in runtime.
 Also, the library provides some custom "covariance" that helps to avoid a list of type conflicts. 
 
 ## Usings
@@ -36,7 +36,7 @@ Func<char, int> fromCharToInt =
 The simplest form of a conditional expression is `If`-`Then`-`End`.
 It begins with `If`, which takes a predicate as its argument.
 It completes with `End`, which can be invoked only on an expression state where the types are appropriately matched.
-Any number > 0 of Then calls can be included between these If and End. 
+Any number > 0 of `Then` calls can be included between these `If` and `End`. 
 
 ```CSharp
 
@@ -82,7 +82,7 @@ public static Func<I, I> End<I, T>(
     this ˣ.If<I>.Then<T> o)
         where T : I
             { ... }
-→→
+
 public static Func<I, T> End<I, T>(
     this ˣ.If<I>.Then<T> o,
     AdHocPolyMarker? _ = null)
@@ -197,8 +197,8 @@ I expected some error that the type was out of the maximum nesting depth of the 
 Nothing like that happens, but `StackOverflowException` during compilation instead.
 Also, I found out that when the expression has a compilation error (for example, extra `End`), it is enough to have a much smaller expression to have `StackOverflowException`.
 It looks like it was caused during error message building.
-This investigation summarizes the limitation of nesting in the generic type is about 1000, and still, there is no exact number.
-But it is impossible to have comfortable work when it is 100 because of the long compilation time and VS slowing down as IDE. 
+To sum up, the limitation of nesting in the generic type is about 1000, and still, there is no exact number.
+However, comfortable work at 100 is impossible because of the long compilation time and VS's slowing down as an IDE. 
 
 ### Performance 
 The function built by Elifir with 10 nested `If`-s is two times slower than the function implemented with native `if`-s. 
