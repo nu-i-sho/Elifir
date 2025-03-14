@@ -4,8 +4,8 @@
 
     public static partial class ˣ
     {
-        public partial class If<I> {
-        public class Is<Iʹ> where Iʹ : I
+        public sealed partial class If<I> {
+        public sealed class Is<Iʹ> where Iʹ : I
         {
             internal Is(ConditionalMap<I, Iʹ> condition) =>
                 Condition = condition;

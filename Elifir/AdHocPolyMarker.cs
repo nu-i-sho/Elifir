@@ -1,6 +1,6 @@
 ﻿namespace Nuisho.Elifir
 {
-    public class AdHocPolyMarker
+    public sealed class AdHocPolyMarker
     {
         private AdHocPolyMarker()
         {

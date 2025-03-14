@@ -4,7 +4,7 @@
 
     public static partial class ˣ
     {
-        public partial class If<I>
+        public sealed partial class If<I>
         {
             internal If(Func<I, bool> condition) =>
                 Condition = condition;

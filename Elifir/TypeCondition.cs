@@ -1,6 +1,6 @@
 ﻿namespace Nuisho.Elifir
 {
-    public class TypeCondition<I, Iʹ>
+    public sealed class TypeCondition<I, Iʹ>
         where Iʹ : I
     {
         private TypeCondition()
