@@ -6,6 +6,16 @@
     <RootNamespace>Nuisho.Elifir</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <OutputType>Library</OutputType>
+    <PackageId>Nuisho.Elifir</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Valentyn Zakharenko</Authors>
+    <Company>НУ І ШО studio</Company>
+    <PackageDescription>If-Then-Else expression builder implemented with static polymorphism</PackageDescription>
+    <RepositoryUrl>https://github.com/nu-i-sho/Elifir</RepositoryUrl>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    
   </PropertyGroup>
 
 </Project>
