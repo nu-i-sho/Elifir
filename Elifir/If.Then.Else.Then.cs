@@ -2,10 +2,10 @@
 {
     public static partial class ˣ
     {
-        public partial class If<I> {
-        public partial class Then<T> {
-        public partial class Else {
-        public partial class Then<E>
+        public sealed partial class If<I> {
+        public sealed partial class Then<T> {
+        public sealed partial class Else {
+        public sealed partial class Then<E>
         {
             internal Then(
                 ConditionalMap<I, T> conditionalMap,
