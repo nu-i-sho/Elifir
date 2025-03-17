@@ -10,12 +10,12 @@
         public static ˣ<Func<T, Tʹ>, ˣ.If<Tʹ>> If<T, Tʹ>(
             this Func<T, Tʹ> o,
             Func<Tʹ, bool> condition) =>
-                new(o, new(condition));
+                new(o, If(condition));
 
         public static ˣ<Func<T, Tʹ>, ˣ.If<Tʹ>.Is<Tʺ>> If<T, Tʹ, Tʺ>(
             this Func<T, Tʹ> o,
-            Func<TypeCondition<Tʹ, Tʺ>> _)
+            Func<TypeCondition<Tʹ, Tʺ>> condition)
                 where Tʺ : Tʹ =>
-                    new(o, new(CreateTypeConditionalMap<Tʹ, Tʺ>()));
+                    new(o, If(condition));
     }
 }

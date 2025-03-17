@@ -16,64 +16,63 @@
 
     public static partial class Syntax
     {
-        //public static ˣ.If<I>.Is<Iʹ> AndIf<I, Iʹ>(
-        //    this ˣ.If<I>.Is<Iʹ> o,
-        //    Func<Iʹ, bool> condition)
-        //        where Iʹ : I =>
-        //            new((I i, [MaybeNullWhen(false)] out Iʹ iʹ) =>
-        //            {
-        //                if (o.Condition(i, out iʹ) && condition(iʹ))
-        //                    return true;
+        public static ˣ.If<I>.Is<Iʹ> AndIf<I, Iʹ>(
+            this ˣ.If<I>.Is<Iʹ> o,
+            Func<Iʹ, bool> condition)
+                where Iʹ : I =>
+                    new((I i, [MaybeNullWhen(false)] out Iʹ iʹ) =>
+                    {
+                        if (o.Condition(i, out iʹ) && condition(iʹ))
+                            return true;
 
-        //                iʹ = default;
-        //                return false;
-        //            });
+                        iʹ = default;
+                        return false;
+                    });
 
-        //public static ˣ.If<I>.Is<Iʺ> AndIf<I, Iʹ, Iʺ>(
-        //    this ˣ.If<I>.Is<Iʹ> o,
-        //    Func<TypeCondition<Iʹ, Iʺ>> _)
-        //        where Iʹ : I
-        //        where Iʺ : Iʹ
-        //{
-        //    var condition = CreateTypeConditionalMap<Iʹ, Iʺ>();
-        //    return new((I i, [MaybeNullWhen(false)] out Iʺ iʺ) =>
-        //    {
-        //        if (o.Condition(i, out Iʹ? iʹ) &&
-        //              condition(iʹ, out iʺ))
-        //            return true;
+        public static ˣ.If<I>.Is<Iʺ> AndIf<I, Iʹ, Iʺ>(
+            this ˣ.If<I>.Is<Iʹ> o,
+            Func<TypeCondition<Iʹ, Iʺ>> _)
+                where Iʹ : I
+                where Iʺ : Iʹ
+        {
+            var condition = CreateTypeConditionalMap<Iʹ, Iʺ>();
+            return new((I i, [MaybeNullWhen(false)] out Iʺ iʺ) =>
+            {
+                if (o.Condition(i, out Iʹ? iʹ) &&
+                      condition(iʹ, out iʺ))
+                    return true;
 
-        //        iʺ = default;
-        //        return false;
-        //    });
-        //}
-        //public static ˣ.If<I>.Then<T> Then<I, Iʹ, T>(
-        //    this ˣ.If<I>.Is<Iʹ> o,
-        //    Func<Iʹ, T> map)
-        //        where Iʹ : I =>
-        //            new((I i, [MaybeNullWhen(false)] out T t) =>
-        //            {
-        //                if (o.Condition(i, out Iʹ? iʹ))
-        //                {
-        //                    t = map(iʹ);
-        //                    return true;
-        //                }
+                iʺ = default;
+                return false;
+            });
+        }
+        public static ˣ.If<I>.Then<T> Then<I, Iʹ, T>(
+            this ˣ.If<I>.Is<Iʹ> o,
+            Func<Iʹ, T> map) 
+                where Iʹ : I =>
+                    new((I i, [MaybeNullWhen(false)] out T t) =>
+                    {
+                        if (o.Condition(i, out Iʹ? iʹ))
+                        {
+                            t = map(iʹ);
+                            return true;
+                        }
 
-        //                t = default;
-        //                return false;
-        //            });
+                        t = default;
+                        return false;
+                    });
 
-        //public static ˣ<ˣ.If<I>.Then<Iʹ>, ˣ.If<Iʹ>> If<I, Iʹ>(
-        //    this ˣ.If<I>.Is<Iʹ> o,
-        //    Func<Iʹ, bool> condition)
-        //        where Iʹ : I =>
-        //            new(o.Then(Identity), new(condition));
+        public static ˣ<ˣ.If<I>.Then<Iʹ>, ˣ.If<Iʹ>> If<I, Iʹ>(
+            this ˣ.If<I>.Is<Iʹ> o,
+            Func<Iʹ, bool> condition) 
+                where Iʹ : I =>
+                    new(o.Then(Identity), If(condition));
 
-        //public static ˣ<ˣ.If<I>.Then<Iʹ>, ˣ.If<Iʹ>.Is<Iʺ>> If<I, Iʹ, Iʺ>(
-        //    this ˣ.If<I>.Is<Iʹ> o,
-        //    Func<TypeCondition<Iʹ, Iʺ>> _)
-        //        where Iʹ : I
-        //        where Iʺ : Iʹ =>
-        //            new(o.Then(Identity), 
-        //                new(CreateTypeConditionalMap<Iʹ, Iʺ>()));
+        public static ˣ<ˣ.If<I>.Then<Iʹ>, ˣ.If<Iʹ>.Is<Iʺ>> If<I, Iʹ, Iʺ>(
+            this ˣ.If<I>.Is<Iʹ> o,
+            Func<TypeCondition<Iʹ, Iʺ>> condition) 
+                where Iʹ : I 
+                where Iʺ : Iʹ =>
+                    new(o.Then(Identity), If(condition));
     }
 }
