@@ -16,9 +16,10 @@
 
     public static partial class Syntax
     {
-        public static ˣ.If<I>.Is<Iʹ> If<I, Iʹ>(
-            Func<TypeCondition<I, Iʹ>> _)
+        public static ˣ<Func<I, I>, ˣ.If<I>.Is<Iʹ>> If<I, Iʹ>(
+            Func<TypeCondition<I, Iʹ>> condition)
                 where Iʹ : I =>
-                    new(CreateTypeConditionalMap<I, Iʹ>());
+                    new Func<I, I>(Identity)
+                        .If(condition);
     }
 }
