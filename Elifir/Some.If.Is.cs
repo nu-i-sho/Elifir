@@ -11,7 +11,7 @@
 
         public static ˣ<Some, ˣ.If<I>.Is<Iʺ>> AndIf<Some, I, Iʹ, Iʺ>(
             this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,
-            Func<TypeCondition<Iʹ, Iʺ>> condition)
+            IsOfType<Iʺ> condition)
                 where Iʹ : I 
                 where Iʺ : Iʹ =>
                     new(o.Prev, 
@@ -32,9 +32,9 @@
 
         public static ˣ<ˣ<Some, ˣ.If<I>.Is<Iʹ>>, ˣ.If<Iʹ>.Is<Iʺ>> If<Some, I, Iʹ, Iʺ>(
             this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,
-            Func<TypeCondition<Iʹ, Iʺ>> condition)
+            IsOfType<Iʺ> _)
                 where Iʹ : I
                 where Iʺ : Iʹ =>
-                    new(o, If(condition));
+                    new(o, new());
     }
 }

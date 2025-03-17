@@ -17,7 +17,7 @@
 
         public static ˣ.If<I>.Then<B> End<I, Iʹ, Tʹ, Eʹ, B>(
             this ˣ<ˣ.If<I>.Is<Iʹ>, ˣ.If<Iʹ>.Then<Tʹ>.Else.Then<Eʹ>> o,
-            Func<ReturnType<B>> withReturnTypeB)
+            WithReturnType<B> withReturnTypeB)
                 where Iʹ : I
                 where Tʹ : B
                 where Eʹ : B =>

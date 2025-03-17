@@ -1,6 +1,7 @@
 ﻿namespace Nuisho.Elifir.Test
 {
     using static Utils;
+    using static Syntax;
 
     [TestFixture]
     public class IfThenTest_05
@@ -79,7 +80,7 @@
                 .Then(From_B_To_D_With(Add(10)))
                 .Then(from_D_To_C_OrTo_Cʹ_With(Add(100)))
                 .If(C_Is(Even))                             // (false, 2) -> 113, (true, 2) -> 113
-                .AndIf(Object<C>.Is<Cʹ>)                    // (false, 1) -> 112
+                .AndIf(Is<Cʹ>)                              // (false, 1) -> 112
                     .Then(From_Cʹ_To_E_With(Add(2)))
                     .Then(From_E_To_B_With(Add(20)))
                     .Then(From_B_To_C_With(Add(200)))       // (true, 1) -> 334
@@ -102,7 +103,7 @@
             var f =
                  From_A_To_A_With(Add(1))
                 .Then(from_A_To_A_OrTo_Aʹ_With(Add(10)))    
-                .If(Object<A>.Is<Aʹ>)                       // (10, false) -> 21
+                .If(Is<Aʹ>)                                 // (10, false) -> 21
                 .AndIf(Aʹ_Is(MoreThen(100)))                // (10, true) -> 21, (100, true) -> 111
                     .Then(From_A_To_A_With(Add(2)))
                     .Then(From_A_To_Aʹ_With(Add(20)))       // (100, true) -> 133
@@ -133,8 +134,8 @@
                  From_A_To_E_With(Add(1))
                 .Then(From_E_To_D_With(Add(10)))
                 .Then(from_D_To_SomeA_With(Add(100))) 
-                .If(Object<A>.Is<Aʹ>)                   // (0, A) -> 111
-                .AndIf(Object<Aʹ>.Is<Aʺ>)               // (0, Aʹ) -> 111
+                .If(Is<Aʹ>)                             // (0, A) -> 111
+                .AndIf(Is<Aʺ>)                          // (0, Aʹ) -> 111
                     .Then(From_Aʺ_To_E_With(Add(2)))
                     .Then(From_E_To_B_With(Add(20)))
                     .Then(From_B_To_Aʹ_With(Add(200)))  // (0, Aʺ) -> 333, (0, Aʺʹ) -> 333
@@ -167,13 +168,13 @@
                  From_A_To_E_With(Add(1))
                 .Then(From_E_To_D_With(Add(10)))
                 .Then(from_D_To_SomeA_With(Add(100))) 
-                .If(Object<A>.Is<Aʹ>)                   // (0, A) -> 111
-                .AndIf(Object<Aʹ>.Is<Aʺ>)               // (0, Aʹ) -> 111
-                .AndIf(Object<Aʺ>.Is<Aʺʹ>)              // (0, Aʺ) -> 111
-                .AndIf(Object<Aʺʹ>.Is<Aʺʺ>)             // (0, Aʺʹ) -> 111
-                .AndIf(Object<Aʺʺ>.Is<Aʺʺʹ>)            // (0, Aʺʺ) -> 111
-                .AndIf(Object<Aʺʺʹ>.Is<Aʺʺʺ>)           // (0, Aʺʺʹ) -> 111
-                .AndIf(Object<Aʺʺʺ>.Is<Aʺʺʺʹ>)          // (0, Aʺʺʺ) -> 111
+                .If(Is<Aʹ>)                             // (0, A) -> 111
+                .AndIf(Is<Aʺ>)                          // (0, Aʹ) -> 111
+                .AndIf(Is<Aʺʹ>)                         // (0, Aʺ) -> 111
+                .AndIf(Is<Aʺʺ>)                         // (0, Aʺʹ) -> 111
+                .AndIf(Is<Aʺʺʹ>)                        // (0, Aʺʺ) -> 111
+                .AndIf(Is<Aʺʺʺ>)                        // (0, Aʺʺʹ) -> 111
+                .AndIf(Is<Aʺʺʺʹ>)                       // (0, Aʺʺʺ) -> 111
                     .Then(From_Aʺʺʺʹ_To_E_With(Add(2)))
                     .Then(From_E_To_B_With(Add(20)))
                     .Then(From_B_To_Aʹ_With(Add(200)))  // (0, Aʺʺʺʹ) -> 333, (0, Aʺʺʺʺ) -> 333
@@ -199,7 +200,7 @@
             var f =
                  from_A_To_Aʹ_OrTo_Aʺ_With(Add(1))              
                 .If(Aʹ_Is(Even))                        // (1, false) -> 2, (2, false) -> 3
-                .AndIf(Object<Aʹ>.Is<Aʺ>)               // (101, false) -> 102, (1, true) -> 2
+                .AndIf(Is<Aʺ>)                          // (101, false) -> 102, (1, true) -> 2
                 .AndIf(Aʺ_Is(MoreThen(100)))            // (2, true) -> 3, (200, false) -> 201
                     .Then(From_Aʺ_To_A_With(Add(2)))    // (101, false) -> 104
                 .End();
@@ -224,9 +225,9 @@
             var f =
                  From_A_To_D_With(Add(1))
                 .Then(from_D_To_SomeAʹ_With(Add(10)))      
-                .If(Object<Aʹ>.Is<Aʺ>)                  // (1, Aʹ) -> 12, (2, Aʹ) -> 13
+                .If(Is<Aʺ>)                             // (1, Aʹ) -> 12, (2, Aʹ) -> 13
                 .AndIf(Aʺ_Is(Odd))                      // (101, Aʺ) -> 112, (1, Aʺʹ) -> 12
-                .AndIf(Object<Aʺ>.Is<Aʺʹ>)
+                .AndIf(Is<Aʺʹ>)
                     .Then(From_Aʺʹ_To_A_With(Add(2)))
                     .Then(From_A_To_A_With(Add(20)))    // (2, Aʺʹ) -> 35, (2, Aʺʺ) -> 35
                 .End();                                 // (2, Aʺʺʺ) -> 35
@@ -278,11 +279,11 @@
                  From_A_To_A_With(Add(1))
                 .Then(from_A_To_A_OrTo_Aʹ_With(Add(10)))           
                 .If(A_Is(Odd))                                  // (1, false, false) -> 12, (2, false, false) -> 13
-                .AndIf(Object<A>.Is<Aʹ>)                        // (1, true, false) -> 12
+                .AndIf(Is<Aʹ>)                                  // (1, true, false) -> 12
                     .Then(From_Aʹ_To_B_With(Add(2)))
                     .Then(from_B_To_B_OrTo_Bʹ_With(Add(20)))    // (2, true, false) -> 49    // +7, +7
                     .If(B_Is(MoreThen(100)))                    // (2, true, true) -> 49     // +7, +7
-                    .AndIf(Object<B>.Is<Bʹ>)                    // (102, true, false) -> 149 // +7, +7
+                    .AndIf(Is<Bʹ>)                              // (102, true, false) -> 149 // +7, +7
                         .Then(From_Bʹ_To_A_With(Add(20)))
                         .Then(From_A_To_B_With(Add(21)))        // (102, true, true) -> 190  // +7, +7
                     .End()
@@ -320,7 +321,7 @@
                     .Then(from_A_To_A_OrTo_Aʹ_With(Add(200)))   // (3, false) -> 336, (3, true) -> 336
                     .If(A_Is(MoreThen(900)))                    // (1003, false) -> 1336, (1003, true) -> 1336
                     .AndIf(A_Is(LessThen(1000)))                // (601, false) -> 934
-                    .AndIf(Object<A>.Is<Aʹ>)                    // (601, true) -> 934
+                    .AndIf(Is<Aʹ>)                              // (601, true) -> 934
                     .AndIf(Aʹ_Is(EndingWith("6")))              // (603, false) -> 936
                         .Then(From_Aʹ_To_A_With(Add(3)))
                         .Then(From_A_To_A_With(Add(30)))

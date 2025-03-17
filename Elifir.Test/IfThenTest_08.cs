@@ -65,7 +65,7 @@
         {
             var f =
                  If(C_Is(Even))                         // (false, 2) -> 2
-                .AndIf(Object<C>.Is<Cʹ>)                // (true, 1) -> 1
+                .AndIf(Is<Cʹ>)                          // (true, 1) -> 1
                     .Then(From_Cʹ_To_E_With(Add(2)))
                     .Then(From_E_To_B_With(Add(20)))
                     .Then(From_B_To_C_With(Add(200)))   // (true, 2) -> 224
@@ -117,7 +117,7 @@
         {
             var f =
                  If(Object<A>.Is<Aʹ>)                   // (111, A) -> 111
-                .AndIf(Object<Aʹ>.Is<Aʺ>)               // (111, Aʹ) -> 111
+                .AndIf(Is<Aʺ>)                          // (111, Aʹ) -> 111
                     .Then(From_Aʺ_To_E_With(Add(2)))
                     .Then(From_E_To_B_With(Add(20)))
                     .Then(From_B_To_Aʹ_With(Add(200)))  // (111, Aʺ) -> 333, (111, Aʺʹ) -> 333
@@ -146,12 +146,12 @@
         {
             var f =
                  If(Object<A>.Is<Aʹ>)                   // (111, A) -> 111
-                .AndIf(Object<Aʹ>.Is<Aʺ>)               // (111, Aʹ) -> 111
-                .AndIf(Object<Aʺ>.Is<Aʺʹ>)              // (111, Aʺ) -> 111
-                .AndIf(Object<Aʺʹ>.Is<Aʺʺ>)             // (111, Aʺʹ) -> 111
-                .AndIf(Object<Aʺʺ>.Is<Aʺʺʹ>)            // (111, Aʺʺ) -> 111
-                .AndIf(Object<Aʺʺʹ>.Is<Aʺʺʺ>)           // (111, Aʺʺʹ) -> 111
-                .AndIf(Object<Aʺʺʺ>.Is<Aʺʺʺʹ>)          // (111, Aʺʺʺ) -> 111
+                .AndIf(Is<Aʺ>)                          // (111, Aʹ) -> 111
+                .AndIf(Is<Aʺʹ>)                         // (111, Aʺ) -> 111
+                .AndIf(Is<Aʺʺ>)                         // (111, Aʺʹ) -> 111
+                .AndIf(Is<Aʺʺʹ>)                        // (111, Aʺʺ) -> 111
+                .AndIf(Is<Aʺʺʺ>)                        // (111, Aʺʺʹ) -> 111
+                .AndIf(Is<Aʺʺʺʹ>)                       // (111, Aʺʺʺ) -> 111
                     .Then(From_Aʺʺʺʹ_To_E_With(Add(2)))
                     .Then(From_E_To_B_With(Add(20)))
                     .Then(From_B_To_Aʹ_With(Add(200)))  // (111, Aʺʺʺʹ) -> 333, (111, Aʺʺʺʺ) -> 333
@@ -175,7 +175,7 @@
         {
             var f =
                  If(Aʹ_Is(Even))                        // (1, false) -> 1, (2, false) -> 2
-                .AndIf(Object<Aʹ>.Is<Aʺ>)               // (101, false) -> 101, (1, true) -> 1
+                .AndIf(Is<Aʺ>)                          // (101, false) -> 101, (1, true) -> 1
                 .AndIf(Aʺ_Is(MoreThen(100)))            // (2, true) -> 2, (200, false) -> 200
                     .Then(From_Aʺ_To_A_With(Add(2)))    // (102, true) -> 104, (200, false) -> 202
                 .End();
@@ -201,7 +201,7 @@
             var f =
                  If(Object<Aʹ>.Is<Aʺ>)                  // (2, Aʹ) -> 2, (1, Aʹ) -> 1
                 .AndIf(Aʺ_Is(Odd))                      // (102, Aʺ) -> 102, (2, Aʺʹ) -> 2
-                .AndIf(Object<Aʺ>.Is<Aʺʹ>)
+                .AndIf(Is<Aʺʹ>)
                     .Then(From_Aʺʹ_To_A_With(Add(2)))
                     .Then(From_A_To_A_With(Add(20)))    // (3, Aʺʹ) -> 25, (3, Aʺʺ) -> 25
                 .End();                                 // (3, Aʺʺʺ) -> 25
@@ -249,11 +249,11 @@
 
             var f = 
                  If(A_Is(Odd))                                  // (2, false, false) -> 2, (1, false, false) -> 1
-                .AndIf(Object<A>.Is<Aʹ>)                        // (2, true, false) -> 2
+                .AndIf(Is<Aʹ>)                                  // (2, true, false) -> 2
                     .Then(From_Aʹ_To_B_With(Add(2)))
                     .Then(from_B_To_B_OrTo_Bʹ_With(Add(20)))    // (1, true, false) -> 37    // +7, +7
                     .If(B_Is(MoreThen(100)))                    // (1, true, true) -> 37     // +7, +7
-                    .AndIf(Object<B>.Is<Bʹ>)                    // (101, true, false) -> 137 // +7, +7
+                    .AndIf(Is<Bʹ>)                              // (101, true, false) -> 137 // +7, +7
                         .Then(From_Bʹ_To_A_With(Add(20)))
                         .Then(From_A_To_B_With(Add(21)))        // (101, true, true) -> 178  // +7, +7
                     .End()
@@ -292,7 +292,7 @@
                     .Then(from_A_To_A_OrTo_Aʹ_With(Add(200)))   // (3, false) -> 225, (3, true) -> 225
                     .If(A_Is(MoreThen(900)))                    // (803, false) -> 1025, (803, true) -> 1025
                     .AndIf(A_Is(LessThen(1000)))                // (701, false) -> 923
-                    .AndIf(Object<A>.Is<Aʹ>)                    // (701, true) -> 923
+                    .AndIf(Is<Aʹ>)                              // (701, true) -> 923
                     .AndIf(Aʹ_Is(EndingWith("7")))              // (703, false) -> 927
                         .Then(From_Aʹ_To_A_With(Add(3)))
                         .Then(From_A_To_A_With(Add(30)))
@@ -358,7 +358,7 @@
         {
             var f =
                  If(A_Is(Even)).AndIf(A_Is(MoreThen(10)))   // (true, 2) -> 2, (true, 1) -> 1
-                    .If(Object<A>.Is<Aʹ>)                   // (false, 2) -> 2, (false, 12) -> 12
+                    .If(Is<Aʹ>)                             // (false, 2) -> 2, (false, 12) -> 12
                         .Then(From_Aʹ_To_A_With(Add(2)))    // (true, 12) -> 14
                     .End()
                 .End();
@@ -381,7 +381,7 @@
         {
             var f =
                  If(A_Is(Even)).AndIf(A_Is(MoreThen(10)))   // (true, 2) -> 2, (true, 1) -> 1, (false, 2) -> 2
-                    .If(Object<A>.Is<Aʹ>)                   // (false, 12) -> 14 // +2
+                    .If(Is<Aʹ>)                             // (false, 12) -> 14 // +2
                         .Then(From_Aʹ_To_A_With(Add(2)))    // (true, 12) -> 16  // +2
                     .End()
                     .Then(From_A_To_A_With(Add(2)))

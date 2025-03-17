@@ -38,9 +38,9 @@
 
         public static ˣ<ˣ.If<I>.Then<T>, ˣ.If<T>.Is<Tʹ>> If<I, T, Tʹ>(
             this ˣ.If<I>.Then<T> o,
-            Func<TypeCondition<T, Tʹ>> condition)
+            IsOfType<Tʹ> _)
                 where Tʹ : T =>
-                    new(o, If(condition));
+                    new(o, new());
 
         public static ˣ.If<I>.Then<T>.Else Else<I, T>(
             this ˣ.If<I>.Then<T> o) =>
@@ -59,7 +59,7 @@
 
         public static Func<I, B> End<I, T, B>(
             this ˣ.If<I>.Then<T> o,
-            Func<ReturnType<B>> _)
+            WithReturnType<B> _)
                 where T : B
                 where I : B =>
                     i => o.ConditionalMap(i, out T? t) ? (B)t : i;

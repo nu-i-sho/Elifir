@@ -10,7 +10,7 @@ using System.Diagnostics.CodeAnalysis;
     "S2326:Unused type parameters should be removed", 
     Justification = "This class is a type holder to improve type inference and readability.", 
     Scope = "type", 
-    Target = "~T:Nuisho.Elifir.Syntax.ReturnType`1")]
+    Target = "~T:Nuisho.Elifir.Syntax.WithReturnType`1")]
 
 [assembly: SuppressMessage(
     "Blocker Code Smell", 
@@ -66,7 +66,7 @@ using System.Diagnostics.CodeAnalysis;
     "S3453:Classes should not have only \"private\" constructors", 
     Justification = "It was declared for type not for instance", 
     Scope = "type", 
-    Target = "~T:Nuisho.Elifir.Syntax.ReturnType`1")]
+    Target = "~T:Nuisho.Elifir.Syntax.WithReturnType`1")]
 
 [assembly: SuppressMessage(
     "Critical Code Smell", 
@@ -109,20 +109,6 @@ using System.Diagnostics.CodeAnalysis;
     Justification = "It is an Ad Hoc polymorphism limitation workaround", 
     Scope = "member", 
     Target = "~M:Nuisho.Elifir.Syntax.End``4(Nuisho.Elifir.ˣ{Nuisho.Elifir.ˣ.If{``0}.Then{``1},Nuisho.Elifir.ˣ.If{``1}.Then{``2}.Else.Then{``3}},Nuisho.Elifir.AdHocPolyMarker)~Nuisho.Elifir.ˣ.If{``0}.Then{``3}")]
-
-[assembly: SuppressMessage(
-    "Major Bug",
-    "S3453:Classes should not have only \"private\" constructors",
-    Justification = "This class is a type holder to improve type inference and readability.",
-    Scope = "type",
-    Target = "~T:Nuisho.Elifir.TypeCondition`2")]
-
-[assembly: SuppressMessage(
-    "Major Code Smell",
-    "S2326:Unused type parameters should be removed",
-    Justification = "It is necessary for type holding",
-    Scope = "type",
-    Target = "~T:Nuisho.Elifir.TypeCondition`2")]
 
 [assembly: SuppressMessage(
     "Major Bug",

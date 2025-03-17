@@ -19,7 +19,7 @@
 
         public static ˣ<Some, ˣ.If<I>.Then<B>> End<Some, I, T, E, B>(
             this ˣ<ˣ<Some, ˣ.If<I>>, ˣ.If<I>.Then<T>.Else.Then<E>> o,
-            Func<ReturnType<B>> withReturnTypeB)
+            WithReturnType<B> withReturnTypeB)
                 where T : B
                 where E : B =>
                     new(o.Prev.Prev,

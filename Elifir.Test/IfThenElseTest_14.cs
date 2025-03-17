@@ -195,7 +195,7 @@
 
             var f =
                 from_A_To_A_OrTo_Aʹ_With(Add(1))
-               .If(Object<A>.Is<Aʹ>)
+               .If(Is<Aʹ>)
                     .Then(From_Aʹ_To_A_With(Add(10)))   // (true, 1) -> 12
                .Else()
                     .Then(From_A_To_A_With(Add(20)))    // (false, 1) -> 22
@@ -216,7 +216,7 @@
             var f =
                 From_A_To_A_With(Add(10))
                .Then(from_A_To_A_OrTo_Aʹ_With(Add(100)))
-               .If(Object<A>.Is<Aʹ>)
+               .If(Is<Aʹ>)
                     .Then(From_Aʹ_To_A_With(Add(20)))
                     .Then(From_A_To_A_With(Add(200)))   // (true, 1) -> 331
                .Else()
@@ -240,7 +240,7 @@
                 From_A_To_A_With(Add(10))
                .Then(From_A_To_A_With(Add(100)))
                .Then(from_A_To_A_OrTo_Aʹ_With(Add(1000)))
-               .If(Object<A>.Is<Aʹ>)
+               .If(Is<Aʹ>)
                     .Then(From_Aʹ_To_A_With(Add(20)))
                     .Then(From_A_To_A_With(Add(200)))
                     .Then(From_A_To_Aʹ_With(Add(2000))) // (true, 1) -> 3331
@@ -378,9 +378,9 @@
 
             var f =
                  from_D_To_SomeA_With(Add(1))
-                .If(Object<A>.Is<Aʺʺʺʹ>)
-                    .If(Object<Aʺʺʺʹ>.Is<Aʺʺʺʺ>)
-                        .If(Object<Aʺʺʺʺ>.Is<Aʺʺʺʺʹ>)
+                .If(Is<Aʺʺʺʹ>)
+                    .If(Is<Aʺʺʺʺ>)
+                        .If(Is<Aʺʺʺʺʹ>)
                             .Then(From_A_To_A_With(Add(1)))                 // (0, Aʺʺʺʺʹ) -> 102 // +100
                         .Else()
                             .Then(From_A_To_A_With(Add(10)))                // (0, Aʺʺʺʺ) -> 111 // +100
@@ -388,23 +388,23 @@
                     .End()
                     .Then(From_A_To_A_With(Add(100)))                       // (0, Aʺʺʺʹ) -> 101
                 .Else()
-                    .If(Object<A>.Is<Aʺʺ>)
-                        .If(Object<Aʺʺ>.Is<Aʺʺʺ>)
+                    .If(Is<Aʺʺ>)
+                        .If(Is<Aʺʺʺ>)
                             .Then(From_A_To_A_With(Add(1000)))              // (0, Aʺʺʺ) -> 101001 // +100000 
                         .Else()
-                            .If(Object<Aʺʺ>.Is<Aʺʺʹ>)
+                            .If(Is<Aʺʺʹ>)
                                 .Then(From_A_To_A_With(Add(10000)))         // (0, Aʺʺʹ) -> 110001 // +100000
                             .End()
                         .End()
                         .Then(From_A_To_A_With(Add(100000)))                // (0, Aʺʺ) -> 100001
                     .Else()
-                        .If(Object<A>.Is<Aʺʹ>)
+                        .If(Is<Aʺʹ>)
                             .Then(From_A_To_A_With(Add(1000000)))           // (0, Aʺʹ) -> 1000001
                         .Else()
-                            .If(Object<A>.Is<Aʺ>)
+                            .If(Is<Aʺ>)
                                 .Then(From_A_To_A_With(Add(10000000)))      // (0, Aʺ) -> 10000001
                             .Else()
-                                .If(Object<A>.Is<Aʹ>)
+                                .If(Is<Aʹ>)
                                     .Then(From_A_To_A_With(Add(100000000))) // (0, Aʹ) -> 100000001
                                 .End()
                             .End()

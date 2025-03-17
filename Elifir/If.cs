@@ -22,13 +22,13 @@
 
         public static ˣ.If<I>.Is<Iʹ> AndIf<I, Iʹ>(
             this ˣ.If<I> o,
-            Func<TypeCondition<I, Iʹ>> _)
+            IsOfType<Iʹ> _)
                 where Iʹ : I
         {
-            var condition = CreateTypeConditionalMap<I, Iʹ>();
+            ˣ.If<I>.Is<Iʹ> is_I_Iʹ = new();
             return new((I i, [MaybeNullWhen(false)] out Iʹ iʹ) =>
             {
-                if (o.Condition(i) && condition(i, out iʹ))
+                if (o.Condition(i) && is_I_Iʹ.Condition(i, out iʹ))
                     return true;
 
                 iʹ = default;
@@ -57,8 +57,8 @@
 
         public static ˣ<ˣ.If<I>, ˣ.If<I>.Is<Iʹ>> If<I, Iʹ>(
             this ˣ.If<I> o,
-            Func<TypeCondition<I, Iʹ>> condition)
+            IsOfType<Iʹ> _)
                 where Iʹ : I =>
-                    new(o, If(condition));
+                    new(o, new());
     }
 }

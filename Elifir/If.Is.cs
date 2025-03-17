@@ -10,6 +10,21 @@
             internal Is(ConditionalMap<I, Iʹ> condition) =>
                 Condition = condition;
 
+            internal Is() : this(
+                (I x, [MaybeNullWhen(false)] out Iʹ xʹ) =>
+                {
+                    if (x is Iʹ sub)
+                    {
+                        xʹ = sub;
+                        return true;
+                    }
+
+                    xʹ = default;
+                    return false;
+                })
+            {
+            }
+
             internal ConditionalMap<I, Iʹ> Condition { get; }
         }}
     }
@@ -31,15 +46,15 @@
 
         public static ˣ.If<I>.Is<Iʺ> AndIf<I, Iʹ, Iʺ>(
             this ˣ.If<I>.Is<Iʹ> o,
-            Func<TypeCondition<Iʹ, Iʺ>> _)
+            IsOfType<Iʺ> _)
                 where Iʹ : I
                 where Iʺ : Iʹ
         {
-            var condition = CreateTypeConditionalMap<Iʹ, Iʺ>();
+            ˣ.If<Iʹ>.Is<Iʺ> is_Iʹ_Iʺ = new();
             return new((I i, [MaybeNullWhen(false)] out Iʺ iʺ) =>
             {
                 if (o.Condition(i, out Iʹ? iʹ) &&
-                      condition(iʹ, out iʺ))
+                    is_Iʹ_Iʺ.Condition(iʹ, out iʺ))
                     return true;
 
                 iʺ = default;
@@ -70,9 +85,9 @@
 
         public static ˣ<ˣ.If<I>.Is<Iʹ>, ˣ.If<Iʹ>.Is<Iʺ>> If<I, Iʹ, Iʺ>(
             this ˣ.If<I>.Is<Iʹ> o,
-            Func<TypeCondition<Iʹ, Iʺ>> condition) 
+            IsOfType<Iʺ> _) 
                 where Iʹ : I 
                 where Iʺ : Iʹ =>
-                    new(o, If(condition));
+                    new(o, new());
     }
 }

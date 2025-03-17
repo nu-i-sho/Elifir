@@ -525,7 +525,7 @@
             var f =                                             // (false, true, 1) -> 1
                  If(Object<A>.Is<Aʹ>)                           // (false, true, 1) -> 1
                     .Then(from_Aʹ_To_A_Or_To_Aʹ_With(Add(2)))   // (true, false, 1) -> 3
-                    .If(Object<A>.Is<Aʹ>)
+                    .If(Is<Aʹ>)
                         .Then(From_A_To_A_With(Add(3)))         // (true, false, 1) -> 6
                     .End()
                 .End();
@@ -552,7 +552,7 @@
                  If(Object<A>.Is<Aʹ>)                           // (false, true,  7) -> 7
                     .Then(From_A_To_A_With(Add(2)))
                     .Then(from_A_To_A_Or_To_Aʹ_With(Add(20)))   // (true, false, 7) -> 29
-                    .If(Object<A>.Is<Aʹ>)
+                    .If(Is<Aʹ>)
                         .Then(From_A_To_A_With(Add(20)))
                         .Then(From_A_To_A_With(Add(21)))        // (true, true, 7) -> 71
                     .End()
@@ -581,7 +581,7 @@
                     .Then(From_A_To_A_With(Add(2)))
                     .Then(From_A_To_A_With(Add(20)))
                     .Then(from_A_To_A_Or_To_Aʹ_With(Add(200)))  // (true, false, 7) -> 229
-                    .If(Object<A>.Is<Aʹ>)
+                    .If(Is<Aʹ>)
                         .Then(From_A_To_A_With(Add(3)))
                         .Then(From_A_To_A_With(Add(30)))
                         .Then(From_A_To_A_With(Add(300)))       // (true, true, 7) -> 562
@@ -633,7 +633,7 @@
                  If(C_Is(Odd))                                  // (2, true) -> 2
                     .Then(From_C_To_D_With(Add(2)))
                     .Then(from_D_To_C_Or_To_Cʹ_With(Add(20)))   // (3, false) -> 25
-                    .If(Object<C>.Is<Cʹ>)
+                    .If(Is<Cʹ>)
                         .Then(From_Cʹ_To_A_With(Add(20)))
                         .Then(From_A_To_Cʹ_With(Add(21)))       // (3, true) -> 66
                     .End()
@@ -658,7 +658,7 @@
                     .Then(From_C_To_D_With(Add(2)))
                     .Then(From_D_To_B_With(Add(20)))
                     .Then(from_B_To_C_Or_To_Cʹ_With(Add(200)))      // (2, false) -> 224
-                    .If(Object<C>.Is<Cʹ>)
+                    .If(Is<Cʹ>)
                         .Then(From_Cʹ_To_B_With(Add(3)))
                         .Then(From_B_To_D_With(Add(30)))
                         .Then(From_D_To_Cʹ_With(Add(300)))          // (2, true) -> 557
@@ -682,7 +682,7 @@
             var f =                                             // (8, false) -> 8
                  If(Aʹ_Is(Odd))                                 // (8, true) -> 8
                     .Then(from_Aʹ_To_A_Or_To_Aʹ_With(Add(2)))   // (5, false) -> 7
-                    .If(Object<A>.Is<Aʹ>)
+                    .If(Is<Aʹ>)
                         .Then(From_A_To_A_With(Add(3)))         // (5, true) -> 10
                     .End()
                 .End();
@@ -706,7 +706,7 @@
                     .Then(From_Bʹ_To_E_With(Add(2)))
                     .Then(From_E_To_B_With(Add(20)))
                     .Then(from_B_To_A_Or_To_Aʹ_With(Add(200)))  // (54, true, false) -> 276
-                    .If(Object<B>.Is<Bʹ>)
+                    .If(Is<Bʹ>)
                         .Then(From_B_To_E_With(Add(3)))
                         .Then(From_E_To_B_With(Add(30)))
                         .Then(From_B_To_B_With(Add(300)))       // (54, true, true) -> 609
