@@ -62,17 +62,17 @@
                         return false;
                     });
 
-        public static ˣ<ˣ.If<I>.Then<Iʹ>, ˣ.If<Iʹ>> If<I, Iʹ>(
+        public static ˣ<ˣ.If<I>.Is<Iʹ>, ˣ.If<Iʹ>> If<I, Iʹ>(
             this ˣ.If<I>.Is<Iʹ> o,
             Func<Iʹ, bool> condition) 
                 where Iʹ : I =>
-                    new(o.Then(Identity), If(condition));
+                    new(o, If(condition));
 
-        public static ˣ<ˣ.If<I>.Then<Iʹ>, ˣ.If<Iʹ>.Is<Iʺ>> If<I, Iʹ, Iʺ>(
+        public static ˣ<ˣ.If<I>.Is<Iʹ>, ˣ.If<Iʹ>.Is<Iʺ>> If<I, Iʹ, Iʺ>(
             this ˣ.If<I>.Is<Iʹ> o,
             Func<TypeCondition<Iʹ, Iʺ>> condition) 
                 where Iʹ : I 
                 where Iʺ : Iʹ =>
-                    new(o.Then(Identity), If(condition));
+                    new(o, If(condition));
     }
 }

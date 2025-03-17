@@ -2,26 +2,26 @@
 {
     public static partial class Syntax
     {
-        public static ˣ<Some, ˣ.If<I>.Then<Tʹ>> End<Some, I, T, Tʹ>(
-            this ˣ<ˣ<Some, ˣ.If<I>.Then<T>>, ˣ.If<T>.Then<Tʹ>> o)
-                where T : Tʹ =>
+        public static ˣ<Some, ˣ.If<I>.Then<I>> End<Some, I, T>(
+            this ˣ<ˣ<Some, ˣ.If<I>>, ˣ.If<I>.Then<T>> o)
+                where T : I =>
                     new(o.Prev.Prev, 
                         o.Prev.Next.Then(
                              o.Next.End()));
 
-        public static ˣ<Some, ˣ.If<I>.Then<T>> End<Some, I, T, Tʹ>(
-            this ˣ<ˣ<Some, ˣ.If<I>.Then<T>>, ˣ.If<T>.Then<Tʹ>> o,
+        public static ˣ<Some, ˣ.If<I>.Then<T>> End<Some, I, T>(
+            this ˣ<ˣ<Some, ˣ.If<I>>, ˣ.If<I>.Then<T>> o,
             AdHocPolyMarker? _ = null)
-                where Tʹ : T =>
+                where I : T =>
                     new(o.Prev.Prev, 
                         o.Prev.Next.Then(
                              o.Next.End()));
 
-        public static ˣ<Some, ˣ.If<I>.Then<B>> End<Some, I, T, Tʹ, B>(
-            this ˣ<ˣ<Some, ˣ.If<I>.Then<T>>, ˣ.If<T>.Then<Tʹ>> o,
+        public static ˣ<Some, ˣ.If<I>.Then<B>> End<Some, I, T, B>(
+            this ˣ<ˣ<Some, ˣ.If<I>>, ˣ.If<I>.Then<T>> o,
             Func<ReturnType<B>> withReturnTypeB)
-                where T  : B
-                where Tʹ : B =>
+                where I  : B
+                where T : B =>
                     new(o.Prev.Prev, 
                         o.Prev.Next.Then(
                              o.Next.End(withReturnTypeB)));

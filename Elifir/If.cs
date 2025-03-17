@@ -50,15 +50,15 @@
                     return false;
                 });
 
-        public static ˣ<ˣ.If<I>.Then<I>, ˣ.If<I>> If<I>(
+        public static ˣ<ˣ.If<I>, ˣ.If<I>> If<I>(
             this ˣ.If<I> o,
             Func<I, bool> condition) =>
-                new(o.Then(Identity), If(condition));
+                new(o, If(condition));
 
-        public static ˣ<ˣ.If<I>.Then<I>, ˣ.If<I>.Is<Iʹ>> If<I, Iʹ>(
+        public static ˣ<ˣ.If<I>, ˣ.If<I>.Is<Iʹ>> If<I, Iʹ>(
             this ˣ.If<I> o,
             Func<TypeCondition<I, Iʹ>> condition)
                 where Iʹ : I =>
-                    new(o.Then(Identity), If(condition));
+                    new(o, If(condition));
     }
 }

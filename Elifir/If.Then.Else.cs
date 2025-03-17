@@ -20,15 +20,15 @@
             Func<I, E> elseMap) =>
                 new(o.ConditionalMap, elseMap);
 
-        public static ˣ<ˣ.If<I>.Then<T>.Else.Then<I>, ˣ.If<I>> If<I, T>(
+        public static ˣ<ˣ.If<I>.Then<T>.Else, ˣ.If<I>> If<I, T>(
             this ˣ.If<I>.Then<T>.Else o,
             Func<I, bool> condition) =>
-                o.Then(Identity).If(condition);
+                new(o, If(condition));
 
-        public static ˣ<ˣ.If<I>.Then<T>.Else.Then<I>, ˣ.If<I>.Is<Iʹ>> If<I, T, Iʹ>(
+        public static ˣ<ˣ.If<I>.Then<T>.Else, ˣ.If<I>.Is<Iʹ>> If<I, T, Iʹ>(
             this ˣ.If<I>.Then<T>.Else o,
             Func<TypeCondition<I, Iʹ>> condition)
                 where Iʹ : I =>
-                    o.Then(Identity).If(condition);
+                    new(o, If(condition));
     }
 }
