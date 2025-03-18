@@ -13,7 +13,7 @@
                 where Tʹ : Eʹ =>
                     o.Prev.Then(o.Next.End());
 
-        public static ˣ<Some, ˣ.If<I>.Then<T>.Else.Then<B>> End<Some, I, T, E, Tʹ, Eʹ, B>(
+        public static ˣ<Some, ˣ.If<I>.Then<T>.Else.Then<B>> End<Some, I, T, Tʹ, Eʹ, B>(
             this ˣ<ˣ<Some, ˣ.If<I>.Then<T>.Else>, ˣ.If<I>.Then<Tʹ>.Else.Then<Eʹ>> o,
             WithReturnType<B> withReturnTypeB)
                 where Tʹ : B

@@ -19,5 +19,12 @@
             Assert.Throws<NotSupportedException>(
                 () => Object<A>.Is<Aʹ>());
         }
+
+        [Test]
+        public void Is_IsNotCallable_Test()
+        {
+            Assert.Throws<NotSupportedException>(
+                () => Is<Aʹ>());
+        }
     }
 }
