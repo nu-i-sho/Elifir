@@ -1,7 +1,6 @@
 ﻿namespace Nuisho.Elifir.Test
 {
     using System.Diagnostics;
-    using static Syntax;
     using static Utils;
 
     [TestFixture]
@@ -39,7 +38,7 @@
         }
 
         private static readonly Func<A, A> _elifir_IfThen_10x = 
-            If((A x) => x.Value > 10)
+            Syntax.If((A x) => x.Value > 10)
                 .Then(x => new A(x.Value + 1))
                 .If((A x) => x.Value > 20)
                     .Then(x => new A(x.Value + 1))

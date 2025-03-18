@@ -15,9 +15,9 @@
 
         public static Func<T, B> End<T, Tʹ, Tʺ, B>(
             this ˣ<Func<T, Tʹ>, ˣ.If<Tʹ>.Then<Tʺ>> o,
-            Func<ReturnType<B>> withReturnB)
+            WithReturnType<B> withReturnTypeB)
                 where Tʹ : B
                 where Tʺ : B =>
-                    o.Prev.Then(o.Next.End(withReturnB));
+                    o.Prev.Then(o.Next.End(withReturnTypeB));
     }
 }

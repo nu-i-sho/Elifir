@@ -28,7 +28,7 @@
         public int Test_0901(int x, bool isΛΛ)
         {
             var f =                                     // (5, false) -> 5, (5, true) -> 5
-                 If(Λ_Is(Even)).AndIf(Object<Λ>.Is<ΛΛ>) // (4, false) -> 4
+                 If(Λ_Is(Even)).AndIf(Is<ΛΛ>)           // (4, false) -> 4
                     .Then(From_ΛΛ_To_B_With(Add(2)))
                     .Then(From_B_To_Δ_With(Add(20)))    // (4, true) -> 26
                 .End(WithReturn<A>);
@@ -74,7 +74,7 @@
         {
             var f =
                  If(Object<Λ>.Is<ΛΛ>)                       // (Λ, 5) -> 5
-                .AndIf(Object<ΛΛ>.Is<ΛΛΛ>)                  // (ΛΛ, 5) -> 5, (ΛΔ, 5) -> 5
+                .AndIf(Is<ΛΛΛ>)                             // (ΛΛ, 5) -> 5, (ΛΔ, 5) -> 5
                     .Then(From_Λ_To_ΛΛ_With(Add(2)))        // (ΛΛΛ, 5) -> 7
                     .If(ΛΛ_Is(MoreThen(1000)))
                         .Then(From_ΛΛ_To_ΛΔ_With(Add(3)))   // (ΛΛΛ, 999) -> 1004
@@ -111,7 +111,7 @@
                     .Then(From_Λ_To_B_With(Add(2)))
                     .Then(from_B_To_ΛΛ_With(Add(20)))       // (3, false) -> 25 
                     .If(ΛΛ_Is(MoreThen(100)))               // (3, true) -> 25, (91, false) -> 113
-                    .AndIf(Object<ΛΛ>.Is<ΛΛΔ>)
+                    .AndIf(Is<ΛΛΔ>)
                         .Then(From_ΛΛΔ_To_D_With(Add(20)))
                         .Then(From_D_To_ΛΔ_With(Add(21)))   // (91, true) -> 154
                     .End(WithReturn<Λ>)
@@ -144,13 +144,13 @@
                                                                 // (1, Δ,   false) -> 1, (1, ΔΔ, false) -> 1
             var f =                                             // (1, ΔΔΔ, false) -> 1, (1, Δ,  true)  -> 1
                  If(Δ_Is(Even))                                 // (1, ΔΔ,  true)  -> 1, (1, ΔΔΔ, true) -> 1
-                .AndIf(Object<Δ>.Is<ΔΔ>)                        // (2, Δ,   false) -> 2, (2, ΔΔ, false) -> 2  
-                .AndIf(Object<ΔΔ>.Is<ΔΔΔ>)                      // (2, Δ,   true)  -> 2, (2, ΔΔ, true)  -> 2
+                .AndIf(Is<ΔΔ>)                                  // (2, Δ,   false) -> 2, (2, ΔΔ, false) -> 2  
+                .AndIf(Is<ΔΔΔ>)                                 // (2, Δ,   true)  -> 2, (2, ΔΔ, true)  -> 2
                     .Then(From_ΔΔΔ_To_C_With(Add(2)))
                     .Then(From_C_To_E_With(Add(20)))
                     .Then(from_E_To_ΔΔ_OrTo_ΔΔΛ_With(Add(200))) // (2,   ΔΔΔ, false) -> 224,  (2,   ΔΔΔ, true) -> 224
                     .If(ΔΔ_Is(MoreThen(500)))                   // (302, ΔΔΔ, false)  -> 524, (802, ΔΔΔ, true) -> 1024
-                    .AndIf(Object<ΔΔ>.Is<ΔΔΛ>)
+                    .AndIf(Is<ΔΔΛ>)
                     .AndIf(ΔΔ_Is(LessThen(1000)))
                         .Then(From_ΔΔΛ_To_E_With(Add(3)))
                         .Then(From_E_To_B_With(Add(30)))
@@ -214,7 +214,7 @@
                     .Then(From_A_To_D_With(Add(2)))
                     .Then(From_D_To_B_With(Add(20)))
                     .Then(from_B_To_ΔΔ_OrTo_ΔΔΔ_With(Add(200))) // (26, false) -> 248, (26, true) -> 248
-                    .If(Object<ΔΔ>.Is<ΔΔΔ>)                     // (2116, false) -> 2338
+                    .If(Is<ΔΔΔ>)                                // (2116, false) -> 2338
                     .AndIf(ΔΔΔ_Is(MoreThen(1000)))
                         .Then(From_ΔΔΔ_To_B_With(Add(3)))
                         .Then(From_B_To_D_With(Add(30)))

@@ -1,24 +1,22 @@
 ﻿namespace Nuisho.Elifir
 {
-    public sealed class TypeCondition<I, Iʹ>
-        where Iʹ : I
+    public static class ObjectOfType<T>
     {
-        private TypeCondition()
-        {
-        }
+        public delegate (T, Tʹ) IsOfType<Tʹ>()
+            where Tʹ : T;
     }
 
     public static class Object<T>
     {
-        public static TypeCondition<T, Tʹ> Is<Tʹ>()
+        public static (T, Tʹ) Is<Tʹ>()
             where Tʹ : T => throw new NotSupportedException("It is not for call !!!");
     }
 
     public static partial class Syntax
     {
         public static ˣ.If<I>.Is<Iʹ> If<I, Iʹ>(
-            Func<TypeCondition<I, Iʹ>> _)
+            ObjectOfType<I>.IsOfType<Iʹ> _)
                 where Iʹ : I =>
-                    new(CreateTypeConditionalMap<I, Iʹ>());
+                    new();
     }
 }

@@ -346,7 +346,7 @@
                  If(Δ_Is(Odd))                                  // (2, true) -> 2
                     .Then(From_Δ_To_B_With(Add(2)))
                     .Then(from_B_To_ΛΛ_OrTo_ΛΛΛ_With(Add(20)))  // (3, false) -> 25
-                    .If(Object<ΛΛ>.Is<ΛΛΛ>)
+                    .If(Is<ΛΛΛ>)
                         .Then(From_ΛΛΛ_To_D_With(Add(20)))
                         .Then(From_D_To_ΛΔ_With(Add(21)))       // (3, false) -> 66
                     .End(WithReturn<Λ>) 
@@ -371,7 +371,7 @@
                     .Then(From_ΔΔ_To_C_With(Add(2)))
                     .Then(From_C_To_E_With(Add(20)))
                     .Then(from_E_To_ΛΛ_OrTo_ΛΛΛ_With(Add(200)))     // (true, false, 25) -> 247
-                    .If(Object<ΛΛ>.Is<ΛΛΛ>)
+                    .If(Is<ΛΛΛ>)
                         .Then(From_ΛΛΛ_To_E_With(Add(3)))
                         .Then(From_E_To_B_With(Add(30)))
                         .Then(From_B_To_ΛΔ_With(Add(300)))          // (true, false, 25) -> 580
@@ -400,7 +400,7 @@
                  If(Object<Δ>.Is<ΔΔ>)                           // (false, true, 3) -> 3
                     .Then(From_ΔΔ_To_D_With(Add(2)))
                     .Then(from_D_To_ΛΛ_OrTo_ΛΛΛ_With(Add(20)))  // (true, false, 3) -> 25
-                    .If(Object<ΛΛ>.Is<ΛΛΛ>)
+                    .If(Is<ΛΛΛ>)
                         .Then(From_ΛΛΛ_To_A_With(Add(20)))
                         .Then(From_A_To_ΛΛΔ_With(Add(21)))      // (true, true, 3) -> 66
                     .End()
@@ -475,7 +475,7 @@
             var f =                                             // (2, false) -> 2
                  If(Λ_Is(Odd))                                  // (2, true) -> 2
                     .Then(from_Λ_To_Δ_OrTo_ΔΔ_With(Add(2)))     // (3, false) -> 5
-                    .If(Object<Δ>.Is<ΔΔ>)
+                    .If(Is<ΔΔ>)
                         .Then(From_ΔΔ_To_ΔΔΔ_With(Add(3)))      // (3, true) -> 8
                     .End()
                 .End(WithReturn<A>);
@@ -499,7 +499,7 @@
                     .Then(From_A_To_D_With(Add(2)))
                     .Then(From_D_To_Λ_With(Add(20)))
                     .Then(from_Λ_To_ΔΔ_OrTo_ΔΔ_With(Add(200)))  // (2, false) -> 224
-                    .If(Object<ΔΔ>.Is<ΔΔΔ>)
+                    .If(Is<ΔΔΔ>)
                         .Then(From_ΔΔΔ_To_B_With(Add(3)))
                         .Then(From_B_To_D_With(Add(30)))
                         .Then(From_D_To_ΔΛ_With(Add(300)))      // (2, true) -> 557

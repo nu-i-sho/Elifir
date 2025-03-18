@@ -11,7 +11,7 @@
 
         public static ˣ<Some, ˣ.If<I>.Is<Iʺ>> AndIf<Some, I, Iʹ, Iʺ>(
             this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,
-            Func<TypeCondition<Iʹ, Iʺ>> condition)
+            IsOfType<Iʺ> condition)
                 where Iʹ : I 
                 where Iʺ : Iʹ =>
                     new(o.Prev, 
@@ -24,17 +24,17 @@
                     new(o.Prev, 
                         o.Next.Then(map));
 
-        public static ˣ<ˣ<Some, ˣ.If<I>.Then<Iʹ>>, ˣ.If<Iʹ>> If<Some, I, Iʹ>(
+        public static ˣ<ˣ<Some, ˣ.If<I>.Is<Iʹ>>, ˣ.If<Iʹ>> If<Some, I, Iʹ>(
             this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,
             Func<Iʹ, bool> condition)
                 where Iʹ : I =>
-                    new(o.Then(Identity), If(condition));
+                    new(o, If(condition));
 
-        public static ˣ<ˣ<Some, ˣ.If<I>.Then<Iʹ>>, ˣ.If<Iʹ>.Is<Iʺ>> If<Some, I, Iʹ, Iʺ>(
+        public static ˣ<ˣ<Some, ˣ.If<I>.Is<Iʹ>>, ˣ.If<Iʹ>.Is<Iʺ>> If<Some, I, Iʹ, Iʺ>(
             this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,
-            Func<TypeCondition<Iʹ, Iʺ>> condition)
+            IsOfType<Iʺ> _)
                 where Iʹ : I
                 where Iʺ : Iʹ =>
-                    new(o.Then(Identity), If(condition));
+                    new(o, new());
     }
 }
