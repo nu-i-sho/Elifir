@@ -7,15 +7,26 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
+    <IsPackable>true</IsPackable>
     <OutputType>Library</OutputType>
     <PackageId>Nuisho.Elifir</PackageId>
     <Version>2.0.0</Version>
     <Authors>Valentyn Zakharenko</Authors>
     <Company>НУ І ШО studio</Company>
-    <PackageDescription>If-Then-Else expression builder implemented with static polymorphism</PackageDescription>
+    <Copyright>Copyright © НУ І ШО studio 2025</Copyright>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageDescription>Static-typed If-Then-Else expression builder</PackageDescription>
     <RepositoryUrl>https://github.com/nu-i-sho/Elifir</RepositoryUrl>
     <EnablePackageValidation>true</EnablePackageValidation>
     
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\LICENSE" Pack="true" PackagePath="\"/>
+    <None Include="..\icon.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
 </Project>
