@@ -130,6 +130,15 @@ var f =
       .Then(convert_A_To_C)
    .End();
 ```
+When the `If` is not the first in the expression and the previous type `A` is already known from the context, we should use `Is<B>` instead of `Object<A>.Is<B>` as shown below.
+
+```CSharp
+var f =
+    convert_X_To_A
+   .If(Is<B>)
+      .Then(convert_B_To_A)
+   .End();
+```
 
 ## AndIf
 
@@ -141,9 +150,9 @@ It works for both conventional and type conditions.
 var f =
     If(Object<A>.Is<B>).AndIf(B_Is_Something)
       .Then(convert_B_To_C)
-      .If(C_Is_Something).AndIf(Object<C>.Is<D>)
+      .If(C_Is_Something).AndIf(Is<D>)
                          .AndIf(D_Is_Somthing)
-                         .AndIf(Object<D>.Is<E>)
+                         .AndIf(Is<E>)
          .Then(convert_E_To_C)
       .End()
    .Else()
@@ -164,19 +173,19 @@ For this reason, the names of Elifir types include the symbol "ˣ," which is abs
 We can see Elifir types in action in the following code snippet.
 
 ```CSharp
-                                 Func<A, B> _0 = 
+                                 Func<A, B> _0 =
 convert_A_To_B;                  ˣ<Func<A, B>, ˣ.If<B>> _1 = _0
 .If(B_Is_Something);             ˣ<Func<A, B>, ˣ.If<B>.Then<C>> _2 = _1
-    .Then(convert_B_To_C);       ˣ<Func<A, B>, ˣ.If<B>.Then<D>> _3 = _2
-    .Then(convert_C_To_D);       ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Is<E>> _4 = _3
-    .If(Object<D>.Is<E>);        ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>> _5 = _4
-       .Then(convert_E_To_B);    ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else> _6 = _5
-    .Else();                     ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>> _7 = _6
-       .Then(convert_D_To_B);    ˣ<ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>>, ˣ.If<B>> _8 = _7
-       .If(B_Is_Something);      ˣ<ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>>, ˣ.If<B>.Then<B>> _9 = _8
-          .Then(convert_B_To_B); ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>> _10 = _9
-       .End();                   ˣ<Func<A, B>, ˣ.If<B>.Then<B>> _11 = _10
-    .End();                      Func<A, B> _12 = _11
+   .Then(convert_B_To_C);        ˣ<Func<A, B>, ˣ.If<B>.Then<D>> _3 = _2
+   .Then(convert_C_To_D);        ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Is<E>> _4 = _3
+   .If(Is<E>);                   ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>> _5 = _4
+      .Then(convert_E_To_B);     ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else> _6 = _5
+   .Else();                      ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>> _7 = _6
+      .Then(convert_D_To_B);     ˣ<ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>>, ˣ.If<B>> _8 = _7
+      .If(B_Is_Something);       ˣ<ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>>, ˣ.If<B>.Then<B>> _9 = _8
+         .Then(convert_B_To_B);  ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>> _10 = _9
+      .End();                    ˣ<Func<A, B>, ˣ.If<B>.Then<B>> _11 = _10
+   .End();                       Func<A, B> _12 = _11
 .End();
 
 ```
