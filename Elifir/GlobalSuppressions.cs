@@ -213,4 +213,4 @@ using System.Diagnostics.CodeAnalysis;
     "S3246:Generic type parameters should be co/contravariant when possible", 
     Justification = "This delegate should be used only for one special case where co/contravariant isn't needed", 
     Scope = "type", 
-    Target = "~T:Nuisho.Elifir.Syntax.WithReturnType`1")]
+    Target = "~T:Nuisho.Elifir.WithReturnType`1")]

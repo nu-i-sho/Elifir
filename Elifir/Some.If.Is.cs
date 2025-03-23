@@ -32,7 +32,7 @@
 
         public static ˣ<ˣ<Some, ˣ.If<I>.Is<Iʹ>>, ˣ.If<Iʹ>.Is<Iʺ>> If<Some, I, Iʹ, Iʺ>(
             this ˣ<Some, ˣ.If<I>.Is<Iʹ>> o,
-            IsOfType<Iʺ> _)
+            IsOfType<Iʺ> condition)
                 where Iʹ : I
                 where Iʺ : Iʹ =>
                     new(o, new());

@@ -15,7 +15,7 @@
     public static partial class Syntax
     {
         public static ˣ.If<I>.Is<Iʹ> If<I, Iʹ>(
-            ObjectOfType<I>.IsOfType<Iʹ> _)
+            ObjectOfType<I>.IsOfType<Iʹ> condition)
                 where Iʹ : I =>
                     new();
     }
