@@ -15,7 +15,7 @@
 
         public static ˣ<ˣ<Some, ˣ.If<I>.Then<T>.Else.Then<E>>, ˣ.If<E>.Is<Eʹ>> If<Some, I, T, E, Eʹ>(
             this ˣ<Some, ˣ.If<I>.Then<T>.Else.Then<E>> o,
-            IsOfType<Eʹ> _)
+            IsOfType<Eʹ> condition)
                 where Eʹ : E =>
                     new(o, new());
     }

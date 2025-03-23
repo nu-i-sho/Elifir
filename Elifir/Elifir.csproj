@@ -10,7 +10,7 @@
     <IsPackable>true</IsPackable>
     <OutputType>Library</OutputType>
     <PackageId>Nuisho.Elifir</PackageId>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Authors>Valentyn Zakharenko</Authors>
     <Company>НУ І ШО studio</Company>
     <Copyright>Copyright © НУ І ШО studio 2025</Copyright>

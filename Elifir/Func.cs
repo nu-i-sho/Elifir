@@ -14,7 +14,7 @@
 
         public static ˣ<Func<T, Tʹ>, ˣ.If<Tʹ>.Is<Tʺ>> If<T, Tʹ, Tʺ>(
             this Func<T, Tʹ> o,
-            IsOfType<Tʺ> _)
+            IsOfType<Tʺ> condition)
                 where Tʺ : Tʹ =>
                     new(o, new());
     }

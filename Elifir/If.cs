@@ -22,7 +22,7 @@
 
         public static ˣ.If<I>.Is<Iʹ> AndIf<I, Iʹ>(
             this ˣ.If<I> o,
-            IsOfType<Iʹ> _)
+            IsOfType<Iʹ> condition)
                 where Iʹ : I
         {
             ˣ.If<I>.Is<Iʹ> is_I_Iʹ = new();
@@ -57,7 +57,7 @@
 
         public static ˣ<ˣ.If<I>, ˣ.If<I>.Is<Iʹ>> If<I, Iʹ>(
             this ˣ.If<I> o,
-            IsOfType<Iʹ> _)
+            IsOfType<Iʹ> condition)
                 where Iʹ : I =>
                     new(o, new());
     }
