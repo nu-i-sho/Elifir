@@ -14,7 +14,7 @@
                 where Tʹ : T => throw new NotSupportedException("It is not for call !!!");
         }
 
-        public static ˣ.If<I>.Is<Iʹ> If<I, Iʹ>(
+        public static Іf<I>.Is<Iʹ> If<I, Iʹ>(
             ObjectOfType<I>.IsOfType<Iʹ> condition)
                 where Iʹ : I =>
                     new();

@@ -7,15 +7,15 @@
             Func<Tʹ, Tʺ> map) =>
                 x => map(o(x));
 
-        public static ˣ<Func<T, Tʹ>, ˣ.If<Tʹ>> If<T, Tʹ>(
+        public static (Func<T, Tʹ>, Іf<Tʹ>) If<T, Tʹ>(
             this Func<T, Tʹ> o,
             Func<Tʹ, bool> condition) =>
-                new(o, If(condition));
+                (o, If(condition));
 
-        public static ˣ<Func<T, Tʹ>, ˣ.If<Tʹ>.Is<Tʺ>> If<T, Tʹ, Tʺ>(
+        public static (Func<T, Tʹ>, Іf<Tʹ>.Is<Tʺ>) If<T, Tʹ, Tʺ>(
             this Func<T, Tʹ> o,
             IsOfType<Tʺ> condition)
                 where Tʺ : Tʹ =>
-                    new(o, new());
+                    (o, new());
     }
 }

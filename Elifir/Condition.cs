@@ -2,7 +2,7 @@
 {
     public static partial class Syntax
     {
-        public static ˣ.If<I> If<I>(
+        public static Іf<I> If<I>(
             Func<I, bool> condition) =>
                 new(condition);
     }

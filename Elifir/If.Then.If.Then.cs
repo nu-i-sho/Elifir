@@ -2,22 +2,22 @@
 {
     public static partial class Syntax
     {
-        public static ˣ.If<I>.Then<T> End<I, T, Tʹ>(
-            this ˣ<ˣ.If<I>.Then<T>, ˣ.If<T>.Then<Tʹ>> o)
+        public static Іf<I>.Then<T> End<I, T, Tʹ>(
+            this (Іf<I>.Then<T>, Іf<T>.Then<Tʹ>) o)
                 where Tʹ : T =>
-                    o.Prev.Then(o.Next.End());
+                    o.Item1.Then(o.Item2.End());
 
-        public static ˣ.If<I>.Then<Tʹ> End<I, T, Tʹ>(
-            this ˣ<ˣ.If<I>.Then<T>, ˣ.If<T>.Then<Tʹ>> o,
+        public static Іf<I>.Then<Tʹ> End<I, T, Tʹ>(
+            this (Іf<I>.Then<T>, Іf<T>.Then<Tʹ>) o,
             AdHocPolyMarker? _ = null)
                 where T : Tʹ =>
-                    o.Prev.Then(o.Next.End());
+                    o.Item1.Then(o.Item2.End());
 
-        public static ˣ.If<I>.Then<B> End<I, T, Tʹ, B>(
-            this ˣ<ˣ.If<I>.Then<T>, ˣ.If<T>.Then<Tʹ>> o,
+        public static Іf<I>.Then<B> End<I, T, Tʹ, B>(
+            this (Іf<I>.Then<T>, Іf<T>.Then<Tʹ>) o,
             WithReturnType<B> withReturnTypeB)
                 where T  : B
                 where Tʹ : B =>
-                    o.Prev.Then(o.Next.End(withReturnTypeB));
+                    o.Item1.Then(o.Item2.End(withReturnTypeB));
     }
 }
