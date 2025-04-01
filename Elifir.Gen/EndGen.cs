@@ -1,6 +1,6 @@
 ﻿namespace Nuisho.Elifir.Gen
 {
-    public class ThenGen
+    public class EndGen
     {
         public IEnumerable<string> Generate()
         {
