@@ -34,21 +34,5 @@
                 return false;
             });
         }
-
-        public static Іf<I>.Then<T> Then<I, Iʹ, T>(
-            this Іf<I>.Is<Iʹ> o,
-            Func<Iʹ, T> map) 
-                where Iʹ : I =>
-                    new((I i, [MaybeNullWhen(false)] out T t) =>
-                    {
-                        if (o.Condition(i, out Iʹ? iʹ))
-                        {
-                            t = map(iʹ);
-                            return true;
-                        }
-
-                        t = default;
-                        return false;
-                    });
     }
 }

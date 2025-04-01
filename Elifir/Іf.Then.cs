@@ -4,21 +4,6 @@
 
     public static partial class Syntax
     {
-        public static Іf<I>.Then<Tʹ> Then<I, T, Tʹ>(
-            this Іf<I>.Then<T> o,
-            Func<T, Tʹ> map) =>
-                new((I i, [MaybeNullWhen(false)] out Tʹ tʹ) =>
-                {
-                    if (o.ConditionalMap(i, out T? t))
-                    {
-                        tʹ = map(t);
-                        return true;
-                    }
-
-                    tʹ = default;
-                    return false;
-                });
-
         public static Іf<I>.Then<T>.Else Else<I, T>(
             this Іf<I>.Then<T> o) =>
                 new(o.ConditionalMap);

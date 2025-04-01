@@ -12,10 +12,5 @@
             IsOfType<Iʹ> condition)
                 where Iʹ : I =>
                     (o.Item1, o.Item2.AndIf(condition));
-
-        public static (ꞏꞏꞏ, Іf<I>.Then<T>) Then<ꞏꞏꞏ, I, T>(
-            this (ꞏꞏꞏ , Іf<I>) o,
-            Func<I, T> map) =>
-                (o.Item1, o.Item2.Then(map));
     }
 }

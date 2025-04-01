@@ -14,11 +14,5 @@
                 where Iʹ : I 
                 where Iʺ : Iʹ =>
                     (o.Item1, o.Item2.AndIf(condition));
-
-        public static (ꞏꞏꞏ, Іf<I>.Then<Tʹ>) Then<ꞏꞏꞏ, I, Iʹ, Tʹ>(
-            this (ꞏꞏꞏ, Іf<I>.Is<Iʹ>) o,
-            Func<Iʹ, Tʹ> map)
-                where Iʹ : I =>
-                    (o.Item1, o.Item2.Then(map));
     }
 }

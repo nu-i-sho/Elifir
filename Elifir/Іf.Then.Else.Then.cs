@@ -2,12 +2,6 @@
 {
     public static partial class Syntax
     {
-        public static Іf<I>.Then<T>.Else.Then<Eʹ> Then<I, T, E, Eʹ>(
-            this Іf<I>.Then<T>.Else.Then<E> o,
-            Func<E, Eʹ> map) =>
-                new(o.ConditionalMap,
-                    o.ElseMap.Then(map));
-
         public static Func<I, T> End<I, T, E>(
             this Іf<I>.Then<T>.Else.Then<E> o)
                 where E : T =>
