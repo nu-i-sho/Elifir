@@ -19,17 +19,6 @@
                     return false;
                 });
 
-        public static (Іf<I>.Then<T>, Іf<T>) If<I, T>(
-            this Іf<I>.Then<T> o,
-            Func<T, bool> condition) =>
-                (o, If(condition));
-
-        public static (Іf<I>.Then<T>, Іf<T>.Is<Tʹ>) If<I, T, Tʹ>(
-            this Іf<I>.Then<T> o,
-            IsOfType<Tʹ> condition)
-                where Tʹ : T =>
-                    (o, new());
-
         public static Іf<I>.Then<T>.Else Else<I, T>(
             this Іf<I>.Then<T> o) =>
                 new(o.ConditionalMap);

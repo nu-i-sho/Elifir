@@ -8,17 +8,6 @@
                 new(o.ConditionalMap,
                     o.ElseMap.Then(map));
 
-        public static (Іf<I>.Then<T>.Else.Then<E>, Іf<E>) If<I, T, E>(
-            this Іf<I>.Then<T>.Else.Then<E> o,
-            Func<E, bool> condition) =>
-                (o, If(condition));
-
-        public static (Іf<I>.Then<T>.Else.Then<E>, Іf<E>.Is<Eʹ>) If<I, T, E, Eʹ>(
-            this Іf<I>.Then<T>.Else.Then<E> o,
-            IsOfType<Eʹ> condition)
-                where Eʹ : E =>
-                    (o, new());
-
         public static Func<I, T> End<I, T, E>(
             this Іf<I>.Then<T>.Else.Then<E> o)
                 where E : T =>

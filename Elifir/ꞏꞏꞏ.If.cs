@@ -17,16 +17,5 @@
             this (ꞏꞏꞏ , Іf<I>) o,
             Func<I, T> map) =>
                 (o.Item1, o.Item2.Then(map));
-
-        public static ((ꞏꞏꞏ, Іf<I>), Іf<I>) If<ꞏꞏꞏ, I>(
-            this (ꞏꞏꞏ, Іf<I>) o,
-            Func<I, bool> condition) =>
-                    (o, If(condition));
-
-        public static ((ꞏꞏꞏ, Іf<I>), Іf<I>.Is<Iʹ>) If<ꞏꞏꞏ, I, Iʹ>(
-            this (ꞏꞏꞏ, Іf<I>) o,
-            IsOfType<Iʹ> condition)
-                where Iʹ : I =>
-                    (o, new());
     }
 }

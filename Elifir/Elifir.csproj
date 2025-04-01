@@ -23,6 +23,21 @@
     
   </PropertyGroup>
 
+  <PropertyGroup>
+    <CodeGen>Elifir.Gen</CodeGen>
+    <IfFile>If.autogen.cs</IfFile>
+  </PropertyGroup>
+
+  <Target Name="BuildCodeGen" BeforeTargets="GenCode">
+    <MSBuild Projects="../$(CodeGen)/$(CodeGen).csproj" Targets="Build" />
+  </Target>
+
+  <Target Name="GenCode" BeforeTargets="Build" Condition="!Exists($(IfFile))">
+    <Message Importance="high" Text="code generation started" />
+    <Exec Command="&quot;../$(CodeGen)/bin/$(Configuration)/$(TargetFramework)/Nuisho.$(CodeGen)&quot; &gt; $(IfFile)" />
+    <Message Importance="high" Text="code generation finished" />
+  </Target>
+
   <ItemGroup>
     <None Include="..\README.md" Pack="true" PackagePath="\"/>
     <None Include="..\LICENSE" Pack="true" PackagePath="\"/>

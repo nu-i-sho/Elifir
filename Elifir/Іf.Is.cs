@@ -50,18 +50,5 @@
                         t = default;
                         return false;
                     });
-
-        public static (Іf<I>.Is<Iʹ>, Іf<Iʹ>) If<I, Iʹ>(
-            this Іf<I>.Is<Iʹ> o,
-            Func<Iʹ, bool> condition) 
-                where Iʹ : I =>
-                    (o, If(condition));
-
-        public static (Іf<I>.Is<Iʹ>, Іf<Iʹ>.Is<Iʺ>) If<I, Iʹ, Iʺ>(
-            this Іf<I>.Is<Iʹ> o,
-            IsOfType<Iʺ> condition) 
-                where Iʹ : I 
-                where Iʺ : Iʹ =>
-                    (o, new());
     }
 }

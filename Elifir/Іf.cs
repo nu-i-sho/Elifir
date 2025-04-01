@@ -38,16 +38,5 @@
                     t = default;
                     return false;
                 });
-
-        public static (Іf<I>, Іf<I>) If<I>(
-            this Іf<I> o,
-            Func<I, bool> condition) =>
-                (o, If(condition));
-
-        public static (Іf<I>, Іf<I>.Is<Iʹ>) If<I, Iʹ>(
-            this Іf<I> o,
-            IsOfType<Iʹ> condition)
-                where Iʹ : I =>
-                    (o, new());
     }
 }

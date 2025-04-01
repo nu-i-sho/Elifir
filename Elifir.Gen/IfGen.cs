@@ -4,36 +4,48 @@
     {
         public IEnumerable<Seed> Seeds()
         {
+            const string 
+                T = "T", Tʹ = "Tʹ", 
+                I = "I", Iʹ = "Iʹ", 
+                E = "E";
+
             yield return new Seed(
-                Type: "Func<T, Tʹ>",
-                GenericParams: ["T", "Tʹ"],
+                Type: $"Func<{T}, {Tʹ}>",
+                GenericParams: [T, Tʹ],
+                ConditionalGenericParam: Tʹ,
                 NeedSecondImplementation: false);
 
             yield return new Seed(
-                Type: "Іf<I>",
-                GenericParams: ["I"]);
+                Type: $"Іf<{I}>",
+                GenericParams: [I],
+                ConditionalGenericParam: I);
 
             yield return new Seed(
-                Type: "Іf<I>.Is<Iʹ>",
-                GenericParams: ["I", "Iʹ"],
-                AdditionalConstraint: "Iʹ : I");
+                Type: $"Іf<{I}>.Is<{Iʹ}>",
+                GenericParams: [I, Iʹ],
+                ConditionalGenericParam: Iʹ,
+                AdditionalConstraint: $"{Iʹ} : {I}");
 
             yield return new Seed(
-                Type: "Іf<I>.Then<T>",
-                GenericParams: ["I", "T"]);
+                Type: $"Іf<{I}>.Then<{T}>",
+                GenericParams: [I, T],
+                ConditionalGenericParam: T);
 
             yield return new Seed(
-                Type: "Іf<I>.Then<T>.Else",
-                GenericParams: ["I", "T"]);
+                Type: $"Іf<{I}>.Then<{T}>.Else",
+                GenericParams: [I, T],
+                ConditionalGenericParam: I);
 
             yield return new Seed(
-                Type: "Іf<I>.Then<T>.Else.Then<E>",
-                GenericParams: ["I", "T", "E"]);
+                Type: $"Іf<{I}>.Then<{T}>.Else.Then<{E}>",
+                GenericParams: [I, T, E],
+                ConditionalGenericParam: E);
         }
 
         public record Seed(
             string Type,
             IEnumerable<string> GenericParams,
+            string ConditionalGenericParam,
             string? AdditionalConstraint = null,
             bool NeedSecondImplementation = true);
 
@@ -57,14 +69,14 @@
 
         public IEnumerable<string> Generate(Seed o)
         {
-            var t = o.GenericParams.Last();
+            var t  = o.ConditionalGenericParam;
             var tʹ = t.Last() switch
             {
                 'ʹ' => t.Replace('ʹ', 'ʺ'),
-                _ => t + 'ʹ'
+                _   => t + 'ʹ'
             };
 
-            var tLine = string.Join(", ", o.GenericParams);
+            var tLine  = string.Join(", ", o.GenericParams);
             var tʹLine = string.Join(", ", o.GenericParams.Concat([tʹ]));
 
                         yield return $"public static ({o.Type}, Іf<{t}>) If<{tLine}>(";
