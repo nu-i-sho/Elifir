@@ -2,30 +2,6 @@
 {
     using System.Diagnostics.CodeAnalysis;
 
-    public sealed partial class Іf<I> {
-    public sealed class Is<Iʹ> where Iʹ : I
-    {
-        internal Is(ConditionalMap<I, Iʹ> condition) =>
-            Condition = condition;
-
-        internal Is() : this(
-            (I x, [MaybeNullWhen(false)] out Iʹ xʹ) =>
-            {
-                if (x is Iʹ sub)
-                {
-                    xʹ = sub;
-                    return true;
-                }
-
-                xʹ = default;
-                return false;
-            })
-        {
-        }
-
-        internal ConditionalMap<I, Iʹ> Condition { get; }
-    }}
-
     public static partial class Syntax
     {
         public static Іf<I>.Is<Iʹ> AndIf<I, Iʹ>(

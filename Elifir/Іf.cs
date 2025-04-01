@@ -2,14 +2,6 @@
 {
     using System.Diagnostics.CodeAnalysis;
 
-    public sealed partial class Іf<I>
-    {
-        internal Іf(Func<I, bool> condition) =>
-            Condition = condition;
-
-        internal Func<I, bool> Condition { get; }
-    }
-
     public static partial class Syntax
     {
         public static Іf<I> AndIf<I>(

@@ -1,22 +1,5 @@
 ﻿namespace Nuisho.Elifir
 {
-    public sealed partial class Іf<I> {
-    public sealed partial class Then<T> {
-    public sealed partial class Else {
-    public sealed partial class Then<E>
-    {
-        internal Then(
-            ConditionalMap<I, T> conditionalMap,
-            Func<I, E> elseMap)
-        {
-            ConditionalMap = conditionalMap;
-            ElseMap = elseMap;
-        }
-
-        internal ConditionalMap<I, T> ConditionalMap { get; }
-        internal Func<I, E> ElseMap { get; }
-    }}}}
-
     public static partial class Syntax
     {
         public static Іf<I>.Then<T>.Else.Then<Eʹ> Then<I, T, E, Eʹ>(

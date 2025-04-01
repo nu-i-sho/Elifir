@@ -1,11 +1,5 @@
 ﻿namespace Nuisho.Elifir
 {
-    public static class ObjectOfType<T>
-    {
-        public delegate (T, Tʹ) IsOfType<Tʹ>()
-            where Tʹ : T;
-    }
-
     public static partial class Syntax
     {
         public static class Object<T>

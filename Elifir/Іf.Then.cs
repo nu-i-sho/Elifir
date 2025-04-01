@@ -2,15 +2,6 @@
 {
     using System.Diagnostics.CodeAnalysis;
 
-    public sealed partial class Іf<I> {
-    public sealed partial class Then<T>
-    {
-        internal Then(ConditionalMap<I, T> conditionalMap) =>
-            ConditionalMap = conditionalMap;
-
-        internal ConditionalMap<I, T> ConditionalMap { get; }
-    }}
-
     public static partial class Syntax
     {
         public static Іf<I>.Then<Tʹ> Then<I, T, Tʹ>(

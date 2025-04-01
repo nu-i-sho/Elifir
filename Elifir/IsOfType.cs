@@ -1,7 +1,5 @@
 ﻿namespace Nuisho.Elifir
 {
-    public delegate Iʹ IsOfType<Iʹ>();
-
     public static partial class Syntax
     {
         public static Iʹ Is<Iʹ>() =>
