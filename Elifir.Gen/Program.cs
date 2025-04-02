@@ -11,6 +11,13 @@ Dictionary<string, ICodeGen<Token>> generators = new()
                 new MultiGen<EndSeed>(
                     new EndGen())),
             EndSeeds.Default)
+    },
+    { "-if",
+      new SeededGen<IEnumerable<IfSeed>>(
+            new CodeFileGen<IEnumerable<IfSeed>>(
+                new MultiGen<IfSeed>(
+                    new IfGen())),
+            IfSeeds.Default)
     }
 };
 

@@ -9,12 +9,13 @@
         EndSeed.GenericParams Params,
         IImmutableList<(string, string)>? Constraints = null,
         bool RemoveIs = false,
-        bool AddThen = false)
+        bool AddThen = false,
+        bool NeedNestedImplementation = true)
     {
         public record GenericParams(
             IImmutableQueue<string> Free, string If, string Then, string Else)
         {
-            public string All => string.Join(", ",
+            public string Line => string.Join(", ",
                 Free.Concat([If, Then, Else])
                     .Distinct());
         }

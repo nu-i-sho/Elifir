@@ -14,11 +14,6 @@
 
         static IEnumerable<EndSeed> GetDefault()
         {
-            const string
-                I = "I", Iʹ = "Iʹ",
-                T = "T", Tʹ = "Tʹ", Tʺ = "Tʺ",
-                E = "E", Eʹ = "Eʹ", Eʺ = "Eʺ";
-
             yield return new EndSeed(
                      _1_TypeTemplate: Func(T, X),
                              _2_Type: If(Tʹ).Then(Tʺ),

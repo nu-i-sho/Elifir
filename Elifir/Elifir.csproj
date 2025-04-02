@@ -34,7 +34,7 @@
 
   <Target Name="GenCode" BeforeTargets="Build" Condition="!Exists($(IfFile))">
     <Message Importance="high" Text="code generation started" />
-    <Exec Command="&quot;../$(CodeGen)/bin/$(Configuration)/$(TargetFramework)/Nuisho.$(CodeGen)&quot; &gt; $(IfFile)" />
+    <Exec Command="&quot;../$(CodeGen)/bin/$(Configuration)/$(TargetFramework)/Nuisho.$(CodeGen)&quot; -if &gt; $(IfFile)" />
     <Message Importance="high" Text="code generation finished" />
   </Target>
 

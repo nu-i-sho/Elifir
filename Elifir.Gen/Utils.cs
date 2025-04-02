@@ -4,7 +4,13 @@
 
     public static class Utils
     {
-        public const string X = "X";
+        public const string
+            I = "I", Iʹ = "Iʹ", Iʺ = "Iʺ",
+            T = "T", Tʹ = "Tʹ", Tʺ = "Tʺ",
+            E = "E", Eʹ = "Eʹ", Eʺ = "Eʺ",
+            B = "B", 
+            X = "X",
+            ꞏꞏꞏ = "ꞏꞏꞏ";
 
         public class Token;
 
@@ -52,18 +58,20 @@
             public Wheres Add(string target, string super) =>
                 new(typesConstraints.Add((target, super)));
 
-            public IEnumerable<string> Produce(string indentation) =>
+            public bool IsEmpty => !typesConstraints.Any();
+
+            public IEnumerable<string> Produce() =>
                 typesConstraints
                     .GroupBy(o => o.Item1)
                     .Select((o, i) => new
                     {
                         Target = o.Key,
-                        SuperLine = string.Join(", ", o),
+                        SuperLine = string.Join(", ", o.Select(x => x.Item2)),
                         Ending = i == typesConstraints.Count - 1
                             ? " =>"
                             : string.Empty
                     })
-                    .Select(o => $"{indentation}where {o.Target} : {o.SuperLine}{o.Ending}");
+                    .Select(o => $"where {o.Target} : {o.SuperLine}{o.Ending}");
         }
     }
 }
