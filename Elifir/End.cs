@@ -15,7 +15,7 @@
 
         public static Func<I, B> End<I, T, B>(
             this Іf<I>.Then<T> o,
-            WithReturnType<B> withReturnB)
+            WithReturnType<B> withReturnTypeB)
                 where T : B
                 where I : B =>
                     i => o.ConditionalMap(i, out T? t) ? (B)t : i;

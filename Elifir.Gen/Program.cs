@@ -6,18 +6,24 @@ using static Nuisho.Elifir.Gen.Utils;
 Dictionary<string, ICodeGen<Token>> generators = new()
 {
     { "-end", 
-        new SeededGen<IEnumerable<EndSeed>>(
-            new CodeFileGen<IEnumerable<EndSeed>>(
-                new MultiGen<EndSeed>(
-                    new EndGen())),
-            EndSeeds.Default)
+        new HeadCommentGen<Token>(
+            new Supress_IDE0079_Gen<Token>(
+                new Supress_S3427_Gen<Token>(
+                    new SyntaxClassGen<Token>(
+                        new SeededGen<IEnumerable<EndSeed>>(
+                            new MultiGen<EndSeed>(
+                                new EndGen()),
+                            EndSeeds.Default)))))
     },
     { "-if",
-      new SeededGen<IEnumerable<IfSeed>>(
-            new CodeFileGen<IEnumerable<IfSeed>>(
-                new MultiGen<IfSeed>(
-                    new IfGen())),
-            IfSeeds.Default)
+        new HeadCommentGen<Token>(
+            new Supress_IDE0079_Gen<Token>(
+                new Supress_IDE0060_Gen<Token>(
+                    new SyntaxClassGen<Token>(
+                        new SeededGen<IEnumerable<IfSeed>>(
+                            new MultiGen<IfSeed>(
+                                new IfGen()),
+                            IfSeeds.Default)))))
     }
 };
 

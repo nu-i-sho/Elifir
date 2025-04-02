@@ -2,8 +2,6 @@
 {
     using System.Collections.Immutable;
     using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Text;
 
     public static class Utils
     {
@@ -19,18 +17,18 @@
         {
             ParamComparer() { }
 
-            public static readonly ParamComparer Instance = new ParamComparer();
+            public static readonly ParamComparer Instance = new();
 
-            static readonly IComparer<int> numComparer = Comparer<int>.Default;
-            static readonly ImmutableArray<string> order =
-                [ꞏꞏꞏ, I, T, E, Iʹ, Tʹ, Eʹ, Iʺ, Tʺ, Eʺ, B];
+            static readonly Comparer<int> numComparer = Comparer<int>.Default;
+            static readonly ImmutableDictionary<string, int> order =
+                new[] { ꞏꞏꞏ, I, T, E, Iʹ, Tʹ, Eʹ, Iʺ, Tʺ, Eʺ, B }
+                .Select((x, i) => (x, i))
+                .ToImmutableDictionary(o => o.x, o => o.i);
 
             public int Compare(string? x, string? y)
             {
                 Debug.Assert(x != null && y != null);
-                return numComparer.Compare(
-                    order.IndexOf(x),
-                    order.IndexOf(y));
+                return numComparer.Compare(order[x], order[y]);
             }
         }
 
@@ -67,7 +65,7 @@
         }
 
         public class IfThenElse(string prefix)
-            : StringHolder(prefix + ".Else")
+            : StringHolder($"{prefix}.Else")
         {
             public IfThenElseThen Then(string t) => new(this, t);
         }

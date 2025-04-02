@@ -17,7 +17,7 @@
 
                 hasItem = e.MoveNext();
                 if (hasItem)
-                    yield return "";
+                    yield return string.Empty;
             }
         }
     }

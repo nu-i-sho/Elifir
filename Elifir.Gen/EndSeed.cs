@@ -36,8 +36,8 @@
             if (AddThen)
             {
                 result = result.EndsWith(')')
-                    ? result.Substring(0, result.Length - 1) + $".Then<{X}>)"
-                    : result + $".Then<{X}>";
+                    ? $"{result.AsSpan(0, result.Length - 1)}.Then<{X}>)"
+                    : $"{result}.Then<{X}>";
             }
 
             result = result.Replace(X, closingType);
