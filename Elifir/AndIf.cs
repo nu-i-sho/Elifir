@@ -5,12 +5,12 @@
     public static partial class Syntax
     {
         public static Іf<I> AndIf<I>(
-            this Іf<I> o,
+            this Іf<I> o, 
             Func<I, bool> condition) =>
                 new(i => o.Condition(i) && condition(i));
 
         public static Іf<I>.Is<Iʹ> AndIf<I, Iʹ>(
-            this Іf<I> o,
+            this Іf<I> o, 
             IsOfType<Iʹ> condition)
                 where Iʹ : I
         {
@@ -26,7 +26,7 @@
         }
 
         public static Іf<I>.Is<Iʹ> AndIf<I, Iʹ>(
-            this Іf<I>.Is<Iʹ> o,
+            this Іf<I>.Is<Iʹ> o, 
             Func<Iʹ, bool> condition)
                 where Iʹ : I =>
                     new((I i, [MaybeNullWhen(false)] out Iʹ iʹ) =>
@@ -39,7 +39,7 @@
                     });
 
         public static Іf<I>.Is<Iʺ> AndIf<I, Iʹ, Iʺ>(
-            this Іf<I>.Is<Iʹ> o,
+            this Іf<I>.Is<Iʹ> o, 
             IsOfType<Iʺ> condition)
                 where Iʹ : I
                 where Iʺ : Iʹ
@@ -57,12 +57,12 @@
         }
 
         public static (ꞏꞏꞏ, Іf<I>) AndIf<ꞏꞏꞏ, I>(
-            this (ꞏꞏꞏ, Іf<I>) o,
+            this (ꞏꞏꞏ, Іf<I>) o, 
             Func<I, bool> condition) =>
                 (o.Item1, o.Item2.AndIf(condition));
 
         public static (ꞏꞏꞏ, Іf<I>.Is<Iʹ>) AndIf<ꞏꞏꞏ, I, Iʹ>(
-            this (ꞏꞏꞏ, Іf<I>) o,
+            this (ꞏꞏꞏ, Іf<I>) o, 
             IsOfType<Iʹ> condition)
                 where Iʹ : I =>
                     (o.Item1, o.Item2.AndIf(condition));

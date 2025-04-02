@@ -126,6 +126,5 @@ namespace Nuisho.Elifir
             IsOfType<Eʹ> condition)
                 where Eʹ : E =>
                     (o, new());
-
     }
 }

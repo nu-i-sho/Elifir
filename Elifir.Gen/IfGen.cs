@@ -1,4 +1,4 @@
-﻿namespace Elifir.Gen
+﻿namespace Nuisho.Elifir.Gen
 {
     public class IfGen
     {
