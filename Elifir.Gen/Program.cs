@@ -22,5 +22,17 @@ Dictionary<string, ICodeGen<Token>> generators = new()
 };
 
 Console.OutputEncoding = Encoding.UTF8;
-foreach (var item in generators[args[0]].Generate(new Token()))
-    Console.WriteLine(item);
+
+try
+{
+    foreach (var line in generators[args[0]].Generate(new Token()))
+        Console.WriteLine(line);
+}
+catch (Exception e)
+{
+    foreach (var line in e.ToString().Split(
+            [Environment.NewLine], 
+            StringSplitOptions.RemoveEmptyEntries))
+        Console.WriteLine(line);
+
+}

@@ -5,16 +5,16 @@
     {
         public IEnumerable<string> Generate(Seed o)
         {
-                yield return "namespace Nuisho.Elifir";
-                yield return "{";
-                yield return "    public static partial class Syntax";
-                yield return "    {";
+            yield return "namespace Nuisho.Elifir";
+            yield return "{";
+            yield return "    public static partial class Syntax";
+            yield return "    {";
             
             foreach (var line in subGen.Generate(o))
                 yield return "        " + line;
 
-                yield return "    }";
-                yield return "}";
+            yield return "    }";
+            yield return "}";
         }
     }
 }

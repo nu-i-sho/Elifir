@@ -32,7 +32,7 @@
             foreach (var line in Generate(o with
                 {
                     Type = $"({ꞏꞏꞏ}, {o.Type})",
-                    Params = o.Params with { Free = o.Params.Free.Enqueue(ꞏꞏꞏ) },
+                    Params = o.Params with { Free = o.Params.Free.Add(ꞏꞏꞏ) },
                     NestedImplementation = false
                 })) yield return line;
         }

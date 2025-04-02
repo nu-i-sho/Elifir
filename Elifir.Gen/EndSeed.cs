@@ -4,27 +4,31 @@
     using static Utils;
 
     public record EndSeed(
-        string _1_TypeTemplate,
+        string _1_3_TypeTemplate,
         string _2_Type,
         EndSeed.GenericParams Params,
         IImmutableList<(string, string)>? Constraints = null,
         bool RemoveIs = false,
         bool AddThen = false,
-        bool NeedNestedImplementation = true)
+        bool NestedImplementation = true)
     {
         public record GenericParams(
-            IImmutableQueue<string> Free, string If, string Then, string Else)
+            IImmutableList<string> Free, string If, string Then, string Else)
         {
             public string Line => string.Join(", ",
                 Free.Concat([If, Then, Else])
-                    .Distinct());
+                    .Distinct()
+                    .Order(ParamComparer.Instance));
         }
 
         public Wheres Wheres { get; } = new(Constraints ?? []);
 
-        public string _1_Type(string closingType)
+        public string _1_Type(string closingType) =>
+            _1_3_TypeTemplate.Replace(X, closingType);
+
+        public string _3_Type(string closingType)
         {
-            var result = _1_TypeTemplate;
+            var result = _1_3_TypeTemplate;
 
             if (RemoveIs)
                 result = result.Replace($".Is<{X}>", string.Empty);

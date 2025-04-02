@@ -10,15 +10,15 @@
         bool NestedImplementation = true)
     {
         public record GenericParams(
-            IImmutableQueue<string> Free, string If, string Next)
+            IImmutableList<string> Free, string If, string Next)
         {
             public string ShortLine => string.Join(", ",
                 Free.Concat([If])
-                    .Distinct());
+                    .Order(ParamComparer.Instance));
 
             public string LongLine => string.Join(", ",
                 Free.Concat([If, Next])
-                    .Distinct());
+                    .Order(ParamComparer.Instance));
         }
 
         public Wheres Wheres { get; } = new(Constraints ?? []);

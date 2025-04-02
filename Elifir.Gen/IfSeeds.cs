@@ -35,7 +35,7 @@
 
             yield return new IfSeed(
                                Type: If(I).Then(T).Else,
-                             Params: new([I, T], I, Iʹ));
+                             Params: new([T], I, Iʹ));
 
             yield return new IfSeed(
                                Type: If(I).Then(T).Else.Then(E),
