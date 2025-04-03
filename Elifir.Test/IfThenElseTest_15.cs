@@ -1,7 +1,7 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using static Utils;
     using static Syntax;
+    using static Utils;
 
     [TestFixture]
     public class IfThenElseTest_15
@@ -50,7 +50,7 @@
             var f =
                 From_A_To_A_With(Add(10))
                .Then(From_A_To_A_With(Add(100)))
-               .Then(From_A_To_A_With(Add(1000))) 
+               .Then(From_A_To_A_With(Add(1000)))
                .If(A_Is(Even))
                     .Then(From_A_To_D_With(Add(20)))
                     .Then(From_D_To_E_With(Add(200)))
@@ -107,7 +107,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(2,  ExpectedResult = 13, TestName = "Test_1508( 2 -> 13 )")]
         [TestCase(13, ExpectedResult = 44, TestName = "Test_1508( 13 -> 44 )")]
         [TestCase(0,  ExpectedResult = 31, TestName = "Test_1508( 0 -> 31 )")]
@@ -149,7 +149,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(10, ExpectedResult = 21, TestName = "Test_1518( 10 -> 21 )")]
         [TestCase(2,  ExpectedResult = 23, TestName = "Test_1518( 2 -> 23 )")]
         [TestCase(6,  ExpectedResult = 57, TestName = "Test_1518( 6 -> 57 )")]
@@ -170,7 +170,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(10, ExpectedResult = 21, TestName = "Test_1519( 10 -> 21 )")]
         [TestCase(2,  ExpectedResult = 23, TestName = "Test_1519( 2 -> 23 )")]
         [TestCase(6,  ExpectedResult = 57, TestName = "Test_1519( 6 -> 57 )")]
@@ -191,7 +191,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(10, ExpectedResult = 21, TestName = "Test_1520( 10 -> 21 )")]
         [TestCase(2,  ExpectedResult = 23, TestName = "Test_1520( 2 -> 23 )")]
         [TestCase(6,  ExpectedResult = 57, TestName = "Test_1520( 6 -> 57 )")]
@@ -242,7 +242,6 @@
             return result.Value;
         }
 
-
         [TestCase(1,  ExpectedResult = 4,  TestName = "Test_1522( 1 -> 4 )")]
         [TestCase(10, ExpectedResult = 18, TestName = "Test_1522( 10 -> 18 )")]
         [TestCase(2,  ExpectedResult = 11, TestName = "Test_1522( 2 -> 11 )")]
@@ -250,11 +249,11 @@
         public int Test_1522(int x)
         {
             var f =
-                From_A_To_A_With(Add(1))                    
+                From_A_To_A_With(Add(1))
                .If(A_Is(Even))
                     .Then(From_A_To_Δ_With(Add(2)))         // 1 -> 4
                .Else()
-                    .Then(From_A_To_Δ_With(Add(3)))         
+                    .Then(From_A_To_Δ_With(Add(3)))
                     .If(A_Is(EndingWith("4")))              // 10 -> 18
                         .Then(From_Δ_To_Λ_With(Add(4)))
                     .Else()

@@ -1,7 +1,7 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using static Utils;
     using static Syntax;
+    using static Utils;
 
     [TestFixture]
     public class IfThenElseTest_12

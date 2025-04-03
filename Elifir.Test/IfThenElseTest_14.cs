@@ -1,7 +1,7 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using static Utils;
     using static Syntax;
+    using static Utils;
 
     [TestFixture]
     public class IfThenElseTest_14
@@ -333,7 +333,7 @@
             var f =
                 From_C_To_B_With(Add(1))
                .If(B_Is(MoreThen(100)))                             // 0 -> 1
-                    .Then(From_B_To_C_With(Add(10)))                
+                    .Then(From_B_To_C_With(Add(10)))
                     .If(C_Is(MoreThen(200)))
                         .Then(From_C_To_B_With(Add(20)))            // 249 -> 280
                     .Else()
@@ -390,7 +390,7 @@
                 .Else()
                     .If(Is<Aʺʺ>)
                         .If(Is<Aʺʺʺ>)
-                            .Then(From_A_To_A_With(Add(1000)))              // (0, Aʺʺʺ) -> 101001 // +100000 
+                            .Then(From_A_To_A_With(Add(1000)))              // (0, Aʺʺʺ) -> 101001 // +100000
                         .Else()
                             .If(Is<Aʺʺʹ>)
                                 .Then(From_A_To_A_With(Add(10000)))         // (0, Aʺʺʹ) -> 110001 // +100000
@@ -540,7 +540,7 @@
                 From_D_To_B_With(Add(1))
                .If(B_Is(MoreThen(100)))                             // 1 -> 2
                     .Then(From_B_To_E_With(Add(1)))
-                    .Then(From_E_To_C_With(Add(10)))                
+                    .Then(From_E_To_C_With(Add(10)))
                     .If(C_Is(MoreThen(200)))
                         .Then(From_C_To_D_With(Add(2)))
                         .Then(From_D_To_B_With(Add(20)))            // 250 -> 284
@@ -635,7 +635,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(14, ExpectedResult = 15, TestName = "Test_1438( 14 -> 15 )")]
         [TestCase(11, ExpectedResult = 15, TestName = "Test_1438( 11 -> 15 )")]
         [TestCase(1,  ExpectedResult = 6,  TestName = "Test_1438( 1 -> 6 )")]
@@ -644,7 +644,7 @@
             var f =
                 From_A_To_A_With(Add(1))                    // 14 -> 15
                .If(A_Is(Even))
-                    .Then(From_A_To_A_With(Add(1))) 
+                    .Then(From_A_To_A_With(Add(1)))
                     .If(A_Is(MoreThen(10)))
                         .Then(From_A_To_A_With(Add(2)))     // 11 -> 15
                     .Else()

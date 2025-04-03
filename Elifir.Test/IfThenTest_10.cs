@@ -12,8 +12,8 @@
         public int Test_1000(int x)
         {
             var f =
-                 From_Λ_To_Λ_With(Add(1))                   
-                .If(Λ_Is(Even)).AndIf(Λ_Is(MoreThen(10)))   // 1 -> 2, 12 -> 13 
+                 From_Λ_To_Λ_With(Add(1))
+                .If(Λ_Is(Even)).AndIf(Λ_Is(MoreThen(10)))   // 1 -> 2, 12 -> 13
                     .Then(From_Λ_To_Δ_With(Add(2)))         // 11 -> 14
                 .End(WithReturn<A>);
 
@@ -58,7 +58,7 @@
             var f =
                  From_D_To_B_With(Add(1))
                 .Then(From_B_To_E_With(Add(10)))
-                .Then(from_E_To_Λ_OrTo_ΛΛ_OrTo_ΛΛΛ_With(Add(100)))      
+                .Then(from_E_To_Λ_OrTo_ΛΛ_OrTo_ΛΛΛ_With(Add(100)))
                 .If(Is<ΛΛ>)                                         // (2, Λ) -> 113, (1, Λ) -> 112
                 .AndIf(Λ_Is(Odd))                                   // (2, ΛΛ) -> 113, (1, ΛΛ) -> 112
                 .AndIf(Is<ΛΛΛ>)                                     // (1, ΛΛΛ) -> 112
@@ -85,7 +85,7 @@
                 .If(Λ_Is(Even))                             // 20 -> 21
                 .AndIf(Λ_Is(MoreThen(10)))
                     .Then(From_Λ_To_ΛΛ_With(Add(2)))        // 21 -> 24
-                    .If(ΛΛ_Is(MoreThen(100)))               // 221 -> 224 
+                    .If(ΛΛ_Is(MoreThen(100)))               // 221 -> 224
                     .AndIf(ΛΛ_Is(LessThen(200)))
                         .Then(From_ΛΛ_To_ΛΔ_With(Add(3)))   // 121 -> 127
                     .End(WithReturn<Λ>)

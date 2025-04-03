@@ -1,7 +1,7 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using static Utils;
     using static Syntax;
+    using static Utils;
 
     [TestFixture]
     public class IfThenTest_05
@@ -51,7 +51,7 @@
             var f =
                  From_A_To_A_With(Add(1))
                 .Then(From_A_To_A_With(Add(1)))
-                .Then(From_A_To_A_With(Add(1)))      
+                .Then(From_A_To_A_With(Add(1)))
                 .If(A_Is(Odd))                          // 53 -> 56
                 .AndIf(A_Is(MoreThen(50)))              // 1 -> 4
                 .AndIf(A_Is(LessThen(100)))             // 110 -> 113
@@ -69,7 +69,6 @@
         [TestCase(true,  2, ExpectedResult = 113, TestName = "Test_0503( true, 2 -> 113 )")]
         [TestCase(false, 1, ExpectedResult = 112, TestName = "Test_0503( false, 1 -> 112 )")]
         [TestCase(true,  1, ExpectedResult = 334, TestName = "Test_0503( true, 1 -> 334 )")]
-        
         public int Test_0503(bool isCʹ, int x)
         {
             var from_D_To_C_OrTo_Cʹ_With =
@@ -102,7 +101,7 @@
 
             var f =
                  From_A_To_A_With(Add(1))
-                .Then(from_A_To_A_OrTo_Aʹ_With(Add(10)))    
+                .Then(from_A_To_A_OrTo_Aʹ_With(Add(10)))
                 .If(Is<Aʹ>)                                 // (10, false) -> 21
                 .AndIf(Aʹ_Is(MoreThen(100)))                // (10, true) -> 21, (100, true) -> 111
                     .Then(From_A_To_A_With(Add(2)))
@@ -133,7 +132,7 @@
             var f =
                  From_A_To_E_With(Add(1))
                 .Then(From_E_To_D_With(Add(10)))
-                .Then(from_D_To_SomeA_With(Add(100))) 
+                .Then(from_D_To_SomeA_With(Add(100)))
                 .If(Is<Aʹ>)                             // (0, A) -> 111
                 .AndIf(Is<Aʺ>)                          // (0, Aʹ) -> 111
                     .Then(From_Aʺ_To_E_With(Add(2)))
@@ -167,7 +166,7 @@
             var f =
                  From_A_To_E_With(Add(1))
                 .Then(From_E_To_D_With(Add(10)))
-                .Then(from_D_To_SomeA_With(Add(100))) 
+                .Then(from_D_To_SomeA_With(Add(100)))
                 .If(Is<Aʹ>)                             // (0, A) -> 111
                 .AndIf(Is<Aʺ>)                          // (0, Aʹ) -> 111
                 .AndIf(Is<Aʺʹ>)                         // (0, Aʺ) -> 111
@@ -198,7 +197,7 @@
                 From_A_To_Aʹ_OrTo_Aʺ(isAʺ);
 
             var f =
-                 from_A_To_Aʹ_OrTo_Aʺ_With(Add(1))              
+                 from_A_To_Aʹ_OrTo_Aʺ_With(Add(1))
                 .If(Aʹ_Is(Even))                        // (1, false) -> 2, (2, false) -> 3
                 .AndIf(Is<Aʺ>)                          // (101, false) -> 102, (1, true) -> 2
                 .AndIf(Aʺ_Is(MoreThen(100)))            // (2, true) -> 3, (200, false) -> 201
@@ -224,7 +223,7 @@
 
             var f =
                  From_A_To_D_With(Add(1))
-                .Then(from_D_To_SomeAʹ_With(Add(10)))      
+                .Then(from_D_To_SomeAʹ_With(Add(10)))
                 .If(Is<Aʺ>)                             // (1, Aʹ) -> 12, (2, Aʹ) -> 13
                 .AndIf(Aʺ_Is(Odd))                      // (101, Aʺ) -> 112, (1, Aʺʹ) -> 12
                 .AndIf(Is<Aʺʹ>)
@@ -246,12 +245,12 @@
         public int Test_0509(int x)
         {
             var f =
-                 From_A_To_A_With(Add(1))                  
+                 From_A_To_A_With(Add(1))
                 .If(A_Is(Even))                             // 2 -> 3, 1 -> 2
                 .AndIf(A_Is(MoreThen(10)))                  // 12 -> 13
                     .Then(From_A_To_A_With(Add(2)))         // 11 -> 14
                     .If(A_Is(MoreThen(1000)))               // 2999 -> 3002
-                    .AndIf(A_Is(LessThen(2000)))            
+                    .AndIf(A_Is(LessThen(2000)))
                         .Then(From_A_To_A_With(Add(3)))     // 1989 -> 2194
                     .End()
                 .End();
@@ -277,7 +276,7 @@
 
             var f =
                  From_A_To_A_With(Add(1))
-                .Then(from_A_To_A_OrTo_Aʹ_With(Add(10)))           
+                .Then(from_A_To_A_OrTo_Aʹ_With(Add(10)))
                 .If(A_Is(Odd))                                  // (1, false, false) -> 12, (2, false, false) -> 13
                 .AndIf(Is<Aʹ>)                                  // (1, true, false) -> 12
                     .Then(From_Aʹ_To_B_With(Add(2)))
@@ -342,9 +341,9 @@
         public int Test_0513(int x)
         {
             var f =
-                 From_A_To_B_With(Add(1))                   
-                .If(B_Is(Even))                            // 1 -> 2, 2 -> 3 
-                .AndIf(B_Is(EndingWith("4"))) 
+                 From_A_To_B_With(Add(1))
+                .If(B_Is(Even))                            // 1 -> 2, 2 -> 3
+                .AndIf(B_Is(EndingWith("4")))
                     .Then(From_B_To_Bʹ_With(Add(2)))       // 3 -> 6, 13 -> 16
                     .If(Bʹ_Is(MoreThen(1000)))
                         .Then(From_B_To_Bʹ_With(Add(3)))   // 1003 -> 1009

@@ -1,7 +1,7 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using static Utils;
     using static Syntax;
+    using static Utils;
 
     [TestFixture]
     public class IfThenTest_08
@@ -27,7 +27,7 @@
         [TestCase(112, ExpectedResult = 134, TestName = "Test_0801( 112 -> 134 )")]
         public int Test_0801(int x)
         {
-            var f =           
+            var f =
                  If(A_Is(Even)).AndIf(A_Is(MoreThen(50)))   // 1 -> 1, 111 -> 111
                     .Then(From_A_To_A_With(Add(2)))
                     .Then(From_A_To_A_With(Add(20)))        // 112 -> 134
@@ -125,7 +125,7 @@
                                                         // (111, Aʺʺʺ) -> 333, (111, Aʺʺʺʹ) -> 333
                                                         // (111, Aʺʺʺʺ) -> 333, (111, Aʺʺʺʺʹ) -> 333
                                                         // (111, Aʺʺʺʺʺ) -> 333
-            
+
             A result = f(From_Int_To_SomeA(ofTypeX)(111));
 
             return result.Value;
@@ -225,7 +225,7 @@
                 .AndIf(A_Is(MoreThen(10)))                  // 13 -> 13
                     .Then(From_A_To_A_With(Add(2)))         // 12 -> 14
                     .If(A_Is(MoreThen(1000)))               // 3000 -> 3002
-                    .AndIf(A_Is(LessThen(2000)))            
+                    .AndIf(A_Is(LessThen(2000)))
                         .Then(From_A_To_A_With(Add(3)))     // 1988 -> 1993
                     .End()
                 .End();
@@ -247,7 +247,7 @@
             var from_B_To_B_OrTo_Bʹ_With =
                 From_B_To_B_OrTo_Bʹ(secondIsBʹ);
 
-            var f = 
+            var f =
                  If(A_Is(Odd))                                  // (2, false, false) -> 2, (1, false, false) -> 1
                 .AndIf(Is<Aʹ>)                                  // (2, true, false) -> 2
                     .Then(From_Aʹ_To_B_With(Add(2)))
@@ -313,8 +313,8 @@
         public int Test_0812(int x)
         {
             var f =
-                 If(B_Is(Even))                             // 1 -> 1, 2 -> 2 
-                .AndIf(B_Is(EndingWith("4"))) 
+                 If(B_Is(Even))                             // 1 -> 1, 2 -> 2
+                .AndIf(B_Is(EndingWith("4")))
                     .Then(From_B_To_Bʹ_With(Add(2)))        // 4 -> 6, 14 -> 16
                     .If(Bʹ_Is(MoreThen(1000)))
                         .Then(From_B_To_Bʹ_With(Add(3)))    // 1004 -> 1009
@@ -335,7 +335,7 @@
         {
             var f =
                  If(Object<A>.Is<Aʹ>)                            // (false, 2) -> 2, (false, 12) -> 12
-                    .If(Aʹ_Is(Even)).AndIf(Aʹ_Is(MoreThen(10)))  // (true, 2) -> 2, (true, 1) -> 1 
+                    .If(Aʹ_Is(Even)).AndIf(Aʹ_Is(MoreThen(10)))  // (true, 2) -> 2, (true, 1) -> 1
                         .Then(From_Aʹ_To_A_With(Add(2)))         // (true, 12) -> 14
                     .End()
                 .End();

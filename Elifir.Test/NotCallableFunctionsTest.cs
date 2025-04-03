@@ -1,10 +1,10 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using static Utils;
     using static Syntax;
+    using static Utils;
 
     [TestFixture]
-    public class NotCallableFunctionsTest    
+    public class NotCallableFunctionsTest
     {
         [Test]
         public void WithReturn_IsNotCallable_Test()

@@ -1,7 +1,7 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using static Utils;
     using static Syntax;
+    using static Utils;
 
     [TestFixture]
     public class IfThenTest_03
@@ -127,7 +127,6 @@
             return result.Value;
         }
 
-
         [TestCase(2, ExpectedResult = 3, TestName = "Test_0307( 2 -> 3 )")]
         [TestCase(1, ExpectedResult = 4, TestName = "Test_0307( 1 -> 4 )")]
         public int Test_0307(int x)
@@ -173,7 +172,7 @@
                     .Then(From_E_To_B_With(Add(20)))
                     .Then(From_B_To_B_With(Add(200)))  // 2 -> 335
                 .End();
-            
+
             B result = f(new A(x));
 
             return result.Value;
@@ -251,7 +250,7 @@
         public int Test_0313(int x)
         {
             var f =
-                 From_A_To_B_With(Add(1))                  // 2 -> 3 
+                 From_A_To_B_With(Add(1))                  // 2 -> 3
                 .If(B_Is(Even))
                     .Then(From_B_To_Bʹ_With(Add(2)))       // 1 -> 4
                     .If(Bʹ_Is(MoreThen(1000)))
@@ -329,7 +328,6 @@
 
             return result.Value;
         }
-
 
         [TestCase(1,  ExpectedResult = 2,  TestName = "Test_0317( 1 -> 2 )")]
         [TestCase(2,  ExpectedResult = 5,  TestName = "Test_0317( 2 -> 5 )")]
@@ -530,7 +528,7 @@
             var from_B_To_ΛΛ_OrTo_ΛΛΛ_With =
                 From_B_To_ΛΛ_OrTo_ΛΛΛ(secondIsΛΛΛ);
 
-            var f = 
+            var f =
                  From_C_To_E_With(Add(9))
                 .Then(From_E_To_Δ_With(Add(8)))                     // (1, false) -> 18
                 .If(Δ_Is(Odd))                                      // (1, true) -> 18
@@ -539,7 +537,7 @@
                     .If(Is<ΛΛΛ>)
                         .Then(From_ΛΛΛ_To_D_With(Add(20)))
                         .Then(From_D_To_ΛΔ_With(Add(21)))           // (2, true) -> 82
-                    .End(WithReturn<Λ>) 
+                    .End(WithReturn<Λ>)
                 .End(WithReturn<A>);
 
             A result = f(new C(x));
@@ -559,7 +557,7 @@
             var from_E_To_ΛΛ_OrTo_ΛΛΛ_With =
                 From_E_To_ΛΛ_OrTo_ΛΛΛ(secondIsΛΛΛ);
 
-            var f =                                                 
+            var f =
                  From_C_To_D_With(Add(4))
                 .Then(from_D_To_Δ_OrTo_ΔΔ_With(Add(5)))             // (false, false, 25) -> 34
                 .If(Is<ΔΔ>)                                         // (false, true, 25) -> 34
@@ -590,7 +588,7 @@
             var from_D_To_ΛΛ_OrTo_ΛΛΛ_With =
                 From_D_To_ΛΛ_OrTo_ΛΛΛ(secondIsΛΛΛ);
 
-            var f =                       
+            var f =
                  From_C_To_D_With(Add(3))
                 .Then(from_D_To_Δ_OrTo_ΔΔ_With(Add(4)))         // (false, false, 3) -> 10
                 .If(Is<ΔΔ>)                                     // (false, true, 3) -> 10
@@ -679,7 +677,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(3, false, ExpectedResult = 9,   TestName = "Test_0332( 3, false -> 9 )")]
         [TestCase(3, true,  ExpectedResult = 9,   TestName = "Test_0332( 3, true -> 9 )")]
         [TestCase(2, false, ExpectedResult = 230, TestName = "Test_0332( 2, false -> 230 )")]
@@ -689,7 +687,7 @@
             var from_Λ_To_ΔΔ_OrTo_ΔΔ_With =
                 From_Λ_To_ΔΔ_OrTo_ΔΔΔ(isΔΔ);
 
-            var f =                                                 
+            var f =
                  From_A_To_E_With(Add(1))
                 .Then(From_E_To_B_With(Add(2)))
                 .Then(From_B_To_Δ_With(Add(3)))                     // (3, false) -> 9

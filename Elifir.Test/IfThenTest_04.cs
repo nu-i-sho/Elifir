@@ -33,7 +33,6 @@
                     .Then(From_B_To_Δ_With(Add(20)))   // 1 -> 34
                 .End(WithReturn<A>);
 
-
             A result = f(new A(x));
 
             return result.Value;
@@ -124,7 +123,6 @@
             return result.Value;
         }
 
-
         [TestCase(1,  ExpectedResult = 12,  TestName = "Test_0406( 1 -> 12 )")]
         [TestCase(2,  ExpectedResult = 35,  TestName = "Test_0406( 2 -> 35 )")]
         [TestCase(68, ExpectedResult = 142, TestName = "Test_0406( 68 -> 142 )")]
@@ -190,7 +188,6 @@
 
             return result.Value;
         }
-
 
         [TestCase(1,  ExpectedResult = 2,  TestName = "Test_0409( 1 -> 2 )")]
         [TestCase(2,  ExpectedResult = 5,  TestName = "Test_0409( 2 -> 5 )")]
@@ -378,7 +375,7 @@
                     .If(Is<ΛΛΛ>)
                         .Then(From_ΛΛΛ_To_D_With(Add(20)))
                         .Then(From_D_To_ΛΔ_With(Add(21)))       // (3, false) -> 74
-                    .End(WithReturn<Λ>) 
+                    .End(WithReturn<Λ>)
                 .End(WithReturn<A>);
 
             A result = f(new E(x));
@@ -398,7 +395,7 @@
             var from_E_To_ΛΛ_OrTo_ΛΛΛ_With =
                 From_E_To_ΛΛ_OrTo_ΛΛΛ(secondIsΛΛΛ);
 
-            var f =                                                 
+            var f =
                  From_E_To_A_With(Add(1))
                 .Then(From_A_To_D_With(Add(10)))
                 .Then(from_D_To_Δ_OrTo_ΔΔ_With(Add(100)))           // (false, false, 25) -> 136
@@ -430,7 +427,7 @@
             var from_D_To_ΛΛ_OrTo_ΛΛΛ_With =
                 From_D_To_ΛΛ_OrTo_ΛΛΛ(secondIsΛΛΛ);
 
-            var f =                                             
+            var f =
                  From_C_To_D_With(Add(10))
                 .Then(from_D_To_Δ_OrTo_ΔΔ_With(Add(100)))       // (false, false, 3) -> 113
                 .If(Is<ΔΔ>)                                     // (false, true, 3) -> 113
@@ -446,7 +443,7 @@
 
             return result.Value;
         }
-    
+
         [TestCase(false, 2,   ExpectedResult = 113,    TestName = "Test_0427( false, 2 -> 113 )")]
         [TestCase(true,  300, ExpectedResult = 633,  TestName = "Test_0427( true, 300 -> 633 )")]
         [TestCase(true,  800, ExpectedResult = 1466, TestName = "Test_0427( true, 800 -> 1466 )")]
@@ -496,7 +493,7 @@
 
             return result.Value;
         }
-    
+
         [TestCase(1, false, ExpectedResult = 2, TestName = "Test_0429( 1, false -> 2 )")]
         [TestCase(1, true,  ExpectedResult = 2, TestName = "Test_0429( 1, true -> 2 )")]
         [TestCase(2, false, ExpectedResult = 5, TestName = "Test_0429( 2, false -> 7 )")]
@@ -519,7 +516,7 @@
 
             return result.Value;
         }
-     
+
         [TestCase(2, false, ExpectedResult = 113, TestName = "Test_0430( 2, false -> 113 )")]
         [TestCase(2, true,  ExpectedResult = 113, TestName = "Test_0430( 2, true -> 113 )")]
         [TestCase(3, false, ExpectedResult = 336, TestName = "Test_0430( 2, false -> 336 )")]

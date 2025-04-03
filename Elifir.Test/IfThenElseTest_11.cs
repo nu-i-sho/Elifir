@@ -1,7 +1,7 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using static Utils;
     using static Syntax;
+    using static Utils;
 
     [TestFixture]
     public class IfThenElseTest_11
@@ -378,7 +378,7 @@
         {
             var f =
                 If(B_Is(MoreThen(100)))                             // 1 -> 1
-                    .Then(From_B_To_C_With(Add(10)))                
+                    .Then(From_B_To_C_With(Add(10)))
                     .If(C_Is(MoreThen(200)))
                         .Then(From_C_To_B_With(Add(20)))            // 250 -> 280
                     .Else()
@@ -431,7 +431,7 @@
                 .Else()
                     .If(Is<Aʺʺ>)
                         .If(Is<Aʺʺʺ>)
-                            .Then(From_A_To_A_With(Add(1000)))              // (0, Aʺʺʺ) -> 101000 // +100000 
+                            .Then(From_A_To_A_With(Add(1000)))              // (0, Aʺʺʺ) -> 101000 // +100000
                         .Else()
                             .If(Is<Aʺʺʹ>)
                                 .Then(From_A_To_A_With(Add(10000)))         // (0, Aʺʺʹ) -> 110000 // +100000
@@ -575,7 +575,7 @@
             var f =
                 If(B_Is(MoreThen(100)))                             // 1 -> 1
                     .Then(From_B_To_E_With(Add(1)))
-                    .Then(From_E_To_C_With(Add(10)))                
+                    .Then(From_E_To_C_With(Add(10)))
                     .If(C_Is(MoreThen(200)))
                         .Then(From_C_To_D_With(Add(2)))
                         .Then(From_D_To_B_With(Add(20)))            // 250 -> 283
@@ -608,7 +608,6 @@
             return result.Value;
         }
 
-        
         [TestCase(1, ExpectedResult = 4,  TestName = "Test_1135( 1 -> 4 )")]
         [TestCase(2, ExpectedResult = 4,  TestName = "Test_1135( 2 -> 4 )")]
         [TestCase(9, ExpectedResult = 16, TestName = "Test_1135( 9 -> 16 )")]
@@ -656,7 +655,7 @@
         {
             var f =
                 If(A_Is(Even))                              // 3 -> 3
-                    .Then(From_A_To_A_With(Add(1)))         
+                    .Then(From_A_To_A_With(Add(1)))
                     .If(A_Is(MoreThen(10)))
                         .Then(From_A_To_Aʹ_With(Add(2)))    // 10 -> 13
                     .Else()
@@ -676,7 +675,7 @@
         {
             var f =
                 If(A_Is(Even))                              // 3 -> 3
-                    .Then(From_A_To_A_With(Add(1)))         
+                    .Then(From_A_To_A_With(Add(1)))
                     .If(A_Is(MoreThen(10)))
                         .Then(From_A_To_A_With(Add(2)))     // 10 -> 13
                     .Else()
@@ -697,8 +696,8 @@
             var f =
                 If(A_Is(Even))                                  // 3 -> 3
                     .Then(From_A_To_A_With(Add(1)))
-                    .If(A_Is(MoreThen(5)))                      
-                        .Then(From_A_To_A_With(Add(2)))          
+                    .If(A_Is(MoreThen(5)))
+                        .Then(From_A_To_A_With(Add(2)))
                         .If(A_Is(MoreThen(10)))
                             .Then(From_A_To_Aʹ_With(Add(3)))    // 8 -> 14
                         .Else()
@@ -720,8 +719,8 @@
             var f =
                 If(A_Is(Even))                                  // 3 -> 3
                     .Then(From_A_To_A_With(Add(1)))
-                    .If(A_Is(MoreThen(5)))                      
-                        .Then(From_A_To_A_With(Add(2)))          
+                    .If(A_Is(MoreThen(5)))
+                        .Then(From_A_To_A_With(Add(2)))
                         .If(A_Is(MoreThen(10)))
                             .Then(From_A_To_A_With(Add(3)))    // 8 -> 14
                         .Else()
@@ -748,8 +747,8 @@
 
             var f =
                 If(A_Is(Even))                                  // (false, 1) -> 1, (1, true) -> 1
-                    .Then(from_A_To_A_OrTo_Aʹ_With(Add(1)))     
-                    .If(A_Is(MoreThen(10)))                     
+                    .Then(from_A_To_A_OrTo_Aʹ_With(Add(1)))
+                    .If(A_Is(MoreThen(10)))
                         .If(Is<Aʹ>)
                             .Then(From_Aʹ_To_A_With(Add(2)))    // (12, true) -> 15
                         .End()                                  // (12, false) -> 13
@@ -757,7 +756,7 @@
                         .Then(From_A_To_A_With(Add(3)))         // (2, false) -> 3, (2, true) -> 3
                     .End()
                 .End();
-            
+
             A result = f(new A(x));
 
             return result.Value;
@@ -775,8 +774,8 @@
 
             var f =
                 If(A_Is(Even))                                  // (false, 1) -> 1, (1, true) -> 1
-                    .Then(from_A_To_A_OrTo_Aʹ_With(Add(1)))     
-                    .If(Is<Aʹ>)                     
+                    .Then(from_A_To_A_OrTo_Aʹ_With(Add(1)))
+                    .If(Is<Aʹ>)
                         .If(A_Is(MoreThen(10)))
                             .Then(From_Aʹ_To_A_With(Add(2)))    // (12, true) -> 15
                         .End()                                  // (2, true) -> 3
@@ -784,7 +783,7 @@
                         .Then(From_A_To_A_With(Add(3)))         // (12, false) -> 16
                     .End()
                 .End();
-            
+
             A result = f(new A(x));
 
             return result.Value;
@@ -803,9 +802,9 @@
             var f =
                 If(A_Is(MoreThen(10)))                              // (1, false) -> 1
                     .Then(From_A_To_A_With(Add(1)))                 // (12, false) -> 13
-                    .If(A_Is(Even))                                
-                        .Then(from_A_To_A_OrTo_Aʹ_With(Add(2)))     
-                        .If(Is<Aʹ>)                     
+                    .If(A_Is(Even))
+                        .Then(from_A_To_A_OrTo_Aʹ_With(Add(2)))
+                        .If(Is<Aʹ>)
                             .If(A_Is(MoreThen(100)))
                                 .Then(From_Aʹ_To_A_With(Add(3)))    // (111, true) -> 117
                             .End()                                  // (11, true) -> 14
@@ -814,7 +813,7 @@
                         .End()
                     .End()
                 .End();
-            
+
             A result = f(new A(x));
 
             return result.Value;
@@ -834,13 +833,13 @@
 
             var f =
                  If(A_Is(MoreThen(10)))                                 // (1, false) -> 1
-                    .Then(From_A_To_A_With(Add(1)))                     // (12, false) -> 13              
-                    .If(A_Is(Even))                                
-                        .Then(from_A_To_A_OrTo_Aʹ_With(Add(2)))         
-                        .If(A_Is(MoreThen(50)))                     
+                    .Then(From_A_To_A_With(Add(1)))                     // (12, false) -> 13
+                    .If(A_Is(Even))
+                        .Then(from_A_To_A_OrTo_Aʹ_With(Add(2)))
+                        .If(A_Is(MoreThen(50)))
                             .If(A_Is(LessThen(200)))                    // (313, false) -> 316
                                 .Then(From_A_To_A_With(Add(3)))         // (113, false) -> 119
-                            .End()                                  
+                            .End()
                         .Else()
                             .If(Is<Aʹ>)                                 // (11, false) -> 14
                                 .If(A_Is(EndingWith("4")))              // (13, true) -> 16
@@ -855,7 +854,7 @@
 
             return result.Value;
         }
-         
+
         [TestCase(1,  false, ExpectedResult = 1,  TestName = "Test_1154( 1, false -> 1 )")]
         [TestCase(10, false, ExpectedResult = 13, TestName = "Test_1154( 10, false -> 13 )")]
         [TestCase(2,  false, ExpectedResult = 6,  TestName = "Test_1154( 2, false -> 6 )")]
@@ -867,7 +866,7 @@
 
             var f =
                 If(A_Is(Even))                                      // (1, false) -> 1
-                    .Then(From_A_To_A_With(Add(1)))                 
+                    .Then(From_A_To_A_With(Add(1)))
                     .If(A_Is(MoreThen(10)))
                         .Then(From_A_To_A_With(Add(2)))             // (10, false) -> 13
                     .Else()

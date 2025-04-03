@@ -6,39 +6,43 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage(
-    "Minor Code Smell", 
-    "S101:Types should be named in PascalCase", 
-    Justification = "For this case, it is more important that 'Λ' and 'Δ' are visually similar to 'A'", 
-    Scope = "type", 
+    "Minor Code Smell",
+    "S101:Types should be named in PascalCase",
+    Justification = "For this case, it is more important that 'Λ' and 'Δ' are visually similar to 'A'",
+    Scope = "type",
     Target = "~T:Nuisho.Elifir.Test.Utils.ΔΔΛ")]
 
 [assembly: SuppressMessage(
-    "Minor Code Smell", "S101:Types should be named in PascalCase", 
+    "Minor Code Smell",
+    "S101:Types should be named in PascalCase",
     Justification = "For this case, it is more important that 'Λ' and 'Δ' are visually similar to 'A'",
-    Scope = "type", 
+    Scope = "type",
     Target = "~T:Nuisho.Elifir.Test.Utils.ΔΛΛ")]
 
 [assembly: SuppressMessage(
-    "Minor Code Smell", "S101:Types should be named in PascalCase",
+    "Minor Code Smell",
+    "S101:Types should be named in PascalCase",
     Justification = "For this case, it is more important that 'Λ' and 'Δ' are visually similar to 'A'",
     Scope = "type",
     Target = "~T:Nuisho.Elifir.Test.Utils.ΛΛΛ")]
 
 [assembly: SuppressMessage(
-    "Minor Code Smell", "S101:Types should be named in PascalCase",
+    "Minor Code Smell",
+    "S101:Types should be named in PascalCase",
     Justification = "For this case, it is more important that 'Λ' and 'Δ' are visually similar to 'A'",
     Scope = "type",
     Target = "~T:Nuisho.Elifir.Test.Utils.ΛΔΔ")]
 
 [assembly: SuppressMessage(
-    "Minor Code Smell", "S101:Types should be named in PascalCase",
+    "Minor Code Smell",
+    "S101:Types should be named in PascalCase",
     Justification = "For this case, it is more important that 'Λ' and 'Δ' are visually similar to 'A'",
     Scope = "type",
     Target = "~T:Nuisho.Elifir.Test.Utils.ΔΔΔ")]
 
 [assembly: SuppressMessage(
-    "Minor Code Smell", "S101:Types should be named in PascalCase",
+    "Minor Code Smell",
+    "S101:Types should be named in PascalCase",
     Justification = "For this case, it is more important that 'Λ' and 'Δ' are visually similar to 'A'",
     Scope = "type",
     Target = "~T:Nuisho.Elifir.Test.Utils.ΛΛΔ")]
-

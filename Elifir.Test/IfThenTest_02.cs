@@ -30,7 +30,6 @@
                     .Then(From_B_To_Δ_With(Add(20)))    // 1 -> 24
                 .End(WithReturn<A>);
 
-
             A result = f(new Λ(x));
 
             return result.Value;
@@ -111,7 +110,6 @@
 
             return result.Value;
         }
-
 
         [TestCase(8,  ExpectedResult = 8,   TestName = "Test_0206( 8 -> 8 )")]
         [TestCase(1,  ExpectedResult = 23,  TestName = "Test_0206( 1 -> 23 )")]
@@ -342,14 +340,14 @@
             var from_B_To_ΛΛ_OrTo_ΛΛΛ_With =
                 From_B_To_ΛΛ_OrTo_ΛΛΛ(secondIsΛΛΛ);
 
-            var f =                                             // (2, false) -> 2 
+            var f =                                             // (2, false) -> 2
                  If(Δ_Is(Odd))                                  // (2, true) -> 2
                     .Then(From_Δ_To_B_With(Add(2)))
                     .Then(from_B_To_ΛΛ_OrTo_ΛΛΛ_With(Add(20)))  // (3, false) -> 25
                     .If(Is<ΛΛΛ>)
                         .Then(From_ΛΛΛ_To_D_With(Add(20)))
                         .Then(From_D_To_ΛΔ_With(Add(21)))       // (3, false) -> 66
-                    .End(WithReturn<Λ>) 
+                    .End(WithReturn<Λ>)
                 .End(WithReturn<A>);
 
             A result = f(new Δ(x));
@@ -484,7 +482,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(3, false, ExpectedResult = 3,   TestName = "Test_0230( 3, false -> 3 )")]
         [TestCase(3, true,  ExpectedResult = 3,   TestName = "Test_0230( 3, true -> 3 )")]
         [TestCase(2, false, ExpectedResult = 224, TestName = "Test_0230( 2, false -> 224 )")]
