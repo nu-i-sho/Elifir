@@ -57,23 +57,14 @@ using System.Diagnostics.CodeAnalysis;
     Target = "~T:Nuisho.Elifir.Gen.IfSeed")]
 
 [assembly: SuppressMessage(
-    "Minor Code Smell",
-    "S101:Types should be named in PascalCase",
-    Justification = "This naming style is necessary to highlight warning code IDE0079",
-    Scope = "type",
-    Target = "~T:Nuisho.Elifir.Gen.SuppressGen.IDE0079`1")]
-
-[assembly: SuppressMessage(
-    "Minor Code Smell",
-    "S101:Types should be named in PascalCase",
-    Justification = "This naming style is necessary to highlight warning code IDE0060",
-    Scope = "type",
-    Target = "~T:Nuisho.Elifir.Gen.SuppressGen.IDE0060`1")]
-
-[assembly: SuppressMessage(
     "StyleCop.CSharp.MaintainabilityRules",
     "SA1405:Debug.Assert should provide message text",
     Justification = "There are other opinions about it: "
                   + "'S2336: Remove this argument from the method call; it hides the caller information.'",
     Scope = "member",
     Target = "~M:Nuisho.Elifir.Gen.Utils.ParamComparer.Compare(System.String,System.String)~System.Int32")]
+
+[assembly: SuppressMessage(
+    "Design",
+    "CA1031:Do not catch general exception types",
+    Justification = "It is the top catch in the program")]

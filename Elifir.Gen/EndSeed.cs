@@ -3,7 +3,7 @@
     using System.Collections.Immutable;
     using static Utils;
 
-    public record EndSeed(
+    internal sealed record EndSeed(
         string FirstAndThirdTypeTemplate,
         string SecondType,
         EndSeed.GenericParams Params,
@@ -12,21 +12,21 @@
         bool AddThen = false,
         bool NestedImplementation = true)
     {
-        public record GenericParams(
+        internal sealed record GenericParams(
             IImmutableList<string> Free, string If, string Then, string Else)
         {
-            public string Line => string.Join(", ",
+            internal string Line => string.Join(", ",
                 Free.Concat([If, Then, Else])
-                    .Distinct()
-                    .Order(ParamComparer.Instance));
+                    .Order(ParamComparer.Instance)
+                    .Distinct());
         }
 
-        public Wheres Wheres { get; } = new (Constraints ?? []);
+        internal Wheres Wheres { get; } = new (Constraints ?? []);
 
-        public string FirstType(string closingType) =>
+        internal string FirstType(string closingType) =>
             FirstAndThirdTypeTemplate.Replace(X, closingType);
 
-        public string ThirdType(string closingType)
+        internal string ThirdType(string closingType)
         {
             var result = FirstAndThirdTypeTemplate;
 
@@ -40,9 +40,7 @@
                     : $"{result}.Then<{X}>";
             }
 
-            result = result.Replace(X, closingType);
-
-            return result;
+            return result.Replace(X, closingType);
         }
     }
 }

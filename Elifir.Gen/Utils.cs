@@ -4,21 +4,21 @@
     using System.Collections.Immutable;
     using System.Diagnostics;
 
-    public static class Utils
+    internal static class Utils
     {
-        public const string X = "X";
-        public const string
+        internal const string X = "X";
+        internal const string
             I = "I", Iʹ = "Iʹ", Iʺ = "Iʺ",
             T = "T", Tʹ = "Tʹ", Tʺ = "Tʺ",
             E = "E", Eʹ = "Eʹ", Eʺ = "Eʺ",
             B = "B",
             ꞏꞏꞏ = "ꞏꞏꞏ";
 
-        public class ParamComparer : IComparer<string>
+        internal sealed class ParamComparer : IComparer<string>
         {
             ParamComparer() { }
 
-            public static readonly ParamComparer Instance = new ();
+            internal static readonly ParamComparer Instance = new ();
 
             static readonly Comparer<int> NumComparer = Comparer<int>.Default;
             static readonly ImmutableDictionary<string, int> Order =
@@ -33,60 +33,60 @@
             }
         }
 
-        public class Token;
+        internal sealed class Token;
 
-        public class StringHolder(string value)
+        internal class StringHolder(string value)
         {
-            public string Value => value;
+            internal string Value => value;
 
             public static implicit operator string(StringHolder holder) =>
                 holder.Value;
         }
 
-        public static string Func(string t1, string t2) =>
+        internal static string Func(string t1, string t2) =>
             $"Func<{t1}, {t2}>";
 
-        public static Іf If(string t) => new (t);
+        internal static Іf If(string t) => new (t);
 
-        public class Іf(string t)
+        internal sealed class Іf(string t)
             : StringHolder($"Іf<{t}>")
         {
-            public IfThen Then(string t) => new (this, t);
+            internal IfThen Then(string t) => new (this, t);
 
-            public IfIs Is(string t) => new (this, t);
+            internal IfIs Is(string t) => new (this, t);
         }
 
-        public class IfIs(string prefix, string t)
+        internal sealed class IfIs(string prefix, string t)
             : StringHolder($"{prefix}.Is<{t}>");
 
-        public class IfThen(string prefix, string t)
+        internal sealed class IfThen(string prefix, string t)
             : StringHolder($"{prefix}.Then<{t}>")
         {
-            public IfThenElse Else => new (this);
+            internal IfThenElse Else => new (this);
         }
 
-        public class IfThenElse(string prefix)
+        internal sealed class IfThenElse(string prefix)
             : StringHolder($"{prefix}.Else")
         {
-            public IfThenElseThen Then(string t) => new (this, t);
+            internal IfThenElseThen Then(string t) => new (this, t);
         }
 
-        public class IfThenElseThen(string prefix, string t)
+        internal sealed class IfThenElseThen(string prefix, string t)
             : StringHolder($"{prefix}.Then<{t}>");
 
-        public class Wheres(IImmutableList<(string, string)> typesConstraints)
+        internal sealed class Wheres(IImmutableList<(string, string)> typesConstraints)
         {
-            public Wheres Add(string target, string super) =>
+            internal Wheres Add(string target, string super) =>
                 new (typesConstraints.Add((target, super)));
 
-            public bool IsEmpty => !typesConstraints.Any();
+            internal bool IsEmpty => !typesConstraints.Any();
 
-            public IEnumerable<string> Produce()
+            internal IEnumerable<string> Produce()
             {
                 if (IsEmpty) yield break;
 
                 var lines = typesConstraints
-                    .GroupBy(o => o.Item1)
+                    .GroupBy(o => o.Item1, StringComparer.Ordinal)
                     .OrderBy(o => o.Key, ParamComparer.Instance);
 
                 using var e = lines.GetEnumerator();

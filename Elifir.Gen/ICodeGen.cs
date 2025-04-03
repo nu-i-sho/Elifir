@@ -1,6 +1,6 @@
 ﻿namespace Nuisho.Elifir.Gen
 {
-    public interface ICodeGen<Seed>
+    internal interface ICodeGen<Seed>
     {
         public IEnumerable<string> Generate(Seed o);
     }

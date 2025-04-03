@@ -3,7 +3,7 @@
     using System.Collections;
     using static Utils;
 
-    public class EndSeeds(IEnumerable<EndSeed> implementation)
+    internal sealed class EndSeeds(IEnumerable<EndSeed> implementation)
         : IEnumerable<EndSeed>
     {
         public IEnumerator<EndSeed> GetEnumerator() =>

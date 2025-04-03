@@ -3,3 +3,8 @@
 # Top level Program style doesn't need namespace
 # SA1200: Using directives should be placed correctly
 dotnet_diagnostic.SA1200.severity = none
+
+[*.cs]
+# It is overengineering for this project
+# CA1307: Specify StringComparison for clarity
+dotnet_diagnostic.CA1307.severity = none

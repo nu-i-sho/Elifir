@@ -6,6 +6,9 @@ dotnet_diagnostic.SA1314.severity = none
 # SA1503: Braces should not be omitted
 dotnet_diagnostic.SA1503.severity = none
 
+# RCS1001: Add braces (when expression spans over multiple lines)
+dotnet_diagnostic.RCS1001.severity = none
+
 # SA1601: Partial elements should be documented
 dotnet_diagnostic.SA1601.severity = none
 
@@ -69,5 +72,37 @@ dotnet_diagnostic.SA1116.severity = none
 # SA1502: Element should not be on a single line
 dotnet_diagnostic.SA1502.severity = none
 
+# Duplication. It is already handled by 'IDE0060: Remove unused parameter'
+# RCS1163: Unused parameter
+dotnet_diagnostic.RCS1163.severity = none
+
+# 'x == string.Empty' explains the essence of the condition better 
+# RCS1156: Use string.Length instead of comparison with empty string
+dotnet_diagnostic.RCS1156.severity = none
+
+# RCS1194: Implement exception constructors
+dotnet_diagnostic.RCS1194.severity = none
+
 # SA1413: Use trailing comma in multi-line initializers
 dotnet_diagnostic.SA1413.severity = none
+
+# CA1032: Implement standard exception constructors
+dotnet_diagnostic.CA1032.severity = none
+
+# CA1034: Nested types should not be visible
+dotnet_diagnostic.CA1034.severity = none
+
+# CA1716: Identifiers should not match keywords
+dotnet_diagnostic.CA1716.severity = none
+
+# CA1715: Identifiers should have correct prefix
+dotnet_diagnostic.CA1715.severity = none
+
+# CA1000: Do not declare static members on generic types
+dotnet_diagnostic.CA1000.severity = none
+
+# CA1062: Validate arguments of public methods
+dotnet_diagnostic.CA1062.severity = none
+
+# CA1820: Test for empty strings using string length
+dotnet_diagnostic.CA1820.severity = none

@@ -2,7 +2,7 @@
 {
     using static Utils;
 
-    public class IfGen : ICodeGen<IfSeed>
+    internal sealed class IfGen : ICodeGen<IfSeed>
     {
         public IEnumerable<string> Generate(IfSeed o)
         {

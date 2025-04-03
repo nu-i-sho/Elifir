@@ -104,3 +104,10 @@ using System.Diagnostics.CodeAnalysis;
     Justification = "'_' is a OK name for unused parameter",
     Scope = "member",
     Target = "~M:Nuisho.Elifir.Syntax.End``4(Nuisho.Elifir.Іf{``0}.Then{``1}.Else.Then{``2},Nuisho.Elifir.WithReturnType{``3})~System.Func{``0,``3}")]
+
+[assembly: SuppressMessage(
+    "Naming",
+    "CA1720:Identifier contains type name",
+    Justification = "Object<T> isn't in conflict with System.Object",
+    Scope = "type",
+    Target = "~T:Nuisho.Elifir.Syntax.Object`1")]

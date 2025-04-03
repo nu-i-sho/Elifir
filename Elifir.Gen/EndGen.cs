@@ -2,7 +2,7 @@
 {
     using static Utils;
 
-    public class EndGen : ICodeGen<EndSeed>
+    internal sealed class EndGen : ICodeGen<EndSeed>
     {
         public IEnumerable<string> Generate(EndSeed o)
         {

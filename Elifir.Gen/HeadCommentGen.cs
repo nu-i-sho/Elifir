@@ -1,6 +1,6 @@
 ﻿namespace Nuisho.Elifir.Gen
 {
-    public class HeadCommentGen<Seed>(ICodeGen<Seed> origin)
+    internal sealed class HeadCommentGen<Seed>(ICodeGen<Seed> origin)
         : ICodeGen<Seed>
     {
         public IEnumerable<string> Generate(Seed o)

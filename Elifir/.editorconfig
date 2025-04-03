@@ -9,6 +9,9 @@ dotnet_diagnostic.SA1313.severity = none
 # S3427: Method overloads with default parameter values should not overlap
 dotnet_diagnostic.S3427.severity = none
 
+# CA1715: Identifiers should have correct prefix
+dotnet_diagnostic.CA1715.severity = none
+
 [If.autogen.cs]
 # This parameter is necessary to avoid explicit generic parameter types.
 # IDE0060: Remove unused parameter

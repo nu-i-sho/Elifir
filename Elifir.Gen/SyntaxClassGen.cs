@@ -1,6 +1,6 @@
 ﻿namespace Nuisho.Elifir.Gen
 {
-    public class SyntaxClassGen<Seed>(ICodeGen<Seed> origin)
+    internal sealed class SyntaxClassGen<Seed>(ICodeGen<Seed> origin)
         : ICodeGen<Seed>
     {
         public IEnumerable<string> Generate(Seed o)

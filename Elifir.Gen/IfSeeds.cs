@@ -3,7 +3,7 @@
     using System.Collections;
     using static Utils;
 
-    public class IfSeeds(IEnumerable<IfSeed> implementation)
+    internal sealed class IfSeeds(IEnumerable<IfSeed> implementation)
         : IEnumerable<IfSeed>
     {
         public IEnumerator<IfSeed> GetEnumerator() =>
