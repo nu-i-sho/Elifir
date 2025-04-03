@@ -2,11 +2,6 @@
 {
     public static partial class Utils
     {
-        internal static bool False<T>(T _) => false;
-        internal static bool True<T>(T _) => true;
-
-        internal static T Identity<T>(T x) => x;
-
         internal static Func<int, Func<int, int>> Add => x => y => x + y;
 
         internal static Func<int, bool> Even => x => x % 2 == 0;
@@ -22,7 +17,6 @@
         internal static Func<Func<int, bool>, Func<B, bool>> B_Is = f => x => f(x.Value);
         internal static Func<Func<int, bool>, Func<C, bool>> C_Is = f => x => f(x.Value);
         internal static Func<Func<int, bool>, Func<D, bool>> D_Is = f => x => f(x.Value);
-        internal static Func<Func<int, bool>, Func<E, bool>> E_Is = f => x => f(x.Value);
 
         internal static Func<Func<int, bool>, Func<Aʹ, bool>> Aʹ_Is = f => x => f(x.Value);
         internal static Func<Func<int, bool>, Func<Bʹ, bool>> Bʹ_Is = f => x => f(x.Value);
@@ -36,7 +30,6 @@
         internal static Func<Func<int, bool>, Func<Aʺʺʺʹ, bool>> Aʺʺʺʹ_Is = f => x => f(x.Value);
         internal static Func<Func<int, bool>, Func<Aʺʺʺʺ, bool>> Aʺʺʺʺ_Is = f => x => f(x.Value);
         internal static Func<Func<int, bool>, Func<Aʺʺʺʺʹ, bool>> Aʺʺʺʺʹ_Is = f => x => f(x.Value);
-        internal static Func<Func<int, bool>, Func<Aʺʺʺʺʺ, bool>> Aʺʺʺʺʺ_Is = f => x => f(x.Value);
 
         internal static Func<Func<int, bool>, Func<Λ, bool>> Λ_Is = f => x => f(x.Value);
         internal static Func<Func<int, bool>, Func<Δ, bool>> Δ_Is = f => x => f(x.Value);
@@ -48,7 +41,6 @@
         internal static Func<Func<int, bool>, Func<ΔΔΔ, bool>> ΔΔΔ_Is = f => x => f(x.Value);
         internal static Func<Func<int, bool>, Func<ΛΛΛ, bool>> ΛΛΛ_Is = f => x => f(x.Value);
         internal static Func<Func<int, bool>, Func<ΛΔΔ, bool>> ΛΔΔ_Is = f => x => f(x.Value);
-        internal static Func<Func<int, bool>, Func<ΛΔΛ, bool>> ΛΔΛ_Is = f => x => f(x.Value);
 
         internal static Func<Func<int, int>, Func<A, A>> From_A_To_A_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<A, B>> From_A_To_B_With = f => x => new(f(x.Value));
@@ -72,18 +64,15 @@
 
         internal static Func<Func<int, int>, Func<C, A>> From_C_To_A_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<C, B>> From_C_To_B_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<C, C>> From_C_To_C_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<C, D>> From_C_To_D_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<C, E>> From_C_To_E_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<C, Aʹ>> From_C_To_Aʹ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<C, Bʹ>> From_C_To_Bʹ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<C, Cʹ>> From_C_To_Cʹ_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<D, A>> From_D_To_A_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<D, B>> From_D_To_B_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<D, C>> From_D_To_C_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<D, D>> From_D_To_D_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<D, E>> From_D_To_E_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<D, Aʹ>> From_D_To_Aʹ_With = f => x => new(f(x.Value));
@@ -104,7 +93,6 @@
         internal static Func<Func<int, int>, Func<E, B>> From_E_To_B_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<E, C>> From_E_To_C_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<E, D>> From_E_To_D_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<E, E>> From_E_To_E_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<E, Aʹ>> From_E_To_Aʹ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<E, Bʹ>> From_E_To_Bʹ_With = f => x => new(f(x.Value));
@@ -117,38 +105,17 @@
         internal static Func<Func<int, int>, Func<Aʹ, E>> From_Aʹ_To_E_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<Aʹ, Aʹ>> From_Aʹ_To_Aʹ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Aʹ, Bʹ>> From_Aʹ_To_Bʹ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Aʹ, Cʹ>> From_Aʹ_To_Cʹ_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<Bʹ, A>> From_Bʹ_To_A_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<Bʹ, B>> From_Bʹ_To_B_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Bʹ, C>> From_Bʹ_To_C_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Bʹ, D>> From_Bʹ_To_D_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<Bʹ, E>> From_Bʹ_To_E_With = f => x => new(f(x.Value));
-
-        internal static Func<Func<int, int>, Func<Bʹ, Aʹ>> From_Bʹ_To_Aʹ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Bʹ, Bʹ>> From_Bʹ_To_Bʹ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Bʹ, Cʹ>> From_Bʹ_To_Cʹ_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<Cʹ, A>> From_Cʹ_To_A_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<Cʹ, B>> From_Cʹ_To_B_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Cʹ, C>> From_Cʹ_To_C_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Cʹ, D>> From_Cʹ_To_D_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<Cʹ, E>> From_Cʹ_To_E_With = f => x => new(f(x.Value));
-
-        internal static Func<Func<int, int>, Func<Cʹ, Aʹ>> From_Cʹ_To_Aʹ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Cʹ, Bʹ>> From_Cʹ_To_Bʹ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Cʹ, Cʹ>> From_Cʹ_To_Cʹ_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<Aʺ, A>> From_Aʺ_To_A_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<Aʺʹ, A>> From_Aʺʹ_To_A_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Aʺʺ, A>> From_Aʺʺ_To_A_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Aʺʺʹ, A>> From_Aʺʺʹ_To_A_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Aʺʺʺ, A>> From_Aʺʺʺ_To_A_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Aʺʺʺʹ, A>> From_Aʺʺʺʹ_To_A_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Aʺʺʺʺ, A>> From_Aʺʺʺʺ_To_A_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Aʺʺʺʺʹ, A>> From_Aʺʺʺʺʹ_To_A_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Aʺʺʺʺʺ, A>> From_Aʺʺʺʺʺ_To_A_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<Aʹ, Aʺ>> From_Aʹ_To_Aʺ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<Aʺ, Aʺʹ>> From_Aʺ_To_Aʺʹ_With = f => x => new(f(x.Value));
@@ -190,7 +157,6 @@
         internal static Func<Func<int, int>, Func<ΔΔ, ΔΛ>> From_ΔΔ_To_ΔΛ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<ΛΛ, ΛΛ>> From_ΛΛ_To_ΛΛ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<ΛΛ, ΛΔ>> From_ΛΛ_To_ΛΔ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<ΛΔ, ΔΔ>> From_ΛΔ_To_ΔΔ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<ΛΔ, ΛΛ>> From_ΛΔ_To_ΛΛ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<ΔΔ, ΛΔ>> From_ΔΔ_To_ΛΔ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<ΛΛ, ΔΔ>> From_ΛΛ_To_ΔΔ_With = f => x => new(f(x.Value));
@@ -202,7 +168,6 @@
         internal static Func<Func<int, int>, Func<ΛΛΛ, ΛΛΔ>> From_ΛΛΛ_To_ΛΛΔ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<ΛΛ, ΛΛΔ>> From_ΛΛ_To_ΛΛΔ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<ΛΛ, ΛΛΛ>> From_ΛΛ_To_ΛΛΛ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<ΛΔΔ, ΔΛΔ>> From_ΛΔΔ_To_ΔΛΔ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<ΛΔΔ, Δ>> From_ΛΔΔ_To_Δ_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<Λ, A>> From_Λ_To_A_With = f => x => new(f(x.Value));
@@ -217,9 +182,7 @@
         internal static Func<Func<int, int>, Func<D, Λ>> From_D_To_Λ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<D, Δ>> From_D_To_Δ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<Δ, C>> From_Δ_To_C_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Δ, D>> From_Δ_To_D_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<C, Λ>> From_C_To_Λ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<Δ, Δ>> From_Δ_To_Δ_With = f => x => new(f(x.Value));
 
         internal static Func<Func<int, int>, Func<A, ΛΔ>> From_A_To_ΛΔ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<ΔΔ, A>> From_ΔΔ_To_A_With = f => x => new(f(x.Value));
@@ -267,9 +230,7 @@
         internal static Func<Func<int, int>, Func<E, ΔΔΔ>> From_E_To_ΔΔΔ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<A, ΛΛΛ>> From_A_To_ΛΛΛ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<A, ΛΔΔ>> From_A_To_ΛΔΔ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<A, ΛΔΛ>> From_A_To_ΛΔΛ_With = f => x => new(f(x.Value));
         internal static Func<Func<int, int>, Func<A, ΔΛΛ>> From_A_To_ΔΛΛ_With = f => x => new(f(x.Value));
-        internal static Func<Func<int, int>, Func<A, ΔΛΔ>> From_A_To_ΔΛΔ_With = f => x => new(f(x.Value));
 
         internal static Func<bool, Func<Func<int, int>, Func<A, A>>> From_A_To_A_OrTo_Λ =
             toΛ => toΛ ? From_A_To_Λ_With

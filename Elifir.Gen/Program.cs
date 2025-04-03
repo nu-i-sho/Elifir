@@ -7,8 +7,8 @@ Dictionary<string, ICodeGen<Token>> generators = new()
 {
     { "-end", 
         new HeadCommentGen<Token>(
-            new Supress_IDE0079_Gen<Token>(
-                new Supress_S3427_Gen<Token>(
+            new Suppress_IDE0079_Gen<Token>(
+                new Suppress_S3427_Gen<Token>(
                     new SyntaxClassGen<Token>(
                         new SeededGen<IEnumerable<EndSeed>>(
                             new MultiGen<EndSeed>(
@@ -17,8 +17,8 @@ Dictionary<string, ICodeGen<Token>> generators = new()
     },
     { "-if",
         new HeadCommentGen<Token>(
-            new Supress_IDE0079_Gen<Token>(
-                new Supress_IDE0060_Gen<Token>(
+            new Suppress_IDE0079_Gen<Token>(
+                new Suppress_IDE0060_Gen<Token>(
                     new SyntaxClassGen<Token>(
                         new SeededGen<IEnumerable<IfSeed>>(
                             new MultiGen<IfSeed>(

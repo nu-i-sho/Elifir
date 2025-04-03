@@ -69,7 +69,7 @@
     public sealed partial class Іf<I> {
     public sealed partial class Then<T> {
     public sealed partial class Else {
-    public sealed partial class Then<E>
+    public sealed class Then<E>
     {
         internal Then(
             ConditionalMap<I, T> conditionalMap,

@@ -2,7 +2,7 @@
 // To regenerate it with the changed Elifir.Gen remove
 // the current file and build/rebuild the current project.
 
-#pragma warning disable IDE0079 // Remove unnecessary supression
+#pragma warning disable IDE0079 // Remove unnecessary suppression
 // False positive.
 
 #pragma warning disable IDE0060 // Remove unused parameter
@@ -141,4 +141,4 @@ namespace Nuisho.Elifir
 
 #pragma warning restore IDE0060 // Remove unused parameter
 
-#pragma warning restore IDE0079 // Remove unnecessary supression
+#pragma warning restore IDE0079 // Remove unnecessary suppression

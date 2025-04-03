@@ -11,7 +11,6 @@
         public record Aʹ(int Value) : A(Value);
         public record Bʹ(int Value) : B(Value);
         public record Cʹ(int Value) : C(Value);
-        public record Dʹ(int Value) : D(Value);
 
         public record Aʺ(int Value) : Aʹ(Value);
         public record Aʺʹ(int Value) : Aʺ(Value);
@@ -35,11 +34,9 @@
         public record ΛΛΛ(int Value) : ΛΛ(Value);
         public record ΛΛΔ(int Value) : ΛΛ(Value);
 
-        public record ΛΔΛ(int Value) : ΛΔ(Value);
         public record ΛΔΔ(int Value) : ΛΔ(Value);
 
         public record ΔΛΛ(int Value) : ΔΛ(Value);
-        public record ΔΛΔ(int Value) : ΔΛ(Value);
 
         public record ΔΔΛ(int Value) : ΔΔ(Value);
         public record ΔΔΔ(int Value) : ΔΔ(Value);

@@ -19,17 +19,17 @@ using System.Diagnostics.CodeAnalysis;
     "S101:Types should be named in PascalCase", 
     Justification = "This naming style is necessary to highlight warning code IDE0079.", 
     Scope = "type", 
-    Target = "~T:Nuisho.Elifir.Gen.Supress_IDE0079_Gen`1")]
+    Target = "~T:Nuisho.Elifir.Gen.Suppress_IDE0079_Gen`1")]
 
 [assembly: SuppressMessage(
     "Minor Code Smell", 
     "S101:Types should be named in PascalCase", 
     Justification = "This naming style is necessary to highlight warning code S3427.", 
-    Scope = "type", Target = "~T:Nuisho.Elifir.Gen.Supress_S3427_Gen`1")]
+    Scope = "type", Target = "~T:Nuisho.Elifir.Gen.Suppress_S3427_Gen`1")]
 
 [assembly: SuppressMessage(
     "Minor Code Smell",
     "S101:Types should be named in PascalCase", 
     Justification = "This naming style is necessary to highlight warning code IDE0060.", 
     Scope = "type", 
-    Target = "~T:Nuisho.Elifir.Gen.Supress_IDE0060_Gen`1")]
+    Target = "~T:Nuisho.Elifir.Gen.Suppress_IDE0060_Gen`1")]

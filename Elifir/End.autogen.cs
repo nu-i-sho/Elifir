@@ -2,7 +2,7 @@
 // To regenerate it with the changed Elifir.Gen remove
 // the current file and build/rebuild the current project.
 
-#pragma warning disable IDE0079 // Remove unnecessary supression
+#pragma warning disable IDE0079 // Remove unnecessary suppression
 // False positive.
 
 #pragma warning disable S3427   // Method overloads with default parameter values should not overlap
@@ -421,4 +421,4 @@ namespace Nuisho.Elifir
 
 #pragma warning restore S3427   // Method overloads with default parameter values should not overlap
 
-#pragma warning restore IDE0079 // Remove unnecessary supression
+#pragma warning restore IDE0079 // Remove unnecessary suppression

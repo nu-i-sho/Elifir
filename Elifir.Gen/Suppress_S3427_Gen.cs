@@ -1,6 +1,6 @@
 ﻿namespace Nuisho.Elifir.Gen
 {
-    public class Supress_S3427_Gen<Seed>(ICodeGen<Seed> origin)
+    public class Suppress_S3427_Gen<Seed>(ICodeGen<Seed> origin)
         : ICodeGen<Seed>
     {
         public IEnumerable<string> Generate(Seed o)

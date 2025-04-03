@@ -1,7 +1,7 @@
 ﻿namespace Nuisho.Elifir.Gen
 {
     using System.Collections.Immutable;
-    using static Nuisho.Elifir.Gen.Utils;
+    using static Utils;
 
     public record IfSeed(
         string Type,

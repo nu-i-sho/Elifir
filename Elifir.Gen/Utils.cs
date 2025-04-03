@@ -19,8 +19,8 @@
 
             public static readonly ParamComparer Instance = new();
 
-            static readonly Comparer<int> numComparer = Comparer<int>.Default;
-            static readonly ImmutableDictionary<string, int> order =
+            static readonly Comparer<int> NumComparer = Comparer<int>.Default;
+            static readonly ImmutableDictionary<string, int> Order =
                 new[] { ꞏꞏꞏ, I, T, E, Iʹ, Tʹ, Eʹ, Iʺ, Tʺ, Eʺ, B }
                 .Select((x, i) => (x, i))
                 .ToImmutableDictionary(o => o.x, o => o.i);
@@ -28,7 +28,7 @@
             public int Compare(string? x, string? y)
             {
                 Debug.Assert(x != null && y != null);
-                return numComparer.Compare(order[x], order[y]);
+                return NumComparer.Compare(Order[x], Order[y]);
             }
         }
 
@@ -88,7 +88,7 @@
                     .GroupBy(o => o.Item1)
                     .OrderBy(o => o.Key, ParamComparer.Instance);
                     
-                var e = lines.GetEnumerator();
+                using var e = lines.GetEnumerator();
 
                 var hasNext = e.MoveNext();
                 while (hasNext)

@@ -5,7 +5,7 @@
     {
         public IEnumerable<string> Generate(IEnumerable<Seed> o)
         {
-            var e = o
+            using var e = o
                 .Select(itemGen.Generate)
                 .GetEnumerator();
 
