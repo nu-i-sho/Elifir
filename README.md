@@ -18,6 +18,7 @@ The inclusion of the following directives is required to use the library.
 using Nuisho.Elifir;
 using static Nuisho.Elifir.Syntax;
 ```
+Also, it is published as a NuGet Package on nuget.org and can be found by ["Nuisho.Elifir"](https://www.nuget.org/packages/Nuisho.Elifir)
 
 ## Then
 The simplest functional item of Elifir is the `Then` method, which essentially is functional composition.
@@ -161,37 +162,37 @@ var f =
 
 ```
 
-## P.S.: Limitations
-
-### Static Polymorphism
-Elifir is implemented using static polymorphism rather than dynamic. 
+## Types & Static Polymorphism
+Elifir is implemented using static polymorphism rather than dynamic.
 As a result, almost every modification of a non-finalized expression generates a new type incompatible with the previous one. 
 This is the main and a pretty cool library feature. But it has a dark side. 
 You can use Elifir to construct functions. However, the direct use of any type from the library is not recommended. 
-For this reason, the names of Elifir types include the symbol "ˣ," which is absent on the keyboard.
+For this reason, the names of Elifir types include the symbol "İ", which is absent on the keyboard and private constructors.
+
+The library is oriented to "var" using and doesn't support backward compatibility with types, but with expressions.
 
 We can see Elifir types in action in the following code snippet.
 
 ```CSharp
-                                 Func<A, B> _0 =
-convert_A_To_B;                  ˣ<Func<A, B>, ˣ.If<B>> _1 = _0
-.If(B_Is_Something);             ˣ<Func<A, B>, ˣ.If<B>.Then<C>> _2 = _1
-   .Then(convert_B_To_C);        ˣ<Func<A, B>, ˣ.If<B>.Then<D>> _3 = _2
-   .Then(convert_C_To_D);        ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Is<E>> _4 = _3
-   .If(Is<E>);                   ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>> _5 = _4
-      .Then(convert_E_To_B);     ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else> _6 = _5
-   .Else();                      ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>> _7 = _6
-      .Then(convert_D_To_B);     ˣ<ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>>, ˣ.If<B>> _8 = _7
-      .If(B_Is_Something);       ˣ<ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>>, ˣ.If<B>.Then<B>> _9 = _8
-         .Then(convert_B_To_B);  ˣ<ˣ<Func<A, B>, ˣ.If<B>.Then<D>>, ˣ.If<D>.Then<B>.Else.Then<B>> _10 = _9
-      .End();                    ˣ<Func<A, B>, ˣ.If<B>.Then<B>> _11 = _10
-   .End();                       Func<A, B> _12 = _11
+                                       Func<A, B> _0 =
+convert_A_To_B;                       (Func<A, B>, İf<B>) _1 = _0
+.If(B_Is_Something);                  (Func<A, B>, İf<B>.Then<C>) _2 = _1
+    .Then(convert_B_To_C);            (Func<A, B>, İf<B>.Then<D>) _3 = _2
+    .Then(convert_C_To_D);           ((Func<A, B>, İf<B>.Then<D>), İf<D>.Is<E>) _4 = _3
+    .If(Is<E>);                      ((Func<A, B>, İf<B>.Then<D>), İf<D>.Then<B>) _5 = _4
+        .Then(convert_E_To_B);       ((Func<A, B>, İf<B>.Then<D>), İf<D>.Then<B>.Else) _6 = _5
+    .Else();                         ((Func<A, B>, İf<B>.Then<D>), İf<D>.Then<B>.Else.Then<B>) _7 = _6
+        .Then(convert_D_To_B);      (((Func<A, B>, İf<B>.Then<D>), İf<D>.Then<B>.Else.Then<B>), İf<B>) _8 = _7
+        .If(B_Is_Something);        (((Func<A, B>, İf<B>.Then<D>), İf<D>.Then<B>.Else.Then<B>), İf<B>.Then<B>) _9 = _8
+            .Then(convert_B_To_B);   ((Func<A, B>, İf<B>.Then<D>), İf<D>.Then<B>.Else.Then<B>) _10 = _9
+        .End();                       (Func<A, B>, İf<B>.Then<B>) _11 = _10
+    .End();                            Func<A, B> _12 = _11
 .End();
 
 ```
 
-### Generics
-Each Elifir `If` in expression increases the generic type level of nesting. 
+## Generics limitation
+Each Elifir `If` in an expression increases the generic type level of nesting. 
 I am aware that the maximum nesting depth for generic types in C# is limited. 
 Based on forum discussions, this limit is estimated to be around 1000, but no precise documentation with the exact number exists. 
 To investigate further, I conducted some tests.
@@ -205,13 +206,10 @@ I expected some error that the type was out of the maximum nesting depth of the 
 
 Nothing like that happens, but `StackOverflowException` during compilation instead.
 Also, I found out that when the expression has a compilation error (for example, extra `End`), it is enough to have a much smaller expression to have `StackOverflowException`.
-It looks like it was caused during error message building.
+It looks like it was caused during an error message building.
 To sum up, the limitation of nesting in the generic type is about 1000, and still, there is no exact number.
 However, comfortable work at 100 is impossible because of the long compilation time and VS's slowing down as an IDE. 
 
-### Performance 
-The function built by Elifir with 10 nested `If`-s is two times slower than the function implemented with native `if`-s. 
-It is like nothing. 
  
  
      
