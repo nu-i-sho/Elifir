@@ -5,7 +5,6 @@
     [TestFixture]
     public class IfThenTest_07
     {
-        
         [TestCase(1,  ExpectedResult = 2,  TestName = "Test_0700( 1 -> 2 )")]
         [TestCase(2,  ExpectedResult = 4,  TestName = "Test_0700( 2 -> 4 )")]
         [TestCase(3,  ExpectedResult = 6,  TestName = "Test_0700( 3 -> 6 )")]
@@ -20,7 +19,7 @@
         public int Test_0700(int x)
         {
             var f =
-                 From_A_To_A_With(Add(1))  // 1 -> 2     
+                 From_A_To_A_With(Add(1))  // 1 -> 2
                 .If(A_Is(MoreThen(2)))
                     .Then(From_A_To_A_With(Add(1)))  // 2 -> 4
                     .If(A_Is(MoreThen(4)))
@@ -28,7 +27,7 @@
                         .If(A_Is(MoreThen(6)))
                             .Then(From_A_To_A_With(Add(1))) // 4 -> 8
                             .If(A_Is(MoreThen(8)))
-                                .Then(From_A_To_A_With(Add(1))) // 5 -> 10  
+                                .Then(From_A_To_A_With(Add(1))) // 5 -> 10
                                 .If(A_Is(MoreThen(10)))
                                     .Then(From_A_To_A_With(Add(1))) // 6 -> 12
                                     .If(A_Is(MoreThen(12)))
@@ -71,7 +70,7 @@
         public int Test_0701(int x)
         {
             var f =
-                 From_A_To_A_With(Add(1))  // 1 -> 2     
+                 From_A_To_A_With(Add(1))  // 1 -> 2
                 .If(A_Is(MoreThen(2)))
                     .Then(From_A_To_Aʹ_With(Add(1)))  // 2 -> 4
                     .If(Aʹ_Is(MoreThen(4)))
@@ -79,7 +78,7 @@
                         .If(Aʺ_Is(MoreThen(6)))
                             .Then(From_Aʺ_To_Aʺʹ_With(Add(1))) // 4 -> 8
                             .If(Aʺʹ_Is(MoreThen(8)))
-                                .Then(From_Aʺʹ_To_Aʺʺ_With(Add(1))) // 5 -> 10  
+                                .Then(From_Aʺʹ_To_Aʺʺ_With(Add(1))) // 5 -> 10
                                 .If(Aʺʺ_Is(MoreThen(10)))
                                     .Then(From_Aʺʺ_To_Aʺʺʹ_With(Add(1))) // 6 -> 12
                                     .If(Aʺʺʹ_Is(MoreThen(12)))
@@ -122,7 +121,7 @@
         public int Test_0702(int x)
         {
             var f =
-                 From_Aʺʺʺʺʺ_To_Aʺʺʺʺʹ_With(Add(1))  // 1 -> 2     
+                 From_Aʺʺʺʺʺ_To_Aʺʺʺʺʹ_With(Add(1))  // 1 -> 2
                 .If(Aʺʺʺʺʹ_Is(MoreThen(2)))
                     .Then(From_Aʺʺʺʺʹ_To_Aʺʺʺʺ_With(Add(1)))  // 2 -> 4
                     .If(Aʺʺʺʺ_Is(MoreThen(4)))
@@ -130,7 +129,7 @@
                         .If(Aʺʺʺʹ_Is(MoreThen(6)))
                             .Then(From_Aʺʺʺʹ_To_Aʺʺʺ_With(Add(1))) // 4 -> 8
                             .If(Aʺʺʺ_Is(MoreThen(8)))
-                                .Then(From_Aʺʺʺ_To_Aʺʺʹ_With(Add(1))) // 5 -> 10  
+                                .Then(From_Aʺʺʺ_To_Aʺʺʹ_With(Add(1))) // 5 -> 10
                                 .If(Aʺʺʹ_Is(MoreThen(10)))
                                     .Then(From_Aʺʺʹ_To_Aʺʺ_With(Add(1))) // 6 -> 12
                                     .If(Aʺʺ_Is(MoreThen(12)))

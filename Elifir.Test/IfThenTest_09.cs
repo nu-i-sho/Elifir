@@ -12,7 +12,7 @@
         public int Test_0900(int x)
         {
             var f =
-                 If(Λ_Is(Even)).AndIf(Λ_Is(MoreThen(10)))   // 1 -> 1, 2 -> 2 
+                 If(Λ_Is(Even)).AndIf(Λ_Is(MoreThen(10)))   // 1 -> 1, 2 -> 2
                     .Then(From_Λ_To_Δ_With(Add(2)))         // 12 -> 14
                 .End(WithReturn<A>);
 
@@ -49,7 +49,7 @@
         public int Test_0902(int x, bool isΛΛ)
         {
             var f =
-                  If(Object<Λ>.Is<ΛΛ>)                  // (8, false) -> 8, (7, false) -> 7 
+                  If(Object<Λ>.Is<ΛΛ>)                  // (8, false) -> 8, (7, false) -> 7
                  .AndIf(Λ_Is(Odd))                      // (8, true) -> 8,
                     .Then(From_ΛΛ_To_B_With(Add(2)))
                     .Then(From_B_To_E_With(Add(20)))
@@ -109,7 +109,7 @@
             var f =
                  If(Λ_Is(Odd))                              // (2, false) -> 2, (2, true) -> 2
                     .Then(From_Λ_To_B_With(Add(2)))
-                    .Then(from_B_To_ΛΛ_With(Add(20)))       // (3, false) -> 25 
+                    .Then(from_B_To_ΛΛ_With(Add(20)))       // (3, false) -> 25
                     .If(ΛΛ_Is(MoreThen(100)))               // (3, true) -> 25, (91, false) -> 113
                     .AndIf(Is<ΛΛΔ>)
                         .Then(From_ΛΛΔ_To_D_With(Add(20)))
@@ -144,7 +144,7 @@
                                                                 // (1, Δ,   false) -> 1, (1, ΔΔ, false) -> 1
             var f =                                             // (1, ΔΔΔ, false) -> 1, (1, Δ,  true)  -> 1
                  If(Δ_Is(Even))                                 // (1, ΔΔ,  true)  -> 1, (1, ΔΔΔ, true) -> 1
-                .AndIf(Is<ΔΔ>)                                  // (2, Δ,   false) -> 2, (2, ΔΔ, false) -> 2  
+                .AndIf(Is<ΔΔ>)                                  // (2, Δ,   false) -> 2, (2, ΔΔ, false) -> 2
                 .AndIf(Is<ΔΔΔ>)                                 // (2, Δ,   true)  -> 2, (2, ΔΔ, true)  -> 2
                     .Then(From_ΔΔΔ_To_C_With(Add(2)))
                     .Then(From_C_To_E_With(Add(20)))

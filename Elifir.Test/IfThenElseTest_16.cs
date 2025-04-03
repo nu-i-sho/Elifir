@@ -1,7 +1,7 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using static Utils;
     using static Syntax;
+    using static Utils;
 
     [TestFixture]
     public class IfThenElseTest_16
@@ -86,7 +86,7 @@
             var f =
                  If(Λ_Is(Odd))
                     .Then(From_Λ_To_Λ_With(Add(1)))         // 1 -> 2
-                .Else()                             
+                .Else()
                     .If(Λ_Is(MoreThen(10)))                 // 2 -> 2
                         .Then(From_Λ_To_Δ_With(Add(2)))     // 12 -> 14
                     .End(WithReturn<A>)
@@ -105,7 +105,7 @@
             var f =
                  If(Λ_Is(Odd))
                     .Then(From_Λ_To_Λ_With(Add(1)))         // 1 -> 2
-                .Else()                             
+                .Else()
                     .If(Λ_Is(MoreThen(10)))                 // 2 -> 2
                         .Then(From_Λ_To_ΛΛ_With(Add(2)))    // 12 -> 14
                     .End()
@@ -124,7 +124,7 @@
             var f =
                  If(ΛΛ_Is(Odd))
                     .Then(From_Λ_To_Λ_With(Add(1)))          // 1 -> 2
-                .Else()                             
+                .Else()
                     .If(ΛΛ_Is(MoreThen(10)))                 // 2 -> 2
                         .Then(From_ΛΛ_To_Λ_With(Add(2)))     // 12 -> 14
                     .End()
@@ -144,8 +144,8 @@
             var f =
                  If(Λ_Is(MoreThen(10)))
                     .If(Λ_Is(Odd))
-                        .Then(From_Λ_To_Λ_With(Add(1))) 
-                    .Else()                             
+                        .Then(From_Λ_To_Λ_With(Add(1)))
+                    .Else()
                         .Then(From_Λ_To_Δ_With(Add(2)))
                     .End(WithReturn<A>)
                 .End();
@@ -164,8 +164,8 @@
             var f =
                  If(Λ_Is(MoreThen(10)))
                     .If(Λ_Is(Odd))
-                        .Then(From_Λ_To_Λ_With(Add(1))) 
-                    .Else()                             
+                        .Then(From_Λ_To_Λ_With(Add(1)))
+                    .Else()
                         .Then(From_Λ_To_ΛΛ_With(Add(2)))
                     .End()
                 .End();
@@ -184,8 +184,8 @@
             var f =
                  If(Λ_Is(MoreThen(10)))
                     .If(Λ_Is(Odd))
-                        .Then(From_Λ_To_ΛΛ_With(Add(1))) 
-                    .Else()                             
+                        .Then(From_Λ_To_ΛΛ_With(Add(1)))
+                    .Else()
                         .Then(From_Λ_To_Λ_With(Add(2)))
                     .End()
                 .End();
@@ -374,7 +374,6 @@
             return result.Value;
         }
 
-        
         [TestCase(2,  false, ExpectedResult = 2,  TestName = "Test_1617( 2, false -> 2 )")]
         [TestCase(2,  true,  ExpectedResult = 2,  TestName = "Test_1617( 2, true -> 2 )")]
         [TestCase(3,  false, ExpectedResult = 4,  TestName = "Test_1617( 3, false -> 4 )")]
@@ -413,7 +412,7 @@
             var f =
                 If(A_Is(Odd))                                   // (2, false) -> 2, (2, true) -> 2
                     .Then(from_A_To_A_OrTo_Aʹ_With(Add(1)))     // (3, false) -> 4
-                    .If(Is<Aʹ>)                                 
+                    .If(Is<Aʹ>)
                         .If(Aʹ_Is(MoreThen(10)))
                             .Then(From_Aʹ_To_Δ_With(Add(2)))    // (13, true) -> 16
                         .Else()
@@ -454,7 +453,6 @@
             return result.Value;
         }
 
-        
         [TestCase(2,  false, ExpectedResult = 2,  TestName = "Test_1617( 2, false -> 2 )")]
         [TestCase(2,  true,  ExpectedResult = 2,  TestName = "Test_1617( 2, true -> 2 )")]
         [TestCase(3,  false, ExpectedResult = 4,  TestName = "Test_1617( 3, false -> 4 )")]
@@ -489,8 +487,8 @@
         public int Test_1621(int x)
         {
             var f =
-                 If(Λ_Is(MoreThen(10)))                        
-                    .If(Λ_Is(LessThen(100)))                   
+                 If(Λ_Is(MoreThen(10)))
+                    .If(Λ_Is(LessThen(100)))
                         .Then(From_Λ_To_Λ_With(Add(1)))        // 5 -> 6, 16 -> 17
                     .Else()
                         .If(Λ_Is(Odd))                         // 114 -> 114
@@ -503,7 +501,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(5,   ExpectedResult = 5,   TestName = "Test_1622( 5 -> 6 )")]
         [TestCase(101, ExpectedResult = 103, TestName = "Test_1622( 101 -> 103 )")]
         [TestCase(16,  ExpectedResult = 17,  TestName = "Test_1622( 16 -> 17 )")]
@@ -525,7 +523,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(5,   ExpectedResult = 5,   TestName = "Test_1623( 5 -> 6 )")]
         [TestCase(101, ExpectedResult = 103, TestName = "Test_1623( 101 -> 103 )")]
         [TestCase(16,  ExpectedResult = 17,  TestName = "Test_1623( 16 -> 17 )")]
@@ -557,7 +555,7 @@
             var f =
                  If(Λ_Is(MoreThen(10)))                        // 5 -> 5
                     .If(Λ_Is(LessThen(100)))                   // 101 -> 101
-                        .If(Λ_Is(Odd))                         
+                        .If(Λ_Is(Odd))
                             .Then(From_Λ_To_ΛΔ_With(Add(2)))   // 15 -> 17
                         .Else()
                             .Then(From_Λ_To_ΛΛ_With(Add(3)))   // 16 -> 19
@@ -579,7 +577,7 @@
             var f =
                  If(A_Is(MoreThen(10)))                        // 5 -> 5
                     .If(A_Is(LessThen(100)))                   // 101 -> 101
-                        .If(A_Is(Odd))                         
+                        .If(A_Is(Odd))
                             .Then(From_A_To_Λ_With(Add(2)))    // 15 -> 17
                         .Else()
                             .Then(From_A_To_ΛΛ_With(Add(3)))   // 16 -> 19
@@ -601,7 +599,7 @@
             var f =
                  If(A_Is(MoreThen(10)))                        // 5 -> 5
                     .If(A_Is(LessThen(100)))                   // 101 -> 101
-                        .If(A_Is(Odd))                         
+                        .If(A_Is(Odd))
                             .Then(From_A_To_ΛΛ_With(Add(2)))   // 15 -> 17
                         .Else()
                             .Then(From_A_To_Λ_With(Add(3)))    // 16 -> 19
@@ -622,7 +620,7 @@
         {
             var f =
                  If(Λ_Is(MoreThen(10)))                         // 5 -> 5
-                    .If(Λ_Is(LessThen(100)))                    
+                    .If(Λ_Is(LessThen(100)))
                         .Then(From_Λ_To_Λ_With(Add(1)))         // 15 -> 16
                     .Else()
                         .If(Λ_Is(Odd))
@@ -646,7 +644,7 @@
         {
             var f =
                  If(Λ_Is(MoreThen(10)))                         // 5 -> 5
-                    .If(Λ_Is(LessThen(100)))                    
+                    .If(Λ_Is(LessThen(100)))
                         .Then(From_Λ_To_Λ_With(Add(1)))         // 15 -> 16
                     .Else()
                         .If(Λ_Is(Odd))
@@ -670,7 +668,7 @@
         {
             var f =
                  If(Λ_Is(MoreThen(10)))                         // 5 -> 5
-                    .If(Λ_Is(LessThen(100)))                    
+                    .If(Λ_Is(LessThen(100)))
                         .Then(From_Λ_To_Λ_With(Add(1)))         // 15 -> 16
                     .Else()
                         .If(Λ_Is(Odd))
@@ -694,7 +692,7 @@
         {
             var f =
                  If(Λ_Is(MoreThen(10)))                         // 5 -> 5
-                    .If(Λ_Is(LessThen(100)))                    
+                    .If(Λ_Is(LessThen(100)))
                         .Then(From_Λ_To_Λ_With(Add(1)))         // 12 -> 13
                     .Else()
                         .Then(From_Λ_To_Λ_With(Add(2)))
@@ -719,7 +717,7 @@
         {
             var f =
                  If(Λ_Is(MoreThen(10)))                         // 5 -> 5
-                    .If(Λ_Is(LessThen(100)))                    
+                    .If(Λ_Is(LessThen(100)))
                         .Then(From_Λ_To_Λ_With(Add(1)))         // 12 -> 13
                     .Else()
                         .Then(From_Λ_To_Λ_With(Add(2)))
@@ -744,7 +742,7 @@
         {
             var f =
                  If(Λ_Is(MoreThen(10)))                         // 5 -> 5
-                    .If(Λ_Is(LessThen(100)))                    
+                    .If(Λ_Is(LessThen(100)))
                         .Then(From_Λ_To_Λ_With(Add(1)))         // 12 -> 13
                     .Else()
                         .Then(From_Λ_To_Λ_With(Add(2)))
@@ -772,7 +770,7 @@
 
             var f =
                  If(A_Is(MoreThen(10)))                         // 5 -> 5
-                    .If(A_Is(LessThen(100)))                    
+                    .If(A_Is(LessThen(100)))
                         .Then(From_A_To_A_With(Add(1)))         // 12 -> 13
                     .Else()
                         .Then(from_A_To_A_OrTo_Λ_With(Add(2)))
@@ -798,7 +796,7 @@
                 From_A_To_A_OrTo_Λ(isΛ);
 
             var f =
-                 If(A_Is(LessThen(100)))                    
+                 If(A_Is(LessThen(100)))
                     .Then(From_A_To_A_With(Add(1)))         // (5, true) -> 6
                 .Else()
                     .Then(from_A_To_A_OrTo_Λ_With(Add(2)))

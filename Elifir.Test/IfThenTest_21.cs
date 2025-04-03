@@ -50,7 +50,6 @@
             return result.Value;
         }
 
-        
         [TestCase(2, false, ExpectedResult = 2, TestName = "Test_2102( 2, false -> 2 )")]
         [TestCase(1, false, ExpectedResult = 1, TestName = "Test_2102( 1, false -> 1 )")]
         [TestCase(2, true,  ExpectedResult = 2, TestName = "Test_2102( 2, true -> 2 )")]
@@ -89,7 +88,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(5,  ExpectedResult = 5,  TestName = "Test_2104( 5 -> 5 )")]
         [TestCase(16, ExpectedResult = 16, TestName = "Test_2104( 16 -> 16 )")]
         [TestCase(15, ExpectedResult = 17, TestName = "Test_2104( 15 -> 17 )")]
@@ -106,7 +105,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(5,  ExpectedResult = 5,  TestName = "Test_2105( 5 -> 5 )")]
         [TestCase(16, ExpectedResult = 16, TestName = "Test_2105( 16 -> 16 )")]
         [TestCase(15, ExpectedResult = 17, TestName = "Test_2105( 15 -> 17 )")]
@@ -123,7 +122,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(5,   ExpectedResult = 5,   TestName = "Test_2110( 5 -> 5 )")]
         [TestCase(101, ExpectedResult = 101, TestName = "Test_2110( 101 -> 101 )")]
         [TestCase(16,  ExpectedResult = 16,  TestName = "Test_2110( 16 -> 16 )")]
@@ -143,7 +142,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(5,   ExpectedResult = 5,   TestName = "Test_2111( 5 -> 5 )")]
         [TestCase(101, ExpectedResult = 101, TestName = "Test_2111( 101 -> 101 )")]
         [TestCase(16,  ExpectedResult = 16,  TestName = "Test_2111( 16 -> 16 )")]
@@ -163,7 +162,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(5,   ExpectedResult = 5,   TestName = "Test_2112( 5 -> 5 )")]
         [TestCase(16,  ExpectedResult = 16,  TestName = "Test_2112( 16 -> 16 )")]
         [TestCase(101, ExpectedResult = 101, TestName = "Test_2111( 101 -> 101 )")]

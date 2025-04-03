@@ -1,7 +1,7 @@
 ﻿namespace Nuisho.Elifir.Test
 {
-    using static Utils;
     using static Syntax;
+    using static Utils;
 
     [TestFixture]
     public class IfThenTest_01
@@ -112,7 +112,6 @@
             return result.Value;
         }
 
-
         [TestCase(1, ExpectedResult = 1, TestName = "Test_0108( 1 -> 1 )")]
         [TestCase(2, ExpectedResult = 4, TestName = "Test_0108( 2 -> 4 )")]
         public int Test_0108(int x)
@@ -152,7 +151,7 @@
                     .Then(From_E_To_B_With(Add(20)))
                     .Then(From_B_To_B_With(Add(200)))   // 3 -> 225
                 .End();
-            
+
             B result = f(new Bʹ(x));
 
             return result.Value;
@@ -205,7 +204,7 @@
                  If(A_Is(Even))                             // 33 -> 33
                     .Then(From_A_To_A_With(Add(2)))
                     .Then(From_A_To_A_With(Add(20)))
-                    .Then(From_A_To_A_With(Add(200)))       // 34 -> 256 
+                    .Then(From_A_To_A_With(Add(200)))       // 34 -> 256
                     .If(A_Is(MoreThen(1000)))
                         .Then(From_A_To_A_With(Add(3)))
                         .Then(From_A_To_A_With(Add(30)))
@@ -296,7 +295,6 @@
             return result.Value;
         }
 
-
         [TestCase(2, ExpectedResult = 2,  TestName = "Test_0118( 2 -> 2 )")]
         [TestCase(3, ExpectedResult = 5,  TestName = "Test_0118( 3 -> 5 )")]
         [TestCase(9, ExpectedResult = 14, TestName = "Test_0118( 9 -> 14 )")]
@@ -386,8 +384,8 @@
                     .Then(From_A_To_A_With(Add(2)))     // (true, 7) -> 9
                 .End();
 
-            A arg = isAʹ 
-                ? new Aʹ(7) 
+            A arg = isAʹ
+                ? new Aʹ(7)
                 : new A(7);
 
             A result = f(arg);
@@ -452,7 +450,6 @@
             A result = f(arg);
 
             return result.Value;
-
         }
 
         [TestCase(false, ExpectedResult = 2, TestName = "Test_0126( false, 2 -> 2 )")]
@@ -512,7 +509,6 @@
             return result.Value;
         }
 
-
         [TestCase(false, false, ExpectedResult = 1, TestName = "Test_0132( false, false, 1 -> 1 )")]
         [TestCase(false, true,  ExpectedResult = 1, TestName = "Test_0132( false, true, 1 -> 1 )")]
         [TestCase(true,  false, ExpectedResult = 3, TestName = "Test_0132( true, false, 1 -> 3 )")]
@@ -538,7 +534,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(false, false, ExpectedResult = 7,  TestName = "Test_0133( false, false, 7 -> 7 )")]
         [TestCase(false, true,  ExpectedResult = 7,  TestName = "Test_0133( false, true, 7 -> 7 )")]
         [TestCase(true,  false, ExpectedResult = 29, TestName = "Test_0133( true, false, 7 -> 29 )")]
@@ -566,7 +562,7 @@
 
             return result.Value;
         }
-        
+
         [TestCase(false, false, ExpectedResult = 7,   TestName = "Test_0134( false, false, 7 -> 7 )")]
         [TestCase(false, true,  ExpectedResult = 7,   TestName = "Test_0134( false, true, 7 -> 7 )")]
         [TestCase(true,  false, ExpectedResult = 229, TestName = "Test_0134( true, false, 7 -> 229 )")]
@@ -712,7 +708,6 @@
                         .Then(From_B_To_B_With(Add(300)))       // (54, true, true) -> 609
                     .End()
                 .End();
-
 
             B arg = firstIsBʹ
                 ? new Bʹ(54)

@@ -1,0 +1,18 @@
+﻿[End.autogen.cs]
+# '_' is a OK name for unused parameter
+# SA1313: Parameter names should begin with lower-case letter
+dotnet_diagnostic.SA1313.severity = none
+
+[End.autogen.cs]
+# AdHocPolyMarker parameter is used as a workaround because of the limitation of static polymorphism, 
+# which doesn't recognize generic constraints as a part of the signature.
+# S3427: Method overloads with default parameter values should not overlap
+dotnet_diagnostic.S3427.severity = none
+
+# CA1715: Identifiers should have correct prefix
+dotnet_diagnostic.CA1715.severity = none
+
+[If.autogen.cs]
+# This parameter is necessary to avoid explicit generic parameter types.
+# IDE0060: Remove unused parameter
+dotnet_diagnostic.IDE0060.severity = none

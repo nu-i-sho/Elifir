@@ -5,7 +5,6 @@
     [TestFixture]
     public class ThenTest_00
     {
-
         [Test]
         public void Test_0001()
         {

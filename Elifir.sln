@@ -7,6 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elifir", "Elifir\Elifir.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elifir.Test", "Elifir.Test\Elifir.Test.csproj", "{FEF6B3CD-B793-4607-A834-B5651F8214B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elifir.Gen", "Elifir.Gen\Elifir.Gen.csproj", "{9F029227-8311-0F0D-663C-5E008D49352E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +28,10 @@ Global
 		{FEF6B3CD-B793-4607-A834-B5651F8214B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEF6B3CD-B793-4607-A834-B5651F8214B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEF6B3CD-B793-4607-A834-B5651F8214B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F029227-8311-0F0D-663C-5E008D49352E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F029227-8311-0F0D-663C-5E008D49352E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F029227-8311-0F0D-663C-5E008D49352E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F029227-8311-0F0D-663C-5E008D49352E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
