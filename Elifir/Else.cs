@@ -4,7 +4,7 @@
     {
         public static Іf<I>.Then<T>.Else Else<I, T>(
             this Іf<I>.Then<T> o) =>
-                new(o.ConditionalMap);
+                new (o.ConditionalMap);
 
         public static (ꞏꞏꞏ, Іf<I>.Then<T>.Else) Else<ꞏꞏꞏ, I, T>(
             this (ꞏꞏꞏ, Іf<I>.Then<T>) o) =>

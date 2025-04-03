@@ -21,6 +21,6 @@
                     .Order(ParamComparer.Instance));
         }
 
-        public Wheres Wheres { get; } = new(Constraints ?? []);
+        public Wheres Wheres { get; } = new (Constraints ?? []);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Nuisho.Elifir.Gen
 {
-    public class MultiGen<Seed>(ICodeGen<Seed> itemGen) 
+    public class MultiGen<Seed>(ICodeGen<Seed> itemGen)
         : ICodeGen<IEnumerable<Seed>>
     {
         public IEnumerable<string> Generate(IEnumerable<Seed> o)

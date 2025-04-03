@@ -9,9 +9,11 @@
             yield return "{";
             yield return "    public static partial class Syntax";
             yield return "    {";
-            
+
             foreach (var line in origin.Generate(o))
-                yield return $"        {line}";
+                yield return line == string.Empty
+                    ? string.Empty
+                    : $"        {line}";
 
             yield return "    }";
             yield return "}";

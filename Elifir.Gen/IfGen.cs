@@ -23,10 +23,10 @@
                 .Add(o.Params.Next, o.Params.If)
                 .Produce()) yield return $"        {line}";
 
-            yield return  "            (o, new());";
+            yield return  "            (o, new ());";
 
             if (!o.NestedImplementation) yield break;
-            
+
             yield return string.Empty;
 
             foreach (var line in Generate(o with

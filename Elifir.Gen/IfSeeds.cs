@@ -14,34 +14,33 @@
 
         static IEnumerable<IfSeed> GetDefault()
         {
+            yield return new IfSeed(
+                                Type: Func(T, Tʹ),
+                              Params: new ([T], Tʹ, Tʺ),
+                NestedImplementation: false);
 
             yield return new IfSeed(
-                               Type: Func(T, Tʹ),
-                             Params: new([T], Tʹ, Tʺ),
-               NestedImplementation: false);
+                                Type: If(I),
+                              Params: new ([], I, Iʹ));
 
             yield return new IfSeed(
-                               Type: If(I),
-                             Params: new([], I, Iʹ));
+                                Type: If(I).Is(Iʹ),
+                              Params: new ([I], Iʹ, Iʺ),
+                         Constraints: [(Iʹ, I)]);
 
             yield return new IfSeed(
-                               Type: If(I).Is(Iʹ),
-                             Params: new([I], Iʹ, Iʺ),
-                        Constraints: [(Iʹ, I)]);
+                                Type: If(I).Then(T),
+                              Params: new ([I], T, Tʹ));
 
             yield return new IfSeed(
-                               Type: If(I).Then(T),
-                             Params: new([I], T, Tʹ));
+                                Type: If(I).Then(T).Else,
+                              Params: new ([T], I, Iʹ));
 
             yield return new IfSeed(
-                               Type: If(I).Then(T).Else,
-                             Params: new([T], I, Iʹ));
-
-            yield return new IfSeed(
-                               Type: If(I).Then(T).Else.Then(E),
-                             Params: new([I, T], E, Eʹ));
+                                Type: If(I).Then(T).Else.Then(E),
+                              Params: new ([I, T], E, Eʹ));
         }
 
-        public static IfSeeds Default => new(GetDefault());
+        public static IfSeeds Default => new (GetDefault());
     }
 }

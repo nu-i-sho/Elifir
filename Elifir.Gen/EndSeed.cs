@@ -4,8 +4,8 @@
     using static Utils;
 
     public record EndSeed(
-        string _1_3_TypeTemplate,
-        string _2_Type,
+        string FirstAndThirdTypeTemplate,
+        string SecondType,
         EndSeed.GenericParams Params,
         IImmutableList<(string, string)>? Constraints = null,
         bool RemoveIs = false,
@@ -21,14 +21,14 @@
                     .Order(ParamComparer.Instance));
         }
 
-        public Wheres Wheres { get; } = new(Constraints ?? []);
+        public Wheres Wheres { get; } = new (Constraints ?? []);
 
-        public string _1_Type(string closingType) =>
-            _1_3_TypeTemplate.Replace(X, closingType);
+        public string FirstType(string closingType) =>
+            FirstAndThirdTypeTemplate.Replace(X, closingType);
 
-        public string _3_Type(string closingType)
+        public string ThirdType(string closingType)
         {
-            var result = _1_3_TypeTemplate;
+            var result = FirstAndThirdTypeTemplate;
 
             if (RemoveIs)
                 result = result.Replace($".Is<{X}>", string.Empty);

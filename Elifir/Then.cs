@@ -12,7 +12,7 @@
         public static Іf<I>.Then<T> Then<I, T>(
             this Іf<I> o,
             Func<I, T> map) =>
-                new((I i, [MaybeNullWhen(false)] out T t) =>
+                new ((I i, [MaybeNullWhen(false)] out T t) =>
                 {
                     if (o.Condition(i))
                     {
@@ -28,7 +28,7 @@
             this Іf<I>.Is<Iʹ> o,
             Func<Iʹ, T> map)
                 where Iʹ : I =>
-                    new((I i, [MaybeNullWhen(false)] out T t) =>
+                    new ((I i, [MaybeNullWhen(false)] out T t) =>
                     {
                         if (o.Condition(i, out Iʹ? iʹ))
                         {
@@ -43,7 +43,7 @@
         public static Іf<I>.Then<Tʹ> Then<I, T, Tʹ>(
             this Іf<I>.Then<T> o,
             Func<T, Tʹ> map) =>
-                new((I i, [MaybeNullWhen(false)] out Tʹ tʹ) =>
+                new ((I i, [MaybeNullWhen(false)] out Tʹ tʹ) =>
                 {
                     if (o.ConditionalMap(i, out T? t))
                     {
@@ -58,12 +58,12 @@
         public static Іf<I>.Then<T>.Else.Then<E> Then<I, T, E>(
             this Іf<I>.Then<T>.Else o,
             Func<I, E> elseMap) =>
-                new(o.ConditionalMap, elseMap);
+                new (o.ConditionalMap, elseMap);
 
         public static Іf<I>.Then<T>.Else.Then<Eʹ> Then<I, T, E, Eʹ>(
             this Іf<I>.Then<T>.Else.Then<E> o,
             Func<E, Eʹ> map) =>
-                new(o.ConditionalMap, o.ElseMap.Then(map));
+                new (o.ConditionalMap, o.ElseMap.Then(map));
 
         public static (ꞏꞏꞏ, Іf<I>.Then<T>) Then<ꞏꞏꞏ, I, T>(
             this (ꞏꞏꞏ, Іf<I>) o,

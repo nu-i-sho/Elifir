@@ -1,0 +1,5 @@
+﻿[Program.cs]
+# False Positive with text 'Using directive should appear within a namespace declaration'
+# Top level Program style doesn't need namespace
+# SA1200: Using directives should be placed correctly
+dotnet_diagnostic.SA1200.severity = none

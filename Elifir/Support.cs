@@ -2,7 +2,7 @@
 {
     public static partial class Syntax
     {
-        public class NotForCallException() 
+        public class NotForCallException()
             : NotSupportedException("It is not for call !!!");
 
         public static Iʹ Is<Iʹ>() =>

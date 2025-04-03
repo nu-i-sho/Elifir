@@ -33,21 +33,29 @@
     <MSBuild Projects="../$(CodeGen)/$(CodeGen).csproj" Targets="Build" />
   </Target>
 
-  <Target Name="GenCode" BeforeTargets="Build" 
-          Condition="!Exists($(IfFile)) or !Exists($(EndFile))">
+  <Target Name="GenCode" BeforeTargets="Build" Condition="!Exists($(IfFile)) or !Exists($(EndFile))">
     
     <Message Importance="high" Text="code generation started" />
-    <Exec Command="&quot;../$(CodeGen)/bin/$(Configuration)/$(TargetFramework)/Nuisho.$(CodeGen)&quot; -if &gt; $(IfFile)" 
-          Condition="!Exists($(IfFile))" />
-    <Exec Command="&quot;../$(CodeGen)/bin/$(Configuration)/$(TargetFramework)/Nuisho.$(CodeGen)&quot; -end &gt; $(EndFile)"
-          Condition="!Exists($(EndFile))" />
+    <Exec Command="&quot;../$(CodeGen)/bin/$(Configuration)/$(TargetFramework)/Nuisho.$(CodeGen)&quot; -if &gt; $(IfFile)" Condition="!Exists($(IfFile))" />
+    <Exec Command="&quot;../$(CodeGen)/bin/$(Configuration)/$(TargetFramework)/Nuisho.$(CodeGen)&quot; -end &gt; $(EndFile)" Condition="!Exists($(EndFile))" />
     <Message Importance="high" Text="code generation finished" />
   </Target>
 
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\"/>
-    <None Include="..\LICENSE" Pack="true" PackagePath="\"/>
-    <None Include="..\icon.png" Pack="true" PackagePath="\"/>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.7.0.110445">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

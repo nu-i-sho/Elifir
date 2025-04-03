@@ -2,19 +2,6 @@
 {
     using System.Diagnostics.CodeAnalysis;
 
-    internal delegate bool ConditionalMap<in I, Iʹ>(
-        I i, [MaybeNullWhen(false)] out Iʹ iʹ);
-
-    public delegate Iʹ IsOfType<Iʹ>();
-
-    public static class ObjectOfType<T>
-    {
-        public delegate (T, Tʹ) IsOfType<Tʹ>()
-            where Tʹ : T;
-    }
-
-    public delegate T WithReturnType<T>();
-
     public sealed partial class Іf<I>
     {
         internal Іf(Func<I, bool> condition) =>
@@ -24,7 +11,8 @@
     }
 
     public sealed partial class Іf<I> {
-    public sealed class Is<Iʹ> where Iʹ : I
+    public sealed class Is<Iʹ>
+        where Iʹ : I
     {
         internal Is(ConditionalMap<I, Iʹ> condition) =>
             Condition = condition;
@@ -82,6 +70,19 @@
         internal ConditionalMap<I, T> ConditionalMap { get; }
         internal Func<I, E> ElseMap { get; }
     }}}}
+
+    public delegate Iʹ IsOfType<Iʹ>();
+
+    public static class ObjectOfType<T>
+    {
+        public delegate (T, Tʹ) IsOfType<Tʹ>()
+            where Tʹ : T;
+    }
+
+    public delegate T WithReturnType<T>();
+
+    internal delegate bool ConditionalMap<in I, Iʹ>(
+        I i, [MaybeNullWhen(false)] out Iʹ iʹ);
 
     public sealed class AdHocPolyMarker
     {

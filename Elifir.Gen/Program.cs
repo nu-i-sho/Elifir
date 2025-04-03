@@ -1,29 +1,24 @@
-﻿using Nuisho.Elifir.Gen;
-using System.Text;
-
+﻿using System.Text;
+using Nuisho.Elifir.Gen;
 using static Nuisho.Elifir.Gen.Utils;
 
-Dictionary<string, ICodeGen<Token>> generators = new()
+Dictionary<string, ICodeGen<Token>> generators = new ()
 {
-    { "-end", 
+    { "-end",
         new HeadCommentGen<Token>(
-            new Suppress_IDE0079_Gen<Token>(
-                new Suppress_S3427_Gen<Token>(
-                    new SyntaxClassGen<Token>(
-                        new SeededGen<IEnumerable<EndSeed>>(
-                            new MultiGen<EndSeed>(
-                                new EndGen()),
-                            EndSeeds.Default)))))
+            new SyntaxClassGen<Token>(
+                new SeededGen<IEnumerable<EndSeed>>(
+                    new MultiGen<EndSeed>(
+                        new EndGen()),
+                    EndSeeds.Default)))
     },
     { "-if",
         new HeadCommentGen<Token>(
-            new Suppress_IDE0079_Gen<Token>(
-                new Suppress_IDE0060_Gen<Token>(
-                    new SyntaxClassGen<Token>(
-                        new SeededGen<IEnumerable<IfSeed>>(
-                            new MultiGen<IfSeed>(
-                                new IfGen()),
-                            IfSeeds.Default)))))
+            new SyntaxClassGen<Token>(
+                new SeededGen<IEnumerable<IfSeed>>(
+                    new MultiGen<IfSeed>(
+                        new IfGen()),
+                    IfSeeds.Default)))
     }
 };
 
@@ -37,8 +32,7 @@ try
 catch (Exception e)
 {
     foreach (var line in e.ToString().Split(
-            [Environment.NewLine], 
+            [Environment.NewLine],
             StringSplitOptions.RemoveEmptyEntries))
         Console.WriteLine(line);
-
 }
