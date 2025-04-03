@@ -6,7 +6,7 @@
     {
         public IEnumerable<string> Generate(IfSeed o)
         {
-            yield return $"public static ({o.Type}, Іf<{o.Params.If}>) If<{o.Params.ShortLine}>(";
+            yield return $"public static ({o.Type}, İf<{o.Params.If}>) If<{o.Params.ShortLine}>(";
             yield return $"    this {o.Type} o,";
             yield return $"    Func<{o.Params.If}, bool> condition){(o.Wheres.IsEmpty ? " =>" : string.Empty)}";
 
@@ -15,7 +15,7 @@
 
             yield return  "        (o, If(condition));";
             yield return string.Empty;
-            yield return $"public static ({o.Type}, Іf<{o.Params.If}>.Is<{o.Params.Next}>) If<{o.Params.LongLine}>(";
+            yield return $"public static ({o.Type}, İf<{o.Params.If}>.Is<{o.Params.Next}>) If<{o.Params.LongLine}>(";
             yield return $"    this {o.Type} o,";
             yield return $"    IsOfType<{o.Params.Next}> condition)";
 

@@ -49,7 +49,7 @@
         internal static Іf If(string t) => new (t);
 
         internal sealed class Іf(string t)
-            : StringHolder($"Іf<{t}>")
+            : StringHolder($"İf<{t}>")
         {
             internal IfThen Then(string t) => new (this, t);
 

@@ -2,11 +2,11 @@
 {
     public static partial class Syntax
     {
-        public static Іf<I> If<I>(
+        public static İf<I> If<I>(
             Func<I, bool> condition) =>
                 new (condition);
 
-        public static Іf<I>.Is<Iʹ> If<I, Iʹ>(
+        public static İf<I>.Is<Iʹ> If<I, Iʹ>(
             ObjectOfType<I>.IsOfType<Iʹ> condition)
                 where Iʹ : I =>
                     new ();

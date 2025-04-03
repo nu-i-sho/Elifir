@@ -2,15 +2,15 @@
 {
     using System.Diagnostics.CodeAnalysis;
 
-    public sealed partial class Іf<I>
+    public sealed partial class İf<I>
     {
-        internal Іf(Func<I, bool> condition) =>
+        internal İf(Func<I, bool> condition) =>
             Condition = condition;
 
         internal Func<I, bool> Condition { get; }
     }
 
-    public sealed partial class Іf<I> {
+    public sealed partial class İf<I> {
     public sealed class Is<Iʹ>
         where Iʹ : I
     {
@@ -35,7 +35,7 @@
         internal ConditionalMap<I, Iʹ> Condition { get; }
     }}
 
-    public sealed partial class Іf<I> {
+    public sealed partial class İf<I> {
     public sealed partial class Then<T>
     {
         internal Then(ConditionalMap<I, T> conditionalMap) =>
@@ -44,7 +44,7 @@
         internal ConditionalMap<I, T> ConditionalMap { get; }
     }}
 
-    public sealed partial class Іf<I> {
+    public sealed partial class İf<I> {
     public sealed partial class Then<T> {
     public sealed partial class Else
     {
@@ -54,7 +54,7 @@
         internal ConditionalMap<I, T> ConditionalMap { get; }
     }}}
 
-    public sealed partial class Іf<I> {
+    public sealed partial class İf<I> {
     public sealed partial class Then<T> {
     public sealed partial class Else {
     public sealed class Then<E>
