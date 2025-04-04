@@ -167,7 +167,7 @@ Elifir is implemented using static polymorphism rather than dynamic.
 As a result, almost every modification of a non-finalized expression generates a new type incompatible with the previous one. 
 This is the main and a pretty cool library feature. But it has a dark side. 
 You can use Elifir to construct functions. However, the direct use of any type from the library is not recommended. 
-For this reason, the names of Elifir types include the symbol "İ", which is absent on the keyboard and private constructors.
+For this reason, the names of Elifir types include the symbol "İ", which is absent on the keyboard, and they have private constructors.
 
 The library is oriented to "var" using and doesn't support backward compatibility with types, but with expressions.
 
