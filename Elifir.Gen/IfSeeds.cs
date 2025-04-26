@@ -1,46 +1,45 @@
-﻿namespace Nuisho.Elifir.Gen
+﻿namespace Nuisho.Elifir.Gen;
+
+using System.Collections;
+using static Utils;
+
+internal sealed class IfSeeds(IEnumerable<IfSeed> implementation)
+    : IEnumerable<IfSeed>
 {
-    using System.Collections;
-    using static Utils;
+    public IEnumerator<IfSeed> GetEnumerator() =>
+        implementation.GetEnumerator();
 
-    internal sealed class IfSeeds(IEnumerable<IfSeed> implementation)
-        : IEnumerable<IfSeed>
+    IEnumerator IEnumerable.GetEnumerator() =>
+        implementation.GetEnumerator();
+
+    static IEnumerable<IfSeed> GetDefault()
     {
-        public IEnumerator<IfSeed> GetEnumerator() =>
-            implementation.GetEnumerator();
+        yield return new IfSeed(
+                            Type: Func(T, Tʹ),
+                          Params: new ([T], Tʹ, Tʺ),
+            NestedImplementation: false);
 
-        IEnumerator IEnumerable.GetEnumerator() =>
-            implementation.GetEnumerator();
+        yield return new IfSeed(
+                            Type: If(I),
+                          Params: new ([], I, Iʹ));
 
-        static IEnumerable<IfSeed> GetDefault()
-        {
-            yield return new IfSeed(
-                                Type: Func(T, Tʹ),
-                              Params: new ([T], Tʹ, Tʺ),
-                NestedImplementation: false);
+        yield return new IfSeed(
+                            Type: If(I).Is(Iʹ),
+                          Params: new ([I], Iʹ, Iʺ),
+                     Constraints: [(Iʹ, I)]);
 
-            yield return new IfSeed(
-                                Type: If(I),
-                              Params: new ([], I, Iʹ));
+        yield return new IfSeed(
+                            Type: If(I).Then(T),
+                          Params: new ([I], T, Tʹ));
 
-            yield return new IfSeed(
-                                Type: If(I).Is(Iʹ),
-                              Params: new ([I], Iʹ, Iʺ),
-                         Constraints: [(Iʹ, I)]);
+        yield return new IfSeed(
+                            Type: If(I).Then(T).Else,
+                          Params: new ([T], I, Iʹ));
 
-            yield return new IfSeed(
-                                Type: If(I).Then(T),
-                              Params: new ([I], T, Tʹ));
-
-            yield return new IfSeed(
-                                Type: If(I).Then(T).Else,
-                              Params: new ([T], I, Iʹ));
-
-            yield return new IfSeed(
-                                Type: If(I).Then(T).Else.Then(E),
-                              Params: new ([I, T], E, Eʹ));
-        }
-
-        public static IfSeeds Default => new (GetDefault());
+        yield return new IfSeed(
+                            Type: If(I).Then(T).Else.Then(E),
+                          Params: new ([I, T], E, Eʹ));
     }
+
+    public static IfSeeds Default => new (GetDefault());
 }

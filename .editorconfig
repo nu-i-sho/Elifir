@@ -1,5 +1,25 @@
 ﻿[*.cs]
 
+# CS8625: Cannot convert null literal to non-nullable reference type.
+dotnet_diagnostic.CS8625.severity = error
+
+# CS8600: Converting null literal or possible null value to non-nullable type.
+dotnet_diagnostic.CS8600.severity = error
+
+# CS8604: Possible null reference argument.
+dotnet_diagnostic.CS8604.severity = error
+
+# CS8602: Dereference of a possibly null reference.
+dotnet_diagnostic.CS8602.severity = error
+
+# CS8618: Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+dotnet_diagnostic.CS8618.severity = error
+
+# The parameter type isn't nullable, so there is null validation at compilation time.
+# CS8625, CS8604, CS8602 and CS8600 are configured as errors
+# CA1062: Validate arguments of public methods
+dotnet_diagnostic.CA1062.severity = none
+
 # SA1314: Type parameter names should begin with T
 dotnet_diagnostic.SA1314.severity = none
 

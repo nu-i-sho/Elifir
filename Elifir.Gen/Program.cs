@@ -31,8 +31,5 @@ try
 }
 catch (Exception e)
 {
-    foreach (var line in e.ToString().Split(
-            [Environment.NewLine],
-            StringSplitOptions.RemoveEmptyEntries))
-        Console.WriteLine(line);
+    Console.Write(e.ToString());
 }
