@@ -80,12 +80,12 @@ where the second method includes an additional 'default parameter' to work aroun
 
 ```CSharp
 public static Func<I, I> End<I, T>(
-    this ˣ.If<I>.Then<T> o)
+    this İf<I>.Then<T> o)
         where T : I
             { ... }
 
 public static Func<I, T> End<I, T>(
-    this ˣ.If<I>.Then<T> o,
+    this İf<I>.Then<T> o,
     AdHocPolyMarker? _ = null)
         where I : T
             { ... }
